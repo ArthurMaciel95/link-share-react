@@ -1,0 +1,45 @@
+:root{
+    /* primary colors */
+
+    --primary-color:#FB6B6B;
+
+    /*container color*/
+    --background:#E7E7E7;
+    --sidebar-background:#FFFFFF;
+    
+    /*text color*/
+    --text-color-gray:#B7B2B2;
+    --text-color-header:#6D6D6D;
+
+
+    --input-background-color:#E3E3E3;
+    --text-large:1.4rem;
+    --text-medium:1.2rem;
+    --text-small:1rem;
+    --text-xsmall:0.9rem;
+    --text-xxsmall:0.7rem;
+
+
+
+}
+#root{
+    height: 100vh;
+}
+html,   
+body{
+    background-color: var(--background);
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    list-style: none;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0px;
+    padding: 0px;
+}
