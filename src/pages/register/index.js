@@ -1,13 +1,13 @@
 import React from 'react'
-import './styles.css'
+import Button from '../../components/Button'
 import shareLinkLogo from '../../assets/svg/logo-share-link.svg'
 import { Link } from 'react-router-dom'
-import Button from '../../components/Button'
-const LoginPage = () => {
+
+const Register = () => {
     return (
         <>
             <div className="w-100 d-flex  h-100 ">
-                <section className='bg-primary-color w-50 d-flex align-items-center justify-content-center flex-column '>
+                <section className='bg-primary-color w-50 d-flex align-items-center justify-content-center   flex-column'>
 
                     <div className="row ">
                         <div className="col-8">
@@ -31,11 +31,15 @@ const LoginPage = () => {
                         <div className="row">
                             <div className="d-flex flex-column">
                                 <input type="text" className="border-rounder py-2 px-3 mb-md-3 text-muted" placeholder='Email' />
+                                <input type="text" className="border-rounder py-2 px-3 mb-md-3 text-muted" placeholder='Usuário' />
+                                <input type="text" className="border-rounder py-2 px-3 mb-md-3 text-muted" placeholder='Nome' />
+                                <input type="text" className="border-rounder py-2 px-3 mb-md-3 text-muted" placeholder='Senha' />
+                                <input type="text" className="border-rounder py-2 px-3 mb-md-3 text-muted" placeholder='Repita a senha' />
                                 <input type="text" className="border-rounder py-2 px-3 text-muted" placeholder='Senha' />
-                                <a href="#" className='my-md-2 fs-7 text-reset'>esqueceu a senha?</a>
-                                <Button value="Entrar" outline={false} />
-                                <h2 className='text-center text-black-50 fs-3 py-4'>Não tem uma conta ainda?</h2>
-                                <p className='text-center text-primary-color fw-bolder'>Cadastre-se agora.</p>
+                                <Link to="/" className='my-md-2 fs-7 text-reset'>eu já tenho uma conta.</Link>
+                                <Button value="Cadastrar" outline={false} />
+
+
                             </div>
 
                         </div>
@@ -47,4 +51,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default Register

@@ -3,11 +3,13 @@ import { Route, Routes } from 'react-router-dom'
 import HomePage from '../pages/Home';
 import LoginPage from '../pages/Login';
 import PageNotFound from '../pages/404';
+import Register from '../pages/register';
 const Router = () => {
     return (
         <Routes>
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage />} />
             <Route path="/home" element={<HomePage />} />
+            <Route path="/register" element={<Register />} />
             <Route path="*" element={<PageNotFound />} />
         </Routes>
     )

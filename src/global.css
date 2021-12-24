@@ -61,9 +61,10 @@ input[type="text"]{
     color: var(--primary-color);
 }
 
-.btn-filled{
-    border-radius: 25px;
-    border: none;
-    background-color: var(--primary-color);
-    color:white
+.obj-fit{
+    object-fit: cover;
+}
+
+.fs-7{
+    font-size: 0.8rem;
 }

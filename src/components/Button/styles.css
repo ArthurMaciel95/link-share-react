@@ -1,0 +1,13 @@
+.btn-filled{
+    border-radius: 25px;
+    border: none;
+    background-color: var(--primary-color);
+    color:white
+}
+
+.btn-outline{
+    border-radius: 25px;
+    border: white  2px solid;
+        background-color: transparent;
+    color: white;
+}
