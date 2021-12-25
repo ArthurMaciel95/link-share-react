@@ -35,7 +35,7 @@ const LoginPage = () => {
                                 <a href="#" className='my-md-2 fs-7 text-reset'>esqueceu a senha?</a>
                                 <Button value="Entrar" outline={false} />
                                 <h2 className='text-center text-black-50 fs-3 py-4'>Não tem uma conta ainda?</h2>
-                                <p className='text-center text-primary-color fw-bolder'>Cadastre-se agora.</p>
+                                <Link to="/register" className='text-center text-primary-color fw-bolder'>Cadastre-se agora.</Link>
                             </div>
 
                         </div>

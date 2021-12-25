@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logoReduce from '../../assets/svg/logo-reduce.svg'
 import Avatar from '../../assets/images/avatar.png'
 import Button from '../../components/Button'
 import plusIcon from '../../assets/svg/icon_plus.svg'
-import LogoTwitter from '../../assets/images/twitter.png'
+import Logo from '../../utils/links-logos'
 import CardLink from '../../components/CardLink'
+import Modal from '../../components/Modal/index.'
 const HomePage = () => {
+
+    const [showModal, setShowModal] = useState(true)
+
+    const closeModal = () => setShowModal(false)
+    const openModal = () => setShowModal(true)
+
+
     return (
         <>
+            {showModal && <Modal />}
             <header className="profile w-100 bg-primary-color h-25">
                 <section className=" container">
                     <div className="row">
@@ -16,7 +25,7 @@ const HomePage = () => {
                             <div className='d-flex '>
                                 <p className='text-white'>Andresa_santos42</p>
                                 <img src={Avatar} alt="avatar image" className='rounded-circle mx-2' style={{ width: '30px', height: '30px' }} />
-                                <Button outline={true} value="link" icon={plusIcon} />
+                                <Button outline={true} value="link" icon={plusIcon} onClick={openModal} />
 
                             </div>
                         </div>
@@ -37,10 +46,10 @@ const HomePage = () => {
                                     dummy text ever since the 1500s, </p>
                             </div>
                             <div className="col-md-7 offset-md-1   ">
-                                <CardLink image={LogoTwitter} name="Twitter" />
-                                <CardLink image={LogoTwitter} name="Twitter" />
-                                <CardLink image={LogoTwitter} name="Twitter" />
-                                <CardLink image={LogoTwitter} name="Twitter" />
+                                <CardLink image={Logo.twitch} name="Twitch" />
+                                <CardLink image={Logo.youtube} name="Youtube" />
+                                <CardLink image={Logo.twitter} name="Twitter" />
+
 
                             </div>
                         </div>
