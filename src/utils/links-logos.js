@@ -11,7 +11,7 @@ import onlyFans from '../assets/images/only-fans.png'
 import pinterest from '../assets/images/pinterest.png'
 import tiktok from '../assets/images/tiktok.png'
 import dropBox from '../assets/images/dropbox.png'
-import soundCloud from '../assets/images/soundlcloud.png'
+import soundCloud from '../assets/images/soundlCloud.png'
 import vimeo from '../assets/images/vimeo.png'
 
 export default {
@@ -29,6 +29,7 @@ export default {
     onlyFans,
     vimeo,
     soundCloud,
-    dropBox
+    dropBox,
+
 
 }
