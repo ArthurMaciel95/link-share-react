@@ -13,10 +13,12 @@ const HomePage = () => {
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
 
-
+    const handlerButton = () => {
+        setShowModal(true)
+    }
     return (
         <>
-            <Modal showModal={showModal} />
+            <Modal showModal={showModal} setShowModal={setShowModal} />
             <header className="profile w-100 bg-primary-color h-25" style={{ maxHeight: 'px' }}>
                 <section className=" container">
                     <div className="row">
@@ -25,7 +27,7 @@ const HomePage = () => {
                             <div className='d-flex '>
                                 <p className='text-white'>Andresa_santos42</p>
                                 <img src={Avatar} alt="avatar image" className='rounded-circle mx-2' style={{ width: '30px', height: '30px' }} />
-                                <button onClick={openModal}>+ link</button>
+                                <Button outline={true} handlerButton={handlerButton} value="Link" icon={plusIcon}>+ link</Button>
 
                             </div>
                         </div>
