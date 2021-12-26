@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# SHARE LINKS APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Share Links é um app para você juntar todas as suas contas de outras plataformas em um só lugar.
+por exemplo, aquela pessoa famosa que você segue, com o app você sabe todas as perfils da plataforma que a pessoa usa( instagram, facebook, e etc...)  
 
-## Available Scripts
+# O que falta fazer?
 
-In the project directory, you can run:
+#### bastante coisa, mas por enquanto vamos contruir o essêncial. atualmente o backend está em desenvolvimento. as images ja estão dentro do projeto só pegar e usar.
 
-### `npm start`
+- [ ] Criar pagina de Profile
+- [x] Criar pagina de login
+- [x] Criar pagina de cadastro
+- [X] Criar pagina de Links do Usuário
+- [x] Criar Modal para a criação de novos links
+- [ ] Fazer integração com a rota de login ( backend  em contrução ) 
+- [ ] Fazer integração com a rota de cadastro ( backend em contrução )
+- [ ] Fazer integração com a rota de Atualização de Conta ( backend em contrução ) 
+- [ ] Fazer integração com a rota de mostrar links da Conta ( backend em contrução ) 
+- [ ] Fazer integração com a rota de Deletar a Conta ( Para deletar a conta será necessário digitar a senha no modal para realizar a confirmação - backend em contrução )
+- [ ] Criar Autenticação na página de login com rotas privadas.
+- [ ] Inserir JWT em LOCALSTORAGE quando o login for efetuado.
+- [ ] Verificar se o TOKEN JWT foi expirado.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Referência para Contrução do Projeto.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Figma:
+https://www.figma.com/file/HCjEpa1wjyoBMSgPChBLcI/Untitled?node-id=0%3A1
 
-### `npm test`
+Backend:
+https://github.com/MateusNGF/link-share ( em desenvolvimento ) 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tecnologias utilizadas:
 
-### `npm run build`
+- React 
+- Bootstrap grid
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Como rodar o Projeto.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Clone o projeto em sua maquina.
 
-### `npm run eject`
+####  `npm install`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### `npm start`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
