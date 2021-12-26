@@ -8,7 +8,7 @@ import CardLink from '../../components/CardLink'
 import Modal from '../../components/Modal/index.'
 const HomePage = () => {
 
-    const [showModal, setShowModal] = useState(true)
+    const [showModal, setShowModal] = useState(false)
 
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
@@ -16,8 +16,8 @@ const HomePage = () => {
 
     return (
         <>
-            {showModal && <Modal />}
-            <header className="profile w-100 bg-primary-color h-25">
+            <Modal showModal={showModal} />
+            <header className="profile w-100 bg-primary-color h-25" style={{ maxHeight: 'px' }}>
                 <section className=" container">
                     <div className="row">
                         <div className="col-md-12 d-flex justify-content-between align-items-center my-md-2">
@@ -25,7 +25,7 @@ const HomePage = () => {
                             <div className='d-flex '>
                                 <p className='text-white'>Andresa_santos42</p>
                                 <img src={Avatar} alt="avatar image" className='rounded-circle mx-2' style={{ width: '30px', height: '30px' }} />
-                                <Button outline={true} value="link" icon={plusIcon} onClick={openModal} />
+                                <button onClick={openModal}>+ link</button>
 
                             </div>
                         </div>
@@ -46,10 +46,10 @@ const HomePage = () => {
                                     dummy text ever since the 1500s, </p>
                             </div>
                             <div className="col-md-7 offset-md-1   ">
-                                <CardLink image={Logo.twitch} name="Twitch" />
-                                <CardLink image={Logo.youtube} name="Youtube" />
-                                <CardLink image={Logo.twitter} name="Twitter" />
-
+                                <CardLink image={Logo['twitch']} name="Twitch" link="twitch/ArthurRocha95" />
+                                <CardLink image={Logo.youtube} name="Youtube" link="youtube/ArthurRocha95" />
+                                <CardLink image={Logo.twitter} name="Twitter" link="twitter/ArthurRocha95" />
+                                <CardLink image={Logo.linkdin} name="Linkdin" link="linkdin/ArthurRocha95" />
 
                             </div>
                         </div>
