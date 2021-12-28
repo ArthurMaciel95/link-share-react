@@ -1,4 +1,4 @@
-import buffer from "./buffer";
+import { decoded, encoded } from "./buffer";
 
 
 /**
@@ -21,7 +21,7 @@ export const isEqual = (token, name) => {
  * @param {string} token insira o token JWT
  * @returns {boolean} retorna um boleano.
  */
-export const isTokenExpired = token => Date.now() >= JSON.parse(buffer.decoded(token.split('.')[1], 'utf-8')).exp * 1000
+export const isTokenExpired = token => Date.now() >= JSON.parse(decoded(token.split('.')[1], 'utf-8')).exp * 1000
 
 /**
  * Resgata o token jwt do localStorage.
@@ -37,7 +37,7 @@ export const getToken = () => {
 export const getPayloadJwt = () => {
     const token = JSON.parse(localStorage.getItem('jwt_token'))
     const payload = token.split('.')[1];
-    const decoded = buffer.decoded(payload, 'utf-8');
+    const decoded = decoded(payload, 'utf-8');
     return decoded
 }
 

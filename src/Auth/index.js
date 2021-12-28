@@ -1,17 +1,19 @@
 import React from "react";
-import { Route, Redirect, Navigate, Location } from 'react-router-dom'
+import { Route, Redirect, Navigate } from 'react-router-dom'
 import { isAuthenticated, isTokenExpired, getToken } from '../utils/jwt'
 
 
 const PrivateRoute = ({ children }) => {
 
-    let isAuthenticated = isAuthenticated() && !isTokenExpired(getToken())
 
-    if (isAuthenticated) {
+
+    if (isAuthenticated() && !isTokenExpired(getToken())) {
         return children
     }
 
     return <Navigate to="/" />
+
+
 
 }
 
