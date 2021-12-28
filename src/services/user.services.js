@@ -12,7 +12,7 @@ export const user = {
         const payload = `${email}:${password}`
         const encoded = buffer.encoded(payload, 'base64');
 
-        return await fetch(`${environment.URL_PRODUCTION}/user/access`, {
+        return await fetch(`${environment.URL_PRODUCTION}/user/signin`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export const user = {
      * @returns {Promise} retorna uma promise
      */
     register: async (payload) => {
-        return await fetch(`${environment.URL_PRODUCTION}/user/register`, {
+        return await fetch(`${environment.URL_PRODUCTION}/user/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
