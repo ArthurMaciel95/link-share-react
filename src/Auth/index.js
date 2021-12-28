@@ -6,7 +6,6 @@ import { isAuthenticated, isTokenExpired, getToken } from '../utils/jwt'
 const PrivateRoute = ({ children }) => {
 
 
-
     if (isAuthenticated() && !isTokenExpired(getToken())) {
         return children
     }
