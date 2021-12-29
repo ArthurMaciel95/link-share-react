@@ -30,6 +30,4 @@ export default {
     vimeo,
     soundCloud,
     dropBox,
-
-
 }
