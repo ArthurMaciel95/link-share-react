@@ -6,19 +6,30 @@ import Button from '../../components/Button'
 import Loading from '../../components/Loading'
 const LoginPage = () => {
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState({ error: false, message: undefined })
+    const [disabled, setDisabled] = useState(false)
 
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+        console.log('formulario enviado')
+    }
 
-
+    /*   const finished = () => {
+          setLoading(false)
+          setDisabled(false);
+      } */
 
     return (
         <>
             {loading && <Loading />}
             <div className="w-100 d-flex  h-100 ">
-                <section className='bg-primary-color w-50 d-flex align-items-center justify-content-center flex-column '>
+                <section className='bg-primary-color w-50 d-flex align-items-center justify-content-center flex-column'>
 
-                    <div className="row ">
-                        <div className="col-8">
+                    <div className="row">
+                        <div className="col-8 ">
                             <h1 className='text-light mb-md-4'>
                                 <img src={shareLinkLogo} alt="logo share link" />
                             </h1>
@@ -37,19 +48,21 @@ const LoginPage = () => {
                 <section className='w-50 '>
                     <div className="d-flex h-100 justify-content-center align-items-center">
                         <div className="row">
-                            <div className="d-flex flex-column">
+
+                            <form className='d-flex flex-column' onSubmit={handlerSubmit}>
                                 <input type="text" className="border-rounder py-2 px-3 mb-md-3 text-muted" placeholder='Email' />
                                 <input type="text" className="border-rounder py-2 px-3 text-muted" placeholder='Senha' />
                                 <a href="#" className='my-md-2 fs-7 text-reset'>esqueceu a senha?</a>
                                 <Button value="Entrar" outline={false} />
                                 <h2 className='text-center text-black-50 fs-3 py-4'>Não tem uma conta ainda?</h2>
                                 <Link to="/register" className='text-center text-primary-color fw-bolder'>Cadastre-se agora.</Link>
-                            </div>
+                            </form>
+
 
                         </div>
                     </div>
                 </section>
-            </div>
+            </div >
 
         </>
     )
