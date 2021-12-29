@@ -54,13 +54,10 @@ export const logOut = () => {
 }
 /**
  * 
- * @param {string} status Situação da requisição 
  * @param {string} token chave que é enviada quando logamos.
  */
-export const setNewToken = (status, token) => {
-    if (status) {
-        token && localStorage.setItem('jwt_token', JSON.stringify(token));
-    }
+export const setNewToken = (token) => {
+    return localStorage.setItem('jwt_token', JSON.stringify(token));
 }
 
 

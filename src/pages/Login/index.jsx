@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './styles.css'
 import shareLinkLogo from '../../assets/svg/logo-share-link.svg'
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
+import Loading from '../../components/Loading'
 const LoginPage = () => {
+
+    const [loading, setLoading] = useState(true)
+
+
+
+
     return (
         <>
+            {loading && <Loading />}
             <div className="w-100 d-flex  h-100 ">
                 <section className='bg-primary-color w-50 d-flex align-items-center justify-content-center flex-column '>
 
