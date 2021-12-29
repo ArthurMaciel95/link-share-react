@@ -28,7 +28,6 @@ const HomePage = () => {
                                 <p className='text-white'>Andresa_santos42</p>
                                 <img src={Avatar} alt="avatar image" className='rounded-circle mx-2' style={{ width: '30px', height: '30px' }} />
                                 <Button outline={true} handlerButton={handlerButton} value="Link" icon={plusIcon}>+ link</Button>
-
                             </div>
                         </div>
                     </div>
@@ -52,11 +51,8 @@ const HomePage = () => {
                                 <CardLink image={Logo.youtube} name="Youtube" link="youtube/ArthurRocha95" />
                                 <CardLink image={Logo.twitter} name="Twitter" link="twitter/ArthurRocha95" />
                                 <CardLink image={Logo.linkdin} name="Linkdin" link="linkdin/ArthurRocha95" />
-
                             </div>
                         </div>
-
-
                     </section>
                 </section>
             </header>
