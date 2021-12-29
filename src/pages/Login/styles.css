@@ -1,3 +1,79 @@
 .bg-primary-color {
-  background-color: #fb6b6b;
+    background-color: #fb6b6b;
+}
+
+#login {
+    background-color: #fb6b6b;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0px;
+    padding: 0px;
+}
+.sections {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+}
+
+.login-inp {
+    width: 100%;
+    height: 44px;
+    border: 0px;
+    padding: 2px 20px;
+    border-radius: 25px;
+    background-color: rgb(199, 199, 199) !important;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.btn-login:focus {
+    border: 1px solid #000;
+    box-shadow: none;
+    outline-width: 0px;
+}
+
+.login-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #fff !important;
+}
+.links-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.links-section a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+.links-section a:hover {
+    color: rgb(78, 78, 78);
+    text-decoration: underline;
+}
+@media only screen and (max-width: 850px) {
+    #login {
+        flex-direction: column;
+    }
+    .sections {
+        width: 100vw;
+        height: 50vh;
+    }
 }

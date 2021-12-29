@@ -9,11 +9,8 @@ const PrivateRoute = ({ children }) => {
     if (isAuthenticated() && !isTokenExpired(getToken())) {
         return children
     }
-
     return <Navigate to="/" />
-
-
-
 }
 
-export default PrivateRoute;
+
+export default PrivateRoute
