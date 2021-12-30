@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import logoReduce from '../../assets/svg/logo-reduce.svg'
 import Avatar from '../../assets/images/avatar.png'
-import Button from '../../components/Button'
+import * as Buttons from '../../components/Buttons'
 import plusIcon from '../../assets/svg/icon_plus.svg'
 import Logo from '../../utils/links-logos'
 import CardLink from '../../components/CardLink'
@@ -27,7 +27,7 @@ const HomePage = () => {
                             <div className='d-flex '>
                                 <p className='text-white'>Andresa_santos42</p>
                                 <img src={Avatar} alt="avatar image" className='rounded-circle mx-2' style={{ width: '30px', height: '30px' }} />
-                                <Button outline={true} handlerButton={handlerButton} value="Link" icon={plusIcon}>+ link</Button>
+                                <Buttons.Primary outline={true} handlerButton={handlerButton} value="Link" icon={plusIcon}>+ link</Buttons.Primary>
                             </div>
                         </div>
                     </div>
