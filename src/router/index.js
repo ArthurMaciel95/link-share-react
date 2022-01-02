@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import HomePage from '../pages/Home';
 import LoginPage from '../pages/Login';
 import PageNotFound from '../pages/404';
-import Register from '../pages/register';
+import Register from '../pages/Register';
 import ProfilePage from '../pages/Profile'
 import PrivateRoute from '../Auth';
 const Router = () => {
