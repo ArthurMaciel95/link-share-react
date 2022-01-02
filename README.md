@@ -17,9 +17,9 @@ por exemplo, aquela pessoa famosa que você segue, com o app você sabe todas as
 - [ ] Fazer integração com a rota de Atualização de Conta ( backend em contrução ) 
 - [ ] Fazer integração com a rota de mostrar links da Conta ( backend em contrução ) 
 - [ ] Fazer integração com a rota de Deletar a Conta ( Para deletar a conta será necessário digitar a senha no modal para realizar a confirmação - backend em contrução )
-- [ ] Criar Autenticação na página de login com rotas privadas.
-- [ ] Inserir JWT em LOCALSTORAGE quando o login for efetuado.
-- [ ] Verificar se o TOKEN JWT foi expirado.
+- [x] Criar Autenticação na página de login com rotas privadas.
+- [x] Inserir JWT em LOCALSTORAGE quando o login for efetuado.
+- [x] Verificar se o TOKEN JWT foi expirado.
 
 ## Referência para Contrução do Projeto.
 
