@@ -46,11 +46,11 @@ const HomePage = () => {
                                     ting industry. Lorem Ipsum has been the industry's standard
                                     dummy text ever since the 1500s, </p>
                             </div>
-                            <div className="col-md-7 offset-md-1   ">
+                            <div className="col-md-7 offset-md-1">
                                 <CardLink image={Logo['twitch']} name="Twitch" link="twitch/ArthurRocha95" />
-                                <CardLink image={Logo.youtube} name="Youtube" link="youtube/ArthurRocha95" />
-                                <CardLink image={Logo.twitter} name="Twitter" link="twitter/ArthurRocha95" />
-                                <CardLink image={Logo.linkdin} name="Linkdin" link="linkdin/ArthurRocha95" />
+                                <CardLink image={Logo['youtube']} name="Youtube" link="youtube/ArthurRocha95" />
+                                <CardLink image={Logo['twitter']} name="Twitter" link="twitter/ArthurRocha95" />
+                                <CardLink image={Logo['linkdin']} name="Linkdin" link="linkdin/ArthurRocha95" />
                             </div>
                         </div>
                     </section>
