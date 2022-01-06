@@ -33,6 +33,8 @@ https://github.com/MateusNGF/link-share ( em desenvolvimento )
 
 - React 
 - Bootstrap grid
+- tostify notification
+- Router v6
 
 
 ## Como rodar o Projeto.
