@@ -4,7 +4,7 @@ import { getToken } from '../../utils/jwt';
 
 
 export function apiBase() {
-    const instance = axios.create({ baseURL: enviroment.API_URL });
+    const instance = axios.create({ baseURL: enviroment.URL_PRODUCTION });
     instance.interceptors.request.use((config) => {
         const token = getToken();
         if (token) config.headers[`Authorization`] = "Bearer " + token;

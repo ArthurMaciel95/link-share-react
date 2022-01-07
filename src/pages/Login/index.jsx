@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import shareLinkLogo from "../../assets/svg/logo-share-link.svg";
 import { Link } from "react-router-dom";
-
+import { Validation } from "../../utils/validation";
 import * as Buttons from "../../components/Buttons";
 import * as Form from "../../components/Form";
 import { LoginContainer } from "../../components/Form";
@@ -11,20 +11,29 @@ import { toast } from "react-toastify";
 import { userEndpoint } from "../../services/api/user";
 
 const LoginPage = () => {
-    const [formData, setFormData] = useState({});
+    const _ = new Validation()
+    const [formData, setFormData] = useState({ email: '', password: '' });
     const { email, password } = formData;
     const user = new userEndpoint();
 
     async function handleLogin(event) {
         event.preventDefault();
-        try {
-            console.log(formData);
-            toast.error("Login ainda não implementado!");
-            //const res = await user.login({ ...formData });
 
-            //res.data. dado retornado
+        try {
+            if (_.isEmpty(formData)) {
+                return toast.warning('Os campos não podem estar vazios')
+            }
+            if (!_.isEmail(formData.email)) {
+                return toast.warning('Este email não é valido')
+            }
+
+
+            const payload = await user.login({ ...formData });
+
+
         } catch (error) {
-            //Login falhou
+            toast.error("Servidor indisponível no momento.");
+
         }
     }
     function formChange(event) {

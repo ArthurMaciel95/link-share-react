@@ -16,7 +16,7 @@ export class userEndpoint {
      * @returns {promise} retorna uma promise
      */
     async login(loginModel) {
-        return this.api.post('/user/signin', { ...loginModel });
+        return this.api.get('/user/access', { ...loginModel });
     }
     /**
     * @param {object} createModel objeto com parametros para registro
