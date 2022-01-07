@@ -7,7 +7,11 @@ export function apiBase() {
     const instance = axios.create({ baseURL: enviroment.URL_PRODUCTION });
     instance.interceptors.request.use((config) => {
         const token = getToken();
-        if (token) config.headers[`Authorization`] = "Bearer " + token;
+        
+        //não enviar  token nas rotas access e register
+        if (config.url !== "/user/access" && config.url !== "/user/register")
+            if (token) config.headers[`x-access-token`] = token;
+
         config.headers['Content-Type'] = 'application/json';
         return config;
     });

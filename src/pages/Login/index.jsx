@@ -9,31 +9,33 @@ import { Container, Section } from "./styles";
 import { toast } from "react-toastify";
 
 import { userEndpoint } from "../../services/api/user";
+import { getPayloadJwt, setNewToken } from "../../utils/jwt";
 
 const LoginPage = () => {
-    const _ = new Validation()
-    const [formData, setFormData] = useState({ email: '', password: '' });
+    const _ = new Validation();
+    const [formData, setFormData] = useState({ email: "", password: "" });
     const { email, password } = formData;
     const user = new userEndpoint();
 
     async function handleLogin(event) {
         event.preventDefault();
-
         try {
-            if (_.isEmpty(formData)) {
-                return toast.warning('Os campos não podem estar vazios')
+            if (_.isEmpty(formData))
+                return toast.warning("Os campos não podem estar vazios");
+            if (!_.isEmail(formData.email))
+                return toast.warning("Este email não é valido");
+
+            const response = await user.login({ ...formData });
+            if (response.data.body.token) {
+                setNewToken(response.data.body.token);
+                window.location.href = `/home`;
             }
-            if (!_.isEmail(formData.email)) {
-                return toast.warning('Este email não é valido')
-            }
-
-
-            const payload = await user.login({ ...formData });
-
-
         } catch (error) {
-            toast.error("Servidor indisponível no momento.");
+            if (error.response != undefined)
+                if (error.response.status == 406)
+                    return toast.warning("E-mail não possui registro!");
 
+            toast.error("Servidor indisponível no momento.");
         }
     }
     function formChange(event) {
@@ -76,7 +78,6 @@ const LoginPage = () => {
                         <a href="#" className="my-md-2 fs-7 text-reset">
                             Esqueceu a senha?
                         </a>
-
                         <Buttons.Primary onClick={handleLogin}>
                             Entrar
                         </Buttons.Primary>

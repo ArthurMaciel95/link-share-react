@@ -9,7 +9,6 @@ import Modal from '../../components/Modal/index.'
 const HomePage = () => {
 
     const [showModal, setShowModal] = useState(false)
-
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
 
