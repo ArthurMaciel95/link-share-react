@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import shareLinkLogo from "../../assets/svg/logo-share-link.svg";
 import { Link } from "react-router-dom";
 import { Validation } from "../../utils/validation";
@@ -9,13 +9,18 @@ import { Container, Section } from "./styles";
 import { toast } from "react-toastify";
 
 import { userEndpoint } from "../../services/api/user";
-import { getPayloadJwt, setNewToken } from "../../utils/jwt";
+import { getPayloadJwt, setNewToken, logOut } from "../../utils/jwt";
 
 const LoginPage = () => {
     const _ = new Validation();
     const [formData, setFormData] = useState({ email: "", password: "" });
     const { email, password } = formData;
     const user = new userEndpoint();
+
+
+    useEffect(() => {
+        logOut()
+    })
 
     async function handleLogin(event) {
         event.preventDefault();
@@ -26,6 +31,7 @@ const LoginPage = () => {
                 return toast.warning("Este email não é valido");
 
             const response = await user.login({ ...formData });
+            console.log(response)
             if (response.data.body.token) {
                 setNewToken(response.data.body.token);
                 window.location.href = `/home`;

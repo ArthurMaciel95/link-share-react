@@ -33,7 +33,7 @@ const Register = () => {
             if (error.response != undefined)
                 if (error.response.status === 400)
                     return toast.error("Usuário ja registrado!");
-            
+
             toast.error("Registro falhou!");
         }
     }

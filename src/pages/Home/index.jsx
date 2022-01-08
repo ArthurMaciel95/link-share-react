@@ -38,7 +38,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="row mt-2 rounded ">
-                            <div className="col-4 bg-white rounded mh-25  p-3 shadow-sm " style={{ maxHeight: "281px" }}>
+                            <div className="col-lg-4 col-sm-12 bg-white rounded mh-25  p-3 shadow-sm" style={{ maxHeight: "281px" }}>
                                 <h4 className='text-dark mt-3'>Andresa_santos42</h4>
                                 <p className='text-black-50 fs-5'>@andresasantos42</p>
                                 <p className='text-black-50'>Lorem Ipsum is simply dummy text of the printing and typeset
