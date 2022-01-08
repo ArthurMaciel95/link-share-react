@@ -9,5 +9,6 @@
             "language": "javascript",
             "autoFix": true
         }
-    ]
+    ],
+    "cSpell.words": ["Registrado", "registro", "toastify"]
 }

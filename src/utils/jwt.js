@@ -8,12 +8,11 @@ import { decoded, encoded } from "./buffer";
  * @returns {boolean} retorna true se for igual.
  */
 export const isEqual = (token, name) => {
-    if (typeof name !== 'string') {
+    if (typeof name !== 'string')
         throw new Error('name need to be string')
-    }
-    if (!localStorage.getItem(name) && !localStorage.getItem(name) !== token) {
+
+    if (!localStorage.getItem(name) && !localStorage.getItem(name) !== token)
         return true;
-    }
 }
 
 /**
@@ -28,9 +27,8 @@ export const isTokenExpired = token => Date.now() >= JSON.parse(decoded(token.sp
  * @returns {string}
  */
 export const getToken = () => {
-    if (!localStorage.getItem('jwt_token')) {
-        throw new Error('token jwt not found.')
-    }
+    if (!localStorage.getItem('jwt_token'))
+        return null;
     return JSON.parse(localStorage.getItem('jwt_token'))
 }
 

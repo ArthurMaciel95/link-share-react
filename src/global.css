@@ -1,6 +1,5 @@
 :root {
   /* primary colors */
-
   --primary-color: #fb6b6b;
 
   /*container color*/
@@ -46,19 +45,22 @@ h6 {
   padding: 0px;
 }
 
-
-
-
-input[type="text"]{
-    border: none;
-    border-radius: 25px;
+.flex {
+    display: flex;
+}
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-row {
+    flex-direction: row;
 }
 
-.bg-primary-color{
-    background-color: var(--primary-color);
-}
 .text-primary-color{
-    color: var(--primary-color);
+    color: var(--primary-color)!important;
 }
 
 .obj-fit{
