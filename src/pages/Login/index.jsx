@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import shareLinkLogo from "../../assets/svg/logo-share-link.svg";
 import { Link } from "react-router-dom";
 import { Validation } from "../../utils/validation";
@@ -13,6 +14,8 @@ import Loading from '../../components/Loading'
 
 
 const LoginPage = () => {
+
+    const navigate = new useNavigate()
     const _ = new Validation();
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [loading, setLoading] = useState(false)
@@ -39,10 +42,10 @@ const LoginPage = () => {
 
 
             if (response.data.body.token) {
-
                 setNewToken(response.data.body.token);
-                window.location.href = `/home`;
+                return navigate("/home")
             }
+
         } catch (error) {
 
             if (error.response != undefined)
