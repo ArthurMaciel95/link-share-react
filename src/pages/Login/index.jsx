@@ -7,13 +7,15 @@ import * as Form from "../../components/Form";
 import { LoginContainer } from "../../components/Form";
 import { Container, Section } from "./styles";
 import { toast } from "react-toastify";
-
 import { userEndpoint } from "../../services/api/user";
 import { getPayloadJwt, setNewToken, logOut } from "../../utils/jwt";
+import Loading from '../../components/Loading'
+
 
 const LoginPage = () => {
     const _ = new Validation();
     const [formData, setFormData] = useState({ email: "", password: "" });
+    const [loading, setLoading] = useState(false)
     const { email, password } = formData;
     const user = new userEndpoint();
 
@@ -25,18 +27,24 @@ const LoginPage = () => {
     async function handleLogin(event) {
         event.preventDefault();
         try {
+
             if (_.isEmpty(formData))
                 return toast.warning("Os campos não podem estar vazios");
             if (!_.isEmail(formData.email))
                 return toast.warning("Este email não é valido");
 
+
+            setLoading(true)
             const response = await user.login({ ...formData });
-            console.log(response)
+
+
             if (response.data.body.token) {
+
                 setNewToken(response.data.body.token);
                 window.location.href = `/home`;
             }
         } catch (error) {
+
             if (error.response != undefined)
                 if (error.response.status == 406)
                     return toast.warning("E-mail não possui registro!");
@@ -49,6 +57,7 @@ const LoginPage = () => {
     }
     return (
         <Container>
+            {loading && <Loading />}
             <Section className="links">
                 <div className="max-width">
                     <img src={shareLinkLogo} alt="logo share link" />
