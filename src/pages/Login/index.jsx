@@ -47,7 +47,7 @@ const LoginPage = () => {
             }
 
         } catch (error) {
-
+            setLoading(false)
             if (error.response != undefined)
                 if (error.response.status == 406)
                     return toast.warning("E-mail não possui registro!");

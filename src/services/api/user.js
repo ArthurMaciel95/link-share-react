@@ -26,4 +26,8 @@ export class userEndpoint {
     async unregister(userId) {
         return this.api.delete(`/user/${userId}`);
     }
+
+    async refresh() {
+        return this.api.get(`/user/refresh`)
+    }
 }

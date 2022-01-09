@@ -59,4 +59,9 @@ export const setNewToken = (token) => {
 }
 
 
+/* export const getIdbyUser = () => {
+    return JSON.parse(decoded(getToken().split('.')[1])).id
+}
+
+ */
 
