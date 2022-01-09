@@ -7,3 +7,11 @@ export const Image = styled.img`
     width: 12rem;
     height:12rem;
 `
+
+
+export const HeaderHome = styled.header`
+    background-color:var(--primary-color);
+    height:25%;
+    width:100%;
+
+`

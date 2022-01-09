@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import logoReduce from '../../assets/svg/logo-reduce.svg'
-import Avatar from '../../assets/images/avatar.png'
+import Avatar from '../../assets/images/avatar.jpeg'
 import * as Buttons from '../../components/Buttons'
 import plusIcon from '../../assets/svg/icon_plus.svg'
 import Logo from '../../utils/links-logos'
 import CardLink from '../../components/CardLink'
 import Modal from '../../components/Modal/index.'
-import { Image } from './styles'
+import { Image, HeaderHome } from './styles'
 import { userEndpoint } from '../../services/api/user'
 import DataNotFound from '../../components/DataNotFound'
+
 import Loading from '../../components/Loading'
 
 const HomePage = () => {
@@ -40,8 +41,8 @@ const HomePage = () => {
         <>
             {loading && <Loading />}
             <Modal showModal={showModal} setShowModal={setShowModal} />
-            <header className="profile w-100 bg-primary-color h-25" style={{ maxHeight: '200px' }}>
-                <section className=" container">
+            <HeaderHome>
+                <section className="container">
                     <div className="row">
                         <div className="col-md-12 d-flex justify-content-between align-items-center my-md-2">
                             <img src={logoReduce} alt="" />
@@ -74,7 +75,8 @@ const HomePage = () => {
                         </div>
                     </section>
                 </section>
-            </header>
+            </HeaderHome>
+
         </>
     )
 }
