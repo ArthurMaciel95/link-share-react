@@ -6,26 +6,29 @@ import plusIcon from '../../assets/svg/icon_plus.svg'
 import Logo from '../../utils/links-logos'
 import CardLink from '../../components/CardLink'
 import Modal from '../../components/Modal/index.'
-import { Image, HeaderHome } from './styles'
+import { Image, HeaderHome, PaineButton } from './styles'
 import { userEndpoint } from '../../services/api/user'
 import DataNotFound from '../../components/DataNotFound'
+
+
 
 import Loading from '../../components/Loading'
 
 const HomePage = () => {
     const userService = new userEndpoint()
     const [user, setUser] = useState(undefined)
-    const [loading, setLoading] = useState(true)
+
 
     useEffect(() => {
         getUser()
 
-    })
+    }, [CardLink])
 
 
     const getUser = async () => {
         const result = await userService.refresh()
-        setLoading(false)
+
+        console.log(result)
         return setUser(result.data)
     }
 
@@ -39,7 +42,7 @@ const HomePage = () => {
     }
     return (
         <>
-            {loading && <Loading />}
+
             <Modal showModal={showModal} setShowModal={setShowModal} />
             <HeaderHome>
                 <section className="container">
@@ -49,7 +52,7 @@ const HomePage = () => {
                             <div className='d-flex '>
                                 <p className='text-white'>{user && user.body.nickname}</p>
                                 <img src={Avatar} alt="avatar image" className='rounded-circle mx-2' style={{ width: '30px', height: '30px' }} />
-                                <Buttons.Primary outline={true} handlerButton={handlerButton} value="Link" icon={plusIcon}>+ link</Buttons.Primary>
+
                             </div>
                         </div>
                     </div>
@@ -68,8 +71,16 @@ const HomePage = () => {
                                     ting industry. Lorem Ipsum has been the industry's standard
                                     dummy text ever since the 1500s, </p>
                             </div>
-                            <div className="col-md-7 offset-md-1">
-                                {user && user.body.links.length ? user.body.links.map(link => <CardLink image={Logo[link.type.toLowerCase()]} name={link.type} link={link.url.toLowerCase()} />) : <DataNotFound />}
+                            <div className="col-md-7 offset-md-1 position-relative">
+                                <PaineButton>
+                                    <Buttons.Outline>
+                                        Adicionar Link
+                                    </Buttons.Outline>
+                                    <Buttons.Outline>
+                                        Profile
+                                    </Buttons.Outline>
+                                </PaineButton>
+                                {user && user.body.links.length ? user.body.links.map(link => <CardLink key={link.id_link} image={Logo[link.type.toLowerCase()]} name={link.type} link={link.url.toLowerCase()} />) : <DataNotFound />}
 
                             </div>
                         </div>

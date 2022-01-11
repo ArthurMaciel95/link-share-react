@@ -42,3 +42,22 @@ export const Primary = styled(ButtonBase)`
         border: var(--primary-color)  2px solid;
     }
 `
+
+export const Outline = styled(ButtonBase)`
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color: var(--primary-color);
+    color:white;
+    width:auto;
+    border-radius:25px;
+    border: var(--primary-color)  2px solid;
+    transition: color, background 0.3s ease;
+
+    &:hover {
+        background-color: var(--primary-color-hover);
+        transition: filter 0.3s ease, background 0.3s ease;
+    }
+
+`

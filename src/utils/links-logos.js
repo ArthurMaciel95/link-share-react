@@ -7,11 +7,11 @@ import linkdin from '../assets/images/linkdin.png'
 import facebook from '../assets/images/facebook.png'
 import youtube from '../assets/images/youtube.png'
 import instagram from '../assets/images/instagram.png'
-import onlyFans from '../assets/images/only-fans.png'
+import onlyfans from '../assets/images/onlyFans.png'
 import pinterest from '../assets/images/pinterest.png'
 import tiktok from '../assets/images/tiktok.png'
 import dropBox from '../assets/images/dropbox.png'
-import soundCloud from '../assets/images/soundlCloud.png'
+import soundcloud from '../assets/images/soundlCloud.png'
 import vimeo from '../assets/images/vimeo.png'
 
 export default {
@@ -26,8 +26,8 @@ export default {
     instagram,
     pinterest,
     tiktok,
-    onlyFans,
+    onlyfans,
     vimeo,
-    soundCloud,
+    soundcloud,
     dropBox,
 }
