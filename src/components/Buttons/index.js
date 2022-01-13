@@ -11,6 +11,7 @@ const ButtonBase = styled.button.attrs(() => ({ type: "button" }))`
     border: white  2px solid;
     font-weight: 600;
     font-size: 1rem;
+ 
 `
 
 export const Save = styled(ButtonBase)`
@@ -34,12 +35,14 @@ export const Confirm = styled(ButtonBase)`
 `
 export const Primary = styled(ButtonBase)`
     background-color:  var(--primary-color);
-    color:#000;
+   
     border-radius:25px;
     max-width: 230px;
-
+    color:white;
+    transition: color, background 0.3s ease;
     &:hover {
-        border: var(--primary-color)  2px solid;
+        background-color: var(--primary-color-hover);
+        transition: filter 0.3s ease, background 0.3s ease;
     }
 `
 
