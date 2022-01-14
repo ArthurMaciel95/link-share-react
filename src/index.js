@@ -6,7 +6,7 @@ import { Slide, ToastContainer } from 'react-toastify';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
-import './global.css';
+
 
 ReactDOM.render(
     <React.StrictMode>
