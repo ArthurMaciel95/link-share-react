@@ -4,7 +4,7 @@ COPY package.json .
 RUN npm install 
 COPY ./ ./
 
-RUN npm audit fix --force
+
 RUN npm run build
 
 FROM nginx
