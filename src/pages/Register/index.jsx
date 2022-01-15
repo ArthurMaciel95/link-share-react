@@ -13,6 +13,7 @@ const Register = () => {
     const { name, nickname, email, password, confirm_password } = formData;
     const user = new userEndpoint();
 
+
     function formChange(event) {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
@@ -31,6 +32,7 @@ const Register = () => {
             });
             toast.success("Registrado com sucesso!");
             window.location.href = "/";
+
         } catch (error) {
             if (error.response != undefined)
                 if (error.response.status === 400)
@@ -80,20 +82,22 @@ const Register = () => {
                                 name="email"
                                 placeholder="Email"
                                 onChange={formChange}
+
                             />
                         </Form.Group>
                         <Form.Group>
                             <input
-                                type="text"
+                                type="password"
                                 name="password"
                                 className="round"
                                 placeholder="Senha"
                                 onChange={formChange}
                             />
+
                         </Form.Group>
                         <Form.Group>
                             <input
-                                type="text"
+                                type="password"
                                 name="confirm_password"
                                 placeholder="Repita a senha"
                                 className="round"
@@ -109,7 +113,7 @@ const Register = () => {
                     </Form.GroupContainer>
                 </Form.Container>
             </Section>
-        </Container>
+        </Container >
     );
 };
 
