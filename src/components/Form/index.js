@@ -34,18 +34,31 @@ export const Group = styled.div`
     input {
         width: 100%;
         height: 46px;
-        border: white  2px solid;
-        padding: 0.9rem;
-        border-radius: 5px;
+        border:none;
+        padding: 1rem;
         background-color: #fff;
         font-size: 1.1rem;
-
+        margin-top:10px;
+        box-shadow:inset 0px 1px 4px var(--text-color-gray);
         &:focus {
           outline: none;
         }
         &.round {
             border-radius: 25px;
         }
+    }
+    textarea{
+        outline:none;
+        padding: 1rem;
+        resize:none;
+        min-height:200px;
+        box-shadow:inset 0px 2px 4px var(--text-color-gray);
+        border:none;
+        &.round {
+            border-radius:25px;
+        }
+
+        
     }
 `
 export const GroupContainer = styled.div`

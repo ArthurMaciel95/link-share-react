@@ -11,7 +11,7 @@ const Router = () => {
         <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/home" element={<PrivateRoute><HomePage /></PrivateRoute >} />
-            <Route path="/profile/:id" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
+            <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<PageNotFound />} />
         </Routes>

@@ -4,11 +4,13 @@ import shareLinkLogo from "../../assets/svg/logo-share-link.svg";
 import * as Buttons from "../../components/Buttons";
 import * as Form from "../../components/Form";
 import { Container, Section } from "./styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { userEndpoint } from "../../services/api/user";
 
 const Register = () => {
+
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({});
     const { name, nickname, email, password, confirm_password } = formData;
     const user = new userEndpoint();
@@ -31,7 +33,8 @@ const Register = () => {
                 password,
             });
             toast.success("Registrado com sucesso!");
-            window.location.href = "/";
+            return navigate('/')
+
 
         } catch (error) {
             if (error.response != undefined)

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import logoReduce from '../../assets/svg/logo-reduce.svg'
 import Avatar from '../../assets/images/avatar.jpeg'
 import * as Buttons from '../../components/Buttons'
@@ -76,9 +77,9 @@ const HomePage = () => {
                                     <Buttons.Outline>
                                         Adicionar Link
                                     </Buttons.Outline>
-                                    <Buttons.Outline>
+                                    <Link to="/profile"> <Buttons.Outline>
                                         Profile
-                                    </Buttons.Outline>
+                                    </Buttons.Outline></Link>
                                 </PaineButton>
                                 {user && user.body.links.length ? user.body.links.map(link => <CardLink key={link.id_link} image={Logo[link.type.toLowerCase()]} name={link.type} link={link.url.toLowerCase()} />) : <DataNotFound />}
 

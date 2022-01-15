@@ -3,7 +3,7 @@
     --primary-color: #fb6b6b;
     --primary-color-hover:#d85656;
     /*container color*/
-    --background: #e7e7e7;
+    --background: #f3f3f3;
     --sidebar-background: #ffffff;
   
     /*text color*/
@@ -22,7 +22,7 @@
   }
   html,
   body {
-    background-color: var(--background);
+    background-color: var(--background) !important;
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
       sans-serif;
     box-sizing: border-box;
@@ -34,7 +34,7 @@
   li {
     list-style: none;
   }
-  
+
   h1,
   h2,
   h3,
@@ -44,7 +44,7 @@
     margin: 0px;
     padding: 0px;
   }
-  
+
   .flex {
       display: flex;
   }
