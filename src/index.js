@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from 'react-router-dom'
 import { App } from './App';
 import { Slide, ToastContainer } from 'react-toastify';
-
+import './global.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
-import './global.css';
+
 
 ReactDOM.render(
     <React.StrictMode>
