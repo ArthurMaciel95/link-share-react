@@ -25,7 +25,7 @@ export const Group = styled.div`
     margin:0.30rem;
     margin-bottom: 0.6rem;
     justify-content: space-between;
-
+    height: 100%;
     label {
         color: #18191F;
         font-size: 0.85rem;
@@ -39,6 +39,7 @@ export const Group = styled.div`
         font-size: 1.1rem;
         margin-top:10px;
         box-shadow:inset 0px 1px 4px var(--text-color-gray);
+        color:var(--text-color-header);
         &:focus {
           outline: none;
         }

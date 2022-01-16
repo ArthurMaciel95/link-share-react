@@ -5,7 +5,6 @@ display:flex;
 justify-content:center;
 align-items:center;
     margin:0.3rem;
-    margin-top: 1rem;
     width: 100%;
     max-width:180px;
     height: 40px;
@@ -63,7 +62,7 @@ export const Outline = styled(ButtonBase)`
     transition: color 0.3s ease, background 0.3s ease;
 
     &:hover {
-        filter:br
+        
     }
 
 `
