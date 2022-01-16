@@ -40,10 +40,7 @@ export const Primary = styled(ButtonBase)`
     max-width: 230px;
     color:white;
     transition: color, background 0.3s ease;
-    &:hover {
-        background-color: var(--primary-color-hover);
-        transition: filter 0.3s ease, background 0.3s ease;
-    }
+
 `
 
 export const Outline = styled(ButtonBase)`
@@ -58,9 +55,6 @@ export const Outline = styled(ButtonBase)`
     border: var(--primary-color)  2px solid;
     transition: color, background 0.3s ease;
 
-    &:hover {
-        background-color: var(--primary-color-hover);
-        transition: filter 0.3s ease, background 0.3s ease;
-    }
+
 
 `

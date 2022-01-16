@@ -15,9 +15,7 @@ export const Container = styled.form`
     &.register-width{
         max-width: 450px;
     }
-    input:hover {
-        border: var(--primary-color)  2px solid;
-    }
+
 `
 export const Group = styled.div`
     display: flex;

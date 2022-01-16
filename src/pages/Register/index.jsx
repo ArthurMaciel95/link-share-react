@@ -22,7 +22,6 @@ const Register = () => {
 
 
     async function handleRegister() {
-        console.log(formData)
         try {
             if (password != confirm_password)
                 return toast.error("Senhas não coincidem");

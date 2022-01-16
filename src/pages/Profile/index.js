@@ -25,7 +25,6 @@ const ProfilePage = () => {
     const getUser = async () => {
         const result = await userService.refresh()
 
-        console.log(result)
         return setUser(result.data)
     }
 
