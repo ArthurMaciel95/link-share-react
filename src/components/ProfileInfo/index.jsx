@@ -20,6 +20,14 @@ const ProfileInfo = () => {
                     </Form.Group>
                 </Profile.Column>
             </Profile.InputArea>
+            <Profile.ButtonArea>
+                <button type="submit">
+                    Salvar alterações
+                </button>
+                <button type="submit">
+                    Apagar conta
+                </button>
+            </Profile.ButtonArea>
         </Profile.Container>
     )
 }

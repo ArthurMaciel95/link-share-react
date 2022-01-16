@@ -21,7 +21,7 @@ const Modal = ({ showModal, setShowModal }) => {
                 </div>
                 <div class="row h-25">
                     <LinkArea name="DropBox" logo={Logo.dropBox}></LinkArea>
-                    <LinkArea name="Snapchat" logo={Logo.snapshot}></LinkArea>
+                    <LinkArea name="Snapchat" logo={Logo.snapchat}></LinkArea>
                     <LinkArea name="Vimeo" logo={Logo.vimeo}></LinkArea>
                 </div>
                 <div class="row h-25">
