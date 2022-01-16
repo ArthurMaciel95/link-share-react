@@ -69,12 +69,12 @@ const ProfilePage = () => {
                             </div>
                             <div className="col-md-7 offset-md-1 position-relative">
                                 <PaineButton>
-                                    <Buttons.Outline>
+                                    <Buttons.Primary>
                                         Adicionar Link
-                                    </Buttons.Outline>
-                                    <Link to="/profile"> <Buttons.Outline>
+                                    </Buttons.Primary>
+                                    <Link to="/profile"> <Buttons.Primary>
                                         Profile
-                                    </Buttons.Outline></Link>
+                                    </Buttons.Primary></Link>
                                 </PaineButton>
                                 <ProfileInfo />
 

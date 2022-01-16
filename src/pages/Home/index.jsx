@@ -29,7 +29,6 @@ const HomePage = () => {
     const getUser = async () => {
         const result = await userService.refresh()
 
-        console.log(result)
         return setUser(result.data)
     }
 
@@ -74,12 +73,14 @@ const HomePage = () => {
                             </div>
                             <div className="col-md-7 offset-md-1 position-relative">
                                 <PaineButton>
-                                    <Buttons.Outline>
+                                    <Buttons.Primary>
                                         Adicionar Link
-                                    </Buttons.Outline>
-                                    <Link to="/profile"> <Buttons.Outline>
-                                        Profile
-                                    </Buttons.Outline></Link>
+                                    </Buttons.Primary>
+                                    <Link to="/profile">
+                                        <Buttons.Primary>
+                                            Profile
+                                        </Buttons.Primary>
+                                    </Link>
                                 </PaineButton>
                                 {user && user.body.links.length ? user.body.links.map(link => <CardLink key={link.id_link} image={Logo[link.type.toLowerCase()]} name={link.type} link={link.url.toLowerCase()} />) : <DataNotFound />}
 

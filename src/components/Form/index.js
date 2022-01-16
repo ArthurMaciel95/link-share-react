@@ -24,6 +24,7 @@ export const Group = styled.div`
     gap: 1px;
     margin:0.30rem;
     margin-bottom: 0.6rem;
+    justify-content: space-between;
 
     label {
         color: #18191F;

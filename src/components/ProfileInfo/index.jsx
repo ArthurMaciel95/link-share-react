@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Profile from './styles'
 import * as Form from '../Form'
+import * as Buttons from '../Buttons'
 
 const ProfileInfo = () => {
     return (
@@ -21,12 +22,13 @@ const ProfileInfo = () => {
                 </Profile.Column>
             </Profile.InputArea>
             <Profile.ButtonArea>
-                <button type="submit">
+                <Buttons.Primary>
                     Salvar alterações
-                </button>
-                <button type="submit">
+                </Buttons.Primary>
+                <Buttons.Outline>
                     Apagar conta
-                </button>
+                </Buttons.Outline>
+
             </Profile.ButtonArea>
         </Profile.Container>
     )

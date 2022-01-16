@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 const ButtonBase = styled.button.attrs(() => ({ type: "button" }))`
+display:flex;
+justify-content:center;
+align-items:center;
     margin:0.3rem;
     margin-top: 1rem;
     width: 100%;
@@ -11,6 +14,7 @@ const ButtonBase = styled.button.attrs(() => ({ type: "button" }))`
     border: white  2px solid;
     font-weight: 600;
     font-size: 1rem;
+    padding:20px;
  
 `
 
@@ -40,21 +44,26 @@ export const Primary = styled(ButtonBase)`
     max-width: 230px;
     color:white;
     transition: color, background 0.3s ease;
-
+    &:hover {
+        background-color: var(--primary-color-hover);
+        transition: filter 0.3s ease, background 0.3s ease;
+    }
 `
 
 export const Outline = styled(ButtonBase)`
-    padding:20px;
+   
     display:flex;
     justify-content:center;
     align-items:center;
-    background-color: var(--primary-color);
-    color:white;
+    background-color: transparent;
+    color:var(--primary-color);
     width:auto;
     border-radius:25px;
     border: var(--primary-color)  2px solid;
-    transition: color, background 0.3s ease;
+    transition: color 0.3s ease, background 0.3s ease;
 
-
+    &:hover {
+        filter:br
+    }
 
 `

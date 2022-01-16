@@ -26,5 +26,6 @@ export const Column = styled.div`
 export const ButtonArea = styled.div`
     display:flex;
     width:100%;
+    justify-content:flex-end;
 `
 
