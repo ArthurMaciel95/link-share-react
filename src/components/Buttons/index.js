@@ -38,7 +38,7 @@ export const Confirm = styled(ButtonBase)`
 `
 export const Primary = styled(ButtonBase)`
     background-color:  var(--primary-color);
-   
+    
     border-radius:25px;
     max-width: 230px;
     color:white;
@@ -46,6 +46,9 @@ export const Primary = styled(ButtonBase)`
     &:hover {
         background-color: var(--primary-color-hover);
         transition: filter 0.3s ease, background 0.3s ease;
+    }
+    img{
+        margin-right: 10px;
     }
 `
 

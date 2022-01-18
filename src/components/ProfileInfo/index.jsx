@@ -3,6 +3,7 @@ import * as Profile from './styles'
 import * as Form from '../Form'
 import * as Buttons from '../Buttons'
 import noAvatar from '../../assets/images/avatar.jpeg'
+import CloseIcon from '../../assets/svg/close.svg'
 import { toast } from "react-toastify";
 import { userEndpoint } from "../../services/api/user";
 import { useNavigate } from "react-router-dom";
@@ -35,12 +36,15 @@ const ProfileInfo = () => {
 
     const uploadImage = async (e) => {
         let file = e.target.files[0];
-        console.log(file)
+
         if (!isFormatAllowed(file)) return toast.error('Formato de image não permitido');
         if (!isSizeAllowed(file)) return toast.error(`O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 1000}kb`);
+
         const base64 = await imageToBase64(file);
-        console.log('foto adicionada!')
+
+
         setPhoto({ file: base64, name: file.name })
+
     }
     const isSizeAllowed = (file) => file.size < MAX_SIZE_IMAGE;
 
@@ -101,7 +105,7 @@ const ProfileInfo = () => {
             if (!_.isEmail(formData.email))
                 return toast.error("Este email não é valido");
 
-
+            console.log(formData)
             setLoading(true)
             const response = await userEndpoint.update({ ...formData });
 
@@ -122,11 +126,11 @@ const ProfileInfo = () => {
     return (
         <Profile.Container>
             <h3>Informação da conta</h3>
-            <Profile.Form>
+            <Profile.Form enctype='multipart/form-data'>
                 <Profile.FileArea>
                     <Profile.ImageArea>
                         <img src={!photo.file ? noAvatar : photo.file} alt="foto de perfil do usuário" />
-                        <span onClick={() => removePhoto()}>X</span>
+                        <span onClick={() => removePhoto()}><img src={CloseIcon} alt="botão de fechar" /></span>
                     </Profile.ImageArea>
                     <input type="file" id="file-input" hidden name="photo" onChange={(e) => { uploadImage(e) }} />
                     <section>

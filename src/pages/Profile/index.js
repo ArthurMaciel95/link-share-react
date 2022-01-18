@@ -5,6 +5,9 @@ import Avatar from '../../assets/images/avatar.jpeg'
 import * as Buttons from '../../components/Buttons'
 import plusIcon from '../../assets/svg/icon_plus.svg'
 import Logo from '../../utils/links-logos'
+import ProfileIcon from '../../assets/svg/profile.svg';
+import LinkChainIcon from '../../assets/svg/link-chain.svg';
+import CloseIcon from '../../assets/svg/close.svg'
 import CardLink from '../../components/CardLink'
 import Modal from '../../components/Modal/index.'
 import { Image, HeaderHome, PaineButton } from './styles'
@@ -70,10 +73,10 @@ const ProfilePage = () => {
                             <div className="col-md-7 offset-md-1 position-relative">
                                 <PaineButton>
                                     <Buttons.Primary>
-                                        Adicionar Link
+                                        <img src={LinkChainIcon} /> Adicionar Link
                                     </Buttons.Primary>
                                     <Link to="/profile"> <Buttons.Primary>
-                                        Profile
+                                        <img src={ProfileIcon} /> Profile
                                     </Buttons.Primary></Link>
                                 </PaineButton>
                                 <ProfileInfo />

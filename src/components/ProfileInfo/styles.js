@@ -76,6 +76,10 @@ img{
         bottom: 13px;
         cursor: pointer;
         border: white 3px solid;
+        img{
+            width: 15px;
+            height: 15px;
+        }
     }
 
 
