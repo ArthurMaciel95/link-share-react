@@ -26,6 +26,7 @@ const ProfilePage = () => {
 
 
     const getUser = async () => {
+
         const result = await userService.refresh()
 
         return setUser(result.data)
@@ -36,12 +37,12 @@ const ProfilePage = () => {
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
 
-    const handlerButton = () => {
+    const handleButton = () => {
+
         setShowModal(true)
     }
     return (
         <>
-
             <Modal showModal={showModal} setShowModal={setShowModal} />
             <HeaderHome>
                 <section className="container">
@@ -51,14 +52,12 @@ const ProfilePage = () => {
                             <div className='d-flex '>
                                 <p className='text-white'>{user && user.body.nickname}</p>
                                 <img src={Avatar} alt="avatar image" className='rounded-circle mx-2' style={{ width: '30px', height: '30px' }} />
-
                             </div>
                         </div>
                     </div>
-                    <section className=''>
+                    <section>
                         <div className="row">
                             <div className="col-md-12">
-
                                 <Image src={Avatar} alt="avatar image profile"></Image>
                             </div>
                         </div>
@@ -68,16 +67,19 @@ const ProfilePage = () => {
                                 <p className='text-black-50 fs-5'>{user && user.body.email}</p>
                                 <p className='text-black-50'>Lorem Ipsum is simply dummy text of the printing and typeset
                                     ting industry. Lorem Ipsum has been the industry's standard
-                                    dummy text ever since the 1500s, </p>
+                                    dummy text ever since the 1500s,
+                                </p>
                             </div>
                             <div className="col-md-7 offset-md-1 position-relative">
                                 <PaineButton>
-                                    <Buttons.Primary>
+                                    <Buttons.Primary onClick={e => handleButton()}>
                                         <img src={LinkChainIcon} /> Adicionar Link
                                     </Buttons.Primary>
-                                    <Link to="/profile"> <Buttons.Primary>
-                                        <img src={ProfileIcon} /> Profile
-                                    </Buttons.Primary></Link>
+                                    <Link to="/profile">
+                                        <Buttons.Primary>
+                                            <img src={ProfileIcon} /> Profile
+                                        </Buttons.Primary>
+                                    </Link>
                                 </PaineButton>
                                 <ProfileInfo />
 
