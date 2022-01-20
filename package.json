@@ -20,8 +20,8 @@
         "web-vitals": "^2.1.2"
     },
     "scripts": {
-        "start": " react-scripts start",
-        "dev": "react-scripts start",
+        "start": "REACT_APP_ENV=production react-scripts start",
+        "dev": "REACT_APP_ENV=development react-scripts start",
         "build": "export NODE_OPTIONS=--openssl-legacy-provider; react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
@@ -37,5 +37,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "dotenv": "^14.2.0"
     }
 }
