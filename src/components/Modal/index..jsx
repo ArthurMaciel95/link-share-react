@@ -1,14 +1,11 @@
 import React from 'react'
-import Logo from '../../utils/links-logos'
-import ArrowLeftIcon from '../../assets/images/icon_arrow_left.png'
-import LinkArea from '../../components/LinkArea'
+import Logo from 'utils/links-logos'
+import ArrowLeftIcon from 'assets/images/icon_arrow_left.png'
+import LinkArea from 'components/LinkArea'
 
 const Modal = ({ showModal, setShowModal }) => {
+    const handlerCloseModal = (e) => setShowModal(false);
 
-    const handlerCloseModal = (e) => {
-        setShowModal(false)
-
-    }
     return (
         <> {showModal ? <section className='container-fluid  bg-opacity-25 bg-black position-absolute h-100 d-flex align-items-center'>
             < div className="col-6 offset-md-3  h-75  shadow p-5 position-relative" >
@@ -28,9 +25,7 @@ const Modal = ({ showModal, setShowModal }) => {
                     <LinkArea name="Telegram" logo={Logo.telegram}></LinkArea>
                     <LinkArea name="TikTok" logo={Logo.tiktok}></LinkArea>
                     <LinkArea name="Youtube" logo={Logo.youtube}></LinkArea>
-
                 </div>
-
             </div >
         </section > : null}</>
     )

@@ -1,63 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import shareLinkLogo from "../../assets/svg/logo-share-link.svg";
+import shareLinkLogo from "assets/svg/logo-share-link.svg";
 import { Link } from "react-router-dom";
-import { Validation } from "../../utils/validation";
-import * as Buttons from "../../components/Buttons";
-import * as Form from "../../components/Form";
-import { LoginContainer } from "../../components/Form";
+import { Validation } from "utils/validation";
+import * as Buttons from "components/Buttons";
+import * as Form from "components/Form";
 import { Container, Section } from "./styles";
 import { toast } from "react-toastify";
-import { userEndpoint } from "../../services/api/user";
-import { getPayloadJwt, setNewToken, logOut } from "../../utils/jwt";
-import Loading from '../../components/Loading'
-
+import { UserServices } from "services/api/user";
+import { setNewToken, logOut } from "utils/jwt";
+import Loading from "components/Loading";
+import { encodePassword } from "utils/encrypt";
 
 const LoginPage = () => {
-
-    const navigate = new useNavigate()
+    const navigate = new useNavigate();
     const _ = new Validation();
     const [formData, setFormData] = useState({ email: "", password: "" });
-    const [loading, setLoading] = useState(false)
     const { email, password } = formData;
-    const user = new userEndpoint();
+    const [loading, setLoading] = useState(false);
+    const user = new UserServices();
 
-
-    useEffect(() => {
-        logOut()
-    })
-
+    useEffect(logOut, []);
     async function handleLogin(event) {
         event.preventDefault();
         try {
-
             if (_.isEmpty(formData))
                 return toast.warning("Os campos não podem estar vazios");
             if (!_.isEmail(formData.email))
                 return toast.warning("Este email não é valido");
-
-
-            setLoading(true)
-            const response = await user.login({ ...formData });
-
-
+            setLoading(true);
+            const response = await user.login({
+                email,
+                password: await encodePassword(password),
+            });
             if (response.data.body.token) {
                 setNewToken(response.data.body.token);
-                return navigate("/home")
+                return navigate("/home");
             }
-
         } catch (error) {
-            setLoading(false)
-            if (error.response != undefined)
-                if (error.response.status == 406)
-                    return toast.warning("E-mail não possui registro!");
-
+            setLoading(false);
+            if (error.response !== undefined)
+                return toast.error(error.response.data.message);
             toast.error("Servidor indisponível no momento.");
         }
     }
-    function formChange(event) {
+    const formChange = (event) =>
         setFormData({ ...formData, [event.target.name]: event.target.value });
-    }
+
     return (
         <Container>
             {loading && <Loading />}

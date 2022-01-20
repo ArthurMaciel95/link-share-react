@@ -1,6 +1,6 @@
 
 export default {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:8080',
     URL_PRODUCTION: 'https://linkshare001.herokuapp.com',
     URL_STAGE: ''
 }

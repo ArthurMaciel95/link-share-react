@@ -1,48 +1,44 @@
 import React, { useState } from "react";
-import shareLinkLogo from "../../assets/svg/logo-share-link.svg";
-
-import * as Buttons from "../../components/Buttons";
-import * as Form from "../../components/Form";
+import shareLinkLogo from "assets/svg/logo-share-link.svg";
+import * as Buttons from "components/Buttons";
+import * as Form from "components/Form";
+import { Validation } from "utils/validation";
 import { Container, Section } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { userEndpoint } from "../../services/api/user";
+import { UserServices } from "services/api/user"
+import { encodePassword } from "utils/encrypt";
 
 const Register = () => {
-
+    const _ = new Validation();
     const navigate = useNavigate()
     const [formData, setFormData] = useState({});
     const { name, nickname, email, password, confirm_password } = formData;
-    const user = new userEndpoint();
-
-
-    function formChange(event) {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
-    }
-
-
-    async function handleRegister() {
+    const userService = new UserServices();
+    const formChange = (event) =>  setFormData({ ...formData, [event.target.name]: event.target.value });
+    
+    async function handleRegister(event) {
+        event.preventDefault();
         try {
-            if (password != confirm_password)
+            if (!_.isPassword(password))
+                return toast.error("A senha deve ter no mínimo 8 caracteres e possuir uma maiúscula e uma minúscula entre A-Z e um numero entre 0-9.!")
+            if (password !== confirm_password)
                 return toast.error("Senhas não coincidem");
-            await user.register({
+            await userService.register({
                 name,
                 nickname,
                 email,
-                password,
+                password: await encodePassword(password),
             });
             toast.success("Registrado com sucesso!");
             return navigate('/')
-
-
         } catch (error) {
-            if (error.response != undefined)
-                if (error.response.status === 400)
-                    return toast.error("Usuário ja registrado!");
-
+            if (error.response !== undefined)
+                return toast.error(error.response.data.message);
             toast.error("Registro falhou!");
         }
     }
+    
     return (
         <Container>
             <Section className="links">
@@ -79,7 +75,7 @@ const Register = () => {
                         </Form.Group>
                         <Form.Group>
                             <input
-                                type="text"
+                                type="email"
                                 className="round"
                                 name="email"
                                 placeholder="Email"

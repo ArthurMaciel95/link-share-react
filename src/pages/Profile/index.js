@@ -1,41 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import logoReduce from '../../assets/svg/logo-reduce.svg'
-import Avatar from '../../assets/images/avatar.jpeg'
-import * as Buttons from '../../components/Buttons'
-import plusIcon from '../../assets/svg/icon_plus.svg'
-import Logo from '../../utils/links-logos'
-import ProfileIcon from '../../assets/svg/profile.svg';
-import LinkChainIcon from '../../assets/svg/link-chain.svg';
-import CloseIcon from '../../assets/svg/close.svg'
-import CardLink from '../../components/CardLink'
-import Modal from '../../components/Modal/index.'
+import logoReduce from 'assets/svg/logo-reduce.svg'
+import Avatar from 'assets/images/avatar.jpeg'
+import * as Buttons from 'components/Buttons'
+import plusIcon from 'assets/svg/icon_plus.svg'
+import Logo from 'utils/links-logos'
+import ProfileIcon from 'assets/svg/profile.svg';
+import LinkChainIcon from 'assets/svg/link-chain.svg';
+import CloseIcon from 'assets/svg/close.svg'
+import CardLink from 'components/CardLink'
+import Modal from 'components/Modal/index.'
 import { Image, HeaderHome, PaineButton } from './styles'
-import { userEndpoint } from '../../services/api/user'
-import DataNotFound from '../../components/DataNotFound'
-import ProfileInfo from '../../components/ProfileInfo'
+import { UserServices } from 'services/api/user'
+import DataNotFound from 'components/DataNotFound'
+import ProfileInfo from 'components/ProfileInfo'
+
 const ProfilePage = () => {
-    const userService = new userEndpoint()
+    const userService = new UserServices()
     const [user, setUser] = useState(undefined)
-
-
-    useEffect(() => {
-        getUser()
-
-    }, [CardLink])
-
-
-    const getUser = async () => {
-
-        const result = await userService.refresh()
-
-        return setUser(result.data)
-    }
-
-
+    const getUser = () => userService.refresh().then((res) => setUser(res.data))
     const [showModal, setShowModal] = useState(false)
     const closeModal = () => setShowModal(false)
     const openModal = () => setShowModal(true)
+    const handlerButton = () => setShowModal(true)
+
+    useEffect(getUser, [])
 
     const handleButton = () => {
 
@@ -58,7 +47,7 @@ const ProfilePage = () => {
                     <section>
                         <div className="row">
                             <div className="col-md-12">
-                                <Image src={Avatar} alt="avatar image profile"></Image>
+                                <Image src={Avatar} alt="avatar image profile" />
                             </div>
                         </div>
                         <div className="row mt-2 rounded ">
@@ -82,7 +71,6 @@ const ProfilePage = () => {
                                     </Link>
                                 </PaineButton>
                                 <ProfileInfo />
-
                             </div>
                         </div>
                     </section>
