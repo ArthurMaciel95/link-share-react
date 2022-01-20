@@ -1,6 +1,6 @@
 import { apiBase } from "./base";
 
-export class linkEndpoint {
+export class LinksUrls {
     constructor() {
         this.api = apiBase();
     }
@@ -8,8 +8,8 @@ export class linkEndpoint {
     * @param {object} createModel objeto com parametros para adicionar um link
     * @returns {promise} retorna uma promise
     */
-    async linkCreate(createModel) {
-        return this.api.post('/links/create', { ...createModel });
+    async linkCreate(type,url) {
+        return this.api.post('/links/create', { type,url });
     }
     /**
     * @param {number} linkId id do link a ser deletado
