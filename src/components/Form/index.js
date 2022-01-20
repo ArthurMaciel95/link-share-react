@@ -15,7 +15,6 @@ export const Container = styled.form`
     &.register-width{
         max-width: 450px;
     }
-
 `
 export const Group = styled.div`
     display: flex;

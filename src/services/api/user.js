@@ -1,7 +1,5 @@
 import { apiBase } from "./base";
-
-
-export class userEndpoint {
+export class UserServices {
     constructor() {
         this.api = apiBase();
     }
@@ -27,7 +25,7 @@ export class userEndpoint {
         return this.api.delete(`/user/${userId}`);
     }
 
-    async refresh() {
-        return this.api.get(`/user/refresh`)
+    async refresh(refreshModel) {
+        return this.api.get(`/user/refresh`,{...refreshModel})
     }
 }
