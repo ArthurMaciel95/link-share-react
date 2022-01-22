@@ -1,15 +1,5 @@
 FROM node:17-alpine as builder
 
-RUN mkdir /root/.ssh/
-
-COPY .ssh/id_rsa /root/.ssh/id_rsa
-
-RUN chmod 600 /root/.ssh/id_rsa
-
-RUN touch /root/.ssh/known_hosts
-
-RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
-
 WORKDIR '/app'
 COPY package.json .
 RUN npm install 
