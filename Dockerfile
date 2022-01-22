@@ -1,7 +1,5 @@
 FROM node:17-alpine as builder
 
-RUN apk add --no-cache openssh-client git
-
 RUN mkdir /root/.ssh/
 
 COPY id_rsa /root/.ssh/id_rsa
