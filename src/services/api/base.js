@@ -7,11 +7,11 @@ import { getToken } from 'utils/jwt';
  * DEPENDENDO O SCRIPT QUE VOCÊ RODAR A APLICAÇÃO TERÁ 2 AMBIENTES DIFIRENTES. (NPM START OU NPM RUN DEV)
  * 
  */
-/* const isProduction = () => process.env.REACT_APP_ENV === 'production' ? environment.URL_PRODUCTION : enviroment.baseURL; */
+const isProduction = () => process.env.REACT_APP_ENV === 'production' ? environment.URL_PRODUCTION : enviroment.baseURL;
 
 
 export function apiBase() {
-    const instance = axios.create({ baseURL: environment.URL_PRODUCTION });
+    const instance = axios.create({ baseURL: isProduction() });
     instance.interceptors.request.use((config) => {
         const token = getToken();
 
