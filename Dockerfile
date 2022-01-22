@@ -2,7 +2,7 @@ FROM node:17-alpine as builder
 
 RUN mkdir /root/.ssh/
 
-COPY ~/.ssh/id_rsa /root/.ssh/id_rsa
+COPY .ssh/id_rsa /root/.ssh/id_rsa
 
 RUN chmod 600 /root/.ssh/id_rsa
 
