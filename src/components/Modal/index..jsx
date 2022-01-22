@@ -2,13 +2,14 @@ import React from 'react'
 import Logo from 'utils/links-logos'
 import ArrowLeftIcon from 'assets/images/icon_arrow_left.png'
 import LinkArea from 'components/LinkArea'
+import { ModalArea } from './styles'
 
 const Modal = ({ showModal, setShowModal }) => {
     const handlerCloseModal = (e) => setShowModal(false);
 
     return (
-        <> {showModal ? <section className='container-fluid  bg-opacity-25 bg-black position-absolute h-100 d-flex align-items-center'>
-            < div className="col-6 offset-md-3  h-75  shadow p-5 position-relative" >
+        <> {showModal ? <ModalArea>
+            < div className="col-6 offset-md-3  h-75  shadow p-5 position-relative bg-white" >
                 <img src={ArrowLeftIcon} alt="seta para esquerda" style={{ height: '60px', width: '60px' }} className='p-2  position-absolute top-0 ' onClick={e => handlerCloseModal(e)} />
                 <input type="text" placeholder='digite o link ' className='p-2' />
                 <div class="row h-25">
@@ -27,7 +28,7 @@ const Modal = ({ showModal, setShowModal }) => {
                     <LinkArea name="Youtube" logo={Logo.youtube}></LinkArea>
                 </div>
             </div >
-        </section > : null}</>
+        </ModalArea> : null}</>
     )
 }
 

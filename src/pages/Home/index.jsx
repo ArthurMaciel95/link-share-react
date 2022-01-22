@@ -22,6 +22,7 @@ const HomePage = () => {
     const handlerButton = () => setShowModal(true);
     const getUser = () => userService.refresh().then((res) => setUser(res.data));
     useEffect(getUser, []);
+    console.log(user)
 
     return (
         <>
