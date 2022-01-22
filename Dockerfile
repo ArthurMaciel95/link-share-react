@@ -1,4 +1,4 @@
-FROM node:17 as builder
+FROM node:17-alpine as builder
 
 RUN apk add --no-cache openssh-client git
 
