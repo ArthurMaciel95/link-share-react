@@ -21,7 +21,7 @@ const LoginPage = () => {
     const { email, password } = formData;
     const [loading, setLoading] = useState(false);
     const user = new UserServices();
-    const [ShowPassword, setShowPassword] = useState(true)
+    const [ShowPassword, setShowPassword] = useState(false)
     useEffect(logOut, []);
     async function handleLogin(event) {
         event.preventDefault();
