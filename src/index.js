@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from 'react-router-dom'
 import { App } from './App';
 import { Slide, ToastContainer } from 'react-toastify';
-import './global.css'
+import { GlobalStyle } from 'global';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
+            <GlobalStyle />
             <App />
             <ToastContainer transition={Slide} theme="colored" />
         </BrowserRouter>

@@ -11,7 +11,10 @@ import { Image, HeaderHome, PaineButton } from "./styles";
 import { UserServices } from "services/api/user";
 import DataNotFound from "components/DataNotFound";
 import Loading from "components/Loading";
-
+import ArrowLeftIcon from 'assets/images/icon_arrow_left.png';
+import ProfileIcon from 'assets/svg/profile.svg';
+import LinkChainIcon from 'assets/svg/link-chain.svg';
+import LinkArea from 'components/LinkArea'
 const HomePage = () => {
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
@@ -26,7 +29,23 @@ const HomePage = () => {
 
     return (
         <>
-            <Modal showModal={showModal} setShowModal={setShowModal} />
+            <Modal showModal={showModal} setShowModal={setShowModal}> <img src={ArrowLeftIcon} alt="seta para esquerda" style={{ height: '60px', width: '60px' }} className='p-2  position-absolute top-0 ' onClick={e => handlerCloseModal(e)} />
+                <input type="text" placeholder='digite o link ' className='p-2' />
+                <div class="row h-25">
+                    <LinkArea name="Facebook" logo={Logo.facebook}></LinkArea>
+                    <LinkArea name="Instagram" logo={Logo.instagram}></LinkArea>
+                    <LinkArea name="Discord" logo={Logo.discord}></LinkArea>
+                </div>
+                <div class="row h-25">
+                    <LinkArea name="DropBox" logo={Logo.dropBox}></LinkArea>
+                    <LinkArea name="Snapchat" logo={Logo.snapchat}></LinkArea>
+                    <LinkArea name="Vimeo" logo={Logo.vimeo}></LinkArea>
+                </div>
+                <div class="row h-25">
+                    <LinkArea name="Telegram" logo={Logo.telegram}></LinkArea>
+                    <LinkArea name="TikTok" logo={Logo.tiktok}></LinkArea>
+                    <LinkArea name="Youtube" logo={Logo.youtube}></LinkArea>
+                </div></Modal>
             <HeaderHome>
                 <section className="container">
                     <div className="row">
@@ -74,12 +93,12 @@ const HomePage = () => {
                             </div>
                             <div className="col-md-7 offset-md-1 position-relative">
                                 <PaineButton>
-                                    <Buttons.Primary>
-                                        Adicionar Link
+                                    <Buttons.Primary onClick={e => handleButton()}>
+                                        <img src={LinkChainIcon} /> Adicionar Link
                                     </Buttons.Primary>
                                     <Link to="/profile">
                                         <Buttons.Primary>
-                                            Profile
+                                            <img src={ProfileIcon} /> Profile
                                         </Buttons.Primary>
                                     </Link>
                                 </PaineButton>
