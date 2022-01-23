@@ -11,8 +11,8 @@ import { UserServices } from "services/api/user";
 import { setNewToken, logOut } from "utils/jwt";
 import Loading from "components/Loading";
 import { encodePassword } from "utils/encrypt";
-import ShowPasswordIcon from '../../assets/svg/show-password.svg'
-import HiddenPasswordIcon from '../../assets/svg/hidden-password.svg'
+import ShowPasswordIcon from 'assets/svg/show-password.svg'
+import HiddenPasswordIcon from 'assets/svg/hidden-password.svg'
 
 const LoginPage = () => {
     const navigate = new useNavigate();
