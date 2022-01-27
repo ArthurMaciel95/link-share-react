@@ -1,13 +1,12 @@
 import axios from "axios";
 import environment from "environment";
-import enviroment from 'environment'
 import { getToken } from 'utils/jwt';
 
 /**
  * DEPENDENDO O SCRIPT QUE VOCÊ RODAR A APLICAÇÃO TERÁ 2 AMBIENTES DIFIRENTES. (NPM START OU NPM RUN DEV)
  * 
  */
-const isProduction = () => process.env.REACT_APP_ENV === 'production' ? environment.URL_PRODUCTION : enviroment.baseURL;
+const isProduction = () => process.env.REACT_APP_ENV === 'production' ? environment.URL_PRODUCTION : environment.baseURL;
 
 
 export function apiBase() {
