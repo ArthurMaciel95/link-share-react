@@ -1,4 +1,8 @@
-:root {
+import { createGlobalStyle } from "styled-components";
+
+
+export const GlobalStyle = createGlobalStyle`
+    :root {
     /* primary colors */
     --primary-color: #fb6b6b;
     --primary-color-hover:#d85656;
@@ -73,3 +77,4 @@
   .fs-7{
       font-size: 0.8rem;
   }
+` 
