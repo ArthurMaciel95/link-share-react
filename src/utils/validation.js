@@ -13,7 +13,7 @@ export class Validation {
     }
 
     isPassword(password) {
-        if (!password || RegExp("^([^a-z]*|[^A-Z]*|[^0-9]*.{0,7})$").test(password))
+        if (!password || RegExp("^([^a-z]*|[^A-Z]*|[^0-9]*|.{0,7})$").test(password))
             return false;
         else
             return true;
