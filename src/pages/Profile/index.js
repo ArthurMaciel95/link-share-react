@@ -9,11 +9,12 @@ import ProfileIcon from 'assets/svg/profile.svg';
 import LinkChainIcon from 'assets/svg/link-chain.svg';
 import CloseIcon from 'assets/svg/close.svg'
 import CardLink from 'components/CardLink'
-import Modal from 'components/Modal/index.'
+import Modal from 'components/Modal'
 import { Image, HeaderHome, PaineButton } from './styles'
 import { UserServices } from 'services/api/user'
 import DataNotFound from 'components/DataNotFound'
 import ProfileInfo from 'components/ProfileInfo'
+import LinkArea from 'components/LinkArea'
 
 const ProfilePage = () => {
     const userService = new UserServices()
@@ -32,7 +33,33 @@ const ProfilePage = () => {
     }
     return (
         <>
-            <Modal showModal={showModal} setShowModal={setShowModal} />
+            <Modal showModal={showModal} setShowModal={setShowModal}>
+                <h3>Escolha uma das plataformas para criar um link.</h3>
+                <div class="row h-25">
+                    <LinkArea name="Facebook" logo={Logo.facebook}></LinkArea>
+                    <LinkArea name="Instagram" logo={Logo.instagram}></LinkArea>
+                    <LinkArea name="Discord" logo={Logo.discord}></LinkArea>
+                    <LinkArea name="DropBox" logo={Logo.linkdin}></LinkArea>
+                </div>
+                <div class="row h-25">
+                    <LinkArea name="DropBox" logo={Logo.twitter}></LinkArea>
+                    <LinkArea name="Snapchat" logo={Logo.snapchat}></LinkArea>
+                    <LinkArea name="Vimeo" logo={Logo.vimeo}></LinkArea>
+                    <LinkArea name="DropBox" logo={Logo.pinterest}></LinkArea>
+                </div>
+                <div class="row h-25">
+                    <LinkArea name="Telegram" logo={Logo.telegram}></LinkArea>
+                    <LinkArea name="TikTok" logo={Logo.tiktok}></LinkArea>
+                    <LinkArea name="Youtube" logo={Logo.youtube}></LinkArea>
+                    <LinkArea name="DropBox" logo={Logo.soundcloud}></LinkArea>
+                </div>
+                <div class="row h-25">
+                    <LinkArea name="Telegram" logo={Logo.twitch}></LinkArea>
+                    <LinkArea name="TikTok" logo={Logo.dropBox}></LinkArea>
+                    <LinkArea name="Youtube" logo={Logo.onlyfans}></LinkArea>
+                    <LinkArea name="DropBox" logo={Logo.soundcloud}></LinkArea>
+                </div>
+            </Modal>
             <HeaderHome>
                 <section className="container">
                     <div className="row">

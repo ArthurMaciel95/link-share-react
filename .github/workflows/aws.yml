@@ -24,9 +24,9 @@ jobs:
                restore-keys: |
                   ${{ runner.os }}-gatsby-linkshare-front-build-
          - name: Install dependencies
-           run: yarn install
+           run: npm install
          - name: Build
-           run: yarn run build
+           run: npm run build
          - name: Set AWS credentials
            uses: aws-actions/configure-aws-credentials@v1
            with:
@@ -34,7 +34,7 @@ jobs:
                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                aws-region: us-east-1
          - name: Deploy to S3
-           run: yarn run deploy
+           run: npm run deploy
             
 
 
