@@ -40,6 +40,7 @@ const LoginPage = () => {
                 return navigate("/home");
             }
         } catch (error) {
+            alert(error)
             setLoading(false);
             if (error.response !== undefined)
                 return toast.error(error.response.data.message);

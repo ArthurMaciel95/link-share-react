@@ -24,7 +24,8 @@
         "dev": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "deploy": "gatsby-plugin-s3 deploy --yes; export AWS_PAGER=\"\"; aws cloudfront create-invalidation --distribution-id E14349NR9E2E1M --paths '/*';"
     },
     "browserslist": {
         "production": [
