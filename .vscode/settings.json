@@ -1,14 +1,20 @@
 {
-    "javascript.suggestionActions.enabled": false,
-    "javascript.validate.enable": false,
-    "editor.formatOnSave": true,
-    "prettier.singleQuote": true,
-    "eslint.enable": true,
-    "eslint.validate": [
-        {
-            "language": "javascript",
-            "autoFix": true
-        }
-    ],
-    "cSpell.words": ["Registrado", "registro", "toastify"]
+   "javascript.suggestionActions.enabled": false,
+   "javascript.validate.enable": false,
+   "prettier.singleQuote": true,
+   "eslint.enable": true,
+   "editor.fontFamily": "Fira Code Medium , 'Courier New', monospace",
+   "editor.fontLigatures": true,
+   "editor.formatOnSave": false,
+   "editor.suggest.showFolders": true,
+   "editor.defaultFormatter": "esbenp.prettier-vscode",
+   "editor.minimap.scale": 3,
+   "editor.suggest.insertMode": "replace",
+   "diffEditor.wordWrap": "off",
+   "editor.wordWrapColumn": 120,
+   "editor.wordBasedSuggestionsMode": "allDocuments",
+   "workbench.colorTheme": "Dracula",
+   "editor.renderWhitespace": "boundary",
+   "editor.autoClosingQuotes": "always",
+   "cSpell.words": ["Registrado", "registro", "toastify"]
 }
