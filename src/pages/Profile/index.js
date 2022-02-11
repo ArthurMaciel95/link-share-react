@@ -26,7 +26,9 @@ const ProfilePage = () => {
     const handlerButton = () => setShowModal(true)
 
     useEffect(getUser, [])
-
+    /**
+     * Mostra modal quando for clicado.
+     */
     const handleButton = () => {
 
         setShowModal(true)
