@@ -8,11 +8,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserServices } from "services/api/user"
 import { encodePassword } from "utils/encrypt";
+import Loading from "components/Loading";
 
 const Register = () => {
     const _ = new Validation();
     const navigate = useNavigate()
     const [formData, setFormData] = useState({});
+    const [loading, setLoading] = useState(false);
     const { name, nickname, email, password, confirm_password } = formData;
     const userService = new UserServices();
     const formChange = (event) =>  setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -20,6 +22,7 @@ const Register = () => {
     async function handleRegister(event) {
         event.preventDefault();
         try {
+            setLoading(true);
             if (!_.isPassword(password))
                 return toast.error("A senha deve ter no mínimo 8 caracteres e possuir uma maiúscula e uma minúscula entre A-Z e um numero entre 0-9.!")
             if (password !== confirm_password)
@@ -36,11 +39,13 @@ const Register = () => {
             if (error.response !== undefined)
                 return toast.error(error.response.data.message);
             toast.error("Registro falhou!");
+            setLoading(false);
         }
     }
     
     return (
         <Container>
+            {loading && <Loading />}
             <Section className="links">
                 <div className="max-width">
                     <img src={shareLinkLogo} alt="logo share link" />

@@ -26,6 +26,14 @@ export class UserServices {
     }
 
     async refresh(refreshModel) {
-        return this.api.get(`/user/refresh`,{...refreshModel})
+        return this.api.get(`/user/refresh`, { ...refreshModel })
+    }
+    /**
+    * @param {string} email a ser confirmado
+    * @param {string} uuid identidificador unico da comfirmação
+    * @returns {promise} retorna uma promise
+    */
+    async emailConfirm(email, uuid) {
+        return this.api.post("/user/validate/", { email, uuid });
     }
 }
