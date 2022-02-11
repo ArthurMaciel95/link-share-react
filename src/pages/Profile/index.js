@@ -97,7 +97,7 @@ const ProfilePage = () => {
                                         </Buttons.Primary>
                                     </Link>
                                 </PaineButton>
-                                <ProfileInfo />
+                                <ProfileInfo dataUser={user} />
                             </div>
                         </div>
                     </section>

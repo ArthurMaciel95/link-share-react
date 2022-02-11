@@ -13,7 +13,7 @@ ReactDOM.render(
         <BrowserRouter>
             <GlobalStyle />
             <App />
-            <ToastContainer transition={Slide} theme="colored" />
+            <ToastContainer transition={Slide} theme="colored" limit={3} />
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

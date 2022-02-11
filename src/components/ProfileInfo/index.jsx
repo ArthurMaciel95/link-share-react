@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Profile from "./styles";
 import * as Form from "components/Form";
 import * as Buttons from "components/Buttons";
@@ -9,34 +9,24 @@ import { UserServices } from "services/api/user";
 import { encoded, decoded } from "utils/buffer";
 import { Validation } from "utils/validation";
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ dataUser }) => {
+
     const userService = new UserServices();
     const _ = new Validation();
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState();
     const [photo, setPhoto] = useState({ file: "", name: "" });
     const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        nickname: "",
+        name: '',
+        email: '',
+        nickname: '',
         description: "",
         photo,
     });
+    console.log(formData)
     const MAX_SIZE_IMAGE = 100000;
 
-    const ToastyOptions = {
-        theme: "light",
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: true,
-    };
-
-    const formChange = (event) =>
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+    const formChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });
 
     const uploadImage = async (e) => {
         let file = e.target.files[0];
@@ -44,8 +34,7 @@ const ProfileInfo = () => {
             return toast.error("Formato de image não permitido");
         if (!isSizeAllowed(file))
             return toast.error(
-                `O tamanho da imagem não pode passar de ${
-                    MAX_SIZE_IMAGE / 1000
+                `O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 1000
                 }kb`
             );
         const base64 = await imageToBase64(file);
@@ -67,7 +56,10 @@ const ProfileInfo = () => {
         });
     };
 
+
+
     const removePhoto = () => setPhoto({ file: "", name: "" });
+
     const base64decoded = (image) => {
         return decoded(image, "utf-8");
     };
@@ -92,6 +84,14 @@ const ProfileInfo = () => {
         }
     };
 
+    useEffect(() => {
+        dataUser && setFormData({
+            name: dataUser.body.name,
+            email: dataUser.body.email,
+            nickname: dataUser.body.nickname
+        })
+    }, [dataUser])
+
     return (
         <Profile.Container>
             <h3>Informação da conta</h3>
@@ -114,6 +114,7 @@ const ProfileInfo = () => {
                         onChange={(e) => {
                             uploadImage(e);
                         }}
+
                     />
                     <section>
                         <Buttons.Outline>
@@ -121,7 +122,7 @@ const ProfileInfo = () => {
                         </Buttons.Outline>
                         <p>
                             {!photo.name
-                                ? "Nome de arquivo não informado  "
+                                ? "Nome de arquivo não informado"
                                 : photo.name}
                         </p>
                     </section>
@@ -135,6 +136,7 @@ const ProfileInfo = () => {
                                 className="round"
                                 placeholder="Nome"
                                 onChange={formChange}
+                                value={formData.name}
                             />
                             <input
                                 type="text"
@@ -142,6 +144,7 @@ const ProfileInfo = () => {
                                 className="round"
                                 placeholder="Email"
                                 onChange={formChange}
+                                value={formData.email}
                             />
                             <input
                                 type="text"
@@ -149,6 +152,7 @@ const ProfileInfo = () => {
                                 className="round"
                                 placeholder="Apelido"
                                 onChange={formChange}
+                                value={formData.nickname}
                             />
                         </Form.Group>
                     </Profile.Column>
