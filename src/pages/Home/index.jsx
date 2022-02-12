@@ -20,43 +20,16 @@ const HomePage = () => {
     const [user, setUser] = useState(undefined);
     const [showModal, setShowModal] = useState(false);
 
-    const closeModal = () => setShowModal(false);
-    const openModal = () => setShowModal(true);
+
     const handlerButton = () => setShowModal(true);
     const getUser = () => userService.refresh().then((res) => setUser(res.data));
     const handlerCloseModal = () => setShowModal(false)
     useEffect(getUser, []);
-    console.log(user)
+
 
     return (
         <>
-            <Modal showModal={showModal} setShowModal={setShowModal}>
-                <img src={ArrowLeftIcon} alt="seta para esquerda" style={{ height: '60px', width: '60px' }} className='p-2  position-absolute top-0 ' onClick={e => handlerCloseModal(e)} />
-                <div class="row h-25">
-                    <LinkArea name="Facebook" logo={Logo.facebook}></LinkArea>
-                    <LinkArea name="Instagram" logo={Logo.instagram}></LinkArea>
-                    <LinkArea name="Discord" logo={Logo.discord}></LinkArea>
-                    <LinkArea name="DropBox" logo={Logo.linkdin}></LinkArea>
-                </div>
-                <div class="row h-25">
-                    <LinkArea name="DropBox" logo={Logo.twitter}></LinkArea>
-                    <LinkArea name="Snapchat" logo={Logo.snapchat}></LinkArea>
-                    <LinkArea name="Vimeo" logo={Logo.vimeo}></LinkArea>
-                    <LinkArea name="DropBox" logo={Logo.pinterest}></LinkArea>
-                </div>
-                <div class="row h-25">
-                    <LinkArea name="Telegram" logo={Logo.telegram}></LinkArea>
-                    <LinkArea name="TikTok" logo={Logo.tiktok}></LinkArea>
-                    <LinkArea name="Youtube" logo={Logo.youtube}></LinkArea>
-                    <LinkArea name="DropBox" logo={Logo.soundcloud}></LinkArea>
-                </div>
-                <div class="row h-25">
-                    <LinkArea name="Telegram" logo={Logo.twitch}></LinkArea>
-                    <LinkArea name="TikTok" logo={Logo.dropBox}></LinkArea>
-                    <LinkArea name="Youtube" logo={Logo.onlyfans}></LinkArea>
-                    <LinkArea name="DropBox" logo={Logo.soundcloud}></LinkArea>
-                </div>
-            </Modal>
+            <Modal showModal={showModal} setShowModal={setShowModal} />
             <HeaderHome>
                 <section className="container">
                     <div className="row">

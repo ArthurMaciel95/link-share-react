@@ -25,6 +25,15 @@ export const Section = styled.section`
     margin: 0px;
     padding: 20px;
 
+    .max-width img{
+        max-width: 350px !important;
+    }
+
+    .max-width h3{
+        margin-top: 50px;
+        font-size:1.6rem;
+    }
+
     &.links{
         background-color:  var(--primary-color);
         text-align: center;

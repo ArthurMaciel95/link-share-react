@@ -3,8 +3,8 @@ import LinkStyles from './styles'
 
 const LinkArea = ({ name, logo }) => {
     return (
-        <LinkStyles className="col d-flex flex-column justify-content-center align-items-center ">
-            <img src={logo} alt="facebook logo" />
+        <LinkStyles className="col d-flex flex-column justify-content-center align-items-center">
+            <img src={logo} alt={`${name} logo`} />
             <p className='fw-normal fs-5 mt-sm-2'>{name}</p>
         </LinkStyles>
     )

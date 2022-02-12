@@ -22,6 +22,8 @@ const LoginPage = () => {
     const [loading, setLoading] = useState(false);
     const user = new UserServices();
     const [ShowPassword, setShowPassword] = useState(false)
+
+
     useEffect(logOut, []);
     async function handleLogin(event) {
         event.preventDefault();
@@ -40,7 +42,6 @@ const LoginPage = () => {
                 return navigate("/home");
             }
         } catch (error) {
-            alert(error)
             setLoading(false);
             if (error.response !== undefined)
                 return toast.error(error.response.data.message);
