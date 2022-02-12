@@ -29,3 +29,6 @@ jobs:
 
      - name: Deploy linkshare S3 bucket
        run: aws s3 sync ./build/ s3://${{secrets.AWS_BUCKET}} --exclude ".git/*" --exclude ".gitignore" --exclude ".gitattributes" --exclude ".github/*"
+
+     - name: Create CloudFront Invalidation
+       run: aws cloudfront create-invalidation --distribution-id ${{secrets.AWS_CLOUDFRONT_ID}} --path "/*"
