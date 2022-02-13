@@ -85,6 +85,11 @@ export const Row = styled.div`
     flex-direction: row;
     width: 95%;
 
+    &.end {
+        width:100%;
+        justify-content: flex-end;
+    }
+
     @media (max-width: 600px) {
         flex-direction: column;
     }

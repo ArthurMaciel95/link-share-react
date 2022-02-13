@@ -1,13 +1,6 @@
 import styled from "styled-components";
 
-export const ModalArea = styled.section`
-
-    h3{
-        text-align: center;
-        margin-bottom: 25px;
-        color: #717171;
-    }
-
+export const ModalNewLinkStyle = styled.section`
     background-color: rgba(0,0,0,0.3);
     display: flex;
     align-items: center;
@@ -16,4 +9,13 @@ export const ModalArea = styled.section`
     border-radius: 5px;
     position: absolute;
     z-index: 1000;
+
+    .form-area{
+        background-color: white;
+        flex-direction: column;
+        display: flex;
+        gap:1rem;
+    }
+
+
 `

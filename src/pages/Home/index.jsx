@@ -20,9 +20,9 @@ const HomePage = () => {
     const [user, setUser] = useState(undefined);
     const [showModal, setShowModal] = useState(false);
 
-
+    
     const handlerButton = () => setShowModal(true);
-    const getUser = () => userService.refresh().then((res) => setUser(res.data));
+    const getUser = () => userService.refresh().then((res) => { setUser(res.data); console.log(res.data) });
     const handlerCloseModal = () => setShowModal(false)
     useEffect(getUser, []);
 
@@ -90,9 +90,7 @@ const HomePage = () => {
                                     user.body.links.map((link) => (
                                         <CardLink
                                             key={link.id_link}
-                                            image={
-                                                Logo[link.type.toLowerCase()]
-                                            }
+                                            image={Logo[link.type.toLowerCase()]}
                                             name={link.type}
                                             link={link.url.toLowerCase()}
                                         />
