@@ -65,6 +65,7 @@ const ProfileInfo = ({ dataUser }) => {
     };
 
     const handleSubmit = async (event) => {
+        console.log(formData)
         event.preventDefault();
         try {
             if (_.isEmpty(formData))
@@ -72,7 +73,7 @@ const ProfileInfo = ({ dataUser }) => {
             if (!_.isEmail(formData.email))
                 return toast.error("Este email não é valido");
             setLoading(true);
-            await userService.refresh({ ...formData });
+            await userService.update({ ...formData });
             toast.success("Atualizado com sucesso!");
         } catch (error) {
             setLoading(false);
@@ -88,10 +89,11 @@ const ProfileInfo = ({ dataUser }) => {
         dataUser && setFormData({
             name: dataUser.body.name,
             email: dataUser.body.email,
-            nickname: dataUser.body.nickname
+            nickname: dataUser.body.nickname,
+            description:dataUser.body?.description
         })
     }, [dataUser])
-
+    console.log(formData)
     return (
         <Profile.Container>
             <h3>Informação da conta</h3>
@@ -163,6 +165,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 className="round"
                                 placeholder="Descrição"
                                 onChange={formChange}
+                                value={formData.description}
                             ></textarea>
                         </Form.Group>
                     </Profile.Column>

@@ -28,6 +28,10 @@ export class UserServices {
     async refresh(refreshModel) {
         return this.api.get(`/user/refresh`, { ...refreshModel })
     }
+
+    async update(payload) {
+        return this.api.put(`/user/update`, { ...payload })
+    }
     /**
     * @param {string} email a ser confirmado
     * @param {string} uuid identidificador unico da comfirmação
