@@ -2,12 +2,14 @@ import React from 'react'
 import {ModalNewLinkStyle} from './styles'
 import * as Form from "components/Form"
 import * as Buttons from 'components/Buttons'
+import ArrowLeftIcon from 'assets/images/icon_arrow_left.png'
 
-const ModalNewLInk = ({formChange,sendForm,name}) => {
+const ModalNewLInk = ({formChange,sendForm,name, SetView}) => {
     return (
         <ModalNewLinkStyle>
             <div className='form-area col-6 offset-md-3  shadow p-5 position-relative'>
-                <Form.Container>
+            <Form.Container>
+            <img src={ArrowLeftIcon} alt="seta para esquerda" style={{ height: '60px', width: '60px' }} className='p-2  position-absolute top-0 ' onClick={()=> SetView(1)} />
                     <h3>Detalhes do link</h3> 
             <Form.Group>
             <label>Url do Perfil do {name}:</label>
