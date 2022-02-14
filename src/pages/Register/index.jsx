@@ -22,24 +22,28 @@ const Register = () => {
     async function handleRegister(event) {
         event.preventDefault();
         try {
-            setLoading(true);
+           
             if (!_.isPassword(password))
                 return toast.error("A senha deve ter no mínimo 8 caracteres e possuir uma maiúscula e uma minúscula entre A-Z e um numero entre 0-9.!")
             if (password !== confirm_password)
                 return toast.error("Senhas não coincidem");
+                setLoading(true);
             await userService.register({
                 name,
                 nickname,
                 email,
                 password: await encodePassword(password),
             });
+            setLoading(false);
             toast.success("Registrado com sucesso!");
             return navigate('/')
         } catch (error) {
+            setLoading(false);  
             if (error.response !== undefined)
+            
                 return toast.error(error.response.data.message);
             toast.error("Registro falhou!");
-            setLoading(false);
+           
         }
     }
     

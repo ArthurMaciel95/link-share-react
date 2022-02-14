@@ -23,7 +23,7 @@ const ProfileInfo = ({ dataUser }) => {
         description: "",
         photo,
     });
-    console.log(formData)
+   
     const MAX_SIZE_IMAGE = 100000;
 
     const formChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });

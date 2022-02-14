@@ -26,9 +26,7 @@ const ProfilePage = () => {
     const handlerButton = () => setShowModal(true)
 
     useEffect(getUser, [])
-    /**
-     * Mostra modal quando for clicado.
-     */
+
     const handleButton = () => {
 
         setShowModal(true)
@@ -59,7 +57,7 @@ const ProfilePage = () => {
                     <LinkArea name="Telegram" logo={Logo.twitch}></LinkArea>
                     <LinkArea name="TikTok" logo={Logo.dropBox}></LinkArea>
                     <LinkArea name="Youtube" logo={Logo.onlyfans}></LinkArea>
-                    <LinkArea name="DropBox" logo={Logo.soundcloud}></LinkArea>
+                    <LinkArea name="BuyMeACoffe" logo={Logo.buymeacoffe}></LinkArea>
                 </div>
             </Modal>
             <HeaderHome>

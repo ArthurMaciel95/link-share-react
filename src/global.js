@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     /*container color*/
     --background: #f3f3f3;
     --sidebar-background: #ffffff;
-  
+    --color-hover:#EDEDED;
     /*text color*/
     --text-color-gray: #b7b2b2;
     --text-color-header: #6d6d6d;

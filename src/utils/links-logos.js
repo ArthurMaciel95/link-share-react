@@ -10,10 +10,11 @@ import instagram from 'assets/images/instagram.png'
 import onlyfans from 'assets/images/onlyFans.png'
 import pinterest from 'assets/images/pinterest.png'
 import tiktok from 'assets/images/tiktok.png'
-import dropBox from 'assets/images/dropbox.png'
+import dropbox from 'assets/images/dropbox.png'
 import soundcloud from 'assets/images/soundlCloud.png'
 import vimeo from 'assets/images/vimeo.png'
-
+import buymeacoffe from 'assets/images/buymeacoffe.png'
+import customlink from 'assets/images/custom-link.png'
 export default {
     twitter,
     facebook,
@@ -29,5 +30,7 @@ export default {
     onlyfans,
     vimeo,
     soundcloud,
-    dropBox,
+    dropbox,
+    buymeacoffe,
+    customlink
 }

@@ -15,6 +15,10 @@ import ArrowLeftIcon from 'assets/images/icon_arrow_left.png';
 import ProfileIcon from 'assets/svg/profile.svg';
 import LinkChainIcon from 'assets/svg/link-chain.svg';
 import LinkArea from 'components/LinkArea'
+import { formatDistance,subDays } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import CardSkeleton from "components/Skeleton";
+import SkeletonCards from "components/Skeleton";
 const HomePage = () => {
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
@@ -22,10 +26,10 @@ const HomePage = () => {
 
     
     const handlerButton = () => setShowModal(true);
-    const getUser = () => userService.refresh().then((res) => { setUser(res.data); console.log(res.data) });
+    const getUser = () => userService.refresh().then((res) => { setUser(res.data)});
     const handlerCloseModal = () => setShowModal(false)
-    useEffect(getUser, []);
-
+    useEffect(getUser, [showModal]);
+    console.log(user)
 
     return (
         <>
@@ -86,17 +90,18 @@ const HomePage = () => {
                                         </Buttons.Primary>
                                     </Link>
                                 </PaineButton>
-                                {user && user.body.links.length ? (
+                                {<SkeletonCards/> && user && user.body?.links?.length ? (
                                     user.body.links.map((link) => (
                                         <CardLink
                                             key={link.id_link}
                                             image={Logo[link.type.toLowerCase()]}
                                             name={link.type}
                                             link={link.url.toLowerCase()}
+                                            createAt={formatDistance( new Date(link.createdAt),new Date(), { addSuffix: true, locale:ptBR })}
                                         />
                                     ))
                                 ) : (
-                                    <DataNotFound />
+                                   <DataNotFound/>
                                 )}
                             </div>
                         </div>
