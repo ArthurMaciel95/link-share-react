@@ -23,6 +23,7 @@ const ProfileInfo = ({ dataUser }) => {
         description: "",
         photo,
     });
+    const [disable, setDisable] = useState(false)
    
     const MAX_SIZE_IMAGE = 100000;
 
@@ -67,6 +68,7 @@ const ProfileInfo = ({ dataUser }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+            setDisable(true)
             if (_.isEmpty(formData))
                 return toast.error("Os campos não podem estar vazios");
             if (!_.isEmail(formData.email))
@@ -74,8 +76,10 @@ const ProfileInfo = ({ dataUser }) => {
             setLoading(true);
             await userService.update({ ...formData });
             toast.success("Atualizado com sucesso!");
+            setDisable(false)
         } catch (error) {
             setLoading(false);
+            setDisable(false)
             console.log(error.response);
             if (error.response !== undefined)
                 if (error.response.status === 406)
@@ -92,7 +96,7 @@ const ProfileInfo = ({ dataUser }) => {
             description:dataUser.body?.description
         })
     }, [dataUser])
-    console.log(formData)
+
     return (
         <Profile.Container>
             <h3>Informação da conta</h3>
@@ -115,6 +119,7 @@ const ProfileInfo = ({ dataUser }) => {
                         onChange={(e) => {
                             uploadImage(e);
                         }}
+                        disabled={disable}
 
                     />
                     <section>
@@ -138,6 +143,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 placeholder="Nome"
                                 onChange={formChange}
                                 value={formData.name}
+                                disabled={disable}
                             />
                             <input
                                 type="text"
@@ -146,6 +152,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 placeholder="Email"
                                 onChange={formChange}
                                 value={formData.email}
+                                disabled={disable}
                             />
                             <input
                                 type="text"
@@ -154,6 +161,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 placeholder="Apelido"
                                 onChange={formChange}
                                 value={formData.nickname}
+                                disabled={disable}
                             />
                         </Form.Group>
                     </Profile.Column>
@@ -165,15 +173,16 @@ const ProfileInfo = ({ dataUser }) => {
                                 placeholder="Descrição"
                                 onChange={formChange}
                                 value={formData.description}
+                                disabled={disable}
                             ></textarea>
                         </Form.Group>
                     </Profile.Column>
                 </Profile.InputArea>
                 <Profile.ButtonArea>
-                    <Buttons.Primary onClick={handleSubmit}>
+                    <Buttons.Primary onClick={handleSubmit} disabled={disable}>
                         Salvar alterações
                     </Buttons.Primary>
-                    <Buttons.Outline>Apagar conta</Buttons.Outline>
+                    <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline>
                 </Profile.ButtonArea>
             </Profile.Form>
         </Profile.Container>
