@@ -29,7 +29,7 @@ const HomePage = () => {
     const getUser = () => userService.refresh().then((res) => { setUser(res.data)});
     const handlerCloseModal = () => setShowModal(false)
     useEffect(getUser, [showModal]);
-    console.log(user)
+
 
     return (
         <>
@@ -73,10 +73,7 @@ const HomePage = () => {
                                     {user && user.body.email}
                                 </p>
                                 <p className="text-black-50">
-                                    Lorem Ipsum is simply dummy text of the
-                                    printing and typeset ting industry. Lorem
-                                    Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s,{" "}
+                                   {user && user.body.description}
                                 </p>
                             </div>
                             <div className="col-md-7 offset-md-1 position-relative">

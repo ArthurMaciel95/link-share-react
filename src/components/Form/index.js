@@ -30,6 +30,9 @@ label {
     color: #18191F;
     font-size: 0.85rem;
 }
+textarea{
+    color:var(--text-color-header);
+}
 input {
     width: 100%;
     height: 46px;

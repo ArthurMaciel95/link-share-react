@@ -81,9 +81,7 @@ const ProfilePage = () => {
                             <div className="col-lg-4 col-sm-12 bg-white rounded mh-25  p-3 shadow-sm" style={{ maxHeight: "281px" }}>
                                 <h4 className='text-dark mt-3'>{user && user.body.nickname}</h4>
                                 <p className='text-black-50 fs-5'>{user && user.body.email}</p>
-                                <p className='text-black-50'>Lorem Ipsum is simply dummy text of the printing and typeset
-                                    ting industry. Lorem Ipsum has been the industry's standard
-                                    dummy text ever since the 1500s,
+                                <p className='text-black-50'>{user && user.body.description}
                                 </p>
                             </div>
                             <div className="col-md-7 offset-md-1 position-relative">
