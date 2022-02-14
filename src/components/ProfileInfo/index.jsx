@@ -65,7 +65,6 @@ const ProfileInfo = ({ dataUser }) => {
     };
 
     const handleSubmit = async (event) => {
-        console.log(formData)
         event.preventDefault();
         try {
             if (_.isEmpty(formData))
