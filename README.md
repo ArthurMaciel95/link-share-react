@@ -43,7 +43,7 @@ https://github.com/MateusNGF/link-share ( em desenvolvimento )
 
 ## Desing
 ![loginpage](https://user-images.githubusercontent.com/62079236/154414366-c16c427e-b186-4e65-b527-6fbfe26e26f7.png)
-![Profile](https://user-images.githubusercontent.com/62079236/154414486-6c88abf4-da20-4d53-a434-9ff4b8d602e4.png)
+![profilepage](https://user-images.githubusercontent.com/62079236/154414601-84059252-c7e9-4773-95ee-1ae6da995b91.png)
 
 
 
