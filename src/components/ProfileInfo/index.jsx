@@ -77,9 +77,11 @@ const ProfileInfo = ({ dataUser }) => {
             await userService.update({ ...formData });
             toast.success("Atualizado com sucesso!");
             setDisable(false)
+     
         } catch (error) {
             setLoading(false);
             setDisable(false)
+       
             console.log(error.response);
             if (error.response !== undefined)
                 if (error.response.status === 406)

@@ -13,6 +13,7 @@ import Loading from "components/Loading";
 import { encodePassword } from "utils/encrypt";
 import ShowPasswordIcon from 'assets/svg/show-password.svg'
 import HiddenPasswordIcon from 'assets/svg/hidden-password.svg'
+import StayLogged from 'components/StayLogged'
 
 const LoginPage = () => {
     const navigate = new useNavigate();
@@ -87,6 +88,7 @@ const LoginPage = () => {
                             />
                             <img src={ShowPassword ? ShowPasswordIcon : HiddenPasswordIcon} alt="icone mostrar senha" id="password" onClick={() => setShowPassword(!ShowPassword)} />
                         </Form.Group>
+                        <StayLogged />
                         <a href="#" className="my-md-2 fs-7 text-reset">
                             Esqueceu a senha?
                         </a>

@@ -19,17 +19,21 @@ import { formatDistance,subDays } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import CardSkeleton from "components/Skeleton";
 import SkeletonCards from "components/Skeleton";
+
 const HomePage = () => {
+
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
     const [showModal, setShowModal] = useState(false);
 
     
     const handlerButton = () => setShowModal(true);
-    const getUser = () => userService.refresh().then((res) => { setUser(res.data)});
-    const handlerCloseModal = () => setShowModal(false)
-    useEffect(getUser, [showModal]);
 
+    const getUser = () => userService.refresh().then((res) => { setUser(res.data)});
+
+    const handlerCloseModal = () => setShowModal(false)
+
+    useEffect(getUser, [showModal]);
 
     return (
         <>
@@ -58,7 +62,7 @@ const HomePage = () => {
                                 <Image
                                     src={Avatar}
                                     alt="avatar image profile"
-                                ></Image>
+                                />
                             </div>
                         </div>
                         <div className="row mt-2 rounded ">
