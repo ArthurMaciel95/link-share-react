@@ -13,6 +13,21 @@ export const HeaderHome = styled.header`
     height:180px;
     width:100%;
 
+
+    @media (max-width: 1200px){
+  .link-column{
+    margin-top: 80px;
+    margin-left: 0 !important;
+   }
+ 
+}
+@media (max-width:500px){
+    .header-image-avatar{
+       display: flex;
+       justify-content: center;
+   }
+}
+
 `
 export const PaineButton = styled.section`
     justify-content:end;

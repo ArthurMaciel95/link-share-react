@@ -15,7 +15,7 @@ import ArrowLeftIcon from 'assets/images/icon_arrow_left.png';
 import ProfileIcon from 'assets/svg/profile.svg';
 import LinkChainIcon from 'assets/svg/link-chain.svg';
 import LinkArea from 'components/LinkArea'
-import { formatDistance,subDays } from 'date-fns'
+import { formatDistance, subDays } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import CardSkeleton from "components/Skeleton";
 import SkeletonCards from "components/Skeleton";
@@ -26,15 +26,32 @@ const HomePage = () => {
     const [user, setUser] = useState(undefined);
     const [showModal, setShowModal] = useState(false);
 
-    
+
     const handlerButton = () => setShowModal(true);
 
-    const getUser = () => userService.refresh().then((res) => { setUser(res.data)});
+    const getUser = () => userService.refresh().then((res) => { setUser(res.data) });
 
     const handlerCloseModal = () => setShowModal(false)
 
-    useEffect(getUser, [showModal]);
+    const userHaveAnLink = () => {
+        return user.body.links.length > 0
+    }
 
+    const ShowAllLinkOfUser = () => {
+        return user.body.links.map((link) => (
+            <CardLink
+                key={link.id_link}
+                id={link.id_link}
+                image={Logo[link.type.toLowerCase()] || Logo.customlink}
+                name={link.type}
+                link={link.url.toLowerCase()}
+                createAt={formatDistance(new Date(link.createdAt), new Date(), { addSuffix: true, locale: ptBR })}
+            />
+        ))
+    }
+
+    useEffect(getUser, [showModal]);
+    console.log(user)
     return (
         <>
             <Modal showModal={showModal} setShowModal={setShowModal} />
@@ -58,18 +75,20 @@ const HomePage = () => {
                     </div>
                     <section className="">
                         <div className="row">
-                            <div className="col-md-12">
+                            <div className="col-md-12 header-image-avatar">
                                 <Image
                                     src={Avatar}
                                     alt="avatar image profile"
                                 />
                             </div>
                         </div>
-                        <div className="row mt-2 rounded ">
+                        <div className="row">
                             <div
-                                className="col-lg-4 col-sm-12 bg-white rounded mh-25  p-3 shadow-sm"
+                                className="col-lg-4 col-sm-12 rounded mh-25  "
                                 style={{ maxHeight: "281px" }}
                             >
+                              
+                                <div className="bg-white shadow-sm  mt-2 rounded  p-3">
                                 <h4 className="text-dark mt-3">
                                     {user && user.body.nickname}
                                 </h4>
@@ -77,10 +96,11 @@ const HomePage = () => {
                                     {user && user.body.email}
                                 </p>
                                 <p className="text-black-50">
-                                   {user && user.body.description}
+                                    {user && user.body.description}
                                 </p>
+                                </div>
                             </div>
-                            <div className="col-md-7 offset-md-1 position-relative">
+                            <div className="col-lg-7 offset-md-1 position-relative link-column mt-lg-3">
                                 <PaineButton>
                                     <Buttons.Primary onClick={e => handlerButton()}>
                                         <img src={LinkChainIcon} /> Adicionar Link
@@ -91,19 +111,10 @@ const HomePage = () => {
                                         </Buttons.Primary>
                                     </Link>
                                 </PaineButton>
-                                {<SkeletonCards/> && user && user.body?.links?.length ? (
-                                    user.body.links.map((link) => (
-                                        <CardLink
-                                            key={link.id_link}
-                                            image={Logo[link.type.toLowerCase()]}
-                                            name={link.type}
-                                            link={link.url.toLowerCase()}
-                                            createAt={formatDistance( new Date(link.createdAt),new Date(), { addSuffix: true, locale:ptBR })}
-                                        />
-                                    ))
-                                ) : (
-                                   <DataNotFound/>
-                                )}
+
+                                <>{user ? <>{userHaveAnLink() ? (
+                                    ShowAllLinkOfUser()
+                                ) : <DataNotFound />}</> : <>{<SkeletonCards />}</>}</>
                             </div>
                         </div>
                     </section>
