@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalCardSettings = styled.span`
+export const ModalCardSettingsStyle = styled.span`
 z-index: 100;
     position: absolute;
     background-color: white;

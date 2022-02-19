@@ -77,4 +77,9 @@ export const GlobalStyle = createGlobalStyle`
   .fs-7{
       font-size: 0.8rem;
   }
+
+
+::placeholder{
+    color: #d7d7d7;
+}
 ` 

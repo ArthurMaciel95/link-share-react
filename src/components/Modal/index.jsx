@@ -67,10 +67,7 @@ const Modal = ({ showModal, setShowModal }) => {
                         <LinkArea name="Discord" logo={Logo.discord} handleClick={click}></LinkArea>
                     </div>
                 </div >
-            </ModalArea> : <ModalNewLInk formChange={formChange} sendForm={sendForm} name={linkName} SetView={SetView} >
-                
- 
-            </ModalNewLInk>
+            </ModalArea> : <ModalNewLInk formChange={formChange} sendForm={sendForm} name={linkName} SetView={SetView} />
             }
             </>: null}</>
     )

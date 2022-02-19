@@ -13,7 +13,7 @@ const ModalNewLInk = ({formChange,sendForm,name, SetView}) => {
                     <h3>Detalhes do link</h3> 
             <Form.Group>
             <label>Url do Perfil do {name}:</label>
-            <input type="text" id='nickname' name='url' onChange={formChange}/>
+            <input type="text" id='nickname' name='url' placeholder='Ex: https://www.facebook.com/profile/user123'  onChange={formChange}/>
           </Form.Group>
           <Form.Row className="end">
               <Buttons.Primary  onClick={sendForm}>Criar Link</Buttons.Primary>

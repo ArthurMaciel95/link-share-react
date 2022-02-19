@@ -8,6 +8,13 @@ export const Card = styled.div`
     -webkit-box-shadow: 1px 2px 2px 2px rgba(176,176,176,0.15); 
     box-shadow: 1px 2px 2px 2px rgba(176,176,176,0.15);
     display:flex;
+    div a {                      
+      width: 300px;  
+      text-overflow:ellipsis;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+
     .card-settings{
         display: flex;
         width: 100%;
@@ -34,5 +41,6 @@ export const Card = styled.div`
     }
     @media only screen and (max-width: 850px) {
         flex-direction: column;
+        min-width:100% !important;
     }
 `
