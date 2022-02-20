@@ -33,9 +33,7 @@ const HomePage = () => {
 
     const handlerCloseModal = () => setShowModal(false)
 
-    const userHaveAnLink = () => {
-        return user.body.links.length > 0
-    }
+    const userHaveAnLink = () => user.body.links.length > 0
 
     const ShowAllLinkOfUser = () => {
         
@@ -52,7 +50,7 @@ const HomePage = () => {
         ))
     }
 
-    useEffect(getUser, [showModal,CardLink]);
+    useEffect(getUser, [showModal]);
    
     return (
         <>

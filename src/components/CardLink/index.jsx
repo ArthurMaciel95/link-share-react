@@ -19,7 +19,7 @@ const CardLink = ({ name, image, link, handleClickDots,createAt ,id }) => {
             <div className='card-settings'>
                 <p className='create-at'>{createAt}</p>
                 <img src={threeDots} alt="icon settings" className='btn-settings' onClick={()=> setOpenModalSettings(!openModalSettings)}/>
-                {openModalSettings && <ModalCardSettings id={id}/>}
+                {openModalSettings && <ModalCardSettings id={id} link={link}/>}
             
             </div>
         </Card>
