@@ -7,6 +7,7 @@ import Register from 'pages/Register';
 import ProfilePage from 'pages/Profile'
 import PrivateRoute from 'Auth';
 import EmailConfirm from 'pages/Confirmation/email';
+import VisitorPage from 'pages/Visitor'
 
 const Router = () => {
     return (
@@ -16,6 +17,7 @@ const Router = () => {
             <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
             <Route path="/register" element={<Register />} />
             <Route path="/email/confirm/:email&:uuid" element={<EmailConfirm />} />
+            <Route path="/visitor/:nickname" element={<VisitorPage/>}/>
             <Route path="*" element={<PageNotFound />} />
         </Routes>
     )
