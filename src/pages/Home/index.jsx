@@ -19,6 +19,7 @@ import { formatDistance, subDays } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import CardSkeleton from "components/Skeleton";
 import SkeletonCards from "components/Skeleton";
+import ClipBoardArea from "components/ClipBoardArea";
 
 const HomePage = () => {
 
@@ -110,6 +111,7 @@ const HomePage = () => {
                                             <img src={ProfileIcon} /> Profile
                                         </Buttons.Primary>
                                     </Link>
+                                    <ClipBoardArea nickname={user && user.body.nickname}/>
                                 </PaineButton>
 
                                 <>{user ? <>{userHaveAnLink() ? (
