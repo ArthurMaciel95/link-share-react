@@ -23,9 +23,32 @@ const LoginPage = () => {
     const [loading, setLoading] = useState(false);
     const user = new UserServices();
     const [ShowPassword, setShowPassword] = useState(false)
+    const [ checkbox , setCheckbox] =useState(false)
 
+    useEffect(()=>{
+        logOut();
+        stayLoggedVerify()
+    }, []);
 
-    useEffect(logOut, []);
+    const stayLoggedVerify = () => {
+        
+        if(localStorage.getItem('StayLogged')){
+       
+            const {email,password, StayLogged} = JSON.parse(localStorage.getItem('StayLogged'))
+            setFormData({email, password})
+            setCheckbox(StayLogged)
+        }
+    }
+
+    const setStayLogged = () => {
+            return checkbox ? localStorage.setItem('StayLogged', JSON.stringify({
+                StayLogged:checkbox,
+                email:email,
+                password:password
+
+            })) : localStorage.removeItem('StayLogged') 
+        
+    }
     async function handleLogin(event) {
         event.preventDefault();
         try {
@@ -33,6 +56,8 @@ const LoginPage = () => {
                 return toast.warning("Os campos não podem estar vazios");
             if (!_.isEmail(formData.email))
                 return toast.warning("Este email não é valido");
+
+            setStayLogged();     
             setLoading(true);
             const response = await user.login({
                 email,
@@ -51,6 +76,10 @@ const LoginPage = () => {
     }
     const formChange = (event) =>
         setFormData({ ...formData, [event.target.name]: event.target.value });
+
+    const handleCheckbox = () => {
+        return false
+    }
 
     return (
         <Container>
@@ -76,6 +105,7 @@ const LoginPage = () => {
                                 className="round"
                                 placeholder="Email"
                                 onChange={formChange}
+                                value={formData.email}
                             />
                         </Form.Group>
                         <Form.Group>
@@ -85,10 +115,11 @@ const LoginPage = () => {
                                 className="round"
                                 placeholder="Senha"
                                 onChange={formChange}
+                                value={formData.password}
                             />
                             <img src={ShowPassword ? ShowPasswordIcon : HiddenPasswordIcon} alt="icone mostrar senha" id="password" onClick={() => setShowPassword(!ShowPassword)} />
                         </Form.Group>
-                        <StayLogged />
+                        <StayLogged checked={checkbox} onChange={(e) => setCheckbox(!checkbox)}/>
                         <a href="#" className="my-md-2 fs-7 text-reset">
                             Esqueceu a senha?
                         </a>

@@ -38,20 +38,22 @@ const HomePage = () => {
     }
 
     const ShowAllLinkOfUser = () => {
+        
         return user.body.links.map((link) => (
+           <>
             <CardLink
-                key={link.id_link}
+                key={link.url}
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
                 link={link.url.toLowerCase()}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), { addSuffix: true, locale: ptBR })}
-            />
+            /></>
         ))
     }
 
-    useEffect(getUser, [showModal]);
-    console.log(user)
+    useEffect(getUser, [showModal,CardLink]);
+   
     return (
         <>
             <Modal showModal={showModal} setShowModal={setShowModal} />
