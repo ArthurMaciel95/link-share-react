@@ -16,6 +16,6 @@ export class LinksUrls {
     * @returns {promise} retorna uma promise
     */
     async unregister(linkId) {
-        return this.api.delete(`/link/${linkId}`);
+        return this.api.delete(`/link/${linkId}/*`);
     }
 }
