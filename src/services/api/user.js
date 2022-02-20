@@ -40,4 +40,7 @@ export class UserServices {
     async emailConfirm(email, uuid) {
         return this.api.post("/user/validate/", { email, uuid });
     }
+    async visitor(nickname = '@Arthur Maciel'){
+        return this.api.get(`/visitor/${nickname}`)
+    }
 }

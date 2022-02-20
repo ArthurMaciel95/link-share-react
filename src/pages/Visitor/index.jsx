@@ -2,18 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
-import * as Buttons from "components/Buttons";
-import plusIcon from "assets/svg/icon_plus.svg";
+
 import Logo from "utils/links-logos";
 import CardLink from "components/CardLink";
-import Modal from "components/Modal";
-import { Image, HeaderHome, PaineButton } from "./styles";
+import { Image, HeaderHome } from "./styles";
 import { UserServices } from "services/api/user";
 import DataNotFound from "components/DataNotFound";
-import Loading from "components/Loading";
-import ArrowLeftIcon from 'assets/images/icon_arrow_left.png';
-import ProfileIcon from 'assets/svg/profile.svg';
-import LinkChainIcon from 'assets/svg/link-chain.svg';
 import LinkArea from 'components/LinkArea'
 import { formatDistance, subDays } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
@@ -30,9 +24,9 @@ const VisitorPage = () => {
 
     const handlerButton = () => setShowModal(true);
 
-    const getUser = () => userService.refresh().then((res) => { setUser(res.data) });
+    const getUser = () => userService.visitor().then((res) => { setUser(res.data) });
 
-    const handlerCloseModal = () => setShowModal(false)
+
 
     const userHaveAnLink = () => user.body.links.length > 0
 
@@ -55,23 +49,13 @@ const VisitorPage = () => {
    
     return (
         <>
-            <Modal showModal={showModal} setShowModal={setShowModal} />
+        
             <HeaderHome>
                 <section className="container">
                     <div className="row">
                         <div className="col-md-12 d-flex justify-content-between align-items-center my-md-2">
                             <img src={logoReduce} alt="" />
-                            <div className="d-flex ">
-                                <p className="text-white">
-                                    {user && user.body.nickname}
-                                </p>
-                                <img
-                                    src={Avatar}
-                                    alt="avatar image"
-                                    className="rounded-circle mx-2"
-                                    style={{ width: "30px", height: "30px" }}
-                                />
-                            </div>
+                          
                         </div>
                     </div>
                     <section className="">
@@ -102,17 +86,7 @@ const VisitorPage = () => {
                                 </div>
                             </div>
                             <div className="col-lg-7 offset-md-1 position-relative link-column mt-lg-3">
-                                <PaineButton>
-                                    <Buttons.Primary onClick={e => handlerButton()}>
-                                        <img src={LinkChainIcon} /> Adicionar Link
-                                    </Buttons.Primary>
-                                    <Link to="/profile">
-                                        <Buttons.Primary>
-                                            <img src={ProfileIcon} /> Profile
-                                        </Buttons.Primary>
-                                    </Link>
-                                    <ClipBoardArea nickname={user && user.body.nickname}/>
-                                </PaineButton>
+                             
 
                                 <>{user ? <>{userHaveAnLink() ? (
                                     ShowAllLinkOfUser()
