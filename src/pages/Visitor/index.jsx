@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
 
@@ -16,15 +16,14 @@ import SkeletonCards from "components/Skeleton";
 import ClipBoardArea from "components/ClipBoardArea";
 
 const VisitorPage = () => {
-
+    const {nickname} = useParams();
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
     const [showModal, setShowModal] = useState(false);
 
-
     const handlerButton = () => setShowModal(true);
 
-    const getUser = () => userService.visitor().then((res) => { setUser(res.data) });
+    const getUser = () => userService.visitor(nickname).then((res) => { setUser(res.data) });
 
 
 
