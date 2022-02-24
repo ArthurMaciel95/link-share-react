@@ -58,12 +58,14 @@ export const Outline = styled(ButtonBase)`
     justify-content:center;
     align-items:center;
     background-color: transparent;
-    color:var(--primary-color);
+    color:white;
     width:auto;
     border-radius:25px;
-    border: var(--primary-color)  2px solid;
+    border: white  2px solid;
     transition: color 0.3s ease, background 0.3s ease;
-
+    .icon-plus{
+        margin-right: 5px;
+    }
     &:hover {
         
     }

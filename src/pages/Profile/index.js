@@ -15,6 +15,7 @@ import { UserServices } from 'services/api/user'
 import DataNotFound from 'components/DataNotFound'
 import ProfileInfo from 'components/ProfileInfo'
 import LinkArea from 'components/LinkArea'
+import Navbar from 'components/Navbar'
 
 const ProfilePage = () => {
     const userService = new UserServices()
@@ -62,15 +63,7 @@ const ProfilePage = () => {
             </Modal>
             <HeaderHome>
                 <section className="container">
-                    <div className="row">
-                        <div className="col-md-12 d-flex justify-content-between align-items-center my-md-2">
-                            <img src={logoReduce} alt="" />
-                            <div className='d-flex '>
-                                <p className='text-white'>{user && user.body.nickname}</p>
-                                <img src={Avatar} alt="avatar image" className='rounded-circle mx-2' style={{ width: '30px', height: '30px' }} />
-                            </div>
-                        </div>
-                    </div>
+                    <Navbar user={user} setShowModal={setShowModal}/>
                     <section>
                         <div className="row">
                             <div className="col-md-12">
