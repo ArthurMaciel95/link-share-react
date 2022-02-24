@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
 import * as Buttons from "components/Buttons";
 import plusIcon from "assets/svg/icon_plus.svg";
@@ -19,6 +18,7 @@ import { formatDistance, subDays } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import CardSkeleton from "components/Skeleton";
 import SkeletonCards from "components/Skeleton";
+import Navbar from 'components/Navbar'
 
 const HomePage = () => {
 
@@ -57,25 +57,10 @@ const HomePage = () => {
             <Modal showModal={showModal} setShowModal={setShowModal} />
             <HeaderHome>
                 <section className="container">
-                    <div className="row">
-                        <div className="col-md-12 d-flex justify-content-between align-items-center my-md-2">
-                            <img src={logoReduce} alt="" />
-                            <div className="d-flex ">
-                                <p className="text-white">
-                                    {user && user.body.nickname}
-                                </p>
-                                <img
-                                    src={Avatar}
-                                    alt="avatar image"
-                                    className="rounded-circle mx-2"
-                                    style={{ width: "30px", height: "30px" }}
-                                />
-                            </div>
-                        </div>
-                    </div>
+                   <Navbar user={user} setShowModal={setShowModal}/>
                     <section className="">
                         <div className="row">
-                            <div className="col-md-12 header-image-avatar">
+                            <div className="col-md-12 header-image-avatar mt-3">
                                 <Image
                                     src={Avatar}
                                     alt="avatar image profile"
