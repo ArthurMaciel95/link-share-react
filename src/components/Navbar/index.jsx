@@ -25,7 +25,7 @@ const Navbar = ({user, setShowModal}) => {
                 className="rounded-circle mx-2"
                 style={{ width: "30px", height: "30px" }}
             />
-            <Button.Outline  onClick={(e) => setShowModal(state => !state)}> <img src={PlusIcon} className="icon-plus"alt="icon plus"/> Link</Button.Outline>
+            <Button.OutlineHeader  onClick={(e) => setShowModal(state => !state)}> <img src={PlusIcon} className="icon-plus"alt="icon plus"/> Link</Button.OutlineHeader>
         </div>
     </div>
 </div>
