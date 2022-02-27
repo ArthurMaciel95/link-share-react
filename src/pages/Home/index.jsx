@@ -18,15 +18,12 @@ import { formatDistance, subDays } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import CardSkeleton from "components/Skeleton";
 import SkeletonCards from "components/Skeleton";
-<<<<<<< HEAD
 import Navbar from 'components/Navbar'
 import BreadCrumb from "components/BreadCrumb";
 import homeIcon from 'assets/svg/home.svg'
 import arrowRigthIcon from 'assets/svg/arrow-right-bread-crumb.svg'
 import profileBreadIcon from 'assets/svg/profile-bread.svg'
-=======
 import ClipBoardArea from "components/ClipBoardArea";
->>>>>>> origin/route-visitor
 
 const HomePage = () => {
 
