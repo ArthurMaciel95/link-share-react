@@ -16,7 +16,10 @@ import DataNotFound from 'components/DataNotFound'
 import ProfileInfo from 'components/ProfileInfo'
 import LinkArea from 'components/LinkArea'
 import Navbar from 'components/Navbar'
-
+import BreadCrumb from 'components/BreadCrumb'
+import homeIcon from 'assets/svg/home.svg'
+import arrowRigthIcon from 'assets/svg/arrow-right-bread-crumb.svg'
+import profileBreadIcon from 'assets/svg/profile-bread.svg'
 const ProfilePage = () => {
     const userService = new UserServices()
     const [user, setUser] = useState(undefined)
@@ -32,6 +35,16 @@ const ProfilePage = () => {
 
         setShowModal(true)
     }
+
+    const Crumb = [{
+        icon: homeIcon,
+        page: 'Home'
+    },
+    {
+        icon: profileBreadIcon,
+        page: 'Profile'
+    }
+    ]
     return (
         <>
             <Modal showModal={showModal} setShowModal={setShowModal}>
@@ -66,8 +79,10 @@ const ProfilePage = () => {
                     <Navbar user={user} setShowModal={setShowModal}/>
                     <section>
                         <div className="row">
-                            <div className="col-md-12">
+                            <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
                                 <Image src={Avatar} alt="avatar image profile" />
+                             
+                                <BreadCrumb crumb={Crumb}/>
                             </div>
                         </div>
                         <div className="row mt-2 rounded ">
