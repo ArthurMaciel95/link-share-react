@@ -16,7 +16,7 @@ export const BreadCrumbStyle = styled.section`
         
           text-decoration: underline;
       }
-    p{
+    .bread-para{
       margin: 0;
       padding: 6px;
 

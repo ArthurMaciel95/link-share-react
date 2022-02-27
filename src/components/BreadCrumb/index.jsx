@@ -11,7 +11,7 @@ const BreadCrumb = ({ crumb }) => {
         crumb.map((m, i) => {
           return <><object key={i} data={m.icon} type=""></object>
             <Link to={`/${m.page.toLowerCase()}`}>
-            <p>{m.page}</p>
+            <p className='bread-para'>{m.page}</p>
             </Link>
             { crumb.length - 1 !== i  ? <img src={arrowRightIcon} alt='arrow to right '/> : ''}
             </>
