@@ -41,6 +41,6 @@ export class UserServices {
         return this.api.post("/user/validate/", { email, uuid });
     }
     async visitor(nickname) {
-        return this.api.get(`/visitor/${nickname}`)
+        return this.api.get(`/user/visitor/${nickname}`)
     }
 }
