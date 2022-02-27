@@ -19,6 +19,10 @@ import { ptBR } from 'date-fns/locale'
 import CardSkeleton from "components/Skeleton";
 import SkeletonCards from "components/Skeleton";
 import Navbar from 'components/Navbar'
+import BreadCrumb from "components/BreadCrumb";
+import homeIcon from 'assets/svg/home.svg'
+import arrowRigthIcon from 'assets/svg/arrow-right-bread-crumb.svg'
+import profileBreadIcon from 'assets/svg/profile-bread.svg'
 
 const HomePage = () => {
 
@@ -50,6 +54,12 @@ const HomePage = () => {
         ))
     }
 
+    const Crumb = [{
+        icon: homeIcon,
+        page: 'Home'
+    }
+    ]
+
     useEffect(getUser, [showModal]);
    
     return (
@@ -60,12 +70,14 @@ const HomePage = () => {
                    <Navbar user={user} setShowModal={setShowModal}/>
                     <section className="">
                         <div className="row">
-                            <div className="col-md-12 header-image-avatar mt-3">
+                            <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
                                 <Image
                                     src={Avatar}
                                     alt="avatar image profile"
                                 />
+                                 <BreadCrumb crumb={Crumb}/>
                             </div>
+                           
                         </div>
                         <div className="row">
                             <div

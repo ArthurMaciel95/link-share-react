@@ -39,7 +39,7 @@ const Modal = ({ showModal, setShowModal }) => {
         <> {showModal ? <>
             {view == 1 ? <ModalArea>
                 < div className="col-6 offset-md-3  shadow p-5 position-relative bg-white" >
-                    <img src={ArrowLeftIcon} alt="seta para esquerda" style={{ height: '60px', width: '60px' }} className='p-2  position-absolute top-0 ' onClick={()=> setShowModal(!showModal)} />
+                    <img src={ArrowLeftIcon} alt="seta para esquerda" style={{ height: '60px', width: '60px', cursor:'pointer'}} className='p-2  position-absolute top-0 ' onClick={()=> setShowModal(!showModal)} />
                     <div className="row h-25">
                     <LinkArea name="Custom link" logo={Logo.customlink} handleClick={click}></LinkArea>
                         <LinkArea name="Facebook" logo={Logo.facebook} handleClick={click}></LinkArea>
