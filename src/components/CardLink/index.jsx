@@ -3,7 +3,7 @@ import { Card } from './styles.js'
 import threeDots from '../../assets/svg/three-dots.svg'
 import ModalCardSettings from 'components/ModalCardSettings'
 import { toast } from 'react-toastify'
-const CardLink = ({ name, image, link, handleClickDots,createAt ,id }) => {
+const CardLink = ({ name, image, link, handleClickDots,createAt ,id ,visitor}) => {
     const [ openModalSettings, setOpenModalSettings] = useState(false)
     const handlerClipBoard = () => {
       
@@ -19,7 +19,7 @@ const CardLink = ({ name, image, link, handleClickDots,createAt ,id }) => {
             <div className='card-settings'>
                 <p className='create-at'>{createAt}</p>
                 <img src={threeDots} alt="icon settings" className='btn-settings' onClick={()=> setOpenModalSettings(!openModalSettings)}/>
-                {openModalSettings && <ModalCardSettings id={id} link={link}/>}
+                {openModalSettings && <ModalCardSettings id={id} link={link} visitor={visitor}/>}
             
             </div>
         </Card>

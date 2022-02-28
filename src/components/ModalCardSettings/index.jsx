@@ -6,10 +6,10 @@ import { LinksUrls } from 'services/api/link'
 import CopyLinkIcon from 'assets/svg/copy-link.svg'
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom'
-const ModalCardSettings = ({ openModalRemoveLink, id, link}) => {
+const ModalCardSettings = ({ openModalRemoveLink, id, link, visitor}) => {
     const navigate = new useNavigate()
     const linkService = new LinksUrls()
-
+   
     const [openModal, setOpenModal] = useState(false);
 
 
@@ -37,7 +37,7 @@ const ModalCardSettings = ({ openModalRemoveLink, id, link}) => {
     return (
 
     <ModalCardSettingsStyle>
-        <p onClick={(e)=> handlerRemoveLink(e)}><img src={TrashIcon} alt="lixeira" className='trash-icon' onClick={()=> handlerRemoveLink}/> Remover </p>
+       {!visitor &&  <p onClick={(e)=> handlerRemoveLink(e)}><img src={TrashIcon} alt="lixeira" className='trash-icon' onClick={()=> handlerRemoveLink}/> Remover </p>}
         <p onClick={(e)=> handlerClipBoard(e)}><img src={CopyLinkIcon} alt="copiar link" className='trash-icon'/> Copiar Link</p>
     </ModalCardSettingsStyle>
 

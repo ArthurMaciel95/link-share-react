@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
 
@@ -16,6 +16,9 @@ import SkeletonCards from "components/Skeleton";
 import ClipBoardArea from "components/ClipBoardArea";
 
 const VisitorPage = () => {
+
+    const navigate = useNavigate()
+
     const {nickname} = useParams();
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
@@ -23,7 +26,16 @@ const VisitorPage = () => {
 
     const handlerButton = () => setShowModal(true);
 
-    const getUser = () => userService.visitor(nickname).then((res) => { setUser(res.data) });
+    const getUser = () => {
+        const result =  userService.visitor(nickname).then( res => setUser(res.data)).catch(err => navigate('/error',{replace:true}));
+        console.log(result)
+     
+       
+     
+   
+      
+
+    }
 
 
 
@@ -40,6 +52,7 @@ const VisitorPage = () => {
                 name={link.type}
                 link={link.url.toLowerCase()}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), { addSuffix: true, locale: ptBR })}
+                visitor={true}
             /></>
         ))
     }

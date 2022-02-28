@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import arrowRightIcon from 'assets/svg/arrow-right-bread-crumb.svg'
 const BreadCrumb = ({ crumb }) => {
 
-  console.log(crumb.length)
+ 
   return (
     <BreadCrumbStyle>
       {

@@ -26,6 +26,8 @@ export const HeaderHome = styled.header`
        display: flex;
        justify-content: center;
    }
+
+ 
 }
 
 `
@@ -34,5 +36,10 @@ export const PaineButton = styled.section`
     display:flex;
     position:absolute;
     top:-70px;
+
+
+    @media (max-width:500px){
+        top:-160px
+    }
 
 `

@@ -98,7 +98,7 @@ const HomePage = () => {
                                 </p>
                                 </div>
                             </div>
-                            <div className="col-lg-7 offset-md-1 position-relative link-column mt-lg-3">
+                            <div className="col-lg-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
                                     <Buttons.Primary onClick={e => handlerButton()}>
                                         <img src={LinkChainIcon} /> Adicionar Link

@@ -43,6 +43,10 @@ export const Primary = styled(ButtonBase)`
     max-width: 230px;
     color:white;
     transition: color, background 0.3s ease;
+
+    @media (max-width:500px){
+        max-width: 100% !important;
+    }
     &:hover {
         background-color: var(--primary-color-hover);
         transition: filter 0.3s ease, background 0.3s ease;
