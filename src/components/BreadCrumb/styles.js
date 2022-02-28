@@ -19,8 +19,11 @@ export const BreadCrumbStyle = styled.section`
     .bread-para{
       margin: 0;
       padding: 6px;
+    }
 
-     
+   
   }
-  }
+  @media(max-width:500px){
+      display: none;
+    }
 `

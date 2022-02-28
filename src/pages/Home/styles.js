@@ -16,7 +16,7 @@ export const HeaderHome = styled.header`
 
     @media (max-width: 1200px){
   .link-column{
-    margin-top: 80px;
+    margin-top: 190px;
     margin-left: 0 !important;
    }
  
@@ -34,5 +34,13 @@ export const PaineButton = styled.section`
     display:flex;
     position:absolute;
     top:-70px;
+
+
+    @media (max-width:500px){
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin-top: -100px;
+    }
 
 `
