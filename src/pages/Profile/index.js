@@ -20,6 +20,7 @@ import BreadCrumb from 'components/BreadCrumb'
 import homeIcon from 'assets/svg/home.svg'
 import arrowRigthIcon from 'assets/svg/arrow-right-bread-crumb.svg'
 import profileBreadIcon from 'assets/svg/profile-bread.svg'
+
 const ProfilePage = () => {
     const userService = new UserServices()
     const [user, setUser] = useState(undefined)
@@ -32,7 +33,6 @@ const ProfilePage = () => {
     useEffect(getUser, [])
 
     const handleButton = () => {
-
         setShowModal(true)
     }
 
