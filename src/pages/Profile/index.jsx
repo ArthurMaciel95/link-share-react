@@ -85,12 +85,15 @@ const ProfilePage = () => {
                                 <BreadCrumb crumb={Crumb}/>
                             </div>
                         </div>
-                        <div className="row mt-2 rounded ">
-                            <div className="col-lg-4 col-sm-12 bg-white rounded mh-25  p-3 shadow-sm" style={{ maxHeight: "281px" }}>
+                        <div className="row">
+                            <div className="col-lg-4 col-sm-12 mh-25" style={{ maxHeight: "281px" }}>
+                                <div className='bg-white shadow-sm  mt-2 rounded  p-3'>
                                 <h4 className='text-dark mt-3'>{user && user.body.nickname}</h4>
                                 <p className='text-black-50 fs-5'>{user && user.body.email}</p>
                                 <p className='text-black-50'>{user && user.body.description}
                                 </p>
+                                </div>
+                             
                             </div>
                             <div className="col-md-7 offset-md-1 position-relative">
                                 <PaineButton>

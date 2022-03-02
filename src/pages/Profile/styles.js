@@ -14,7 +14,9 @@ export const HeaderHome = styled.header`
     background-color:var(--primary-color);
     height:180px;
     width:100%;
-
+    @media screen and (max-width:500px){
+        justify-content: center;
+    }
 `
 
 export const PaineButton = styled.section`

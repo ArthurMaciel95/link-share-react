@@ -11,12 +11,20 @@ export const Container = styled.section`
     h3{
         margin-bottom: 30px;
     }
+
+    @media screen and (max-width:500px){
+        padding: 15px;
+    }
 `
 
 
 export const InputArea = styled.div`
     display:flex;
     width:100%;
+
+    @media screen and (max-width:500px){
+        flex-direction: column;
+    }
     
 `
 
@@ -24,6 +32,10 @@ export const InputArea = styled.div`
 export const Column = styled.div`
     width:50%;
     padding:0px 20px 0px 0px;
+
+    @media screen and (max-width:500px){
+width: 100%;
+    }
 
 `
 
@@ -45,7 +57,21 @@ export const FileArea = styled.div`
         p{
             color: var(--text-color-header);
             text-decoration: underline;
+            margin: 0;
         }
+    }
+
+    @media screen and (max-width:500px){
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+
+       section{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+       }
+    
     }
 `
 export const Form = styled.form`
@@ -73,7 +99,7 @@ img{
         justify-content: center;
         display: flex;
         right: 0px;
-        bottom: 13px;
+        bottom:0px;
         cursor: pointer;
         border: white 3px solid;
         img{
@@ -81,6 +107,12 @@ img{
             height: 15px;
         }
     }
-
+@media screen and(max-width:500px){
+    img{
+        span{
+            bottom: 15px;
+        }
+    }
+}
 
 `
