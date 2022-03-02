@@ -14,7 +14,22 @@ export const HeaderHome = styled.header`
     background-color:var(--primary-color);
     height:180px;
     width:100%;
-
+    @media screen and (max-width:500px){
+        justify-content: center;
+        
+    }
+    @media (max-width:500px){
+    .header-image-avatar{
+       display: flex;
+       justify-content: center;
+   }
+}
+    @media (max-width: 1200px){
+  .link-column{
+    margin-top: 100px;
+    margin-left: 0 !important;
+   }
+    
 `
 
 export const PaineButton = styled.section`

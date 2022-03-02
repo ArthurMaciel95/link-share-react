@@ -184,7 +184,7 @@ const ProfileInfo = ({ dataUser }) => {
                     <Buttons.Primary onClick={handleSubmit} disabled={disable}>
                         Salvar alterações
                     </Buttons.Primary>
-                    <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline>
+                   {/*  <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline> */}
                 </Profile.ButtonArea>
             </Profile.Form>
         </Profile.Container>
