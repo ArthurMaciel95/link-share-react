@@ -118,9 +118,7 @@ const ProfileInfo = ({ dataUser }) => {
                         id="file-input"
                         hidden
                         name="photo"
-                        onChange={(e) => {
-                            uploadImage(e);
-                        }}
+                        onChange={(e) => uploadImage(e)}
                         disabled={disable}
 
                     />
@@ -174,7 +172,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 className="round"
                                 placeholder="Descrição"
                                 onChange={formChange}
-                                value={formData.description}
+                                value={formData.description||""}
                                 disabled={disable}
                             ></textarea>
                         </Form.Group>

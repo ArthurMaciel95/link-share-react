@@ -32,6 +32,10 @@ export class UserServices {
     async update(payload) {
         return this.api.put(`/user/update`, { ...payload })
     }
+
+    async updatePicProfile(payload) {
+        return this.api.put(`/user/pic`, { ...payload })
+    }
     /**
     * @param {string} email a ser confirmado
     * @param {string} uuid identidificador unico da comfirmação
