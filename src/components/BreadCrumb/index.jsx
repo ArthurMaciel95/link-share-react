@@ -9,12 +9,19 @@ const BreadCrumb = ({ crumb }) => {
     <BreadCrumbStyle>
       {
         crumb.map((m, i) => {
-          return <><object key={i} data={m.icon} type=""></object>
-            <Link to={`/${m.page.toLowerCase()}`}>
-            <p className='bread-para'>{m.page}</p>
-            </Link>
-            { crumb.length - 1 !== i  ? <img src={arrowRightIcon} alt='arrow to right '/> : ''}
-            </>
+          return (
+              <div key={i}>
+                  <object key={`${i}-1`} data={m.icon} type=""></object>
+                  <Link key={`${i}-2`} to={`/${m.page.toLowerCase()}`}>
+                      <p className="bread-para">{m.page}</p>
+                  </Link>
+                  {crumb.length - 1 !== i ? (
+                      <img src={arrowRightIcon} alt="arrow to right " />
+                  ) : (
+                      ""
+                  )}
+              </div>
+          );
         })
       }
     </BreadCrumbStyle>
