@@ -74,7 +74,7 @@ const VisitorPage = () => {
                         <div className="row">
                             <div className="col-md-12 header-image-avatar">
                                 <Image
-                                    src={Avatar}
+                                    src={user && user.body.pic_profile|| Avatar}
                                     alt="avatar image profile"
                                 />
                             </div>

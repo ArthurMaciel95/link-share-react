@@ -80,8 +80,7 @@ const ProfilePage = () => {
                     <section>
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
-                                <Image src={Avatar} alt="avatar image profile" />
-                             
+                                <Image src={user && user.body.pic_profile || Avatar} alt="avatar image profile" />
                                 <BreadCrumb crumb={Crumb}/>
                             </div>
                         </div>

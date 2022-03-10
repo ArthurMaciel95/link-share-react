@@ -33,7 +33,6 @@ const HomePage = () => {
 
 
     const handlerButton = () => setShowModal(true);
-
     const getUser = () => userService.refresh().then((res) => { setUser(res.data) });
 
     const handlerCloseModal = () => setShowModal(false)
@@ -73,7 +72,7 @@ const HomePage = () => {
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
                                 <Image
-                                    src={Avatar}
+                                    src={user && user.body.pic_profile||Avatar}
                                     alt="avatar image profile"
                                 />
                                  <BreadCrumb crumb={Crumb}/>
