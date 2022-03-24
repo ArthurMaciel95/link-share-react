@@ -33,11 +33,10 @@ const HomePage = () => {
 
 
     const handlerButton = () => setShowModal(true);
-
     const getUser = () => userService.refresh().then((res) => { setUser(res.data) });
 
     const handlerCloseModal = () => setShowModal(false)
-
+    
     const userHaveAnLink = () => user.body.links.length > 0
 
     const ShowAllLinkOfUser = () => {
@@ -45,7 +44,7 @@ const HomePage = () => {
         return user.body.links.map((link) => (
            <>
             <CardLink
-                key={link.url}
+                Key={`${user.body.links.length > 0 ? link.id_link :  0}`}
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
@@ -73,7 +72,7 @@ const HomePage = () => {
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
                                 <Image
-                                    src={Avatar}
+                                    src={user && user.body.pic_profile||Avatar}
                                     alt="avatar image profile"
                                 />
                                  <BreadCrumb crumb={Crumb}/>
