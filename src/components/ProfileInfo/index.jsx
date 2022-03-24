@@ -15,7 +15,7 @@ const ProfileInfo = ({ dataUser }) => {
     const _ = new Validation();
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState();
-    const [photo, setPhoto] = useState({ file: "", name: "" });
+    const [photo, setPhoto] = useState({ base64: "", name: "",file:""});
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -29,7 +29,7 @@ const ProfileInfo = ({ dataUser }) => {
 
     const formChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });
 
-    const uploadImage = async (e) => {
+    const ShowPreviewImage = async (e) => {
         let file = e.target.files[0];
         if (!isFormatAllowed(file))
             return toast.error("Formato de image não permitido");
@@ -38,8 +38,9 @@ const ProfileInfo = ({ dataUser }) => {
                 `O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 1000
                 }kb`
             );
+    
         const base64 = await imageToBase64(file);
-        setPhoto({ file: base64, name: file.name });
+        setPhoto({ raw:file,  file:base64, name: file.name});
     };
     const isSizeAllowed = (file) => file.size < MAX_SIZE_IMAGE;
     const isFormatAllowed = (file) => {
@@ -61,20 +62,20 @@ const ProfileInfo = ({ dataUser }) => {
 
     const removePhoto = () => setPhoto({ file: "", name: "" });
 
-    const base64decoded = (image) => {
-        return decoded(image, "utf-8");
-    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+    
             setDisable(true)
             if (_.isEmpty(formData))
                 return toast.error("Os campos não podem estar vazios");
             if (!_.isEmail(formData.email))
                 return toast.error("Este email não é valido");
             setLoading(true);
+       
             await userService.update({ ...formData });
+           /*  await userService.updatePicProfile(photo.raw) */
             toast.success("Atualizado com sucesso!");
             setDisable(false)
      
@@ -117,8 +118,8 @@ const ProfileInfo = ({ dataUser }) => {
                         type="file"
                         id="file-input"
                         hidden
-                        name="photo"
-                        onChange={(e) => uploadImage(e)}
+                        name="pic_profile"
+                        onChange={(e) => ShowPreviewImage(e)}
                         disabled={disable}
 
                     />

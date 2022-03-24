@@ -1,7 +1,11 @@
 import { apiBase } from "./base";
+import { FileBase } from "./file";
+
+const formData = new FormData();
 export class UserServices {
     constructor() {
         this.api = apiBase();
+        this.apiFile = FileBase();
     }
     /**
      * @param {object} loginModel objeto com parametros para login
@@ -34,7 +38,7 @@ export class UserServices {
     }
 
     async updatePicProfile(payload) {
-        return this.api.put(`/user/pic`, { ...payload })
+        return this.apiFile.put(`/user/pic`, { payload })
     }
     /**
     * @param {string} email a ser confirmado

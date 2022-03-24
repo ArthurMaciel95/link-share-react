@@ -3,14 +3,14 @@ import { Card } from './styles.js'
 import threeDots from '../../assets/svg/three-dots.svg'
 import ModalCardSettings from 'components/ModalCardSettings'
 import { toast } from 'react-toastify'
-const CardLink = ({ name, image, link, handleClickDots,createAt ,id ,visitor}) => {
+const CardLink = ({ name, image, link, handleClickDots,createAt ,id ,visitor, Key}) => {
     const [ openModalSettings, setOpenModalSettings] = useState(false)
     const handlerClipBoard = () => {
       
     }
 
     return (
-        <Card>
+        <Card key={Key}>
             <img src={image} alt={` logo`} className='obj-fit m-2' style={{ height: '45px', objectFit: 'contain' }} />
             <div className="body-card d-flex flex-column mx-4">
                 <h3 className='text-dark fs-4'>{name}</h3>

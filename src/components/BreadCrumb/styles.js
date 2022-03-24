@@ -11,7 +11,7 @@ box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
   position: absolute;
   bottom: 20px;
   left: 220px;
-
+  max-height: 46px;
   div {
     display: flex;
     align-items: center;
