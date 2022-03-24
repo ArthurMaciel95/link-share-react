@@ -81,7 +81,7 @@ export const Form = styled.form`
 
 export const ImageArea = styled.div`
     position: relative;
-img{
+    img{
         border-radius: 50%;
         height: 80px;
         width: 80px;

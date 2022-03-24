@@ -36,7 +36,7 @@ const HomePage = () => {
     const getUser = () => userService.refresh().then((res) => { setUser(res.data) });
 
     const handlerCloseModal = () => setShowModal(false)
-
+    
     const userHaveAnLink = () => user.body.links.length > 0
 
     const ShowAllLinkOfUser = () => {
@@ -44,7 +44,7 @@ const HomePage = () => {
         return user.body.links.map((link) => (
            <>
             <CardLink
-                key={link.url}
+                Key={`${user.body.links.length > 0 ? link.id_link :  0}`}
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
@@ -59,7 +59,7 @@ const HomePage = () => {
         page: 'Home'
     }
     ]
-
+    console.log(user)
     useEffect(getUser, [showModal]);
    
     return (
