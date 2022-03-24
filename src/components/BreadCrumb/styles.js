@@ -11,24 +11,28 @@ box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
   position: absolute;
   bottom: 20px;
   left: 220px;
-  box-shadow: ;
-  a{
+  max-height: 46px;
+  div {
+    display: flex;
+    align-items: center;
+  }
+  
+  a {
       color: var(--text-color-header);
       transition: 0.3s ease;
  
-      &:hover{
-          color: var(--primary-color);
-        
-          text-decoration: underline;
-      }
-    .bread-para{
+    &:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    .bread-para {
       margin: 0;
       padding: 6px;
     }
-
-   
   }
-  @media(max-width:500px){
-      display: none;
-    }
+
+  @media(max-width:500px) {
+    display: none;
+  }
 `

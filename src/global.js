@@ -82,4 +82,12 @@ export const GlobalStyle = createGlobalStyle`
 ::placeholder{
     color: #d7d7d7;
 }
-` 
+
+input:disabled{
+  filter:grayscale(50%) ;
+}
+button:disabled{
+  filter:grayscale(50%) ;
+}
+`
+

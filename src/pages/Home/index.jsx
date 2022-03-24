@@ -59,7 +59,7 @@ const HomePage = () => {
         page: 'Home'
     }
     ]
-
+    console.log(user)
     useEffect(getUser, [showModal]);
    
     return (
