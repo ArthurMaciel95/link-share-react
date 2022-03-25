@@ -33,7 +33,7 @@ export const ModalArea = styled.div`
     @media screen and ( max-width:500px){
         position:fixed ;
         min-width: 100% ;
-        height:100% ;
+      
         display:grid ;
         grid-template-rows: 1fr;
         grid-template-columns: 1fr 1fr 1fr ;

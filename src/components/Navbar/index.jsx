@@ -4,12 +4,13 @@ import Avatar from "assets/images/avatar.jpeg";
 import * as Button from "components/Buttons";
 import PlusIcon from "assets/svg/icon_plus.svg";
 import Modal from "components/Modal";
+import {NavbarStyle} from './styles'
 const Navbar = ({ user, setShowModal }) => {
     return (
-        <div className="row">
+        <NavbarStyle>
             <div className="col-md-12 d-flex justify-content-between align-items-center my-md-2">
                 <img src={logoReduce} alt="" />
-                <div className="d-flex align-items-center justify-content-center">
+                <div className="d-flex align-items-center justify-content-center profile-nav-area">
                     <p className="text-white m-0">
                         {user && user.body.nickname}
                     </p>
@@ -24,7 +25,7 @@ const Navbar = ({ user, setShowModal }) => {
                     </Button.OutlineHeader>
                 </div>
             </div>
-        </div>
+        </NavbarStyle>
     );
 };
 
