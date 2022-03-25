@@ -87,7 +87,7 @@ const LoginPage = () => {
             <Section className="links">
                 <div className="max-width">
                     <img src={shareLinkLogo} alt="logo share link" />
-                    <h3>Finalmente, Todos os meus links em um só lugar</h3>
+                    <h3>Finally, All my links in one place!</h3>
                 </div>
                 <div className="d-flex fs-6">
                     <a href="#">Terms</a>
@@ -113,7 +113,7 @@ const LoginPage = () => {
                                 type={ShowPassword ? "text" : 'password'}
                                 name="password"
                                 className="round"
-                                placeholder="Senha"
+                                placeholder="Password"
                                 onChange={formChange}
                                 value={formData.password}
                             />
@@ -121,19 +121,19 @@ const LoginPage = () => {
                         </Form.Group>
                         <StayLogged checked={checkbox} onChange={(e) => setCheckbox(!checkbox)}/>
                         <a href="#" className="my-md-2 fs-7 text-reset">
-                            Esqueceu a senha?
+                            Forget your password?
                         </a>
                         <Buttons.Primary onClick={handleLogin}>
-                            Entrar
+                            Log in
                         </Buttons.Primary>
                         <h2 className="text-center text-black-50 fs-3 py-4">
-                            Não tem uma conta ainda?
+                            Dont't have account?
                         </h2>
                         <Link
                             to="/register"
                             className="text-center text-primary-color fw-bolder"
                         >
-                            Cadastre-se agora.
+                            Sign up Now!
                         </Link>
                     </Form.GroupContainer>
                 </Form.Container>

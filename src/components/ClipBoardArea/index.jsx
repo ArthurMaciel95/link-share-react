@@ -10,7 +10,7 @@ const ClipBoardArea = ({nickname}) => {
     const handlerClipBoard = () => {
         const copyUrl = navigator.clipboard.writeText(urlVisitor)
         
-        return toast.success('Link copiado com sucesso!')
+        return toast.success('link successfully copied!')
     }
     return (
         <>

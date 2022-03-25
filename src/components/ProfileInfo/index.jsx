@@ -102,7 +102,7 @@ const ProfileInfo = ({ dataUser }) => {
 
     return (
         <Profile.Container>
-            <h3>Informação da conta</h3>
+            <h3>Account Information</h3>
             <Profile.Form enctype="multipart/form-data">
                 <Profile.FileArea>
                     <Profile.ImageArea>
@@ -125,11 +125,11 @@ const ProfileInfo = ({ dataUser }) => {
                     />
                     <section>
                         <Buttons.Outline>
-                            <label htmlFor="file-input">Trocar foto</label>
+                            <label htmlFor="file-input">Change photo</label>
                         </Buttons.Outline>
                         <p>
                             {!photo.name
-                                ? "Nome de arquivo não informado"
+                                ? "file name not provided"
                                 : photo.name}
                         </p>
                     </section>
@@ -141,7 +141,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 type="text"
                                 name="name"
                                 className="round"
-                                placeholder="Nome"
+                                placeholder="Name"
                                 onChange={formChange}
                                 value={formData.name}
                                 disabled={disable}
@@ -159,7 +159,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 type="text"
                                 name="nickname"
                                 className="round"
-                                placeholder="Apelido"
+                                placeholder="Nickname"
                                 onChange={formChange}
                                 value={formData.nickname}
                                 disabled={disable}
@@ -171,7 +171,7 @@ const ProfileInfo = ({ dataUser }) => {
                             <textarea
                                 name="description"
                                 className="round"
-                                placeholder="Descrição"
+                                placeholder="Description"
                                 onChange={formChange}
                                 value={formData.description||""}
                                 disabled={disable}
@@ -181,7 +181,7 @@ const ProfileInfo = ({ dataUser }) => {
                 </Profile.InputArea>
                 <Profile.ButtonArea>
                     <Buttons.Primary onClick={handleSubmit} disabled={disable}>
-                        Salvar alterações
+                        Save changes
                     </Buttons.Primary>
                    {/*  <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline> */}
                 </Profile.ButtonArea>

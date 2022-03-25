@@ -24,6 +24,7 @@ import homeIcon from 'assets/svg/home.svg'
 import arrowRigthIcon from 'assets/svg/arrow-right-bread-crumb.svg'
 import profileBreadIcon from 'assets/svg/profile-bread.svg'
 import ClipBoardArea from "components/ClipBoardArea";
+import enUS from "date-fns/esm/locale/en-US/index.js";
 
 const HomePage = () => {
 
@@ -49,7 +50,7 @@ const HomePage = () => {
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
                 link={link.url.toLowerCase()}
-                createAt={formatDistance(new Date(link.createdAt), new Date(), { addSuffix: true, locale: ptBR })}
+                createAt={formatDistance(new Date(link.createdAt), new Date(), { addSuffix: true, locale: enUS })}
             /></>
         ))
     }
@@ -100,7 +101,7 @@ const HomePage = () => {
                             <div className="col-lg-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
                                     <Buttons.Primary onClick={e => handlerButton()}>
-                                        <img src={LinkChainIcon} /> Adicionar Link
+                                        <img src={LinkChainIcon} /> Add Link
                                     </Buttons.Primary>
                                     <Link to="/profile">
                                         <Buttons.Primary>

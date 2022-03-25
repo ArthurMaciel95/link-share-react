@@ -4,7 +4,7 @@ const StayLogged = ({ checked, onChange }) => {
     return (
         <StayLoggedStyle>
             <input type="checkbox" name="" id="" onChange={onChange} checked={checked} />
-            <p>Preencher dados automaticamente.</p>
+            <p>Remember me </p>
         </StayLoggedStyle>
     )
 }
