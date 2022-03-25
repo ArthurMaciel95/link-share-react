@@ -31,8 +31,8 @@ export const GlobalStyle = createGlobalStyle`
       sans-serif;
     box-sizing: border-box;
     height: 100vh;
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
   }
   a{
       text-decoration: none !important;
@@ -80,7 +80,7 @@ export const GlobalStyle = createGlobalStyle`
 
 
 ::placeholder{
-    color: #d7d7d7;
+    color: #ADADAD;
 }
 
 input:disabled{

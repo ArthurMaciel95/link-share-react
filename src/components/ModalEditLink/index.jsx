@@ -10,13 +10,13 @@ const ModalNewLInk = ({formChange,sendForm,name, SetView}) => {
             <div className='form-area col-6 offset-md-3  shadow p-5 position-relative'>
             <Form.Container>
             <img src={ArrowLeftIcon} alt="seta para esquerda" style={{ height: '60px', width: '60px' }} className='p-2  position-absolute top-0 ' onClick={()=> SetView(1)} />
-                    <h3>Detalhes do link</h3> 
+                    <h3>Link detail</h3> 
             <Form.Group>
-            <label>Url do Perfil do {name}:</label>
+            <label>Url Profile of {name}:</label>
             <input type="text" id='nickname' name='url' placeholder='Ex: https://www.facebook.com/profile/user123'  onChange={formChange}/>
           </Form.Group>
           <Form.Row className="end">
-              <Buttons.Primary  onClick={sendForm}>Criar Link</Buttons.Primary>
+              <Buttons.Primary  onClick={sendForm}>Create Link</Buttons.Primary>
                         
         </Form.Row>
                 </Form.Container>

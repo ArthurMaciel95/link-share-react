@@ -2,7 +2,7 @@ import React, { Children,useState } from 'react'
 import Logo from 'utils/links-logos'
 import ArrowLeftIcon from 'assets/images/icon_arrow_left.png'
 import LinkArea from 'components/LinkArea'
-import { ModalArea } from './styles'
+import { ModalOverlay, ModalArea } from './styles'
 import { LinksUrls } from 'services/api/link'
 import ModalNewLInk from 'components/ModalEditLink'
 import { toast } from "react-toastify";
@@ -37,37 +37,35 @@ const Modal = ({ showModal, setShowModal }) => {
 
     return (
         <> {showModal ? <>
-            {view == 1 ? <ModalArea>
-                < div className="col-6 offset-md-3  shadow p-5 position-relative bg-white" >
+            {view == 1 ? <ModalOverlay>
+                <ModalArea>
                     <img src={ArrowLeftIcon} alt="seta para esquerda" style={{ height: '60px', width: '60px', cursor:'pointer'}} className='p-2  position-absolute top-0 ' onClick={()=> setShowModal(!showModal)} />
-                    <div className="row h-25">
+                 
                     <LinkArea name="Custom link" logo={Logo.customlink} handleClick={click}></LinkArea>
                         <LinkArea name="Facebook" logo={Logo.facebook} handleClick={click}></LinkArea>
                         <LinkArea name="Instagram" logo={Logo.instagram} handleClick={click}></LinkArea>
                         
                         <LinkArea name="Linkdin" logo={Logo.linkdin} handleClick={click}></LinkArea>
-                    </div>
-                    <div className="row h-25">
+                  
                         <LinkArea name="Twitter" logo={Logo.twitter} handleClick={click}></LinkArea>
                         <LinkArea name="Snapchat" logo={Logo.snapchat} handleClick={click}></LinkArea>
                         <LinkArea name="Vimeo" logo={Logo.vimeo} handleClick={click}></LinkArea>
                         <LinkArea name="Pinterest" logo={Logo.pinterest} handleClick={click}></LinkArea>
-                    </div>
-                    <div className="row h-25">
+               
                         <LinkArea name="Telegram" logo={Logo.telegram} handleClick={click}></LinkArea>
                         <LinkArea name="TikTok" logo={Logo.tiktok} handleClick={click}></LinkArea>
                         <LinkArea name="Youtube" logo={Logo.youtube} handleClick={click}></LinkArea>
                         <LinkArea name="SoundCloud" logo={Logo.soundcloud} handleClick={click}></LinkArea>
-                    </div>
-                    <div className="row h-25">
+                  
+                  
                         <LinkArea name="Twitch" logo={Logo.twitch} handleClick={click}></LinkArea>
                         <LinkArea name="Dropbox" logo={Logo.dropbox} handleClick={click}></LinkArea>
                         <LinkArea name="OnlyFans" logo={Logo.onlyfans} handleClick={click}></LinkArea>
 
                         <LinkArea name="Discord" logo={Logo.discord} handleClick={click}></LinkArea>
-                    </div>
-                </div >
-            </ModalArea> : <ModalNewLInk formChange={formChange} sendForm={sendForm} name={linkName} SetView={SetView} />
+                   
+                </ModalArea >
+            </ModalOverlay> : <ModalNewLInk formChange={formChange} sendForm={sendForm} name={linkName} SetView={SetView} />
             }
             </>: null}</>
     )

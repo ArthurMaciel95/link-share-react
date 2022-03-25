@@ -97,7 +97,7 @@ const ProfilePage = () => {
                             <div className="col-md-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
                                     <Buttons.Primary onClick={e => handleButton()}>
-                                        <img src={LinkChainIcon} /> Adicionar Link
+                                        <img src={LinkChainIcon} /> Add Link
                                     </Buttons.Primary>
                                     <Link to="/profile">
                                         <Buttons.Primary>

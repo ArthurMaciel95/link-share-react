@@ -53,7 +53,7 @@ const Register = () => {
             <Section className="links">
                 <div className="max-width">
                     <img src={shareLinkLogo} alt="logo share link" />
-                    <h3>Finalmente, Todos os meus links em um só lugar</h3>
+                    <h3>Finally, All my links in one place!</h3>
                 </div>
                 <div className="d-flex fs-6">
                     <a href="#">Terms</a>
@@ -69,7 +69,7 @@ const Register = () => {
                                 type="text"
                                 name="name"
                                 className="round"
-                                placeholder="Nome"
+                                placeholder="Name"
                                 onChange={formChange}
                             />
                         </Form.Group>
@@ -78,7 +78,7 @@ const Register = () => {
                                 type="text"
                                 className="round"
                                 name="nickname"
-                                placeholder="Nome de usuário"
+                                placeholder="Username"
                                 onChange={formChange}
                             />
                         </Form.Group>
@@ -97,7 +97,7 @@ const Register = () => {
                                 type="password"
                                 name="password"
                                 className="round"
-                                placeholder="Senha"
+                                placeholder="Password"
                                 onChange={formChange}
                             />
 
@@ -106,7 +106,7 @@ const Register = () => {
                             <input
                                 type="password"
                                 name="confirm_password"
-                                placeholder="Repita a senha"
+                                placeholder="Repeat Password"
                                 className="round"
                                 onChange={formChange}
                             />
@@ -114,8 +114,8 @@ const Register = () => {
                         <Buttons.Primary onClick={handleRegister}>
                             Register
                         </Buttons.Primary>
-                        <Link to="/" className="my-md-2 fs-7 text-reset">
-                            Eu já tenho uma conta.
+                        <Link to="/" className="my-md-2 fs-7 text-reset">    
+                        I already have an account.
                         </Link>
                     </Form.GroupContainer>
                 </Form.Container>

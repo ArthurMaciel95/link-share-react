@@ -17,12 +17,12 @@ const ModalCardSettings = ({ openModalRemoveLink, id, link, visitor}) => {
         try{
         
             const result = await linkService.unregister(id)
-            toast.success('link deletado com sucesso!')
+            toast.success('link deleted successfully!')
         
           
           
         }catch(err){
-            toast.error('erro ao tentar deletar link')
+            toast.error('error trying to delete link')
             
             console.log(err)
         }
@@ -30,15 +30,15 @@ const ModalCardSettings = ({ openModalRemoveLink, id, link, visitor}) => {
 
     const handlerClipBoard = () => {
         navigator.clipboard.writeText(link)
-        toast.success('link copiado com sucesso!')
+        toast.success('link successfully copied!')
     }
 
  
     return (
 
     <ModalCardSettingsStyle>
-       {!visitor &&  <p onClick={(e)=> handlerRemoveLink(e)}><img src={TrashIcon} alt="lixeira" className='trash-icon' onClick={()=> handlerRemoveLink}/> Remover </p>}
-        <p onClick={(e)=> handlerClipBoard(e)}><img src={CopyLinkIcon} alt="copiar link" className='trash-icon'/> Copiar Link</p>
+       {!visitor &&  <p onClick={(e)=> handlerRemoveLink(e)}><img src={TrashIcon} alt="lixeira" className='trash-icon' onClick={()=> handlerRemoveLink}/> Remove </p>}
+        <p onClick={(e)=> handlerClipBoard(e)}><img src={CopyLinkIcon} alt="copy link" className='trash-icon'/> Copy Link</p>
     </ModalCardSettingsStyle>
 
    
