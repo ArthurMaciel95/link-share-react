@@ -16,6 +16,10 @@ export const ModalOverlay = styled.section`
     border-radius: 5px;
     position: absolute;
     z-index: 1000;
+
+    @media screen and (max-width:500px){
+        position:fixed ;
+    }
 `
 
 export const ModalArea = styled.div`
