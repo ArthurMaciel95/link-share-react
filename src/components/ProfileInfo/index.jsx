@@ -35,8 +35,8 @@ const ProfileInfo = ({ dataUser }) => {
             return toast.error("Formato de image não permitido");
         if (!isSizeAllowed(file))
             return toast.error(
-                `O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 1000
-                }kb`
+                `O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 100
+                }mb`
             );
     
         const base64 = await imageToBase64(file);

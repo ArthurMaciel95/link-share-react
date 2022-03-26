@@ -48,7 +48,7 @@ export const ButtonArea = styled.div`
 
 export const FileArea = styled.div`
     display: flex;
-  
+
     label{
         cursor: pointer;
     }
@@ -70,6 +70,7 @@ export const FileArea = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin-left:0px ;
        }
     
     }
