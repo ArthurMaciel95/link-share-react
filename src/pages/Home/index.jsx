@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "assets/images/avatar.jpeg";
-import * as Buttons from "components/Buttons";
+import * as Buttons from "components/buttons";
 import plusIcon from "assets/svg/icon_plus.svg";
 import Logo from "utils/links-logos";
-import CardLink from "components/CardLink";
-import Modal from "components/Modal";
+import CardLink from "components/card-link";
+import Modal from "components/modal";
 import { Image, HeaderHome, PaineButton } from "./styles";
 import { UserServices } from "services/api/user";
-import DataNotFound from "components/DataNotFound";
-import Loading from "components/Loading";
+import DataNotFound from "components/data-not-found";
+import Loading from "components/loading";
 import ArrowLeftIcon from 'assets/images/icon_arrow_left.png';
 import ProfileIcon from 'assets/svg/profile.svg';
 import LinkChainIcon from 'assets/svg/link-chain.svg';
-import LinkArea from 'components/LinkArea'
+import LinkArea from 'components/link-area'
 import { formatDistance, subDays } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
-import CardSkeleton from "components/Skeleton";
-import SkeletonCards from "components/Skeleton";
-import Navbar from 'components/Navbar'
-import BreadCrumb from "components/BreadCrumb";
+import CardSkeleton from "components/skeleton";
+import SkeletonCards from "components/skeleton";
+import Navbar from 'components/navbar'
+import BreadCrumb from "components/bread-crumb";
 import homeIcon from 'assets/svg/home.svg'
 import arrowRigthIcon from 'assets/svg/arrow-right-bread-crumb.svg'
 import profileBreadIcon from 'assets/svg/profile-bread.svg'
-import ClipBoardArea from "components/ClipBoardArea";
+import ClipBoardArea from "components/clip-board-area";
 import enUS from "date-fns/esm/locale/en-US/index.js";
 import Button from '@mui/material/Button';
 const HomePage = () => {

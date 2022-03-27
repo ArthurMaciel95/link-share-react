@@ -1,6 +1,6 @@
 import react, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Loading from "components/Loading";
+import Loading from "components/loading";
 import { UserServices } from "services/api/user";
 import { toast } from "react-toastify";
 

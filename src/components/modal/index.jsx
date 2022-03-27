@@ -1,10 +1,10 @@
 import React, { Children, useState } from 'react'
 import Logo from 'utils/links-logos'
 import ArrowLeftIcon from 'assets/images/icon_arrow_left.png'
-import LinkArea from 'components/LinkArea'
+import LinkArea from 'components/link-area'
 import { ModalOverlay, ModalArea } from './styles'
 import { LinksUrls } from 'services/api/link'
-import ModalNewLInk from 'components/ModalEditLink'
+import ModalNewLInk from 'components/modal-edit-link'
 import { toast } from "react-toastify";
 import ModalMaterial from '@mui/material/Modal';
 

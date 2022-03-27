@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as Profile from "./styles";
-import * as Form from "components/Form";
-import * as Buttons from "components/Buttons";
+import * as Form from "components/form";
+import * as Buttons from "components/buttons";
 import noAvatar from "assets/images/avatar.jpeg";
 import CloseIcon from "assets/svg/close.svg";
 import { toast } from "react-toastify";
