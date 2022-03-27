@@ -3,16 +3,16 @@ import { useNavigate } from "react-router-dom";
 import shareLinkLogo from "assets/svg/logo-share-link.svg";
 import { Link } from "react-router-dom";
 import { Validation } from "utils/validation";
-import * as Form from "components/Form";
+import * as Form from "components/form";
 import { Container, Section } from "./styles";
 import { toast } from "react-toastify";
 import { UserServices } from "services/api/user";
 import { setNewToken, logOut } from "utils/jwt";
-import Loading from "components/Loading";
+import Loading from "components/loading";
 import { encodePassword } from "utils/encrypt";
 import ShowPasswordIcon from 'assets/svg/show-password.svg'
 import HiddenPasswordIcon from 'assets/svg/hidden-password.svg'
-import StayLogged from 'components/StayLogged'
+import StayLogged from 'components/stay-logged'
 import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
 const LoginPage = () => {
@@ -92,7 +92,7 @@ const LoginPage = () => {
             {loading && <Loading />}
             <Section className="links">
                 <div className="max-width hero-area">
-                    <img src={shareLinkLogo} alt="logo share link" />
+
                     <h3>Finally, All my links in one place!</h3>
                 </div>
                 <div className="d-flex fs-6 links-terms">
@@ -102,6 +102,9 @@ const LoginPage = () => {
                 </div>
             </Section>
             <Section className="login">
+                <div className="logo-mobile">
+                    <img src={shareLinkLogo} alt="logo share link" />
+                </div>
                 <Form.Container className="flex flex-column flex-center login-width">
                     <Form.GroupContainer>
                         <Form.Group>

@@ -3,7 +3,7 @@ import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
 import Button from '@mui/material/Button'
 import PlusIcon from "assets/svg/icon_plus.svg";
-import Modal from "components/Modal";
+import Modal from "components/modal";
 import { NavbarStyle } from './styles'
 const Navbar = ({ user, setOpen }) => {
     return (

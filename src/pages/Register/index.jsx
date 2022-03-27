@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import shareLinkLogo from "assets/svg/logo-share-link.svg";
-import * as Buttons from "components/Buttons";
-import * as Form from "components/Form";
+import * as Buttons from "components/buttons";
+import * as Form from "components/form";
 import { Validation } from "utils/validation";
 import { Container, Section } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserServices } from "services/api/user"
 import { encodePassword } from "utils/encrypt";
-import Loading from "components/Loading";
+import Loading from "components/loading";
 import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
 const Register = () => {
@@ -65,8 +65,12 @@ const Register = () => {
                     <a href="#">Privacy</a>
                     <a href="#">Helps & Contacts</a>
                 </div>
+
             </Section>
-            <Section>
+            <Section className="register">
+                <div className="logo-mobile">
+                    <img src={shareLinkLogo} alt="logo share link" />
+                </div>
                 <Form.Container className="flex flex-center register-width">
                     <Form.GroupContainer>
                         <Form.Group>

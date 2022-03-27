@@ -1,6 +1,6 @@
 import React from 'react'
 import { ModalNewLinkOverlay, ModalNewLink } from './styles'
-import * as Form from "components/Form"
+import * as Form from "components/form"
 import { Button, TextField } from '@mui/material'
 import ArrowLeftIcon from 'assets/images/icon_arrow_left.png'
 
