@@ -24,15 +24,14 @@ export const ModalOverlay = styled.section`
 
 export const ModalArea = styled.div`
     background-color:white ;
-    display:grid ;
-    
-    
+    display:grid;
+   
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width:50% ;
     max-width:750px;
     min-width:550px ;
     padding:50px ;
-    margin:0 auto ;
+    margin:100px auto ;
     position:relative ;
     @media screen and ( max-width:500px){
         position:fixed ;

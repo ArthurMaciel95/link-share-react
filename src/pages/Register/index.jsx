@@ -9,7 +9,8 @@ import { toast } from "react-toastify";
 import { UserServices } from "services/api/user"
 import { encodePassword } from "utils/encrypt";
 import Loading from "components/Loading";
-
+import TextField from "@mui/material/TextField";
+import Button from '@mui/material/Button';
 const Register = () => {
     const _ = new Validation();
     const navigate = useNavigate()
@@ -17,36 +18,40 @@ const Register = () => {
     const [loading, setLoading] = useState(false);
     const { name, nickname, email, password, confirm_password } = formData;
     const userService = new UserServices();
-    const formChange = (event) =>  setFormData({ ...formData, [event.target.name]: event.target.value });
-    
+    const [disabled, setDisabled] = useState(false)
+
+    const formChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });
+
     async function handleRegister(event) {
         event.preventDefault();
         try {
-           
+
             if (!_.isPassword(password))
                 return toast.error("A senha deve ter no mínimo 8 caracteres e possuir uma maiúscula e uma minúscula entre A-Z e um numero entre 0-9.!")
             if (password !== confirm_password)
                 return toast.error("Senhas não coincidem");
-                setLoading(true);
+            setLoading(true);
+            setDisabled(true)
             await userService.register({
                 name,
                 nickname,
                 email,
                 password: await encodePassword(password),
             });
+            setDisabled(false)
             setLoading(false);
             toast.success("Registrado com sucesso!");
             return navigate('/')
         } catch (error) {
-            setLoading(false);  
+            setLoading(false);
             if (error.response !== undefined)
-            
+
                 return toast.error(error.response.data.message);
             toast.error("Registro falhou!");
-           
+
         }
     }
-    
+
     return (
         <Container>
             {loading && <Loading />}
@@ -65,57 +70,63 @@ const Register = () => {
                 <Form.Container className="flex flex-center register-width">
                     <Form.GroupContainer>
                         <Form.Group>
-                            <input
+                            <TextField
+                                label="Name"
+                                variant="outlined"
                                 type="text"
                                 name="name"
                                 className="round"
-                                placeholder="Name"
                                 onChange={formChange}
                             />
                         </Form.Group>
                         <Form.Group>
-                            <input
+                            <TextField
+                                label="Nickname"
+                                variant="outlined"
                                 type="text"
-                                className="round"
                                 name="nickname"
-                                placeholder="Username"
+                                className="round"
                                 onChange={formChange}
                             />
                         </Form.Group>
                         <Form.Group>
-                            <input
+                            <TextField
+                                label="Email"
+                                variant="outlined"
                                 type="email"
-                                className="round"
                                 name="email"
-                                placeholder="Email"
+                                className="round"
                                 onChange={formChange}
 
                             />
                         </Form.Group>
                         <Form.Group>
-                            <input
+                            <TextField
+                                label="Password"
+                                variant="outlined"
                                 type="password"
                                 name="password"
                                 className="round"
-                                placeholder="Password"
                                 onChange={formChange}
                             />
 
                         </Form.Group>
                         <Form.Group>
-                            <input
+                            <TextField
+                                label="Confirm Password"
+                                variant="outlined"
                                 type="password"
                                 name="confirm_password"
-                                placeholder="Repeat Password"
                                 className="round"
                                 onChange={formChange}
                             />
                         </Form.Group>
-                        <Buttons.Primary onClick={handleRegister}>
+                        <Button onClick={handleRegister} variant="contained" color="primary" disabled={disabled} size="large" disableElevation>
                             Register
-                        </Buttons.Primary>
-                        <Link to="/" className="my-md-2 fs-7 text-reset">    
-                        I already have an account.
+                        </Button >
+
+                        <Link to="/" className="my-md-2 fs-7 text-reset">
+                            I already have an account.
                         </Link>
                     </Form.GroupContainer>
                 </Form.Container>

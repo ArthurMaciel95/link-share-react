@@ -8,12 +8,50 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { hover } from '@testing-library/user-event/dist/hover';
+
+
+const theme = createTheme({
+    components: {
+        MuiButton: {
+
+            variants: [
+                {
+                    props: { variant: 'contained', color: 'primary' },
+                    style: {
+                        textTransform: 'none',
+                        color: '#FFF',
+                        boxShadow: 'none'
+                    },
+
+
+                }
+            ]
+        }
+    },
+    palette: {
+
+        primary: {
+            main: '#fb6b6b'
+
+        },
+        secondary: {
+            main: '#FFF'
+        }
+
+    }
+});
+
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <GlobalStyle />
-            <App />
-            <ToastContainer transition={Slide} theme="colored" limit={3} />
+
+            <ThemeProvider theme={theme} >
+                <GlobalStyle />
+                <App />
+                <ToastContainer transition={Slide} theme="colored" limit={3} />
+            </ThemeProvider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
