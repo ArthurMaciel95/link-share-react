@@ -42,9 +42,32 @@ export const Section = styled.section`
             width:100%;
             max-width: 500px;
         }
+
+        @media screen and (max-width:500px){
+            
+                display:none ;
+            
+        }
     }
     &.login {
         background-color: var(--background);
+
+        .logo-mobile{
+            display:none ;
+          
+        }
+
+        @media screen and (max-width:500px){
+            .logo-mobile{
+                display:flex ;
+                margin-bottom:20px ;
+                img{
+                    background-color:var(--primary-color);
+                    padding:10px ;
+                    border-radius:5px ;
+                }
+            }
+        }
     }
 
     & a {
@@ -68,7 +91,7 @@ export const Section = styled.section`
 
     @media only screen and (max-width: 850px) {
         width: 100vw;
-        height: 50vh;
+        height: auto;
     }
 }
 `

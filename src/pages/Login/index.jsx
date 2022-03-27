@@ -92,7 +92,7 @@ const LoginPage = () => {
             {loading && <Loading />}
             <Section className="links">
                 <div className="max-width hero-area">
-                    <img src={shareLinkLogo} alt="logo share link" />
+
                     <h3>Finally, All my links in one place!</h3>
                 </div>
                 <div className="d-flex fs-6 links-terms">
@@ -102,6 +102,9 @@ const LoginPage = () => {
                 </div>
             </Section>
             <Section className="login">
+                <div className="logo-mobile">
+                    <img src={shareLinkLogo} alt="logo share link" />
+                </div>
                 <Form.Container className="flex flex-column flex-center login-width">
                     <Form.GroupContainer>
                         <Form.Group>

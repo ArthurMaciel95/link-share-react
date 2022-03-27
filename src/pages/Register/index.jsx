@@ -65,8 +65,12 @@ const Register = () => {
                     <a href="#">Privacy</a>
                     <a href="#">Helps & Contacts</a>
                 </div>
+
             </Section>
-            <Section>
+            <Section className="register">
+                <div className="logo-mobile">
+                    <img src={shareLinkLogo} alt="logo share link" />
+                </div>
                 <Form.Container className="flex flex-center register-width">
                     <Form.GroupContainer>
                         <Form.Group>

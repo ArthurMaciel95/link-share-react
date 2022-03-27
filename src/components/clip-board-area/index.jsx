@@ -2,6 +2,7 @@ import react from 'react';
 import { ClipBoardAreaStyle } from './styles';
 import ClipBoardIcon from 'assets/svg/clip-board.svg'
 import { toast } from 'react-toastify';
+import Button from '@mui/material/Button'
 const ClipBoardArea = ({ nickname }) => {
 
 
@@ -14,15 +15,12 @@ const ClipBoardArea = ({ nickname }) => {
     }
     return (
         <>
+
             <ClipBoardAreaStyle>
-
-                <p>
-                    {urlVisitor}
-                </p>
-                <span className='icon-area' onClick={(e) => handlerClipBoard(e)}>
+                <Button onClick={(e) => handlerClipBoard(e)} variant="outlined" className="btn" color="primary" size="large" disableElevation>
+                    <p>Copy my profile</p>
                     <img src={ClipBoardIcon} alt="clipboard icon" />
-                </span>
-
+                </Button>
             </ClipBoardAreaStyle>
         </>
     )
