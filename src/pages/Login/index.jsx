@@ -92,7 +92,7 @@ const LoginPage = () => {
             {loading && <Loading />}
             <Section className="links">
                 <div className="max-width hero-area">
-
+                    <img src={shareLinkLogo} alt="logo share link" />
                     <h3>Finally, All my links in one place!</h3>
                 </div>
                 <div className="d-flex fs-6 links-terms">
