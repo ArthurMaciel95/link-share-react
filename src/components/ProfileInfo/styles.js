@@ -21,7 +21,7 @@ export const Container = styled.section`
 export const InputArea = styled.div`
     display:flex;
     width:100%;
-
+    
     @media screen and (max-width:500px){
         flex-direction: column;
     }
@@ -31,10 +31,13 @@ export const InputArea = styled.div`
 
 export const Column = styled.div`
     width:50%;
-    padding:0px 20px 0px 0px;
-
+  
+    &:first-child{
+        padding:0px 20px 0px 0px;
+    }
     @media screen and (max-width:500px){
-width: 100%;
+        width: 100%;
+        padding:0 ;
     }
 
 `
@@ -48,7 +51,7 @@ export const ButtonArea = styled.div`
 
 export const FileArea = styled.div`
     display: flex;
-
+    margin-bottom:20px ;
     label{
         cursor: pointer;
     }
@@ -108,12 +111,10 @@ export const ImageArea = styled.div`
             height: 15px;
         }
     }
-@media screen and(max-width:500px){
+    @media screen and(max-width:500px){
     img{
         span{
             bottom: 15px;
         }
     }
-}
-
-`
+}`

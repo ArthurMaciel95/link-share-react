@@ -33,8 +33,18 @@ export const PaineButton = styled.section`
     justify-content:end;
     display:flex;
     position:absolute;
+   
+    align-items: center;
     top:-70px;
-
+    button{
+        color: white !important;
+        &:first-child{
+            margin-right:10px ;
+        }
+        img{
+            margin-right:10px ;
+        }
+    }
 
     @media (max-width:500px){
         display: flex;

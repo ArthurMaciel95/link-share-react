@@ -80,7 +80,7 @@ export const GlobalStyle = createGlobalStyle`
 
 
 ::placeholder{
-    color: #ADADAD;
+    color: #A7A7A7;
 }
 
 input:disabled{
@@ -89,5 +89,6 @@ input:disabled{
 button:disabled{
   filter:grayscale(50%) ;
 }
+
 `
 

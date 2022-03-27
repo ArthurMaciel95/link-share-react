@@ -36,6 +36,16 @@ export const PaineButton = styled.section`
     justify-content:end;
     display:flex;
     position:absolute;
-    top:-70px;
+    top:-65px;
+
+    button{
+        color: white !important;
+        &:first-child{
+            margin-right:10px ;
+        }
+        img{
+            margin-right:10px ;
+        }
+    }
 
 `

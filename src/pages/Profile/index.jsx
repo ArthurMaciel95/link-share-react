@@ -20,20 +20,21 @@ import BreadCrumb from 'components/BreadCrumb'
 import homeIcon from 'assets/svg/home.svg'
 import arrowRigthIcon from 'assets/svg/arrow-right-bread-crumb.svg'
 import profileBreadIcon from 'assets/svg/profile-bread.svg'
-
+import Button from '@mui/material/Button';
 const ProfilePage = () => {
     const userService = new UserServices()
     const [user, setUser] = useState(undefined)
+    const [open, setOpen] = useState(false);
     const getUser = () => userService.refresh().then((res) => setUser(res.data))
-    const [showModal, setShowModal] = useState(false)
-    const closeModal = () => setShowModal(false)
-    const openModal = () => setShowModal(true)
-    const handlerButton = () => setShowModal(true)
+
+    const closeModal = () => setOpen(false)
+    const openModal = () => setOpen(true)
+    const handlerButton = () => setOpen(true);
 
     useEffect(getUser, [])
 
     const handleButton = () => {
-        setShowModal(true)
+        setOpen(true)
     }
 
     const Crumb = [{
@@ -47,62 +48,37 @@ const ProfilePage = () => {
     ]
     return (
         <>
-            <Modal showModal={showModal} setShowModal={setShowModal}>
-                <h3>Escolha uma das plataformas para criar um link.</h3>
-                <div class="row h-25">
-                    <LinkArea name="Facebook" logo={Logo.facebook}></LinkArea>
-                    <LinkArea name="Instagram" logo={Logo.instagram}></LinkArea>
-                    <LinkArea name="Discord" logo={Logo.discord}></LinkArea>
-                    <LinkArea name="DropBox" logo={Logo.linkdin}></LinkArea>
-                </div>
-                <div class="row h-25">
-                    <LinkArea name="DropBox" logo={Logo.twitter}></LinkArea>
-                    <LinkArea name="Snapchat" logo={Logo.snapchat}></LinkArea>
-                    <LinkArea name="Vimeo" logo={Logo.vimeo}></LinkArea>
-                    <LinkArea name="DropBox" logo={Logo.pinterest}></LinkArea>
-                </div>
-                <div class="row h-25">
-                    <LinkArea name="Telegram" logo={Logo.telegram}></LinkArea>
-                    <LinkArea name="TikTok" logo={Logo.tiktok}></LinkArea>
-                    <LinkArea name="Youtube" logo={Logo.youtube}></LinkArea>
-                    <LinkArea name="DropBox" logo={Logo.soundcloud}></LinkArea>
-                </div>
-                <div class="row h-25">
-                    <LinkArea name="Telegram" logo={Logo.twitch}></LinkArea>
-                    <LinkArea name="TikTok" logo={Logo.dropBox}></LinkArea>
-                    <LinkArea name="Youtube" logo={Logo.onlyfans}></LinkArea>
-                    <LinkArea name="BuyMeACoffe" logo={Logo.buymeacoffe}></LinkArea>
-                </div>
-            </Modal>
+            <Modal open={open} setOpen={setOpen} />
+
             <HeaderHome>
                 <section className="container">
-                    <Navbar user={user} setShowModal={setShowModal}/>
+                    <Navbar user={user} setOpen={setOpen} />
                     <section>
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
                                 <Image src={user && user.body.pic_profile || Avatar} alt="avatar image profile" />
-                                <BreadCrumb crumb={Crumb}/>
+                                <BreadCrumb crumb={Crumb} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-lg-4 col-sm-12 mh-25" style={{ maxHeight: "281px" }}>
                                 <div className='bg-white shadow-sm  mt-2 rounded  p-3'>
-                                <h4 className='text-dark mt-3'>{user && user.body.nickname}</h4>
-                                <p className='text-black-50 fs-5'>{user && user.body.email}</p>
-                                <p className='text-black-50'>{user && user.body.description}
-                                </p>
+                                    <h4 className='text-dark mt-3'>{user && user.body.nickname}</h4>
+                                    <p className='text-black-50 fs-5'>{user && user.body.email}</p>
+                                    <p className='text-black-50'>{user && user.body.description}
+                                    </p>
                                 </div>
-                             
+
                             </div>
                             <div className="col-md-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
-                                    <Buttons.Primary onClick={e => handleButton()}>
+                                    <Button onClick={e => handleButton()} variant="contained" color="primary" size='large' disableElevation>
                                         <img src={LinkChainIcon} /> Add Link
-                                    </Buttons.Primary>
+                                    </Button>
                                     <Link to="/profile">
-                                        <Buttons.Primary>
+                                        <Button variant="contained" color="primary" size='large' disableElevation>
                                             <img src={ProfileIcon} /> Profile
-                                        </Buttons.Primary>
+                                        </Button>
                                     </Link>
                                 </PaineButton>
                                 <ProfileInfo dataUser={user} />

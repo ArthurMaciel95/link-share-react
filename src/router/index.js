@@ -8,6 +8,7 @@ import ProfilePage from 'pages/Profile'
 import PrivateRoute from 'Auth';
 import EmailConfirm from 'pages/Confirmation/email';
 import VisitorPage from 'pages/Visitor'
+
 const Router = () => {
     return (
         <Routes>

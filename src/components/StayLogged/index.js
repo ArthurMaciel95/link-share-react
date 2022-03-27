@@ -1,11 +1,14 @@
 import React from 'react'
 import { StayLoggedStyle } from './styles'
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+
 const StayLogged = ({ checked, onChange }) => {
     return (
-        <StayLoggedStyle>
-            <input type="checkbox" name="" id="" onChange={onChange} checked={checked} />
-            <p>Remember me </p>
-        </StayLoggedStyle>
+        <FormGroup>
+            <FormControlLabel control={<Switch defaultChecked />} label="Remember me" onChange={onChange} checked={checked} />
+        </FormGroup>
     )
 }
 

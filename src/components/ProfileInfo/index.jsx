@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import { UserServices } from "services/api/user";
 import { encoded, decoded } from "utils/buffer";
 import { Validation } from "utils/validation";
+import { TextField } from "@mui/material";
+import Button from '@mui/material/Button';
 
 const ProfileInfo = ({ dataUser }) => {
 
@@ -15,7 +17,7 @@ const ProfileInfo = ({ dataUser }) => {
     const _ = new Validation();
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState();
-    const [photo, setPhoto] = useState({ base64: "", name: "",file:""});
+    const [photo, setPhoto] = useState({ base64: "", name: "", file: "" });
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -24,7 +26,7 @@ const ProfileInfo = ({ dataUser }) => {
         photo,
     });
     const [disable, setDisable] = useState(false)
-   
+
     const MAX_SIZE_IMAGE = 100000;
 
     const formChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -38,9 +40,9 @@ const ProfileInfo = ({ dataUser }) => {
                 `O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 100
                 }mb`
             );
-    
+
         const base64 = await imageToBase64(file);
-        setPhoto({ raw:file,  file:base64, name: file.name});
+        setPhoto({ raw: file, file: base64, name: file.name });
     };
     const isSizeAllowed = (file) => file.size < MAX_SIZE_IMAGE;
     const isFormatAllowed = (file) => {
@@ -66,23 +68,23 @@ const ProfileInfo = ({ dataUser }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-    
+
             setDisable(true)
             if (_.isEmpty(formData))
                 return toast.error("Os campos não podem estar vazios");
             if (!_.isEmail(formData.email))
                 return toast.error("Este email não é valido");
             setLoading(true);
-       
+
             await userService.update({ ...formData });
-           /*  await userService.updatePicProfile(photo.raw) */
+            /*  await userService.updatePicProfile(photo.raw) */
             toast.success("Atualizado com sucesso!");
             setDisable(false)
-     
+
         } catch (error) {
             setLoading(false);
             setDisable(false)
-       
+
             console.log(error.response);
             if (error.response !== undefined)
                 if (error.response.status === 406)
@@ -96,7 +98,7 @@ const ProfileInfo = ({ dataUser }) => {
             name: dataUser.body.name,
             email: dataUser.body.email,
             nickname: dataUser.body.nickname,
-            description:dataUser.body?.description
+            description: dataUser.body?.description
         })
     }, [dataUser])
 
@@ -108,7 +110,7 @@ const ProfileInfo = ({ dataUser }) => {
                     <Profile.ImageArea>
                         <img
                             src={!photo.file ? noAvatar : photo.file}
-                            alt="foto de perfil do usuário"
+                            alt="avatar user"
                         />
                         <span onClick={() => removePhoto()}>
                             <img src={CloseIcon} alt="botão de fechar" />
@@ -124,9 +126,9 @@ const ProfileInfo = ({ dataUser }) => {
 
                     />
                     <section>
-                        <Buttons.Outline>
+                        <Button variant="outlined" color="primary">
                             <label htmlFor="file-input">Change photo</label>
-                        </Buttons.Outline>
+                        </Button>
                         <p>
                             {!photo.name
                                 ? "file name not provided"
@@ -137,29 +139,35 @@ const ProfileInfo = ({ dataUser }) => {
                 <Profile.InputArea>
                     <Profile.Column>
                         <Form.Group>
-                            <input
+                            <TextField
+                                label="Name"
+                                variant="outlined"
                                 type="text"
                                 name="name"
                                 className="round"
-                                placeholder="Name"
+
                                 onChange={formChange}
                                 value={formData.name}
                                 disabled={disable}
                             />
-                            <input
+                            <TextField
+                                label="Email"
+                                variant="outlined"
                                 type="text"
                                 name="email"
                                 className="round"
-                                placeholder="Email"
+
                                 onChange={formChange}
                                 value={formData.email}
                                 disabled={disable}
                             />
-                            <input
+                            <TextField
+                                label="Nickname"
+                                variant="outlined"
                                 type="text"
                                 name="nickname"
                                 className="round"
-                                placeholder="Nickname"
+
                                 onChange={formChange}
                                 value={formData.nickname}
                                 disabled={disable}
@@ -168,22 +176,28 @@ const ProfileInfo = ({ dataUser }) => {
                     </Profile.Column>
                     <Profile.Column>
                         <Form.Group>
-                            <textarea
+                            <TextField
+                                id="filled-multiline-static"
+                                label="Description"
+                                multiline
+
+                                defaultValue={formData.description || ""}
+                                variant="outlined"
                                 name="description"
                                 className="round"
-                                placeholder="Description"
+
                                 onChange={formChange}
-                                value={formData.description||""}
+                                value={formData.description || ""}
                                 disabled={disable}
-                            ></textarea>
+                            />
                         </Form.Group>
                     </Profile.Column>
                 </Profile.InputArea>
                 <Profile.ButtonArea>
-                    <Buttons.Primary onClick={handleSubmit} disabled={disable}>
+                    <Button onClick={handleSubmit} disabled={disable} variant="contained" color="primary" size="large" disableElevation>
                         Save changes
-                    </Buttons.Primary>
-                   {/*  <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline> */}
+                    </Button>
+                    {/*  <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline> */}
                 </Profile.ButtonArea>
             </Profile.Form>
         </Profile.Container>
