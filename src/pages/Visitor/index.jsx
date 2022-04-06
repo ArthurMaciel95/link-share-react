@@ -8,16 +8,15 @@ import CardLink from "components/card-link";
 import { Image, HeaderHome } from "./styles";
 import { UserServices } from "services/api/user";
 import DataNotFound from "components/data-not-found";
-import LinkArea from 'components/link-area'
-import { formatDistance, subDays } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
+import LinkArea from "components/link-area";
+import { formatDistance, subDays } from "date-fns";
+import { enUS } from "date-fns/locale";
 import CardSkeleton from "components/skeleton";
 import SkeletonCards from "components/skeleton";
 import ClipBoardArea from "components/clip-board-area";
 
 const VisitorPage = () => {
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const { nickname } = useParams();
     const userService = new UserServices();
@@ -27,22 +26,16 @@ const VisitorPage = () => {
     const handlerButton = () => setShowModal(true);
 
     const getUser = () => {
-        const result = userService.visitor(nickname).then(res => setUser(res.data)).catch(err => navigate('/error', { replace: true }));
-        console.log(result)
+        const result = userService
+            .visitor(nickname)
+            .then((res) => setUser(res.data))
+            .catch((err) => navigate("/error", { replace: true }));
+        console.log(result);
+    };
 
-
-
-
-
-
-    }
-
-
-
-    const userHaveAnLink = () => user.body.links.length > 0
+    const userHaveAnLink = () => user.body.links.length > 0;
 
     const ShowAllLinkOfUser = () => {
-
         return user.body.links.map((link) => (
             <>
                 <CardLink
@@ -51,30 +44,36 @@ const VisitorPage = () => {
                     image={Logo[link.type.toLowerCase()] || Logo.customlink}
                     name={link.type}
                     link={link.url.toLowerCase()}
-                    createAt={formatDistance(new Date(link.createdAt), new Date(), { addSuffix: true, locale: ptBR })}
+                    createAt={formatDistance(
+                        new Date(link.createdAt),
+                        new Date(),
+                        { addSuffix: true, locale: enUS }
+                    )}
                     visitor={true}
-                /></>
-        ))
-    }
+                />
+            </>
+        ));
+    };
 
     useEffect(getUser, [showModal]);
 
     return (
         <>
-
             <HeaderHome>
                 <section className="container">
                     <div className="row">
                         <div className="col-md-12 d-flex justify-content-between align-items-center my-md-2">
                             <img src={logoReduce} alt="" />
-
                         </div>
                     </div>
                     <section className="">
                         <div className="row">
                             <div className="col-md-12 header-image-avatar">
                                 <Image
-                                    src={user && user.body.pic_profile || Avatar}
+                                    src={
+                                        (user && user.body.pic_profile) ||
+                                        Avatar
+                                    }
                                     alt="avatar image profile"
                                 />
                             </div>
@@ -84,7 +83,6 @@ const VisitorPage = () => {
                                 className="col-lg-4 col-sm-12 rounded mh-25  "
                                 style={{ maxHeight: "281px" }}
                             >
-
                                 <div className="bg-white shadow-sm  mt-2 rounded  p-3">
                                     <h4 className="text-dark mt-3">
                                         {user && user.body.nickname}
@@ -98,11 +96,19 @@ const VisitorPage = () => {
                                 </div>
                             </div>
                             <div className="col-lg-7 offset-md-1 position-relative link-column mt-lg-3">
-
-
-                                <>{user ? <>{userHaveAnLink() ? (
-                                    ShowAllLinkOfUser()
-                                ) : <DataNotFound />}</> : <>{<SkeletonCards />}</>}</>
+                                <>
+                                    {user ? (
+                                        <>
+                                            {userHaveAnLink() ? (
+                                                ShowAllLinkOfUser()
+                                            ) : (
+                                                <DataNotFound />
+                                            )}
+                                        </>
+                                    ) : (
+                                        <>{<SkeletonCards />}</>
+                                    )}
+                                </>
                             </div>
                         </div>
                     </section>

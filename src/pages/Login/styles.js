@@ -13,7 +13,7 @@ export const Container = styled.div`
     @media only screen and (max-width: 850px) {
         flex-direction: column;
     }
-`
+`;
 
 export const Section = styled.section`
     display: flex;
@@ -57,16 +57,26 @@ export const Section = styled.section`
           
         }
 
+        h4{
+            display: none;
+        }
+
         @media screen and (max-width:500px){
             .logo-mobile{
                 display:flex ;
                 margin-bottom:20px ;
+             
                 img{
                     background-color:var(--primary-color);
                     padding:10px ;
                     border-radius:5px ;
                 }
             }
+            h4{
+                display: inline;
+                    color: var(--text-color-header);
+                   
+                }
         }
     }
 
@@ -94,4 +104,4 @@ export const Section = styled.section`
         height: auto;
     }
 }
-`
+`;
