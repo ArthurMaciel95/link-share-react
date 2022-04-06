@@ -9,27 +9,27 @@ import { UserServices } from "services/api/user";
 import { encoded, decoded } from "utils/buffer";
 import { Validation } from "utils/validation";
 import { TextField } from "@mui/material";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 const ProfileInfo = ({ dataUser }) => {
-
     const userService = new UserServices();
     const _ = new Validation();
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState();
     const [photo, setPhoto] = useState({ base64: "", name: "", file: "" });
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        nickname: '',
+        name: "",
+        email: "",
+        nickname: "",
         description: "",
         photo,
     });
-    const [disable, setDisable] = useState(false)
+    const [disable, setDisable] = useState(false);
 
     const MAX_SIZE_IMAGE = 100000;
 
-    const formChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });
+    const formChange = (event) =>
+        setFormData({ ...formData, [event.target.name]: event.target.value });
 
     const ShowPreviewImage = async (e) => {
         let file = e.target.files[0];
@@ -37,7 +37,8 @@ const ProfileInfo = ({ dataUser }) => {
             return toast.error("Formato de image não permitido");
         if (!isSizeAllowed(file))
             return toast.error(
-                `O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 100
+                `O tamanho da imagem não pode passar de ${
+                    MAX_SIZE_IMAGE / 100000
                 }mb`
             );
 
@@ -60,32 +61,28 @@ const ProfileInfo = ({ dataUser }) => {
         });
     };
 
-
-
     const removePhoto = () => setPhoto({ file: "", name: "" });
-
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-
-            setDisable(true)
+            setDisable(true);
             if (_.isEmpty(formData))
                 return toast.error("Os campos não podem estar vazios");
             if (!_.isEmail(formData.email))
                 return toast.error("Este email não é valido");
             setLoading(true);
-
+            console.log(photo.raw);
             await userService.update({ ...formData });
-            /*  await userService.updatePicProfile(photo.raw) */
+            console.log(photo.raw);
+            photo.raw && (await userService.updatePicProfile(photo.raw));
+            console.log(photo.raw);
             toast.success("Atualizado com sucesso!");
-            setDisable(false)
-
+            setDisable(false);
         } catch (error) {
             setLoading(false);
-            setDisable(false)
+            setDisable(false);
 
-            console.log(error.response);
             if (error.response !== undefined)
                 if (error.response.status === 406)
                     return toast.warning("E-mail não possui registro!");
@@ -94,18 +91,19 @@ const ProfileInfo = ({ dataUser }) => {
     };
 
     useEffect(() => {
-        dataUser && setFormData({
-            name: dataUser.body.name,
-            email: dataUser.body.email,
-            nickname: dataUser.body.nickname,
-            description: dataUser.body?.description
-        })
-    }, [dataUser])
+        dataUser &&
+            setFormData({
+                name: dataUser.body.name,
+                email: dataUser.body.email,
+                nickname: dataUser.body.nickname,
+                description: dataUser.body?.description,
+            });
+    }, [dataUser]);
 
     return (
         <Profile.Container>
             <h3>Account Information</h3>
-            <Profile.Form enctype="multipart/form-data">
+            <Profile.Form enctype="multipart/form-data" method="PUT">
                 <Profile.FileArea>
                     <Profile.ImageArea>
                         <img
@@ -123,7 +121,6 @@ const ProfileInfo = ({ dataUser }) => {
                         name="pic_profile"
                         onChange={(e) => ShowPreviewImage(e)}
                         disabled={disable}
-
                     />
                     <section>
                         <Button variant="outlined" color="primary">
@@ -145,7 +142,6 @@ const ProfileInfo = ({ dataUser }) => {
                                 type="text"
                                 name="name"
                                 className="round"
-
                                 onChange={formChange}
                                 value={formData.name}
                                 disabled={disable}
@@ -156,7 +152,6 @@ const ProfileInfo = ({ dataUser }) => {
                                 type="text"
                                 name="email"
                                 className="round"
-
                                 onChange={formChange}
                                 value={formData.email}
                                 disabled={disable}
@@ -167,7 +162,6 @@ const ProfileInfo = ({ dataUser }) => {
                                 type="text"
                                 name="nickname"
                                 className="round"
-
                                 onChange={formChange}
                                 value={formData.nickname}
                                 disabled={disable}
@@ -180,12 +174,10 @@ const ProfileInfo = ({ dataUser }) => {
                                 id="filled-multiline-static"
                                 label="Description"
                                 multiline
-
                                 defaultValue={formData.description || ""}
                                 variant="outlined"
                                 name="description"
                                 className="round"
-
                                 onChange={formChange}
                                 value={formData.description || ""}
                                 disabled={disable}
@@ -194,7 +186,14 @@ const ProfileInfo = ({ dataUser }) => {
                     </Profile.Column>
                 </Profile.InputArea>
                 <Profile.ButtonArea>
-                    <Button onClick={handleSubmit} disabled={disable} variant="contained" color="primary" size="large" disableElevation>
+                    <Button
+                        onClick={handleSubmit}
+                        disabled={disable}
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        disableElevation
+                    >
                         Save changes
                     </Button>
                     {/*  <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline> */}
