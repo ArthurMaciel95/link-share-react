@@ -12,43 +12,47 @@ export class UserServices {
      * @returns {promise} retorna uma promise
      */
     async login(loginModel) {
-        return this.api.post('/user/access', { ...loginModel });
+        return this.api.post("/user/access", { ...loginModel });
     }
     /**
-    * @param {object} createModel objeto com parametros para registro
-    * @returns {promise} retorna uma promise
-    */
+     * @param {object} createModel objeto com parametros para registro
+     * @returns {promise} retorna uma promise
+     */
     async register(registerModel) {
-        return this.api.post('/user/register', { ...registerModel });
+        return this.api.post("/user/register", { ...registerModel });
     }
     /**
-    * @param {number} userId id do usuario a ser deletado
-    * @returns {promise} retorna uma promise
-    */
+     * @param {number} userId id do usuario a ser deletado
+     * @returns {promise} retorna uma promise
+     */
     async unregister(userId) {
         return this.api.delete(`/user/${userId}`);
     }
 
     async refresh(refreshModel) {
-        return this.api.get(`/user/refresh`, { ...refreshModel })
+        return this.api.get(`/user/refresh`, { ...refreshModel });
     }
 
     async update(payload) {
-        return this.api.put(`/user/update`, { ...payload })
-    }
-
-    async updatePicProfile(payload) {
-        return this.apiFile.put(`/user/pic`, { payload })
+        return this.api.put(`/user/update`, { ...payload });
     }
     /**
-    * @param {string} email a ser confirmado
-    * @param {string} uuid identidificador unico da comfirmação
-    * @returns {promise} retorna uma promise
-    */
+     *
+     * @param {object} payload arquivo que será enviado.
+     * @returns
+     */
+    async updatePicProfile(payload) {
+        return this.apiFile.put(`/user/pic`, { ...payload });
+    }
+    /**
+     * @param {string} email a ser confirmado
+     * @param {string} uuid identidificador unico da comfirmação
+     * @returns {promise} retorna uma promise
+     */
     async emailConfirm(email, uuid) {
         return this.api.post("/user/validate/", { email, uuid });
     }
     async visitor(nickname) {
-        return this.api.get(`/user/visitor/${nickname}`)
+        return this.api.get(`/user/visitor/${nickname}`);
     }
 }

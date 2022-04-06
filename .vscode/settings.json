@@ -3,12 +3,20 @@
     "javascript.validate.enable": false,
     "prettier.singleQuote": true,
     "eslint.enable": true,
+<<<<<<< HEAD
     "editor.fontFamily": "Fira Code Medium , 'Courier New', monospace",
+=======
+    "editor.fontFamily": "\"Fira Code\" , 'Courier New', monospace",
+>>>>>>> 5c6d17f4be2cdc3a45c4c393cba0c9e0d6cf1401
     "editor.fontLigatures": true,
     "editor.formatOnSave": true,
     "editor.suggest.showFolders": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+<<<<<<< HEAD
     "editor.minimap.scale": 3,
+=======
+    "editor.minimap.scale": 0,
+>>>>>>> 5c6d17f4be2cdc3a45c4c393cba0c9e0d6cf1401
     "editor.suggest.insertMode": "replace",
     "diffEditor.wordWrap": "off",
     "editor.wordWrapColumn": 120,
