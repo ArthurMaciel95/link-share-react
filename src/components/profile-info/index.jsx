@@ -75,8 +75,9 @@ const ProfileInfo = ({ dataUser }) => {
             setLoading(true);
 
             await userService.update({ ...formData });
-
-            photo.raw && (await userService.updatePicProfile({ pic_profile: photo.raw }));
+            const formDatas = new FormData();
+            formDatas.append("pic_profile", photo.raw);
+            photo.raw && (await userService.updatePicProfile(formDatas));
 
             toast.success("Atualizado com sucesso!");
             setDisable(false);
@@ -105,7 +106,7 @@ const ProfileInfo = ({ dataUser }) => {
     return (
         <Profile.Container>
             <h3>Account Information</h3>
-            <Profile.Form encType="multipart/form-data" method="PUT">
+            <Profile.Form>
                 <Profile.FileArea>
                     <Profile.ImageArea>
                         <img
