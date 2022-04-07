@@ -11,7 +11,7 @@ export function FileBase() {
         if (config.url !== "/user/access" && config.url !== "/user/register")
             if (token) config.headers[`x-access-token`] = token;
 
-        config.headers["Content-Type"] = "multipart/form-data;  boundary: file";
+        config.headers["Content-Type"] = "multipart/form-data";
 
         return config;
     });

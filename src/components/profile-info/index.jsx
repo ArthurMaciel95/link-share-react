@@ -28,7 +28,7 @@ const ProfileInfo = ({ dataUser }) => {
     });
     const [disable, setDisable] = useState(false);
 
-    const MAX_SIZE_IMAGE = 100000;
+    const MAX_SIZE_IMAGE = 2000000;
 
     const formChange = (event) =>
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -39,8 +39,7 @@ const ProfileInfo = ({ dataUser }) => {
             return toast.error("Formato de image não permitido");
         if (!isSizeAllowed(file))
             return toast.error(
-                `O tamanho da imagem não pode passar de ${
-                    MAX_SIZE_IMAGE / 100000
+                `O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 1000000
                 }mb`
             );
 
@@ -77,7 +76,7 @@ const ProfileInfo = ({ dataUser }) => {
 
             await userService.update({ ...formData });
 
-            photo.raw && (await userService.updatePicProfile(photo.raw));
+            photo.raw && (await userService.updatePicProfile({ pic_profile: photo.raw }));
 
             toast.success("Atualizado com sucesso!");
             setDisable(false);
@@ -106,7 +105,7 @@ const ProfileInfo = ({ dataUser }) => {
     return (
         <Profile.Container>
             <h3>Account Information</h3>
-            <Profile.Form enctype="multipart/form-data" method="PUT">
+            <Profile.Form encType="multipart/form-data" method="PUT">
                 <Profile.FileArea>
                     <Profile.ImageArea>
                         <img
