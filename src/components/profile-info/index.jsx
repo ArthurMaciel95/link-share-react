@@ -10,9 +10,11 @@ import { UserServices } from "services/api/user";
 import { encoded, decoded } from "utils/buffer";
 import { Validation } from "utils/validation";
 import { TextField } from "@mui/material";
-import Button from "@mui/material/Button";
+import LoadingButton from '@mui/lab/LoadingButton';
+import Button from '@mui/material/Button'
 
 const ProfileInfo = ({ dataUser }) => {
+
     const navigate = new useNavigate();
     const userService = new UserServices();
     const _ = new Validation();
@@ -77,6 +79,7 @@ const ProfileInfo = ({ dataUser }) => {
             await userService.update({ ...formData });
             const formDatas = new FormData();
             formDatas.append("pic_profile", photo.raw);
+
             photo.raw && (await userService.updatePicProfile(formDatas));
 
             toast.success("Atualizado com sucesso!");
@@ -189,16 +192,19 @@ const ProfileInfo = ({ dataUser }) => {
                     </Profile.Column>
                 </Profile.InputArea>
                 <Profile.ButtonArea>
-                    <Button
+                    <LoadingButton
+                        loading={loading}
+                        loadingPosition="center"
                         onClick={handleSubmit}
                         disabled={disable}
                         variant="contained"
                         color="primary"
                         size="large"
                         disableElevation
+                        type="submit"
                     >
                         Save changes
-                    </Button>
+                    </LoadingButton>
                     {/*  <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline> */}
                 </Profile.ButtonArea>
             </Profile.Form>
