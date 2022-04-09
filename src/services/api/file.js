@@ -8,7 +8,6 @@ export function FileBase() {
         const token = getToken();
         if (token) config.headers[`x-access-token`] = token;
 
-
         return config;
     });
 

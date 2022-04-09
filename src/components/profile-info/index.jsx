@@ -77,10 +77,11 @@ const ProfileInfo = ({ dataUser }) => {
             setLoading(true);
 
             await userService.update({ ...formData });
-            const formDatas = new FormData();
-            formDatas.append("pic_profile", photo.raw);
 
-            photo.raw && (await userService.updatePicProfile(formDatas));
+            const data = new FormData();
+            data.append('pic_profile', photo.raw);
+
+            photo.raw && (await userService.updatePicProfile(data));
 
             toast.success("Atualizado com sucesso!");
             setDisable(false);
@@ -103,6 +104,7 @@ const ProfileInfo = ({ dataUser }) => {
                 email: dataUser.body.email,
                 nickname: dataUser.body.nickname,
                 description: dataUser.body?.description,
+
             });
     }, [dataUser]);
 
