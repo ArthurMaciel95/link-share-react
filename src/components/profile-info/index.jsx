@@ -13,6 +13,7 @@ import { TextField } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
 import Button from '@mui/material/Button'
 
+
 const ProfileInfo = ({ dataUser }) => {
 
     const navigate = new useNavigate();
@@ -78,10 +79,10 @@ const ProfileInfo = ({ dataUser }) => {
 
             await userService.update({ ...formData });
 
-            const data = new FormData();
-            data.append('pic_profile', photo.raw);
+            const FormDatas = new FormData();
+            FormDatas.append('pic_profile', photo.raw);
 
-            photo.raw && (await userService.updatePicProfile(data));
+            photo.raw && (await userService.updatePicProfile(FormDatas));
 
             toast.success("Atualizado com sucesso!");
             setDisable(false);
@@ -182,7 +183,6 @@ const ProfileInfo = ({ dataUser }) => {
                                 id="filled-multiline-static"
                                 label="Description"
                                 multiline
-                                defaultValue={formData.description || ""}
                                 variant="outlined"
                                 name="description"
                                 className="round"
@@ -196,7 +196,7 @@ const ProfileInfo = ({ dataUser }) => {
                 <Profile.ButtonArea>
                     <LoadingButton
                         loading={loading}
-                        loadingPosition="center"
+                        loadingPosition="start"
                         onClick={handleSubmit}
                         disabled={disable}
                         variant="contained"
