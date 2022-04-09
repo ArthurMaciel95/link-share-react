@@ -42,6 +42,7 @@ export class UserServices {
      * @returns
      */
     async updatePicProfile(payload) {
+
         return this.apiFile.post(`/user/pic`, payload);
     }
     /**

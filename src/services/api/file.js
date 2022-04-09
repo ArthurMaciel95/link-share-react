@@ -7,7 +7,6 @@ export function FileBase() {
     instance.interceptors.request.use((config) => {
         const token = getToken();
         if (token) config.headers[`x-access-token`] = token;
-        config.headers["Content-Type"] = "multipart/form-data";
 
         return config;
     });

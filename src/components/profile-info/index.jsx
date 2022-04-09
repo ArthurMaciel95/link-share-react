@@ -10,9 +10,12 @@ import { UserServices } from "services/api/user";
 import { encoded, decoded } from "utils/buffer";
 import { Validation } from "utils/validation";
 import { TextField } from "@mui/material";
-import Button from "@mui/material/Button";
+import LoadingButton from '@mui/lab/LoadingButton';
+import Button from '@mui/material/Button'
+
 
 const ProfileInfo = ({ dataUser }) => {
+
     const navigate = new useNavigate();
     const userService = new UserServices();
     const _ = new Validation();
@@ -28,7 +31,7 @@ const ProfileInfo = ({ dataUser }) => {
     });
     const [disable, setDisable] = useState(false);
 
-    const MAX_SIZE_IMAGE = 100000;
+    const MAX_SIZE_IMAGE = 2000000;
 
     const formChange = (event) =>
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -39,8 +42,7 @@ const ProfileInfo = ({ dataUser }) => {
             return toast.error("Formato de image não permitido");
         if (!isSizeAllowed(file))
             return toast.error(
-                `O tamanho da imagem não pode passar de ${
-                    MAX_SIZE_IMAGE / 100000
+                `O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 1000000
                 }mb`
             );
 
@@ -76,9 +78,11 @@ const ProfileInfo = ({ dataUser }) => {
             setLoading(true);
 
             await userService.update({ ...formData });
-            const formDatas = new FormData();
-            formDatas.append("pic_profile", photo.raw);
-            photo.raw && (await userService.updatePicProfile(formDatas));
+
+            const FormDatas = new FormData();
+            FormDatas.append('pic_profile', photo.raw);
+
+            photo.raw && (await userService.updatePicProfile(FormDatas));
 
             toast.success("Atualizado com sucesso!");
             setDisable(false);
@@ -101,6 +105,7 @@ const ProfileInfo = ({ dataUser }) => {
                 email: dataUser.body.email,
                 nickname: dataUser.body.nickname,
                 description: dataUser.body?.description,
+
             });
     }, [dataUser]);
 
@@ -178,7 +183,6 @@ const ProfileInfo = ({ dataUser }) => {
                                 id="filled-multiline-static"
                                 label="Description"
                                 multiline
-                                defaultValue={formData.description || ""}
                                 variant="outlined"
                                 name="description"
                                 className="round"
@@ -190,16 +194,19 @@ const ProfileInfo = ({ dataUser }) => {
                     </Profile.Column>
                 </Profile.InputArea>
                 <Profile.ButtonArea>
-                    <Button
+                    <LoadingButton
+                        loading={loading}
+                        loadingPosition="start"
                         onClick={handleSubmit}
                         disabled={disable}
                         variant="contained"
                         color="primary"
                         size="large"
                         disableElevation
+                        type="submit"
                     >
                         Save changes
-                    </Button>
+                    </LoadingButton>
                     {/*  <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline> */}
                 </Profile.ButtonArea>
             </Profile.Form>
