@@ -7,7 +7,7 @@ import Switch from '@mui/material/Switch';
 const StayLogged = ({ checked, onChange }) => {
     return (
         <FormGroup>
-            <FormControlLabel control={<Switch defaultChecked />} label="Remember me" onChange={onChange} checked={checked} />
+            <FormControlLabel control={<Switch />} label="Remember me" onChange={onChange} checked={checked} />
         </FormGroup>
     )
 }

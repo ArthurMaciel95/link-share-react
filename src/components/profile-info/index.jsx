@@ -196,7 +196,7 @@ const ProfileInfo = ({ dataUser }) => {
                 <Profile.ButtonArea>
                     <LoadingButton
                         loading={loading}
-                        loadingPosition="start"
+                        loadingPosition="center"
                         onClick={handleSubmit}
                         disabled={disable}
                         variant="contained"
