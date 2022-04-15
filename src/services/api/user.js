@@ -64,7 +64,13 @@ export class UserServices {
         if (!step) {
             return console.log('you need to pass the step')
         }
-        return this.api.post(`/reset_password/${step}`, { email });
+
+        if (step === 1)
+            return this.api.post(`/reset_password/${step}`, { email });
+
+        if (step === 2)
+            return this.api.post(`/reset_password/${step}`);
+
     }
     async visitor(nickname) {
         return this.api.get(`/user/visitor/${nickname}`);

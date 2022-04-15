@@ -1,20 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { HeaderStyles, FormContainer } from './styles';
 import TextField from '@mui/material/TextField'
 import Link from '@mui/material/Link'
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button'
 import { toast } from "react-toastify";
 import { Validation } from "utils/validation";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import IllustrationResetPassword from 'assets/svg/password-reset.svg'
+import IllustrationResetPassword from 'assets/svg/password-reset.svg';
+import { UserServices } from "services/api/user";
 
 const ResetPassword = () => {
-
-    const [disabled, setDisabled] = useState(false)
+    const user = new UserServices();
+    const SearchQuery = new URLSearchParams();
+    const navigate = new useNavigate();
+    const [disabled, setDisabled] = useState(false);
     const [open, setOpen] = useState(false);
-    const [formData, setFormData] = useState({ password: '', repeatPassword: '' })
+    const [formData, setFormData] = useState({ password: '', repeatPassword: '' });
+
     const handleClose = () => {
         setOpen(false);
     };
@@ -32,6 +36,25 @@ const ResetPassword = () => {
     const formChange = (event) =>
         setFormData({ ...formData, [event.target.name]: event.target.value });
 
+    useEffect(() => {
+        console.log(SearchQuery)
+
+        // verifica se tem a query JWT e TK na URL
+        if (!SearchQuery.has('jwt') && !SearchQuery.has('tk')) {
+            toast.warn('queryString not found!')
+
+            // volta para o login 
+            return navigate("/", { replace: true });
+        }
+
+        verifyToken()
+
+
+    }, [])
+
+    async function verifyToken() {
+        return await user.resetPassword(, 2);
+    }
 
     return (
         <>

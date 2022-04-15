@@ -36,9 +36,16 @@ export const FormContainer = styled.section`
         p{
             margin-top:10px ;
             text-align:center ;
+            color:#6C6C6C ;
+            margin-bottom:20px ;
         }
         button{
             margin-top:20px ;
+        }
+        h3{
+            font-weight:700 ;
+            color:#323232 ;
+            font-size:1.8rem ;
         }
 
         @media screen and (max-width:500px){
