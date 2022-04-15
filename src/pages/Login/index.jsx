@@ -31,6 +31,10 @@ const LoginPage = () => {
         stayLoggedVerify();
     }, []);
 
+
+
+
+
     const stayLoggedVerify = () => {
         if (localStorage.getItem("StayLogged")) {
             const { email, password, StayLogged } = JSON.parse(
@@ -44,13 +48,13 @@ const LoginPage = () => {
     const setStayLogged = () => {
         return checkbox
             ? localStorage.setItem(
-                  "StayLogged",
-                  JSON.stringify({
-                      StayLogged: checkbox,
-                      email: email,
-                      password: password,
-                  })
-              )
+                "StayLogged",
+                JSON.stringify({
+                    StayLogged: checkbox,
+                    email: email,
+                    password: password,
+                })
+            )
             : localStorage.removeItem("StayLogged");
     };
     async function handleLogin(event) {
@@ -150,9 +154,9 @@ const LoginPage = () => {
                             checked={checkbox}
                             onChange={(e) => setCheckbox(!checkbox)}
                         />
-                        <a href="#" className="my-md-2 fs-7 text-reset">
+                        <Link to="/forget-password" className="my-md-2 fs-7 text-reset">
                             Forget your password?
-                        </a>
+                        </Link>
                         <Button
                             onClick={handleLogin}
                             variant="contained"

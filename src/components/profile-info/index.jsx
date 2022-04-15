@@ -20,7 +20,7 @@ const ProfileInfo = ({ dataUser }) => {
     const userService = new UserServices();
     const _ = new Validation();
     const [loading, setLoading] = useState(false);
-    const [user, setUser] = useState();
+
     const [photo, setPhoto] = useState({ base64: "", name: "", file: "" });
     const [formData, setFormData] = useState({
         name: "",
@@ -105,10 +105,10 @@ const ProfileInfo = ({ dataUser }) => {
                 email: dataUser.body.email,
                 nickname: dataUser.body.nickname,
                 description: dataUser.body?.description,
-
+                pic_profile: dataUser.body?.pic_profile
             });
-    }, [dataUser]);
 
+    }, [dataUser]);
     return (
         <Profile.Container>
             <h3>Account Information</h3>
@@ -117,6 +117,7 @@ const ProfileInfo = ({ dataUser }) => {
                     <Profile.ImageArea>
                         <img
                             src={!photo.file ? noAvatar : photo.file}
+
                             alt="avatar user"
                         />
                         <span onClick={() => removePhoto()}>

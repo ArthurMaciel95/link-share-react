@@ -1,7 +1,7 @@
 import { apiBase } from "./base";
 import { FileBase } from "./file";
 
-const formData = new FormData();
+
 export class UserServices {
     constructor() {
         this.api = apiBase();
@@ -52,6 +52,14 @@ export class UserServices {
      */
     async emailConfirm(email, uuid) {
         return this.api.post("/user/validate/", { email, uuid });
+    }
+
+    async resetPassword(email, step) {
+
+        if (!step) {
+            return console.log('you need to pass the step')
+        }
+        return this.api.post(`/reset_password/${step}`, { email });
     }
     async visitor(nickname) {
         return this.api.get(`/user/visitor/${nickname}`);
