@@ -53,7 +53,12 @@ export class UserServices {
     async emailConfirm(email, uuid) {
         return this.api.post("/user/validate/", { email, uuid });
     }
-
+    /**
+     * 
+     * @param {string} email - será usando para identifica quem quer trocar a senha; 
+     * @param {number} step 1 -> envio de email 2-> verificar token 
+     * @returns 
+     */
     async resetPassword(email, step) {
 
         if (!step) {
