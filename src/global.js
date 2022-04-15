@@ -89,55 +89,6 @@ input:disabled{
 button:disabled{
   filter:grayscale(50%) ;
 }
-  
-svg#freepik_stories-reset - password: not(.animated).animable {
-	opacity: 0;
-}
 
-svg#freepik_stories - reset - password.animated #freepik--speech - bubble--inject - 42 {
-	animation: 1s 1 forwards cubic - bezier(.36, -0.01, .5, 1.38) slideDown;
-	animation - delay: 0s;
-}
-
-svg#freepik_stories - reset - password.animated #freepik--Tab--inject - 42 {
-	animation: 1s 1 forwards cubic - bezier(.36, -0.01, .5, 1.38) zoomIn, 1.5s Infinite linear floating;
-	animation - delay: 0s, 1s;
-}
-
-@keyframes slideDown {
-	0 % {
-		opacity: 0;
-		transform: translateY(-30px);
-	}
-	100 % {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes zoomIn {
-	0 % {
-		opacity: 0;
-		transform: scale(0.5);
-	}
-	100 % {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-@keyframes floating {
-	0 % {
-		opacity: 1;
-		transform: translateY(0px);
-	}
-	50 % {
-		transform: translateY(-10px);
-	}
-	100 % {
-		opacity: 1;
-		transform: translateY(0px);
-	}
-}
 
 `

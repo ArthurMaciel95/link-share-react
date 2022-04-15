@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { HeaderStyles, FormContainer } from './styles';
 import TextField from '@mui/material/TextField'
 import Link from '@mui/material/Link'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button'
 import { toast } from "react-toastify";
 import { Validation } from "utils/validation";
@@ -12,12 +12,14 @@ import IllustrationResetPassword from 'assets/svg/password-reset.svg';
 import { UserServices } from "services/api/user";
 
 const ResetPassword = () => {
+    const { search } = useLocation()
+    const seachParams = new URLSearchParams(search);
     const user = new UserServices();
-    const SearchQuery = new URLSearchParams();
     const navigate = new useNavigate();
     const [disabled, setDisabled] = useState(false);
     const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState({ password: '', repeatPassword: '' });
+
 
     const handleClose = () => {
         setOpen(false);
@@ -37,23 +39,32 @@ const ResetPassword = () => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
 
     useEffect(() => {
-        console.log(SearchQuery)
+        console.log(seachParams)
 
         // verifica se tem a query JWT e TK na URL
-        if (!SearchQuery.has('jwt') && !SearchQuery.has('tk')) {
-            toast.warn('queryString not found!')
+        if (!seachParams.has('jwt') && !seachParams.has('tk')) {
+            toast.warn('Attributes in url not found!')
 
             // volta para o login 
             return navigate("/", { replace: true });
         }
 
+
+        // inicia a requisição para o back
         verifyToken()
 
 
     }, [])
 
     async function verifyToken() {
-        return await user.resetPassword(, 2);
+        //está pegando as queryString da URL!
+        const jwt = seachParams.get('jwt')
+        const token = seachParams.get('tk')
+
+        return await user.resetPassword(null, 2, {
+            jwt
+            token
+        });
     }
 
     return (
