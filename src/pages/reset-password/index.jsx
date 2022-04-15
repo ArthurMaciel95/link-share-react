@@ -58,12 +58,10 @@ const ResetPassword = () => {
 
     async function verifyToken() {
         //está pegando as queryString da URL!
-        const jwt = seachParams.get('jwt')
-        const token = seachParams.get('tk')
 
         return await user.resetPassword(null, 2, {
-            jwt
-            token
+            jwt: seachParams.get('jwt'),
+            token: seachParams.get('tk')
         });
     }
 
