@@ -82,7 +82,9 @@ const ProfileInfo = ({ dataUser }) => {
             const FormDatas = new FormData();
             FormDatas.append('pic_profile', photo.raw);
 
-            photo.raw && (await userService.updatePicProfile(FormDatas));
+            if (!!photo.raw){
+                await userService.updatePicProfile(FormDatas)
+            }
 
             toast.success("Atualizado com sucesso!");
             setDisable(false);
