@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Image = styled.img`
     border-radius: 50%;
-
+    
     width: 12rem;
     height: 12rem;
     object-fit: cover;
@@ -12,7 +12,7 @@ export const HeaderHome = styled.header`
     background-color: var(--primary-color);
     height: 180px;
     width: 100%;
-
+        
     @media (max-width: 1200px) {
         .link-column {
             margin-top: 190px;

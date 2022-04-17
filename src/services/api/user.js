@@ -1,7 +1,7 @@
 import { apiBase } from "./base";
 import { FileBase } from "./file";
 
-const formData = new FormData();
+
 export class UserServices {
     constructor() {
         this.api = apiBase();
@@ -52,6 +52,25 @@ export class UserServices {
      */
     async emailConfirm(email, uuid) {
         return this.api.post("/user/validate/", { email, uuid });
+    }
+    /**
+     * 
+     * @param {string} email - será usando para identifica quem quer trocar a senha; 
+     * @param {number} step 1 -> envio de email 2-> verificar token 
+     * @returns 
+     */
+    async resetPassword(email = null, step, { jwt, token }) {
+        // 1 or 2
+        if (!step) {
+            return console.log('you need to pass the step')
+        }
+
+        if (step === 1)
+            return this.api.put(`/reset_password/${step}`, { email });
+
+        if (step === 2 && jwt && token)
+            return this.api.put(`/reset_password/${step}?jwt=${jwt}&tk=${token}`);
+
     }
     async visitor(nickname) {
         return this.api.get(`/user/visitor/${nickname}`);
