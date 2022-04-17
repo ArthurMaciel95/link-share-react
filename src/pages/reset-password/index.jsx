@@ -10,8 +10,10 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import IllustrationResetPassword from 'assets/svg/password-reset.svg';
 import { UserServices } from "services/api/user";
+import { encodePassword } from 'utils/encrypt';
 
 const ResetPassword = () => {
+    const _ = new Validation()
     const { search } = useLocation()
     const seachParams = new URLSearchParams(search);
     const user = new UserServices();
@@ -19,6 +21,8 @@ const ResetPassword = () => {
     const [disabled, setDisabled] = useState(false);
     const [open, setOpen] = useState(false);
     const [formData, setFormData] = useState({ password: '', repeatPassword: '' });
+    const [loading, setLoading] = useState(false);
+
 
 
     const handleClose = () => {
@@ -31,8 +35,33 @@ const ResetPassword = () => {
 
     const handlerSubmit = async (event) => {
         event.preventDefault()
+        if (_.isEmpty(formData)) {
+            return toast.warn('the fields not be empty!')
+        }
+        if (formData.password !== formData.repeatPassword) {
+            return toast.warn('the password field and repeat password must be the same')
+        }
 
-        console.log(formData)
+        if (!_.isPassword(formData.password) && !_.isPassword(formData.repeatPassword)) {
+            return toast.warn("The password must be at least 8 characters long and have an uppercase and lowercase letter between A-Z and a number between 0-9.!")
+        }
+
+        try {
+            setOpen(true)
+            await user.resetPassword(null, 2, {
+                password: await encodePassword(formData.password),
+                jwt: seachParams.get('jwt'),
+                token: seachParams.get('tk')
+            }).then(response => console.log(response)).catch(err => toast.error(err.response.data.message))
+            setOpen(false)
+            toast.success('password change with success!')
+            navigate('/', { replace: true })
+
+        } catch (err) {
+            setOpen(false)
+            toast.error(err.message)
+        }
+
     }
 
     const formChange = (event) =>
@@ -51,19 +80,10 @@ const ResetPassword = () => {
 
 
         // inicia a requisição para o back
-        verifyToken()
-
 
     }, [])
 
-    async function verifyToken() {
-        //está pegando as queryString da URL!
 
-        return await user.resetPassword(null, 2, {
-            jwt: seachParams.get('jwt'),
-            token: seachParams.get('tk')
-        });
-    }
 
     return (
         <>

@@ -32,7 +32,6 @@ const ForgetPassword = () => {
 
     const handlerSubmit = async (event) => {
         event.preventDefault();
-
         try {
             if (_.isEmpty(formData))
                 return toast.warning("Os campos não podem estar vazios");
@@ -40,7 +39,9 @@ const ForgetPassword = () => {
                 return toast.warning("Este email não é valido");
 
             handleToggle()
-            await user.resetPassword(formData.email, 1)
+            await user.resetPassword(formData.email, 1, null)
+
+            toast.success('Email send with success!')
             handleClose()
             setOpen(false)
         } catch (err) {

@@ -59,17 +59,21 @@ export class UserServices {
      * @param {number} step 1 -> envio de email 2-> verificar token 
      * @returns 
      */
-    async resetPassword(email = null, step, { jwt, token }) {
+    async resetPassword(email = null, step, validate = null) {
         // 1 or 2
         if (!step) {
             return console.log('you need to pass the step')
         }
 
         if (step === 1)
-            return this.api.put(`/reset_password/${step}`, { email });
+            return this.api.put(`/user/reset_password/1`, { email });
 
-        if (step === 2 && jwt && token)
-            return this.api.put(`/reset_password/${step}?jwt=${jwt}&tk=${token}`);
+        if (step === 2 && !!validate.jwt && !!validate.token && !!validate.password)
+
+            return this.api.put(`/user/reset_password/2?jwt=${validate.jwt}&tk=${validate.token}`, {
+                password: validate.password
+            });
+
 
     }
     async visitor(nickname) {
