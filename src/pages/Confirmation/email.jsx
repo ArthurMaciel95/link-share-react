@@ -20,7 +20,6 @@ const EmailConfirm = () => {
             navigate("/", { replace: true });
          })
          .catch((error) => {
-            console.log(error.response);
             if (error.response != undefined) return toast.error(error.response.data.error);
             toast.error("Não foi possível confirmar o seu email!");
             navigate("/", { replace: true });

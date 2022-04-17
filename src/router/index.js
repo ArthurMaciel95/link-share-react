@@ -21,7 +21,7 @@ const Router = () => {
             <Route path="/email/confirm/:email&:uuid" element={<EmailConfirm />} />
             <Route path="/visitor/:nickname" element={<VisitorPage />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
-            <Route path='/reset-password/:step' element={<ResetPassword />} />
+            <Route path='/reset-password' element={<ResetPassword />} />
             <Route path="*" element={<PageNotFound />} />
         </Routes>
     )

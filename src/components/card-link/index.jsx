@@ -27,7 +27,7 @@ const CardLink = ({
 }) => {
     const [open, setOpen] = useState(false);
 
-    let anchor = 'bottom'
+    let anchor = 'right'
     const navigate = new useNavigate();
     const linkService = new LinksUrls();
 
@@ -41,6 +41,7 @@ const CardLink = ({
             console.log(err);
         }
     };
+
 
     const handlerClipBoard = () => {
         navigator.clipboard.writeText(link);

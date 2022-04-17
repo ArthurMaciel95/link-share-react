@@ -44,7 +44,7 @@ const Register = () => {
             setDisabled(false);
             setLoading(false);
             toast.success("Successfully registered");
-            return navigate("/");
+            return navigate("/", { replace: true });
         } catch (error) {
             setLoading(false);
             setDisabled(false)

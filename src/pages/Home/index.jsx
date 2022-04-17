@@ -36,7 +36,7 @@ const HomePage = () => {
         userService.refresh().then((res) => {
             setUser(res.data);
         });
-    console.log(user)
+
     const userHaveAnLink = () => user.body.links.length > 0;
 
     const ShowAllLinkOfUser = () => {
