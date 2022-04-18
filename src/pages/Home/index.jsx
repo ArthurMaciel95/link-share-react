@@ -26,6 +26,8 @@ import profileBreadIcon from "assets/svg/profile-bread.svg";
 import ClipBoardArea from "components/clip-board-area";
 import enUS from "date-fns/esm/locale/en-US/index.js";
 import Button from "@mui/material/Button";
+import qrCodeIcon from 'assets/svg/qrcode.svg'
+import IconButton from '@mui/material/IconButton';
 const HomePage = () => {
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
@@ -91,7 +93,15 @@ const HomePage = () => {
                                 className="col-lg-4 col-sm-12 rounded mh-25  "
                                 style={{ maxHeight: "281px" }}
                             >
-                                <div className="bg-white shadow-sm  mt-2 rounded  p-3">
+                                <div className="bg-white shadow-sm  mt-2 rounded  p-3 position-relative">
+
+                                    <span className="qrcode-section">
+                                        <IconButton aria-label="qrcode">
+                                            <img src={qrCodeIcon} className='qrcode-image' alt="random dots, qr code" />
+                                        </IconButton>
+                                    </span>
+
+
                                     <h4 className="text-dark mt-3">
                                         {user && user.body.nickname}
                                     </h4>
