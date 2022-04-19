@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Image = styled.img`
     border-radius: 50%;
-    
+    border: solid 8px white;
     width: 12rem;
     height: 12rem;
     object-fit: cover;
@@ -12,6 +12,17 @@ export const HeaderHome = styled.header`
     background-color: var(--primary-color);
     height: 180px;
     width: 100%;
+    
+    .qrcode-section{
+        position:absolute ;
+        top:20px ;
+        right:20px ;
+        .qrcode-image{
+            width:25px ;
+            height:25px ;
+            
+        }
+    }
         
     @media (max-width: 1200px) {
         .link-column {

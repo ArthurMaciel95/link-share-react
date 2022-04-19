@@ -10,6 +10,7 @@ import EmailConfirm from 'pages/Confirmation/email';
 import VisitorPage from 'pages/Visitor'
 import ForgetPassword from 'pages/forget-password';
 import ResetPassword from 'pages/reset-password'
+import QrCode from 'pages/qrcode';
 
 const Router = () => {
     return (
@@ -17,6 +18,7 @@ const Router = () => {
             <Route path="/" element={<LoginPage />} />
             <Route path="/home" element={<PrivateRoute><HomePage /></PrivateRoute >} />
             <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
+            <Route path='/profile/qrcode/:id' element={<PrivateRoute><QrCode /></PrivateRoute>} />
             <Route path="/register" element={<Register />} />
             <Route path="/email/confirm/:email&:uuid" element={<EmailConfirm />} />
             <Route path="/visitor/:nickname" element={<VisitorPage />} />

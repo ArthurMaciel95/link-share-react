@@ -20,7 +20,7 @@ const ModalCardSettings = ({ id, link, visitor }) => {
                 <p onClick={(e) => handlerRemoveLink(e)}>
                     <img
                         src={TrashIcon}
-                        alt="lixeira"
+                        alt="icon trash"
                         className="trash-icon"
                         onClick={() => handlerRemoveLink}
                     />

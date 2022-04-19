@@ -24,9 +24,7 @@ export const ModalOverlay = styled.section`
 
 export const ModalArea = styled.div`
     background-color:white ;
-    display:grid;
-   
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-radius:5px ;
     width:50% ;
     max-width:750px;
     min-width:550px ;
@@ -37,9 +35,20 @@ export const ModalArea = styled.div`
         position:fixed ;
         min-width: 100% ;
       
-        display:grid ;
-        grid-template-rows: 1fr;
-        grid-template-columns: 1fr 1fr 1fr ;
+     
         padding:25px ;
     }
+`
+
+export const ModalSection = styled.div`
+      display:grid;
+   
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+
+   @media screen and (max-width:500px){
+        
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr 1fr ;
+   }
+
 `

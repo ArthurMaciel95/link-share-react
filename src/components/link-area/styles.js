@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 const LinkStyles = styled.div`
     border-radius: 5px;
-    &:hover{
-        background-color: #F2F2F2;
-    }
+    cursor: pointer;
     .div-link{
         width: 100%;
         height: 100%;
