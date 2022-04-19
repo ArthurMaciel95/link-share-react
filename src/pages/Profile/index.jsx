@@ -22,10 +22,14 @@ import arrowRigthIcon from "assets/svg/arrow-right-bread-crumb.svg";
 import profileBreadIcon from "assets/svg/profile-bread.svg";
 import Button from "@mui/material/Button";
 import ClipBoardArea from "components/clip-board-area";
+import DescriptionArea from 'components/description-area'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 const ProfilePage = () => {
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false)
     const getUser = () =>
         userService.refresh().then((res) => setUser(res.data));
 
@@ -37,6 +41,13 @@ const ProfilePage = () => {
 
     const handleButton = () => {
         setOpen(true);
+    };
+
+    const handleClose = () => {
+        setLoading(false);
+    };
+    const handleToggle = () => {
+        setLoading(!open);
     };
 
     const Crumb = [
@@ -51,6 +62,13 @@ const ProfilePage = () => {
     ];
     return (
         <>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+                onClick={handleClose}
+            >
+                <CircularProgress color="primary" />
+            </Backdrop>
             <Modal open={open} setOpen={setOpen} />
 
             <HeaderHome>
@@ -70,22 +88,7 @@ const ProfilePage = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <div
-                                className="col-lg-4 col-sm-12 mh-25"
-                                style={{ maxHeight: "281px" }}
-                            >
-                                <div className="bg-white shadow-sm  mt-2 rounded  p-3">
-                                    <h4 className="text-dark mt-3">
-                                        {user && user.body.nickname}
-                                    </h4>
-                                    <p className="text-black-50 fs-5">
-                                        {user && user.body.email}
-                                    </p>
-                                    <p className="text-black-50">
-                                        {user && user.body.description}
-                                    </p>
-                                </div>
-                            </div>
+                            <DescriptionArea user={user} loading={loading} setLoading={setLoading} />
                             <div className="col-md-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
                                     <Button
