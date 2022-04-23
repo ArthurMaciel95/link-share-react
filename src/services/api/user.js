@@ -29,8 +29,8 @@ export class UserServices {
         return this.api.delete(`/user/${userId}`);
     }
 
-    async refresh(refreshModel) {
-        return this.api.get(`/user/refresh`, { ...refreshModel });
+    async refresh() {
+        return window.location.pathname !== '/' && window.location.pathname !== '/register' ? this.api.get(`/user/refresh`) : null;
     }
 
     async update(payload) {

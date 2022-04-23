@@ -39,17 +39,23 @@ const ForgetPassword = () => {
                 return toast.warning("Este email não é valido");
 
             handleToggle()
-            await user.resetPassword(formData.email, 1, null)
+            const response = await user.resetPassword(formData.email, 1, null)
 
             toast.success('Email send with success!')
             handleClose()
             setOpen(false)
-        } catch (err) {
+        } catch (error) {
+            setOpen(false)
+            if (error.response !== undefined)
+                return toast.error(error.response.data.message);
+
             handleClose()
             console.log(err)
         }
-
     }
+
+
+
 
     const formChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });
 

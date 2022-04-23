@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Avatar from "assets/images/avatar.jpeg";
 import * as Buttons from "components/buttons";
 import plusIcon from "assets/svg/icon_plus.svg";
@@ -26,12 +26,15 @@ import profileBreadIcon from "assets/svg/profile-bread.svg";
 import ClipBoardArea from "components/clip-board-area";
 import enUS from "date-fns/esm/locale/en-US/index.js";
 import Button from "@mui/material/Button";
-import qrCodeIcon from 'assets/svg/qrcode.svg'
-import IconButton from '@mui/material/IconButton';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import DescriptionArea from "components/description-area";
 const HomePage = () => {
+    const navigate = new useNavigate()
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false)
 
     const handlerButton = () => setOpen(true);
     const getUser = () =>
@@ -60,6 +63,8 @@ const HomePage = () => {
         ));
     };
 
+
+
     const Crumb = [
         {
             icon: homeIcon,
@@ -67,10 +72,25 @@ const HomePage = () => {
         },
     ];
 
+    const handleClose = () => {
+        setLoading(false);
+    };
+    const handleToggle = () => {
+        setLoading(!open);
+    };
+
     useEffect(getUser, [open]);
 
     return (
         <>
+
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+                onClick={handleClose}
+            >
+                <CircularProgress color="primary" />
+            </Backdrop>
             <Modal open={open} setOpen={setOpen} />
             <HeaderHome>
                 <section className="container">
@@ -89,30 +109,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <div
-                                className="col-lg-4 col-sm-12 rounded mh-25  "
-                                style={{ maxHeight: "281px" }}
-                            >
-                                <div className="bg-white shadow-sm  mt-2 rounded  p-3 position-relative">
-
-                                    <span className="qrcode-section">
-                                        <IconButton aria-label="qrcode">
-                                            <img src={qrCodeIcon} className='qrcode-image' alt="random dots, qr code" />
-                                        </IconButton>
-                                    </span>
-
-
-                                    <h4 className="text-dark mt-3">
-                                        {user && user.body.nickname}
-                                    </h4>
-                                    <p className="text-black-50 fs-5">
-                                        {user && user.body.email}
-                                    </p>
-                                    <p className="text-black-50">
-                                        {user && user.body.description}
-                                    </p>
-                                </div>
-                            </div>
+                            <DescriptionArea user={user} loading={loading} setLoading={setLoading} />
                             <div className="col-lg-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
                                     <Button

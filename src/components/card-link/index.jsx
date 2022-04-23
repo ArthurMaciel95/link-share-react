@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "./styles.js";
 import threeDots from "../../assets/svg/three-dots.svg";
 import ModalCardSettings from "components/modal-card-settings";
@@ -24,6 +24,7 @@ const CardLink = ({
     id,
     visitor,
     Key,
+
 }) => {
     const [open, setOpen] = useState(false);
 
@@ -33,14 +34,17 @@ const CardLink = ({
 
     const handlerRemoveLink = async (e) => {
         try {
+
             const result = await linkService.unregister(id);
             toast.success("link deleted successfully!");
+
         } catch (err) {
             toast.error("error trying to delete link");
 
             console.log(err);
         }
     };
+
 
 
     const handlerClipBoard = () => {
