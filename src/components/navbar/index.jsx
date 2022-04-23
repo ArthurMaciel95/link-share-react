@@ -16,11 +16,15 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Typography from '@mui/material/Typography';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-const Navbar = ({ user, setOpen, setLoading }) => {
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+const Navbar = ({ user, setOpen }) => {
     const navigate = new useNavigate();
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [loading, setLoading] = useState(false)
+    const openAnchor = Boolean(anchorEl);
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -29,12 +33,23 @@ const Navbar = ({ user, setOpen, setLoading }) => {
     };
 
     const changeToLogin = () => {
+        setLoading(true)
         return setTimeout(() => {
+            setLoading(false)
             navigate("/", { replace: true });
         }, 2000)
     }
-    return (
+    return (<>
+
+        <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={loading}
+            onClick={handleClose}
+        >
+            <CircularProgress color="primary" />
+        </Backdrop>
         <NavbarStyle>
+
             <div className="col-md-12 d-flex justify-content-between align-items-center mb-2">
                 <img src={logoReduce} alt="" />
                 <div className="d-flex align-items-center justify-content-center  profile-nav-area">
@@ -44,9 +59,9 @@ const Navbar = ({ user, setOpen, setLoading }) => {
                             onClick={handleClick}
                             size="small"
                             sx={{ ml: 2 }}
-                            aria-controls={open ? 'account-menu' : undefined}
+                            aria-controls={openAnchor ? 'account-menu' : undefined}
                             aria-haspopup="true"
-                            aria-expanded={open ? 'true' : undefined}
+                            aria-expanded={openAnchor ? 'true' : undefined}
                         >
                             <img
                                 src={(user && user.body.pic_profile) || Avatar}
@@ -60,7 +75,7 @@ const Navbar = ({ user, setOpen, setLoading }) => {
                     <Menu
                         anchorEl={anchorEl}
                         id="account-menu"
-                        open={open}
+                        open={openAnchor}
                         onClose={handleClose}
                         onClick={handleClose}
                         PaperProps={{
@@ -112,7 +127,7 @@ const Navbar = ({ user, setOpen, setLoading }) => {
                 </div>
             </div>
         </NavbarStyle>
-    );
+    </>);
 };
 
 
