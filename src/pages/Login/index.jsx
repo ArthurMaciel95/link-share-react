@@ -93,10 +93,13 @@ const LoginPage = () => {
     const handleCheckbox = () => {
         return false;
     };
+    const handlerClose = () => {
+        setLoading(false);
+    };
 
     return (
         <Container>
-            {loading && <Loading />}
+            <Loading loading={loading} handlerClose={handlerClose} />
             <Section className="links">
                 <div className="max-width hero-area">
                     <img src={shareLinkLogo} alt="logo share link" />
