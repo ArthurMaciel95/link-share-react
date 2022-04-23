@@ -73,7 +73,7 @@ const ProfilePage = () => {
 
             <HeaderHome>
                 <section className="container">
-                    <Navbar user={user} setOpen={setOpen} />
+                    <Navbar user={user} setOpen={setOpen} setLoading={setLoading} />
                     <section>
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
