@@ -102,7 +102,7 @@ const Navbar = ({ user, setOpen }) => {
 
                     >
 
-                        <MenuItem>
+                        <MenuItem disabled>
                             <ListItemIcon>
                                 <Settings fontSize="small" />
                             </ListItemIcon>

@@ -18,7 +18,7 @@ const Router = () => {
             <Route path="/" element={<LoginPage />} />
             <Route path="/home" element={<PrivateRoute><HomePage /></PrivateRoute >} />
             <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
-            <Route path='/profile/qrcode/:id' element={<PrivateRoute><QrCode /></PrivateRoute>} />
+            <Route path='/profile/qrcode' element={<PrivateRoute><QrCode /></PrivateRoute>} />
             <Route path="/register" element={<Register />} />
             <Route path="/email/confirm/:email&:uuid" element={<EmailConfirm />} />
             <Route path="/visitor/:nickname" element={<VisitorPage />} />
