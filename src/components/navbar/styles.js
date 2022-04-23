@@ -7,5 +7,9 @@ export const NavbarStyle = styled.nav`
         display: none !important;
        
     }
+
+    .rounded-circle{
+        border:3px solid white ;
+    }
 }
 `

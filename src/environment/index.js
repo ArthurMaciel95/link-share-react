@@ -1,6 +1,6 @@
 export default {
-    // baseURL: "http://localhost:8080/", // local
-    baseURL: "https://sharelink-development.herokuapp.com/", // development
+    baseURL: "http://localhost:8080/", // local
+    // baseURL: "https://sharelink-development.herokuapp.com/", // development
 
 
     /**
