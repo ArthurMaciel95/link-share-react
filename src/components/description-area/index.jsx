@@ -10,7 +10,7 @@ const DescriptionArea = ({ user, loading, setLoading }) => {
         setLoading(true)
         return setTimeout(() => {
             setLoading(false)
-            return navigate(`/profile/qrcode?url=https://www.linkshare.com.br/visitor/${user.body.nickname}&email=${user.body.email}`)
+            return navigate(`/profile/qrcode`)
         }, 2000)
     }
     return (
