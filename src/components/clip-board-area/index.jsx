@@ -5,11 +5,10 @@ import { toast } from "react-toastify";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 const ClipBoardArea = ({ nickname }) => {
-    const urlVisitor = `https://www.linkshare.com.br/visitor/${nickname}`;
+    const urlVisitor = `https://www.linkshare.com.br/v/${nickname}`;
 
     const handlerClipBoard = () => {
         const copyUrl = navigator.clipboard.writeText(urlVisitor);
-
         return toast.success("link successfully copied!");
     };
     return (
