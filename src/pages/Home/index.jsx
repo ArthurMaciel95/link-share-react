@@ -19,9 +19,9 @@ import { ptBR } from "date-fns/locale";
 import CardSkeleton from "components/skeleton";
 import SkeletonCards from "components/skeleton";
 import Navbar from "components/navbar";
+import { TagsNavigation } from "components/tags-navigation";
 import BreadCrumb from "components/bread-crumb";
 import homeIcon from "assets/svg/home.svg";
-import arrowRigthIcon from "assets/svg/arrow-right-bread-crumb.svg";
 import profileBreadIcon from "assets/svg/profile-bread.svg";
 import ClipBoardArea from "components/clip-board-area";
 import enUS from "date-fns/esm/locale/en-US/index.js";
@@ -35,32 +35,31 @@ const HomePage = () => {
     const [user, setUser] = useState(undefined);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [links, setLinks] = useState([]);
+    const [filterTag, setFilterTag] = useState("All");
+    const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
 
     const handlerButton = () => setOpen(true);
     const getUser = () =>
         userService.refresh().then((res) => {
-            console.log(res.data);
             setUser(res.data);
+            setLinks(res.data.body.links);
         });
 
-    const userHaveAnLink = () => user.body.links.length > 0;
-
+    const userHaveAnLink = () => links.length > 0;
     const ShowAllLinkOfUser = () => {
-        return user.body.links.map((link) => (
-            <>
-                <CardLink
-                    Key={`${user.body.links.length > 0 ? link.id_link : 0}`}
-                    id={link.id_link}
-                    image={Logo[link.type.toLowerCase()] || Logo.customlink}
-                    name={link.type}
-                    link={link.url.toLowerCase()}
-                    createAt={formatDistance(
-                        new Date(link.createdAt),
-                        new Date(),
-                        { addSuffix: true, locale: enUS }
-                    )}
-                />
-            </>
+        return links.map((link) => (
+            <CardLink
+                Key={`${links.length > 0 ? link.id_link : 0}`}
+                id={link.id_link}
+                image={Logo[link.type.toLowerCase()] || Logo.customlink}
+                name={link.type}
+                link={link.url.toLowerCase()}
+                createAt={formatDistance(new Date(link.createdAt), new Date(), {
+                    addSuffix: true,
+                    locale: enUS,
+                })}
+            />
         ));
     };
 
@@ -71,13 +70,19 @@ const HomePage = () => {
         },
     ];
 
-    const handleClose = () => {
-        setLoading(false);
+    const handleClose = () => setLoading(false);
+    const handleToggle = () => setLoading(!open);
+    const setFilter = (name) => {
+        setFilterTag(name);
+        if (name === "All") {
+            setLinks(user.body.links);
+        } else {
+            const newLinks = user.body.links.filter(
+                (link) => link.tag === name.toLowerCase()
+            );
+            setLinks(newLinks);
+        }
     };
-    const handleToggle = () => {
-        setLoading(!open);
-    };
-
     useEffect(getUser, [open]);
 
     return (
@@ -144,20 +149,20 @@ const HomePage = () => {
                                         nickname={user && user.body.nickname}
                                     />
                                 </PaineButton>
-
-                                <>
-                                    {user ? (
-                                        <>
-                                            {userHaveAnLink() ? (
-                                                ShowAllLinkOfUser()
-                                            ) : (
-                                                <DataNotFound />
-                                            )}
-                                        </>
+                                <TagsNavigation
+                                    tags={tags}
+                                    setFilter={setFilter}
+                                    filter={filterTag}
+                                />
+                                {user ? (
+                                    userHaveAnLink() ? (
+                                        ShowAllLinkOfUser()
                                     ) : (
-                                        <>{<SkeletonCards />}</>
-                                    )}
-                                </>
+                                        <DataNotFound />
+                                    )
+                                ) : (
+                                    <SkeletonCards />
+                                )}
                             </div>
                         </div>
                     </section>

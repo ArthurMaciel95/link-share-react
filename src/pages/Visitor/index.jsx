@@ -7,6 +7,7 @@ import Logo from "utils/links-logos";
 import CardLink from "components/card-link";
 import { Image, HeaderHome } from "./styles";
 import { UserServices } from "services/api/user";
+import { TagsNavigation } from "components/tags-navigation";
 import DataNotFound from "components/data-not-found";
 import LinkArea from "components/link-area";
 import { formatDistance, subDays } from "date-fns";
@@ -22,19 +23,24 @@ const VisitorPage = () => {
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
     const [showModal, setShowModal] = useState(false);
+    const [links, setLinks] = useState([]);
+    const [filterTag, setFilterTag] = useState("All");
+    const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
 
     const handlerButton = () => setShowModal(true);
     const getUser = () => {
         const result = userService
             .visitor(nickname)
-            .then((res) => setUser(res.data))
+            .then((res) => {
+                setUser(res.data);
+                setLinks(res.data.body.links);
+            })
             .catch((err) => navigate("/error", { replace: true }));
-        console.log(result);
     };
 
     const userHaveAnLink = () => user.body.links.length > 0;
     const ShowAllLinkOfUser = () => {
-        return user.body.links.map((link) => (
+        return links.map((link) => (
             <CardLink
                 key={link.url}
                 id={link.id_link}
@@ -49,7 +55,17 @@ const VisitorPage = () => {
             />
         ));
     };
-
+    const setFilter = (name) => {
+        setFilterTag(name);
+        if (name === "All") {
+            setLinks(user.body.links);
+        } else {
+            const newLinks = user.body.links.filter(
+                (link) => link.tag === name.toLowerCase()
+            );
+            setLinks(newLinks);
+        }
+    };
     useEffect(getUser, [showModal]);
 
     return (
@@ -88,6 +104,11 @@ const VisitorPage = () => {
                         </div>
                         <div className="col-lg-7 offset-md-1 position-relative link-column mt-lg-3">
                             <>
+                                <TagsNavigation
+                                    tags={tags}
+                                    setFilter={setFilter}
+                                    filter={filterTag}
+                                />
                                 {user ? (
                                     <>
                                         {userHaveAnLink() ? (
