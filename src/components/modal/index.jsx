@@ -159,7 +159,7 @@ const Modal = ({ open, setOpen }) => {
                     handleClick={click}
                 ></LinkArea>
                 <LinkArea
-                    name="Ame Digital"
+                    name="AmeDigital"
                     logo={Logo.amedigital}
                     handleClick={click}
                 ></LinkArea>
@@ -174,7 +174,7 @@ const Modal = ({ open, setOpen }) => {
                     handleClick={click}
                 ></LinkArea>
                 <LinkArea
-                    name="Mercado Pago"
+                    name="MercadoPago"
                     logo={Logo.mercadopago}
                     handleClick={click}
                 ></LinkArea>
