@@ -26,19 +26,20 @@ import profileBreadIcon from "assets/svg/profile-bread.svg";
 import ClipBoardArea from "components/clip-board-area";
 import enUS from "date-fns/esm/locale/en-US/index.js";
 import Button from "@mui/material/Button";
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import DescriptionArea from "components/description-area";
 const HomePage = () => {
-    const navigate = new useNavigate()
+    const navigate = new useNavigate();
     const userService = new UserServices();
     const [user, setUser] = useState(undefined);
     const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
 
     const handlerButton = () => setOpen(true);
     const getUser = () =>
         userService.refresh().then((res) => {
+            console.log(res.data);
             setUser(res.data);
         });
 
@@ -63,8 +64,6 @@ const HomePage = () => {
         ));
     };
 
-
-
     const Crumb = [
         {
             icon: homeIcon,
@@ -83,9 +82,11 @@ const HomePage = () => {
 
     return (
         <>
-
             <Backdrop
-                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                sx={{
+                    color: "#fff",
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                }}
                 open={loading}
                 onClick={handleClose}
             >
@@ -94,7 +95,11 @@ const HomePage = () => {
             <Modal open={open} setOpen={setOpen} />
             <HeaderHome>
                 <section className="container">
-                    <Navbar user={user} setOpen={setOpen} setLoading={setLoading} />
+                    <Navbar
+                        user={user}
+                        setOpen={setOpen}
+                        setLoading={setLoading}
+                    />
                     <section className="">
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
@@ -109,7 +114,11 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <DescriptionArea user={user} loading={loading} setLoading={setLoading} />
+                            <DescriptionArea
+                                user={user}
+                                loading={loading}
+                                setLoading={setLoading}
+                            />
                             <div className="col-lg-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
                                     <Button

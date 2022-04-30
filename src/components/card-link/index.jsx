@@ -16,36 +16,20 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from "react-router-dom";
 import { LinksUrls } from "services/api/link";
 
-const CardLink = ({
-    name,
-    image,
-    link,
-    createAt,
-    id,
-    visitor,
-    Key,
-
-}) => {
+const CardLink = ({ name, image, link, createAt, id, visitor, Key, }) => {
     const [open, setOpen] = useState(false);
-
     let anchor = 'right'
     const navigate = new useNavigate();
     const linkService = new LinksUrls();
-
     const handlerRemoveLink = async (e) => {
         try {
-
             const result = await linkService.unregister(id);
             toast.success("link deleted successfully!");
-
         } catch (err) {
             toast.error("error trying to delete link");
-
             console.log(err);
         }
     };
-
-
 
     const handlerClipBoard = () => {
         navigator.clipboard.writeText(link);
@@ -55,7 +39,6 @@ const CardLink = ({
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
-
         setOpen(open)
     };
 
@@ -74,8 +57,6 @@ const CardLink = ({
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
-
-
                 ))}
             </List>
         </Box>
@@ -95,9 +76,9 @@ const CardLink = ({
                     {link}
                 </a>
             </div>
-            <div className="card-settings">
+           <div className="card-settings">
                 <p className="create-at">{createAt}</p>
-                <img
+                {!visitor && <><img
                     src={threeDots}
                     alt="icon settings"
                     className="btn-settings"
@@ -111,18 +92,11 @@ const CardLink = ({
                         handlerRemoveLink={handlerRemoveLink}
                     />
                 )} */}
-
-
-
-                < Drawer
-                    anchor={anchor}
-                    open={open}
-                    onClose={toggleDrawer(false)}
-                >
+                < Drawer anchor={anchor} open={open} onClose={toggleDrawer(false)} >
                     {list()}
-                </Drawer>
-
-
+                    </Drawer>
+                </>
+                }
             </div>
         </Card>
     );
