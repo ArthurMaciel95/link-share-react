@@ -15,11 +15,20 @@ import soundcloud from 'assets/images/soundlCloud.png'
 import vimeo from 'assets/images/vimeo.png'
 import buymeacoffe from 'assets/images/buymeacoffe.png'
 import customlink from 'assets/images/custom-link.png'
-import pix from 'assets/images/pix.png'
 import neteller from 'assets/images/neteller.jpg'
 import paypal from 'assets/images/paypal.png'
 import skrill from 'assets/images/skrill.png'
 import whatsapp from 'assets/images/whatsapp.png'
+import nineninepay from 'assets/images/99pay.png'
+import amedigital from 'assets/images/amedigital.png'
+import bitz from 'assets/images/bitz.png'
+import googlepay from 'assets/images/googlepay.png'
+import mercadopago from 'assets/images/mercadopago.png'
+import picpay from 'assets/images/picpay.png'
+import pix from 'assets/images/pix.png'
+import pagbank from 'assets/images/pagbank.png'
+import itibank from 'assets/images/itibank.png'
+import banqi from 'assets/images/banQi.png'
 
 export default {
     twitter,
@@ -39,9 +48,18 @@ export default {
     dropbox,
     buymeacoffe,
     customlink,
-    pix,
     neteller,
-    paypal,
     whatsapp,
-    skrill
+    skrill,
+    nineninepay,
+    amedigital,
+    bitz,
+    googlepay,
+    mercadopago,
+    paypal,
+    picpay,
+    pix,
+    pagbank,
+    itibank,
+    banqi
 }

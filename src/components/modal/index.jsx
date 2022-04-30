@@ -153,6 +153,61 @@ const Modal = ({ open, setOpen }) => {
                     logo={Logo.paypal}
                     handleClick={click}
                 ></LinkArea>
+                <LinkArea
+                    name="99Pay"
+                    logo={Logo.nineninepay}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="Ame Digital"
+                    logo={Logo.amedigital}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="Bitz"
+                    logo={Logo.bitz}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="GooglePay"
+                    logo={Logo.googlepay}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="Mercado Pago"
+                    logo={Logo.mercadopago}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="PayPal"
+                    logo={Logo.paypal}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="PicPay"
+                    logo={Logo.picpay}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="PagBank"
+                    logo={Logo.pagbank}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="ItiBank"
+                    logo={Logo.itibank}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="BanQi"
+                    logo={Logo.banqi}
+                    handleClick={click}
+                ></LinkArea>
+                <LinkArea
+                    name="BuyMeACoffe"
+                    logo={Logo.buymeacoffe}
+                    handleClick={click}
+                ></LinkArea>
             </ModalSection>
         );
     }
@@ -187,7 +242,7 @@ const Modal = ({ open, setOpen }) => {
                             <ModalArea>
                                 <Box sx={{ width: "100%", typography: "body1" }} >
                                     <TabContext value={value}>
-                                        <Box sx={{ borderBottom: 1, borderColor: "divider"}}>
+                                        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                                             <TabList onChange={handleChange} aria-label="lab API tabs example" >
                                                 <Tab label="Popular" value="1" />
                                                 <Tab label="Payment" value="2" />
