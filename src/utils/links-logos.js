@@ -15,6 +15,12 @@ import soundcloud from 'assets/images/soundlCloud.png'
 import vimeo from 'assets/images/vimeo.png'
 import buymeacoffe from 'assets/images/buymeacoffe.png'
 import customlink from 'assets/images/custom-link.png'
+import pix from 'assets/images/pix.png'
+import neteller from 'assets/images/neteller.jpg'
+import paypal from 'assets/images/paypal.png'
+import skrill from 'assets/images/skrill.png'
+import whatsapp from 'assets/images/whatsapp.png'
+
 export default {
     twitter,
     facebook,
@@ -32,5 +38,10 @@ export default {
     soundcloud,
     dropbox,
     buymeacoffe,
-    customlink
+    customlink,
+    pix,
+    neteller,
+    paypal,
+    whatsapp,
+    skrill
 }

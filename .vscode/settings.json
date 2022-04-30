@@ -13,8 +13,20 @@
     "diffEditor.wordWrap": "off",
     "editor.wordWrapColumn": 120,
     "editor.wordBasedSuggestionsMode": "allDocuments",
-    "workbench.colorTheme": "Slime",
+    "workbench.colorTheme": "Dracula",
     "editor.renderWhitespace": "boundary",
     "editor.autoClosingQuotes": "always",
-    "cSpell.words": ["Registrado", "registro", "toastify"]
+    "cSpell.words": [
+        "customlink",
+        "linkdin",
+        "Neteller",
+        "onlyfans",
+        "pinterest",
+        "Registrado",
+        "registro",
+        "Skrill",
+        "soundcloud",
+        "tiktok",
+        "toastify"
+    ]
 }

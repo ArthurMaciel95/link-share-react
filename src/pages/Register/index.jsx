@@ -26,7 +26,7 @@ const Register = () => {
     async function handleRegister(event) {
         event.preventDefault();
         try {
-            setDisabled(false)
+            setDisabled(false);
             if (!_.isPassword(password))
                 return toast.error(
                     "The password must be at least 8 characters long and have an uppercase and lowercase letter between A-Z and a number between 0-9.!"
@@ -34,7 +34,8 @@ const Register = () => {
             if (password !== confirm_password)
                 return toast.error("Passwords don't match");
             setLoading(true);
-            setDisabled(true)
+            setDisabled(true);
+            if (nickname.indexOf("@") === 0) nickname.replace("@", "");
             await userService.register({
                 name,
                 nickname,
@@ -47,7 +48,7 @@ const Register = () => {
             return navigate("/", { replace: true });
         } catch (error) {
             setLoading(false);
-            setDisabled(false)
+            setDisabled(false);
             if (error.response !== undefined)
                 return toast.error(error.response.data.message);
             toast.error("registration failed!");
@@ -135,7 +136,6 @@ const Register = () => {
                         >
                             Register
                         </Button>
-
                         <Link to="/" className="my-md-2 fs-7 text-reset">
                             I already have an account.
                         </Link>
