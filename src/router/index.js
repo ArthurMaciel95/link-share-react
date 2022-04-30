@@ -21,7 +21,7 @@ const Router = () => {
             <Route path='/profile/qrcode' element={<PrivateRoute><QrCode /></PrivateRoute>} />
             <Route path="/register" element={<Register />} />
             <Route path="/email/confirm/:email&:uuid" element={<EmailConfirm />} />
-            <Route path="/visitor/:nickname" element={<VisitorPage />} />
+            <Route path="/v/:nickname" element={<VisitorPage />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path='/reset-password' element={<ResetPassword />} />
             <Route path="*" element={<PageNotFound />} />
