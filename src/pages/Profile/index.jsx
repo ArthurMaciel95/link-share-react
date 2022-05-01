@@ -89,7 +89,7 @@ const ProfilePage = () => {
                         </div>
                         <div className="row">
                             <DescriptionArea user={user} loading={loading} setLoading={setLoading} />
-                            <div className="col-md-7 offset-md-1 position-relative link-column">
+                            <div className="col-lg-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
                                     <Button
                                         onClick={(e) => handlerButton()}

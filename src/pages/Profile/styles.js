@@ -32,7 +32,7 @@ export const HeaderHome = styled.header`
             justify-content: center;
         }
     }
-    @media (max-width: 1200px) {
+    @media (max-width: 990px) {
         .link-column {
             margin-top: 190px;
             margin-left: 0 !important;
