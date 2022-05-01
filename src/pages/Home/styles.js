@@ -35,6 +35,9 @@ export const HeaderHome = styled.header`
             display: flex;
             justify-content: center;
         }
+        .link-column{
+            margin-bottom:40px ;
+        }
     }
 `;
 export const PaineButton = styled.section`
@@ -51,18 +54,21 @@ export const PaineButton = styled.section`
         }
         img {
             margin-right: 10px;
+            width:20px ;
+            heigh:20px ;
         }
     }
 
     @media (max-width: 500px) {
         display: flex;
         flex-direction: column;
-        width: 90%;
+        width: 94%;
         margin-top: -100px;
 
         button {
             width: 100%;
             margin-bottom: 10px;
+            margin-right:0px ;
             &:first-child {
                 margin-right: 0px;
             }

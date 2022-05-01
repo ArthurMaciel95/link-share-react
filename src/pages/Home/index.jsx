@@ -29,6 +29,7 @@ import Button from "@mui/material/Button";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import DescriptionArea from "components/description-area";
+import tableIcon from 'assets/svg/table.svg';
 const HomePage = () => {
     const navigate = new useNavigate();
     const userService = new UserServices();
@@ -148,6 +149,7 @@ const HomePage = () => {
                                     <ClipBoardArea
                                         nickname={user && user.body.nickname}
                                     />
+
                                 </PaineButton>
                                 <TagsNavigation
                                     tags={tags}
