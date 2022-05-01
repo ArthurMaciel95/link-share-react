@@ -82,7 +82,7 @@ const ProfileInfo = ({ dataUser }) => {
             const FormDatas = new FormData();
             FormDatas.append('pic_profile', photo.raw);
 
-            if (!!photo.raw){
+            if (!!photo.raw) {
                 await userService.updatePicProfile(FormDatas)
             }
 
@@ -177,6 +177,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 onChange={formChange}
                                 value={formData.nickname}
                                 disabled={disable}
+
                             />
                         </Form.Group>
                     </Profile.Column>
@@ -185,13 +186,14 @@ const ProfileInfo = ({ dataUser }) => {
                             <TextField
                                 id="filled-multiline-static"
                                 label="Description"
-                                multiline
+                                rows={7}
                                 variant="outlined"
                                 name="description"
-                                className="round"
+                                multiline={true}
                                 onChange={formChange}
                                 value={formData.description || ""}
                                 disabled={disable}
+                                sx={{ height: '100%' }}
                             />
                         </Form.Group>
                     </Profile.Column>

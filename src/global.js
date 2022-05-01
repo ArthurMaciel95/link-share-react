@@ -87,6 +87,9 @@ input:disabled{
   filter:grayscale(50%) ;
 }
 button:disabled{
+  cursor: not-allowed;
+  pointer-events: all !important;
   filter:grayscale(50%) ;
 }
 `
+

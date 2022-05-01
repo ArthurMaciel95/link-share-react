@@ -182,7 +182,7 @@ const Modal = ({ open, setOpen }) => {
                     tag="payment"
                 ></LinkArea>
                 <LinkArea
-                    name="Ame Digital"
+                    name="AmeDigital"
                     logo={Logo.amedigital}
                     handleClick={click}
                     tag="payment"
@@ -200,7 +200,7 @@ const Modal = ({ open, setOpen }) => {
                     tag="payment"
                 ></LinkArea>
                 <LinkArea
-                    name="Mercado Pago"
+                    name="MercadoPago"
                     logo={Logo.mercadopago}
                     handleClick={click}
                     tag="payment"

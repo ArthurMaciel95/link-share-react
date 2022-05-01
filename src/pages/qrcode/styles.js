@@ -19,7 +19,7 @@ export const QrCard = styled.section`
     height:650px ;
     border-radius:8px ;
     flex-direction:column ;
-   
+    position:relative ;
     display:flex ;
     justify-content:center ;
     align-items:center ;

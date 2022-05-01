@@ -44,7 +44,7 @@ const CardLink = ({ name, image, link, createAt, id, visitor, Key, }) => {
 
     const list = () => (
         <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250, padding: 2 }}
             role="presentation"
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
@@ -76,7 +76,7 @@ const CardLink = ({ name, image, link, createAt, id, visitor, Key, }) => {
                     {link}
                 </a>
             </div>
-           <div className="card-settings">
+            <div className="card-settings">
                 <p className="create-at">{createAt}</p>
                 {!visitor && <><img
                     src={threeDots}
@@ -84,7 +84,7 @@ const CardLink = ({ name, image, link, createAt, id, visitor, Key, }) => {
                     className="btn-settings"
                     onClick={toggleDrawer(true)}
                 />
-                {/*     {openModalSettings && (
+                    {/*     {openModalSettings && (
                     <ModalCardSettings
                         id={id}
                         link={link}
@@ -92,8 +92,8 @@ const CardLink = ({ name, image, link, createAt, id, visitor, Key, }) => {
                         handlerRemoveLink={handlerRemoveLink}
                     />
                 )} */}
-                < Drawer anchor={anchor} open={open} onClose={toggleDrawer(false)} >
-                    {list()}
+                    < Drawer anchor={anchor} open={open} onClose={toggleDrawer(false)} >
+                        {list()}
                     </Drawer>
                 </>
                 }
