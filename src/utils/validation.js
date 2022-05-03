@@ -18,4 +18,15 @@ export class Validation {
         else
             return true;
     }
+    addHttps(link) {
+        return hasHttps(link) ? null : link.concat('https')
+
+    }
+    hasHttps() {
+        return link.startsWith('https')
+    }
 }
+
+
+
+
