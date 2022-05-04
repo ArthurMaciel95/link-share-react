@@ -35,7 +35,7 @@ import { Validation } from "utils/validation.js";
 const HomePage = () => {
     const navigate = new useNavigate();
     const userService = new UserServices();
-    const { addHttps } = new Validation()
+    const validation = new Validation()
     const [user, setUser] = useState(undefined);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -58,7 +58,7 @@ const HomePage = () => {
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
-                link={addHttps(link.url.toLowerCase())}
+                link={validation.addHttps(link.url.toLowerCase())}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), {
                     addSuffix: true,
                     locale: enUS,

@@ -19,10 +19,11 @@ export class Validation {
             return true;
     }
     addHttps(link) {
-        return hasHttps(link) ? null : link.concat('https')
+        return this.hasHttps(link) ? link : `https://${link}`
 
     }
-    hasHttps() {
+    hasHttps(link) {
+        console.log(link.startsWith('https'))
         return link.startsWith('https')
     }
 }
