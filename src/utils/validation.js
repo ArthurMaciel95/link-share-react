@@ -18,4 +18,16 @@ export class Validation {
         else
             return true;
     }
+    addHttps(link) {
+        return this.hasHttps(link) ? link : `https://${link}`
+
+    }
+    hasHttps(link) {
+        console.log(link.startsWith('https'))
+        return link.startsWith('https')
+    }
 }
+
+
+
+

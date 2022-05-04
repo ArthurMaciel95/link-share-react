@@ -30,9 +30,12 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import DescriptionArea from "components/description-area";
 import tableIcon from 'assets/svg/table.svg';
+import { Validation } from "utils/validation.js";
+
 const HomePage = () => {
     const navigate = new useNavigate();
     const userService = new UserServices();
+    const validation = new Validation()
     const [user, setUser] = useState(undefined);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -55,7 +58,7 @@ const HomePage = () => {
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
-                link={link.url.toLowerCase()}
+                link={validation.addHttps(link.url.toLowerCase())}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), {
                     addSuffix: true,
                     locale: enUS,

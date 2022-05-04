@@ -20,7 +20,7 @@ const ClipBoardArea = ({ nickname }) => {
         <>
             <Tooltip title="Send the Url to your followers" arrow>
                 <ClipBoardAreaStyle>
-                    <CopyToClipboard onCopy={onCopy} text={urlVisitor} options={{ message: 'Whoa!' }}>
+                    <CopyToClipboard onCopy={onCopy} text={urlVisitor}>
                         <Button
                             onClick={handlerClipBoard}
                             variant="outlined"
