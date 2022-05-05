@@ -21,7 +21,7 @@ const QrCodePage = () => {
         setOpen(true)
         const result = await userApi.refresh()
         setUser(result)
-        console.log(result)
+
         QRCode.toCanvas(canvas.current, `https://www.linkshare.com.br/v/${result.data.body.nickname}`, (err) => {
 
         })
