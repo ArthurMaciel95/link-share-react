@@ -23,7 +23,6 @@ export class Validation {
 
     }
     hasHttps(link) {
-        console.log(link.startsWith('https'))
         return link.startsWith('https')
     }
 }
