@@ -39,7 +39,7 @@ const VisitorPage = () => {
             .catch((err) => navigate("/error", { replace: true }));
     };
 
-    const userHaveAnLink = () => user.body.links.length > 0;
+    const userHaveAnLink = () => links.length > 0;
     const ShowAllLinkOfUser = () => {
         return links.map((link) => (
             <CardLink
@@ -47,7 +47,7 @@ const VisitorPage = () => {
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
-                link={validation.hasHttps(link.url.toLowerCase())}
+                link={validation.addHttps(link.url.toLowerCase())}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), {
                     addSuffix: true,
                     locale: enUS,
