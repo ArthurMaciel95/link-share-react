@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
-
+import { Validation } from "utils/validation";
 import Logo from "utils/links-logos";
 import CardLink from "components/card-link";
 import { Image, HeaderHome } from "./styles";
@@ -17,6 +17,7 @@ import SkeletonCards from "components/skeleton";
 import ClipBoardArea from "components/clip-board-area";
 
 const VisitorPage = () => {
+    const validation = new Validation()
     const navigate = useNavigate();
 
     const { nickname } = useParams();
@@ -46,7 +47,7 @@ const VisitorPage = () => {
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
-                link={link.url.toLowerCase()}
+                link={validation.hasHttps(link.url.toLowerCase())}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), {
                     addSuffix: true,
                     locale: enUS,

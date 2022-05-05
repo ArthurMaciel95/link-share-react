@@ -160,13 +160,15 @@ const HomePage = () => {
                                     filter={filterTag}
                                 />
                                 {user ? (
-                                    userHaveAnLink() ? (
-                                        ShowAllLinkOfUser()
-                                    ) : (
-                                        <DataNotFound />
-                                    )
+                                    <>
+                                        {userHaveAnLink() ? (
+                                            ShowAllLinkOfUser()
+                                        ) : (
+                                            <DataNotFound />
+                                        )}
+                                    </>
                                 ) : (
-                                    <SkeletonCards />
+                                    <>{<SkeletonCards />}</>
                                 )}
                             </div>
                         </div>
