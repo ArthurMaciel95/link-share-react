@@ -52,7 +52,7 @@ const ResetPassword = () => {
                 password: await encodePassword(formData.password),
                 jwt: seachParams.get('jwt'),
                 token: seachParams.get('tk')
-            }).then(response => console.log(response)).catch(err => toast.error(err.response.data.message))
+            }).then(response => response).catch(err => toast.error(err.response.data.message))
             setOpen(false)
             toast.success('password change with success!')
             navigate('/', { replace: true })
