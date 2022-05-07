@@ -13,7 +13,7 @@ const ModalNewLInk = ({ formChange, sendForm, name, SetView }) => {
                     <h3>Link detail</h3>
                     <Form.Group>
                         <label>Url Profile of {name}:</label>
-                        <TextField type="text" id='url' name='url' placeholder='Ex: https://www.facebook.com/profile/user123'
+                        <TextField type="text" id='url' name='context' placeholder='Ex: https://www.facebook.com/profile/user123'
                             label="Url"
                             className='mt-2'
                             variant="outlined"
