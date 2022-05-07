@@ -50,7 +50,7 @@ const HomePage = () => {
             setLinks(res.data.body.links);
         });
 
-    const userHaveAnLink = () => user.body.links.length > 0;
+    const userHaveAnLink = () => links.length > 0;
     const ShowAllLinkOfUser = () => {
         return links.map((link) => (
             <CardLink
