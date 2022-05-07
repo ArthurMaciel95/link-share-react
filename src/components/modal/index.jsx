@@ -34,7 +34,7 @@ const Modal = ({ open, setOpen }) => {
         const { context } = formData;
         if (!context) return toast.error("Preencha todos os campos!");
         linkService
-            .linkCreate(linkName, url, tag)
+            .linkCreate(linkName, context, tag)
             .then((res) => {
                 toast.success("Create with success!");
                 SetView(1);
