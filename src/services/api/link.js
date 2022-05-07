@@ -8,8 +8,8 @@ export class LinksUrls {
     * @param {object} createModel objeto com parametros para adicionar um link
     * @returns {promise} retorna uma promise
     */
-    async linkCreate(type, url,tag) {
-        return this.api.post('/link/create', { type, url,tag });
+    async linkCreate(type, context, tag) {
+        return this.api.post('/link/create', { type, context, tag });
     }
     /**
     * @param {number} linkId id do link a ser deletado

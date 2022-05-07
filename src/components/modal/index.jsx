@@ -19,7 +19,7 @@ const Modal = ({ open, setOpen }) => {
     const [view, SetView] = useState(1);
     const [linkName, SetLinkName] = useState("");
     const [tag, SetTag] = useState("social");
-    const [formData, SetFormData] = useState({ type: "", url: "" });
+    const [formData, SetFormData] = useState({ type: "", context: "" });
     const formChange = (event) =>
         SetFormData({ ...formData, [event.target.name]: event.target.value });
     const linkService = new LinksUrls();
@@ -31,8 +31,8 @@ const Modal = ({ open, setOpen }) => {
     }
 
     function sendForm() {
-        const { url } = formData;
-        if (!url) return toast.error("Preencha todos os campos!");
+        const { context } = formData;
+        if (!context) return toast.error("Preencha todos os campos!");
         linkService
             .linkCreate(linkName, url, tag)
             .then((res) => {
