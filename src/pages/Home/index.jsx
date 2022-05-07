@@ -50,7 +50,7 @@ const HomePage = () => {
             setLinks(res.data.body.links);
         });
 
-    const userHaveAnLink = () => user.body.links.length > 0;
+    const userHaveAnLink = () => links.length > 0;
     const ShowAllLinkOfUser = () => {
         return links.map((link) => (
             <CardLink
@@ -58,7 +58,7 @@ const HomePage = () => {
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
-                link={validation.addHttps(link.url.toLowerCase())}
+                link={validation.addHttps(link.context.toLowerCase())}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), {
                     addSuffix: true,
                     locale: enUS,

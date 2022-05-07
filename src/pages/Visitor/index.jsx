@@ -47,7 +47,7 @@ const VisitorPage = () => {
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
-                link={validation.addHttps(link.url.toLowerCase())}
+                link={validation.addHttps(link.context.toLowerCase())}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), {
                     addSuffix: true,
                     locale: enUS,
