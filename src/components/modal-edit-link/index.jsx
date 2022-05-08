@@ -4,7 +4,10 @@ import * as Form from "components/form"
 import { Button, TextField } from '@mui/material'
 import ArrowLeftIcon from 'assets/images/icon_arrow_left.png'
 
-const ModalNewLInk = ({ formChange, sendForm, name, SetView }) => {
+const ModalNewLInk = ({ formChange, sendForm, name, SetView , format}) => {
+
+console.log(format)
+
     return (
         <ModalNewLinkOverlay>
             <ModalNewLink className='form-area col-6 offset-md-3  shadow p-5 position-relative'>
@@ -13,7 +16,7 @@ const ModalNewLInk = ({ formChange, sendForm, name, SetView }) => {
                     <h3>Link detail</h3>
                     <Form.Group>
                         <label>Url Profile of {name}:</label>
-                        <TextField type="text" id='url' name='context' placeholder='Ex: https://www.facebook.com/profile/user123'
+                        <TextField type="text" id='url' name='context' placeholder={format === 'link' ? 'Ex: https://www.facebook.com/profile/user123':'não é um link'}
                             label="Url"
                             className='mt-2'
                             variant="outlined"
