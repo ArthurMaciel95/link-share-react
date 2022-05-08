@@ -5,7 +5,7 @@
     "eslint.enable": true,
     "editor.fontFamily": "Fira Code Medium , 'Courier New', monospace",
     "editor.fontLigatures": true,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.suggest.showFolders": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.minimap.scale": 3,
