@@ -1,41 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import shareLinkLogo from "assets/svg/logo-share-link.svg";
 import { Link } from "react-router-dom";
-import { Validation } from "utils/validation";
 import * as Form from "components/form";
 import { Container, Section } from "./styles";
 import { toast } from "react-toastify";
-import { UserServices } from "services/api/user";
-import { setNewToken, logOut } from "utils/jwt";
 import Loading from "components/loading";
-import { encodePassword } from "utils/encrypt";
 import ShowPasswordIcon from "assets/svg/show-password.svg";
 import HiddenPasswordIcon from "assets/svg/hidden-password.svg";
 import StayLogged from "components/stay-logged";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+
+import { useAppContext } from "context/AppContext";
+
 const LoginPage = () => {
-    const navigate = new useNavigate();
-    const _ = new Validation();
+    const { login,logOut, fields, loading } = useAppContext();
     const [formData, setFormData] = useState({ email: "", password: "" });
     const { email, password } = formData;
-    const [loading, setLoading] = useState(false);
-    const user = new UserServices();
     const [ShowPassword, setShowPassword] = useState(false);
     const [checkbox, setCheckbox] = useState(false);
-    const [disabled, setDisabled] = useState(false);
 
     useEffect(() => {
         logOut();
-        stayLoggedVerify();
+        rememberVerify();
     }, []);
 
-
-
-
-
-    const stayLoggedVerify = () => {
+    const rememberVerify = () => {
         if (localStorage.getItem("StayLogged")) {
             const { email, password, StayLogged } = JSON.parse(
                 localStorage.getItem("StayLogged")
@@ -44,59 +34,29 @@ const LoginPage = () => {
             setCheckbox(StayLogged);
         }
     };
-
-    const setStayLogged = () => {
+    const remember = () => {
         return checkbox
             ? localStorage.setItem(
-                "StayLogged",
-                JSON.stringify({
-                    StayLogged: checkbox,
-                    email: email,
-                    password: password,
-                })
-            )
+                  "StayLogged",
+                  JSON.stringify({
+                      StayLogged: checkbox,
+                      email: email,
+                      password: password,
+                  })
+              )
             : localStorage.removeItem("StayLogged");
     };
+
     async function handleLogin(event) {
         event.preventDefault();
-
-        try {
-            setDisabled(false);
-            if (_.isEmpty(formData))
-                return toast.warning("Os campos não podem estar vazios");
-            if (!_.isEmail(formData.email))
-                return toast.warning("Este email não é valido");
-
-            setStayLogged();
-            setLoading(true);
-            setDisabled(true);
-            const response = await user.login({
-                email,
-                password: await encodePassword(password),
-            });
-            setDisabled(false);
-            if (response.data.body.token) {
-                setNewToken(response.data.body.token);
-                return navigate("/home");
-            }
-        } catch (error) {
-            setLoading(false);
-            setDisabled(false);
-            if (error.response !== undefined)
-                return toast.error(error.response.data.message);
-            toast.error("Servidor indisponível no momento.");
-        }
+        remember();
+        login(formData);
     }
-    const formChange = (event) =>
-        setFormData({ ...formData, [event.target.name]: event.target.value });
 
-    const handleCheckbox = () => {
-        return false;
-    };
-    const handlerClose = () => {
-        setLoading(false);
-    };
-
+    const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const handleCheckbox = () => { return false;}
+    const handlerClose = () => setLoading(false);
+    
     return (
         <Container>
             <Loading loading={loading} handlerClose={handlerClose} />
@@ -116,7 +76,7 @@ const LoginPage = () => {
                     <img src={shareLinkLogo} alt="logo share link" />
                 </div>
                 <h4 className="login-mobile-hero text-center ">
-                    Your plataform to share links!
+                    Your platform to share links!
                 </h4>
                 <Form.Container className="flex flex-column flex-center login-width">
                     <Form.GroupContainer>
@@ -127,6 +87,7 @@ const LoginPage = () => {
                                 type="email"
                                 name="email"
                                 className="round"
+                                disabled={fields}
                                 onChange={formChange}
                                 value={formData.email}
                             />
@@ -136,19 +97,19 @@ const LoginPage = () => {
                                 label="Password"
                                 variant="outlined"
                                 className="round"
+                                disabled={fields}
                                 value={formData.password}
                                 type={ShowPassword ? "text" : "password"}
                                 name="password"
                                 onChange={formChange}
                             />
-
                             <img
                                 src={
                                     ShowPassword
                                         ? ShowPasswordIcon
                                         : HiddenPasswordIcon
                                 }
-                                alt="icone mostrar senha"
+                                alt="icon mostrar senha"
                                 id="password"
                                 onClick={() => setShowPassword(!ShowPassword)}
                             />
@@ -157,14 +118,17 @@ const LoginPage = () => {
                             checked={checkbox}
                             onChange={(e) => setCheckbox(!checkbox)}
                         />
-                        <Link to="/forget-password" className="my-md-2 fs-7 text-reset">
+                        <Link
+                            to="/forget-password"
+                            className="my-md-2 fs-7 text-reset"
+                        >
                             Forget your password?
                         </Link>
                         <Button
                             onClick={handleLogin}
                             variant="contained"
                             color="primary"
-                            disabled={disabled}
+                            disabled={fields}
                             size="large"
                             disableElevation
                             fullWidth

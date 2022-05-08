@@ -1,16 +1,16 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import HomePage from 'pages/Home';
-import LoginPage from 'pages/Login';
+import HomePage from 'pages/home';
+import LoginPage from 'pages/login';
 import PageNotFound from 'pages/404';
-import Register from 'pages/Register';
-import ProfilePage from 'pages/Profile'
+import Register from 'pages/register';
+import ProfilePage from 'pages/profile'
 import PrivateRoute from 'Auth';
-import EmailConfirm from 'pages/Confirmation/email';
-import VisitorPage from 'pages/Visitor'
-import ForgetPassword from 'pages/forget-password';
-import ResetPassword from 'pages/reset-password'
-import QrCode from 'pages/qrcode';
+import EmailValidate from 'pages/email/validate';
+import VisitorPage from 'pages/visitor'
+import ForgetPassword from 'pages/password/forgot';
+import ResetPassword from 'pages/password/reset'
+import QrCode from 'pages/qr-code';
 
 const Router = () => {
     return (
@@ -18,9 +18,9 @@ const Router = () => {
             <Route path="/" element={<LoginPage />} />
             <Route path="/home" element={<PrivateRoute><HomePage /></PrivateRoute >} />
             <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
-            <Route path='/profile/qrcode' element={<PrivateRoute><QrCode /></PrivateRoute>} />
+            <Route path='/profile/qr-code' element={<PrivateRoute><QrCode /></PrivateRoute>} />
             <Route path="/register" element={<Register />} />
-            <Route path="/email/confirm/:email&:uuid" element={<EmailConfirm />} />
+            <Route path="/email/confirm/:email&:uuid" element={<EmailValidate />} />
             <Route path="/v/:nickname" element={<VisitorPage />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path='/reset-password' element={<ResetPassword />} />

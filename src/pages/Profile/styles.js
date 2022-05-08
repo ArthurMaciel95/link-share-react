@@ -19,8 +19,7 @@ export const HeaderHome = styled.header`
         right:20px ;
         .qrcode-image{
             width:25px ;
-            height:25px ;
-            
+            height:25px ; 
         }
     }
     @media screen and (max-width: 500px) {

@@ -7,7 +7,7 @@ import { Container, Section } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserServices } from "services/api/user";
-import { encodePassword } from "utils/encrypt";
+import { sha256 } from "utils/encrypt";
 import Loading from "components/loading";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -40,7 +40,7 @@ const Register = () => {
                 name,
                 nickname,
                 email,
-                password: await encodePassword(password),
+                password: await sha256(password),
             });
             setDisabled(false);
             setLoading(false);

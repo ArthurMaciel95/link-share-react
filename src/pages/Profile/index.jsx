@@ -11,7 +11,6 @@ import CloseIcon from "assets/svg/close.svg";
 import CardLink from "components/card-link";
 import Modal from "components/modal";
 import { Image, HeaderHome, PaineButton } from "./styles";
-import { UserServices } from "services/api/user";
 import DataNotFound from "components/data-not-found";
 import ProfileInfo from "components/profile-info";
 import LinkArea from "components/link-area";
@@ -22,33 +21,17 @@ import arrowRigthIcon from "assets/svg/arrow-right-bread-crumb.svg";
 import profileBreadIcon from "assets/svg/profile-bread.svg";
 import Button from "@mui/material/Button";
 import ClipBoardArea from "components/clip-board-area";
-import DescriptionArea from 'components/description-area'
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import DescriptionArea from "components/description-area";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+
+import { useAppContext } from "context/AppContext";
 const ProfilePage = () => {
-    const userService = new UserServices();
-    const [user, setUser] = useState(undefined);
-    const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false)
-    const getUser = () =>
-        userService.refresh().then((res) => setUser(res.data));
-
-    const closeModal = () => setOpen(false);
-    const openModal = () => setOpen(true);
-    const handlerButton = () => setOpen(true);
-
-    useEffect(getUser, []);
-
-    const handleButton = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setLoading(false);
-    };
-    const handleToggle = () => {
-        setLoading(!open);
-    };
+    const { loading, user, refreshUser, toggleLoading, showModal,toggleModal } = useAppContext();
+    const changeLoading = () => toggleLoading(!loading);
+    const openModal = () => toggleModal(true);
+    useEffect(refreshUser, []);
+    if (!user) return null;
 
     const Crumb = [
         {
@@ -63,17 +46,19 @@ const ProfilePage = () => {
     return (
         <>
             <Backdrop
-                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                sx={{
+                    color: "#fff",
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                }}
                 open={loading}
-                onClick={handleClose}
+                onClick={changeLoading}
             >
                 <CircularProgress color="primary" />
             </Backdrop>
-            <Modal open={open} setOpen={setOpen} />
-
+            <Modal open={showModal} setOpen={toggleModal} />
             <HeaderHome>
                 <section className="container">
-                    <Navbar user={user} setOpen={setOpen} setLoading={setLoading} />
+                    <Navbar user={user} setOpen={toggleModal} />
                     <section>
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
@@ -88,11 +73,11 @@ const ProfilePage = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <DescriptionArea user={user} loading={loading} setLoading={setLoading} />
+                            <DescriptionArea user={user} loading={loading} />
                             <div className="col-lg-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
                                     <Button
-                                        onClick={(e) => handlerButton()}
+                                        onClick={openModal}
                                         variant="contained"
                                         color="primary"
                                         size="large"

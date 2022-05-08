@@ -1,53 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import logoReduce from "assets/svg/logo-reduce.svg";
-import Avatar from "assets/images/avatar.jpeg";
-import { Validation } from "utils/validation";
-import Logo from "utils/links-logos";
-import CardLink from "components/card-link";
-import { Image, HeaderHome } from "./styles";
-import { UserServices } from "services/api/user";
-import { TagsNavigation } from "components/tags-navigation";
-import DataNotFound from "components/data-not-found";
-import LinkArea from "components/link-area";
+import { Link, useParams } from "react-router-dom";
+import { useAppContext } from "context/AppContext";
+import { Validation } from "utils/validation"
 import { formatDistance, subDays } from "date-fns";
 import { enUS } from "date-fns/locale";
+import { Image, HeaderHome } from "./styles";
+import { TagsNavigation } from "components/tags-navigation";
+import logoReduce from "assets/svg/logo-reduce.svg";
+import Avatar from "assets/images/avatar.jpeg";
+import Logo from "utils/links-logos";
+import CardLink from "components/card-link";
+import DataNotFound from "components/data-not-found";
+import LinkArea from "components/link-area";
 import CardSkeleton from "components/skeleton";
 import SkeletonCards from "components/skeleton";
 import ClipBoardArea from "components/clip-board-area";
 
-const VisitorPage = () => {
-    const validation = new Validation()
-    const navigate = useNavigate();
 
+const VisitorPage = () => {
+    const { visitor, visitorLinks, refreshVisitor, showModal } = useAppContext();
     const { nickname } = useParams();
-    const userService = new UserServices();
-    const [user, setUser] = useState(undefined);
-    const [showModal, setShowModal] = useState(false);
-    const [links, setLinks] = useState([]);
+    const [linksFiltered, setLinksFiltered] = useState([]);
     const [filterTag, setFilterTag] = useState("All");
     const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
 
     const handlerButton = () => setShowModal(true);
-    const getUser = () => {
-        const result = userService
-            .visitor(nickname)
-            .then((res) => {
-                setUser(res.data);
-                setLinks(res.data.body.links);
-            })
-            .catch((err) => navigate("/error", { replace: true }));
-    };
+    const userHaveAnLink = () => visitorLinks.length > 0;
+    const getVisitor = () => refreshVisitor(nickname);
 
-    const userHaveAnLink = () => links.length > 0;
+    useEffect(getVisitor, [showModal]);
+    useEffect(() => { setLinksFiltered(visitorLinks) }, [visitorLinks]);
+    
     const ShowAllLinkOfUser = () => {
-        return links.map((link) => (
+        return linksFiltered.map((link) => (
             <CardLink
-                key={link.url}
+                key={link.context}
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
-                link={validation.addHttps(link.url.toLowerCase())}
+                link={Validation.addHttps(link.context.toLowerCase())}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), {
                     addSuffix: true,
                     locale: enUS,
@@ -58,17 +49,9 @@ const VisitorPage = () => {
     };
     const setFilter = (name) => {
         setFilterTag(name);
-        if (name === "All") {
-            setLinks(user.body.links);
-        } else {
-            const newLinks = user.body.links.filter(
-                (link) => link.tag === name.toLowerCase()
-            );
-            setLinks(newLinks);
-        }
+        if (name === "All") setLinksFiltered(visitorLinks);
+        else setLinksFiltered(visitorLinks.filter((l) => l.tag === name.toLowerCase()));
     };
-    useEffect(getUser, [showModal]);
-
     return (
         <HeaderHome>
             <section className="container">
@@ -81,7 +64,10 @@ const VisitorPage = () => {
                     <div className="row">
                         <div className="col-md-12 header-image-avatar">
                             <Image
-                                src={(user && user.body.pic_profile) || Avatar}
+                                src={
+                                    (visitor && visitor.body.pic_profile) ||
+                                    Avatar
+                                }
                                 alt="avatar image profile"
                             />
                         </div>
@@ -93,13 +79,13 @@ const VisitorPage = () => {
                         >
                             <div className="bg-white shadow-sm  mt-2 rounded  p-3">
                                 <h4 className="text-dark mt-3">
-                                    {user && user.body.nickname}
+                                    {visitor && visitor.body.nickname}
                                 </h4>
                                 <p className="text-black-50 fs-5">
-                                    {user && user.body.email}
+                                    {visitor && visitor.body.email}
                                 </p>
                                 <p className="text-black-50">
-                                    {user && user.body.description}
+                                    {visitor && visitor.body.description}
                                 </p>
                             </div>
                         </div>
@@ -110,12 +96,12 @@ const VisitorPage = () => {
                                     setFilter={setFilter}
                                     filter={filterTag}
                                 />
-                                {user ? (
+                                {visitor ? (
                                     <>
                                         {userHaveAnLink() ? (
                                             ShowAllLinkOfUser()
                                         ) : (
-                                            <DataNotFound />
+                                            <DataNotFound isVisitor={true} />
                                         )}
                                     </>
                                 ) : (

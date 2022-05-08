@@ -7,7 +7,6 @@ import Logo from "utils/links-logos";
 import CardLink from "components/card-link";
 import Modal from "components/modal";
 import { Image, HeaderHome, PaineButton } from "./styles";
-import { UserServices } from "services/api/user";
 import DataNotFound from "components/data-not-found";
 import Loading from "components/loading";
 import ArrowLeftIcon from "assets/images/icon_arrow_left.png";
@@ -29,36 +28,25 @@ import Button from "@mui/material/Button";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import DescriptionArea from "components/description-area";
-import tableIcon from 'assets/svg/table.svg';
+import tableIcon from "assets/svg/table.svg";
 import { Validation } from "utils/validation.js";
 
+import { useAppContext } from "context/AppContext";
+
 const HomePage = () => {
-    const navigate = new useNavigate();
-    const userService = new UserServices();
-    const validation = new Validation()
-    const [user, setUser] = useState(undefined);
-    const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [links, setLinks] = useState([]);
+    const { getUser, links, user, loading,toggleLoading, showModal, toggleModal} = useAppContext();
     const [filterTag, setFilterTag] = useState("All");
+    const [linksFiltered, setLinksFiltered] = useState([]);
     const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
 
-    const handlerButton = () => setOpen(true);
-    const getUser = () =>
-        userService.refresh().then((res) => {
-            setUser(res.data);
-            setLinks(res.data.body.links);
-        });
-
-    const userHaveAnLink = () => user.body.links.length > 0;
     const ShowAllLinkOfUser = () => {
-        return links.map((link) => (
+        return linksFiltered.map((link) => (
             <CardLink
-                Key={`${links.length > 0 ? link.id_link : 0}`}
+                key={`${linksFiltered.length > 0 ? link.id_link : 0}`}
                 id={link.id_link}
                 image={Logo[link.type.toLowerCase()] || Logo.customlink}
                 name={link.type}
-                link={validation.addHttps(link.url.toLowerCase())}
+                link={Validation.addHttps(link.context.toLowerCase())}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), {
                     addSuffix: true,
                     locale: enUS,
@@ -74,21 +62,16 @@ const HomePage = () => {
         },
     ];
 
-    const handleClose = () => setLoading(false);
-    const handleToggle = () => setLoading(!open);
     const setFilter = (name) => {
         setFilterTag(name);
-        if (name === "All") {
-            setLinks(user.body.links);
-        } else {
-            const newLinks = user.body.links.filter(
-                (link) => link.tag === name.toLowerCase()
-            );
-            setLinks(newLinks);
-        }
+        if (name === "All") setLinksFiltered(links);
+        else setLinksFiltered(links.filter((l) => l.tag === name.toLowerCase()));
     };
-    useEffect(getUser, [open]);
-
+    const changeLoading = () => toggleLoading(!loading);
+    const openModal = () => toggleModal(true);
+    useEffect(getUser, []);
+    useEffect(() => setLinksFiltered(links), [links]);
+     
     return (
         <>
             <Backdrop
@@ -97,18 +80,14 @@ const HomePage = () => {
                     zIndex: (theme) => theme.zIndex.drawer + 1,
                 }}
                 open={loading}
-                onClick={handleClose}
+                onClick={changeLoading}
             >
                 <CircularProgress color="primary" />
             </Backdrop>
-            <Modal open={open} setOpen={setOpen} />
+            <Modal open={showModal} setOpen={toggleModal} />
             <HeaderHome>
                 <section className="container">
-                    <Navbar
-                        user={user}
-                        setOpen={setOpen}
-                        setLoading={setLoading}
-                    />
+                    <Navbar user={user} setOpen={toggleModal} />
                     <section className="">
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
@@ -123,15 +102,11 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="row">
-                            <DescriptionArea
-                                user={user}
-                                loading={loading}
-                                setLoading={setLoading}
-                            />
+                            <DescriptionArea user={user} />
                             <div className="col-lg-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
                                     <Button
-                                        onClick={(e) => handlerButton()}
+                                        onClick={openModal}
                                         variant="contained"
                                         color="primary"
                                         size="large"
@@ -152,7 +127,6 @@ const HomePage = () => {
                                     <ClipBoardArea
                                         nickname={user && user.body.nickname}
                                     />
-
                                 </PaineButton>
                                 <TagsNavigation
                                     tags={tags}
@@ -161,10 +135,10 @@ const HomePage = () => {
                                 />
                                 {user ? (
                                     <>
-                                        {userHaveAnLink() ? (
+                                        {links.length > 0 ? (
                                             ShowAllLinkOfUser()
                                         ) : (
-                                            <DataNotFound />
+                                            <DataNotFound isVisitor={false} />
                                         )}
                                     </>
                                 ) : (

@@ -13,13 +13,15 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 
+import { useAppContext } from "context/AppContext";
+
 const Modal = ({ open, setOpen }) => {
     const [value, setValue] = React.useState("1");
     const handleChange = (event, newValue) => setValue(newValue);
     const [view, SetView] = useState(1);
     const [linkName, SetLinkName] = useState("");
     const [tag, SetTag] = useState("social");
-    const [formData, SetFormData] = useState({ type: "", url: "" });
+    const [formData, SetFormData] = useState({ type: "", context: "" });
     const formChange = (event) =>
         SetFormData({ ...formData, [event.target.name]: event.target.value });
     const linkService = new LinksUrls();
@@ -31,10 +33,10 @@ const Modal = ({ open, setOpen }) => {
     }
 
     function sendForm() {
-        const { url } = formData;
-        if (!url) return toast.error("Preencha todos os campos!");
+        const { context } = formData;
+        if (!context) return toast.error("Preencha todos os campos!");
         linkService
-            .linkCreate(linkName, url, tag)
+            .linkCreate(linkName, context, tag)
             .then((res) => {
                 toast.success("Create with success!");
                 SetView(1);
