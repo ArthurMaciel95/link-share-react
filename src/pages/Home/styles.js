@@ -55,7 +55,7 @@ export const PaineButton = styled.section`
         img {
             margin-right: 10px;
             width:20px ;
-            heigh:20px ;
+            height:20px ;
         }
     }
 

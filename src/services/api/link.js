@@ -18,4 +18,8 @@ export class LinksUrls {
     async unregister(linkId) {
         return this.api.delete(`/link/${linkId}/*`);
     }
+
+    async downloadCSV() {
+        return this.api.get('/link/report/spreadsheet')
+    }
 }

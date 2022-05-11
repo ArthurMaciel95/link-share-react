@@ -30,12 +30,19 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import DescriptionArea from "components/description-area";
 import tableIcon from 'assets/svg/table.svg';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { Validation } from "utils/validation.js";
+import { LinksUrls} from 'services/api/link'
+import { toast } from "react-toastify";
+import iconCSV from 'assets/svg/csv.svg'
 
 const HomePage = () => {
+    const linkService = new LinksUrls();
     const navigate = new useNavigate();
     const userService = new UserServices();
     const validation = new Validation()
+    const [disabled, setDisable] = useState(false)
+    const [fileCSV, setFileCSV] = useState('')
     const [user, setUser] = useState(undefined);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -87,6 +94,21 @@ const HomePage = () => {
             setLinks(newLinks);
         }
     };
+
+    const handlerDownloadCSV = async () =>{
+        setDisable(true)
+        setLoading(true)
+        const result =  await linkService.downloadCSV();
+        let a = document.createElement('a');
+        a.href = result.data.body.url
+        a.download = a.href.substr(a.href.lastIndexOf('/') + 1);
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        toast.success('file download with success!')
+        setDisable(false)
+        setLoading(false)
+    }
     useEffect(getUser, [open]);
 
     return (
@@ -136,6 +158,7 @@ const HomePage = () => {
                                         color="primary"
                                         size="large"
                                         disableElevation
+                                        disabled={disabled}
                                     >
                                         <img src={LinkChainIcon} /> Add Link
                                     </Button>
@@ -144,6 +167,7 @@ const HomePage = () => {
                                             variant="contained"
                                             color="primary"
                                             size="large"
+                                            disabled={disabled}
                                             disableElevation
                                         >
                                             <img src={ProfileIcon} /> Profile
@@ -151,8 +175,23 @@ const HomePage = () => {
                                     </Link>
                                     <ClipBoardArea
                                         nickname={user && user.body.nickname}
+                                        disabled={disabled}
                                     />
-
+                                      <LoadingButton
+                        loading={loading}
+                        loadingPosition="center"
+                        onClick={(e) => handlerDownloadCSV()}
+                        disabled={disabled}
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        disableElevation
+                       
+                    >
+                        <img src={iconCSV} alt="icon csv"/>
+                      Export to .CSV
+                    </LoadingButton>
+                                 
                                 </PaineButton>
                                 <TagsNavigation
                                     tags={tags}
