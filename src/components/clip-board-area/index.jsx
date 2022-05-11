@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Button from "@mui/material/Button";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Tooltip from "@mui/material/Tooltip";
-const ClipBoardArea = ({ nickname }) => {
+const ClipBoardArea = ({ nickname,disabled }) => {
     const urlVisitor = `https://www.linkshare.com.br/v/${nickname}`;
     const [copied, setCopied] = useState(false)
 
@@ -27,6 +27,7 @@ const ClipBoardArea = ({ nickname }) => {
                             className="btn"
                             color="primary"
                             size="large"
+                            disabled={disabled}
                             disableElevation
                         >
                             <p>Copy URL</p>
