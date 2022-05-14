@@ -9,10 +9,10 @@ import Button from "@mui/material/Button";
 import { useAppContext } from "context/AppContext";
 
 const QrCodePage = () => {
-    const { loading, toggleLoading, user, refreshUser } = useAppContext();
+    const { loading, toggleLoading, user,getUser } = useAppContext();
     const canvas = useRef();
     const changeLoading = () => toggleLoading(!loading);
-    useEffect(refreshUser, []);
+    useEffect(getUser, []);
     
     const fakeLoad = () => {
         if (!user) return;
@@ -54,7 +54,7 @@ const QrCodePage = () => {
                         Bring the camera closer to your device to access this
                         profile.
                     </h3>
-                    <h3>Linkshare.com</h3>
+                    <h3>LinkShare.com</h3>
                     <p>{user && user.body.email}</p>
                     <canvas ref={canvas} id="canvas"></canvas>
                 </QrCard>

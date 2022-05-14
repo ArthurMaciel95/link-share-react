@@ -3,7 +3,6 @@ import Logo from "utils/links-logos";
 import ArrowLeftIcon from "assets/images/icon_arrow_left.png";
 import LinkArea from "components/link-area";
 import { ModalOverlay, ModalArea, ModalSection } from "./styles";
-import { LinksUrls } from "services/api/link";
 import ModalNewLInk from "components/modal-edit-link";
 import { toast } from "react-toastify";
 import ModalMaterial from "@mui/material/Modal";
@@ -16,16 +15,15 @@ import TabPanel from "@mui/lab/TabPanel";
 import { useAppContext } from "context/AppContext";
 
 const Modal = ({ open, setOpen }) => {
+    const { addLink, toggleModal, showModal } = useAppContext();
     const [value, setValue] = React.useState("1");
     const handleChange = (event, newValue) => setValue(newValue);
     const [view, SetView] = useState(1);
     const [linkName, SetLinkName] = useState("");
     const [tag, SetTag] = useState("social");
     const [formData, SetFormData] = useState({ type: "", context: "" });
-    const formChange = (event) =>
-        SetFormData({ ...formData, [event.target.name]: event.target.value });
-    const linkService = new LinksUrls();
-    const handleClose = () => setOpen(false);
+    const formChange = (e) => SetFormData({ ...formData, [e.target.name]: e.target.value });
+    const handleClose = () => toggleModal(false);
     function click(name, tagCategory) {
         SetTag(tagCategory);
         SetView(2);
@@ -33,24 +31,9 @@ const Modal = ({ open, setOpen }) => {
     }
 
     function sendForm() {
-        const { context } = formData;
-        if (!context) return toast.error("Preencha todos os campos!");
-        linkService
-            .linkCreate(linkName, context, tag)
-            .then((res) => {
-                toast.success("Create with success!");
-                SetView(1);
-                setOpen(false);
-            })
-            .catch((e) => {
-                if (e.response.status != undefined) {
-                    toast.warning(e.response.data.message);
-                } else {
-                    toast.error(
-                        "Unable to create the link at the moment, please try later."
-                    );
-                }
-            });
+        addLink({ linkName: linkName, context: formData.context, tag: tag });
+        SetView(1);
+        toggleModal(false);
     }
 
     function socialLinks() {
@@ -268,11 +251,11 @@ const Modal = ({ open, setOpen }) => {
 
     return (
         <>
-            {open ? (
+            {showModal ? (
                 <>
                     {view == 1 ? (
                         <ModalMaterial
-                            open={open}
+                            open={showModal}
                             onClose={handleClose}
                             closeAfterTransition
                         >

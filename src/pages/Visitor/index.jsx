@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAppContext } from "context/AppContext";
-import { Validation } from "utils/validation"
+import { Validation } from "utils/validation";
 import { formatDistance, subDays } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { Image, HeaderHome } from "./styles";
@@ -16,21 +16,22 @@ import CardSkeleton from "components/skeleton";
 import SkeletonCards from "components/skeleton";
 import ClipBoardArea from "components/clip-board-area";
 
-
 const VisitorPage = () => {
-    const { visitor, visitorLinks, refreshVisitor, showModal } = useAppContext();
+    const { visitor, visitorLinks, getVisitor, showModal } = useAppContext();
     const { nickname } = useParams();
     const [linksFiltered, setLinksFiltered] = useState([]);
     const [filterTag, setFilterTag] = useState("All");
     const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
 
     const handlerButton = () => setShowModal(true);
-    const userHaveAnLink = () => visitorLinks.length > 0;
-    const getVisitor = () => refreshVisitor(nickname);
+    const userHaveAnLink = () => linksFiltered.length > 0;
+    const loadVisitor = () => getVisitor(nickname);
 
-    useEffect(getVisitor, [showModal]);
-    useEffect(() => { setLinksFiltered(visitorLinks) }, [visitorLinks]);
-    
+    useEffect(loadVisitor, [showModal]);
+    useEffect(() => {
+        setLinksFiltered(visitorLinks);
+    }, [visitorLinks]);
+
     const ShowAllLinkOfUser = () => {
         return linksFiltered.map((link) => (
             <CardLink
@@ -50,7 +51,10 @@ const VisitorPage = () => {
     const setFilter = (name) => {
         setFilterTag(name);
         if (name === "All") setLinksFiltered(visitorLinks);
-        else setLinksFiltered(visitorLinks.filter((l) => l.tag === name.toLowerCase()));
+        else
+            setLinksFiltered(
+                visitorLinks.filter((l) => l.tag === name.toLowerCase())
+            );
     };
     return (
         <HeaderHome>

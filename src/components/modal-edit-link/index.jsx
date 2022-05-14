@@ -21,7 +21,6 @@ const ModalNewLInk = ({ formChange, sendForm, name, SetView }) => {
                     </Form.Group>
                     <Form.Row className="end">
                         <Button onClick={sendForm} variant="contained" disableElevation color="primary" className='mt-2'>Create Link</Button>
-
                     </Form.Row>
                 </Form.Container>
             </ModalNewLink>

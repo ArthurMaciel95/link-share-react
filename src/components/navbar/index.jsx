@@ -20,18 +20,12 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 const Navbar = ({ user, setOpen }) => {
     const navigate = new useNavigate();
-
     const [anchorEl, setAnchorEl] = useState(null);
     const [loading, setLoading] = useState(false)
     const openAnchor = Boolean(anchorEl);
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
+    const handleClick = (e) => setAnchorEl(e.currentTarget);
+    const handleClose = () => setAnchorEl(null);
     const changeToLogin = () => {
         setLoading(true)
         return setTimeout(() => {
@@ -40,7 +34,6 @@ const Navbar = ({ user, setOpen }) => {
         }, 2000)
     }
     return (<>
-
         <Backdrop
             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
             open={loading}
@@ -49,11 +42,9 @@ const Navbar = ({ user, setOpen }) => {
             <CircularProgress color="primary" />
         </Backdrop>
         <NavbarStyle>
-
             <div className="col-md-12 d-flex justify-content-between align-items-center mb-2">
                 <img src={logoReduce} alt="" />
                 <div className="d-flex align-items-center justify-content-center  profile-nav-area">
-
                     <Tooltip title="Account Settings">
                         <IconButton
                             onClick={handleClick}
@@ -70,7 +61,6 @@ const Navbar = ({ user, setOpen }) => {
                                 style={{ width: "45px", height: "45px" }}
                             />
                         </IconButton >
-
                     </Tooltip>
                     <Menu
                         anchorEl={anchorEl}
@@ -84,7 +74,6 @@ const Navbar = ({ user, setOpen }) => {
                                 overflow: 'visible',
                                 filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                                 mt: 1.5,
-
                                 '&:before': {
                                     content: '""',
                                     display: 'block',
@@ -99,9 +88,7 @@ const Navbar = ({ user, setOpen }) => {
                                 },
                             },
                         }}
-
                     >
-
                         <MenuItem disabled>
                             <ListItemIcon>
                                 <Settings fontSize="small" />

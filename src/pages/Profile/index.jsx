@@ -17,7 +17,7 @@ import LinkArea from "components/link-area";
 import Navbar from "components/navbar";
 import BreadCrumb from "components/bread-crumb";
 import homeIcon from "assets/svg/home.svg";
-import arrowRigthIcon from "assets/svg/arrow-right-bread-crumb.svg";
+import arrowRightIcon from "assets/svg/arrow-right-bread-crumb.svg";
 import profileBreadIcon from "assets/svg/profile-bread.svg";
 import Button from "@mui/material/Button";
 import ClipBoardArea from "components/clip-board-area";
@@ -27,10 +27,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import { useAppContext } from "context/AppContext";
 const ProfilePage = () => {
-    const { loading, user, refreshUser, toggleLoading, showModal,toggleModal } = useAppContext();
+    const { loading, user, getUser, toggleLoading, showModal,toggleModal } = useAppContext();
     const changeLoading = () => toggleLoading(!loading);
     const openModal = () => toggleModal(true);
-    useEffect(refreshUser, []);
+    useEffect(getUser, []);
     if (!user) return null;
 
     const Crumb = [

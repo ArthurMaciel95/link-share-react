@@ -5,16 +5,12 @@ export const reducer = (state, action) => {
       case actions.USER_LOGIN:
          return { ...state, loading: true, fields: true, }
       case actions.USER_LOGIN_FAIL:
-         return { ...state, loading: false, fields: false }
+         return { ...state, loading: false, fields: false, user: null }
       case actions.USER_LOGOUT:
          return { ...state, loading: false, fields: false, user: null }
-      case actions.USER_REFRESH:
-         return { ...state, loading: true };
-      case actions.USER_REFRESH_SUCCESS:
+      case actions.USER_INFO:
          return { ...state, loading: false, user: action.payload.data, links: action.payload.data.body.links };
-      case actions.VISITOR_REFRESH:
-         return { ...state, loading: true };
-      case actions.VISITOR_REFRESH_SUCCESS:
+      case actions.VISITOR_INFO:
          return { ...state, loading: false, visitor: action.payload.data, visitorLinks: action.payload.data.body.links };
       case actions.HANDLE_MODAL:
          return { ...state, showModal: action.payload };

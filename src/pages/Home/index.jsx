@@ -34,10 +34,25 @@ import { Validation } from "utils/validation.js";
 import { useAppContext } from "context/AppContext";
 
 const HomePage = () => {
-    const { getUser, links, user, loading,toggleLoading, showModal, toggleModal} = useAppContext();
+    const {
+        getUser,
+        user,
+        links,
+        loading,
+        toggleLoading,
+        showModal,
+        toggleModal,
+    } = useAppContext();
     const [filterTag, setFilterTag] = useState("All");
     const [linksFiltered, setLinksFiltered] = useState([]);
     const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
+
+    const changeLoading = () => toggleLoading(!loading);
+    const openModal = () => toggleModal(true);
+    const userHaveAnLink = () => linksFiltered.length > 0;
+    const profileImage = () => user && user.body.pic_profile ? user.body.pic_profile : Avatar;
+    useEffect(getUser, []);
+    useEffect(() => setLinksFiltered(links), [links]);
 
     const ShowAllLinkOfUser = () => {
         return linksFiltered.map((link) => (
@@ -67,11 +82,7 @@ const HomePage = () => {
         if (name === "All") setLinksFiltered(links);
         else setLinksFiltered(links.filter((l) => l.tag === name.toLowerCase()));
     };
-    const changeLoading = () => toggleLoading(!loading);
-    const openModal = () => toggleModal(true);
-    useEffect(getUser, []);
-    useEffect(() => setLinksFiltered(links), [links]);
-     
+
     return (
         <>
             <Backdrop
@@ -88,14 +99,11 @@ const HomePage = () => {
             <HeaderHome>
                 <section className="container">
                     <Navbar user={user} setOpen={toggleModal} />
-                    <section className="">
+                    <section>
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">
                                 <Image
-                                    src={
-                                        (user && user.body.pic_profile) ||
-                                        Avatar
-                                    }
+                                    src={profileImage()}
                                     alt="avatar image profile"
                                 />
                                 <BreadCrumb crumb={Crumb} />
@@ -135,7 +143,7 @@ const HomePage = () => {
                                 />
                                 {user ? (
                                     <>
-                                        {links.length > 0 ? (
+                                        {userHaveAnLink() ? (
                                             ShowAllLinkOfUser()
                                         ) : (
                                             <DataNotFound isVisitor={false} />

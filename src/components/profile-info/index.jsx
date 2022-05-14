@@ -30,11 +30,9 @@ const ProfileInfo = ({ dataUser }) => {
         photo,
     });
     const [disable, setDisable] = useState(false);
-
     const MAX_SIZE_IMAGE = 2000000;
 
-    const formChange = (event) =>
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+    const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const ShowPreviewImage = async (e) => {
         let file = e.target.files[0];
