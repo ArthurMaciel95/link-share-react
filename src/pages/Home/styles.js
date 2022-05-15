@@ -41,7 +41,7 @@ export const HeaderHome = styled.header`
     }
 `;
 export const PaineButton = styled.section`
-    justify-content: end;
+   
     display: flex;
     position: absolute;
 
@@ -58,6 +58,18 @@ export const PaineButton = styled.section`
             height:20px ;
         }
     }
+     .btn-settings{
+            margin-left: 25px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            padding: 6px;
+            cursor: pointer;
+
+            &:hover{
+                background-color: var(--color-hover);
+            }
+        }
 
     @media (max-width: 500px) {
         display: flex;

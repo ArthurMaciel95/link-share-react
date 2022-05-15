@@ -11,6 +11,8 @@ import { encodePassword } from "utils/encrypt";
 import Loading from "components/loading";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 const Register = () => {
     const _ = new Validation();
     const navigate = useNavigate();
@@ -22,6 +24,11 @@ const Register = () => {
 
     const formChange = (event) =>
         setFormData({ ...formData, [event.target.name]: event.target.value });
+
+
+    function NavidateToLogin() {
+        return navigate('/', { replace: true })
+    }
 
     async function handleRegister(event) {
         event.preventDefault();
@@ -70,10 +77,21 @@ const Register = () => {
                 </div>
             </Section>
             <Section className="register">
+
                 <div className="logo-mobile">
                     <img src={shareLinkLogo} alt="logo share link" />
                 </div>
                 <Form.Container className="flex flex-center register-width">
+
+                    <Button
+                        variant="outlined"
+                        startIcon={<ArrowBackIcon />}
+                        className="btn-back"
+                        onClick={NavidateToLogin}
+                    >
+                        Back to Login
+                    </Button>
+
                     <Form.GroupContainer>
                         <Form.Group>
                             <TextField

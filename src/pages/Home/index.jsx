@@ -32,11 +32,22 @@ import DescriptionArea from "components/description-area";
 import tableIcon from 'assets/svg/table.svg';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Validation } from "utils/validation.js";
-import { LinksUrls} from 'services/api/link'
+import { LinksUrls } from 'services/api/link'
 import { toast } from "react-toastify";
-import iconCSV from 'assets/svg/csv.svg'
+import DownloadIcon from '@mui/icons-material/Download';
+import MoreHorizRounded from '@mui/icons-material/MoreHorizRounded';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import IconButton from '@mui/material/IconButton';
+import threeDots from "../../assets/svg/three-dots.svg";
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Typography from '@mui/material/Typography';
+import Divider from "@mui/material/Divider";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 const HomePage = () => {
+    const [anchorEl, setAnchorEl] = useState(null);
     const linkService = new LinksUrls();
     const navigate = new useNavigate();
     const userService = new UserServices();
@@ -45,10 +56,20 @@ const HomePage = () => {
     const [fileCSV, setFileCSV] = useState('')
     const [user, setUser] = useState(undefined);
     const [open, setOpen] = useState(false);
+    const openMenuSettins = Boolean(anchorEl);
     const [loading, setLoading] = useState(false);
     const [links, setLinks] = useState([]);
     const [filterTag, setFilterTag] = useState("All");
     const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+        setOpenMenuSettins(true)
+    };
+    const handleCloseMenuSettins = () => {
+        setAnchorEl(null);
+    };
+
+    const ITEM_HEIGHT = 48;
 
     const handlerButton = () => setOpen(true);
     const getUser = () =>
@@ -95,10 +116,11 @@ const HomePage = () => {
         }
     };
 
-    const handlerDownloadCSV = async () =>{
+    const handlerDownloadCSV = async () => {
+        handleCloseMenuSettins()
         setDisable(true)
         setLoading(true)
-        const result =  await linkService.downloadCSV();
+        const result = await linkService.downloadCSV();
         let a = document.createElement('a');
         a.href = result.data.body.url
         a.download = a.href.substr(a.href.lastIndexOf('/') + 1);
@@ -152,6 +174,7 @@ const HomePage = () => {
                             />
                             <div className="col-lg-7 offset-md-1 position-relative link-column">
                                 <PaineButton>
+
                                     <Button
                                         onClick={(e) => handlerButton()}
                                         variant="contained"
@@ -177,21 +200,52 @@ const HomePage = () => {
                                         nickname={user && user.body.nickname}
                                         disabled={disabled}
                                     />
-                                      <LoadingButton
-                        loading={loading}
-                        loadingPosition="center"
-                        onClick={(e) => handlerDownloadCSV()}
-                        disabled={disabled}
-                        variant="contained"
-                        color="primary"
-                        size="large"
-                        disableElevation
-                       
-                    >
-                        <img src={iconCSV} alt="icon csv"/>
-                      Export to .CSV
-                    </LoadingButton>
-                                 
+                                    <IconButton
+                                        aria-label="more"
+                                        id="long-button"
+                                        aria-controls={openMenuSettins ? 'long-menu' : undefined}
+                                        aria-expanded={openMenuSettins ? 'true' : undefined}
+                                        aria-haspopup="true"
+                                        onClick={handleClick}
+                                    >
+                                        <img
+                                            src={threeDots}
+                                            alt="icon settings"
+                                            className="btn-settings"
+                                        />
+                                    </IconButton>
+                                    <Menu
+                                        id="long-menu"
+                                        MenuListProps={{
+                                            'aria-labelledby': 'long-button',
+                                        }}
+                                        anchorEl={anchorEl}
+                                        open={openMenuSettins}
+                                        onClose={handleCloseMenuSettins}
+                                        PaperProps={{
+                                            style: {
+                                                maxHeight: ITEM_HEIGHT * 4.5,
+                                                width: '20ch',
+                                            },
+                                        }}
+                                    >
+
+                                        <MenuItem onClick={handlerDownloadCSV}>
+                                            <ListItemIcon>
+                                                <DownloadIcon fontSize="small" />
+                                            </ListItemIcon>
+                                            <ListItemText>Export to Excel</ListItemText>
+                                        </MenuItem>
+                                        <Divider light={true} />
+                                        <MenuItem onClick={handleCloseMenuSettins} disabled={true}>
+                                            <ListItemIcon>
+                                                <ContentCopyIcon fontSize="small" />
+                                            </ListItemIcon>
+                                            <ListItemText>Copy URL link</ListItemText>
+                                        </MenuItem>
+
+                                    </Menu>
+
                                 </PaineButton>
                                 <TagsNavigation
                                     tags={tags}

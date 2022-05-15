@@ -51,7 +51,12 @@ export const Section = styled.section`
     }
     &.register {
         background-color: var(--background);
-
+        position:relative ;
+        .btn-back{
+            position: absolute;
+            top: -100px;
+            left: 6px;
+        }
         .logo-mobile{
             display:none ;
           
@@ -67,6 +72,11 @@ export const Section = styled.section`
                     border-radius:5px ;
                 }
             }
+            .btn-back{
+                position: absolute;
+                top: -180px;
+                left: 6px;
+        }
         }
     }
     & a {

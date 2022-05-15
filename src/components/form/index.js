@@ -4,7 +4,7 @@ export const Container = styled.form`
     margin: 1rem 0;
     width: 100%;
     padding:5px;
-
+    position:relative ;
     h2 {
       padding-top:5px;
     }
