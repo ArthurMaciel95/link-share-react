@@ -42,9 +42,10 @@ import IconButton from '@mui/material/IconButton';
 import threeDots from "../../assets/svg/three-dots.svg";
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Typography from '@mui/material/Typography';
 import Divider from "@mui/material/Divider";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import LanguageIcon from '@mui/icons-material/Language';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 const HomePage = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -208,11 +209,7 @@ const HomePage = () => {
                                         aria-haspopup="true"
                                         onClick={handleClick}
                                     >
-                                        <img
-                                            src={threeDots}
-                                            alt="icon settings"
-                                            className="btn-settings"
-                                        />
+                                        <MoreHorizRounded sx={{ fill: '#909090' }} />
                                     </IconButton>
                                     <Menu
                                         id="long-menu"
@@ -234,14 +231,22 @@ const HomePage = () => {
                                             <ListItemIcon>
                                                 <DownloadIcon fontSize="small" />
                                             </ListItemIcon>
+
                                             <ListItemText>Export to Excel</ListItemText>
                                         </MenuItem>
-                                        <Divider light={true} />
+
                                         <MenuItem onClick={handleCloseMenuSettins} disabled={true}>
                                             <ListItemIcon>
-                                                <ContentCopyIcon fontSize="small" />
+                                                <DarkModeIcon fontSize="small" />
                                             </ListItemIcon>
-                                            <ListItemText>Copy URL link</ListItemText>
+                                            <ListItemText>Change Theme</ListItemText>
+                                        </MenuItem>
+
+                                        <MenuItem onClick={handleCloseMenuSettins} disabled={true}>
+                                            <ListItemIcon>
+                                                <LanguageIcon fontSize="small" />
+                                            </ListItemIcon>
+                                            <ListItemText>Language</ListItemText>
                                         </MenuItem>
 
                                     </Menu>

@@ -20,12 +20,12 @@ const Modal = ({ open, setOpen }) => {
     const [linkName, SetLinkName] = useState("");
     const [tag, SetTag] = useState("social");
     const [formData, SetFormData] = useState({ type: "", context: "" });
-    const [ format, setFormat] = useState(null)
+    const [format, setFormat] = useState(null)
     const formChange = (event) =>
         SetFormData({ ...formData, [event.target.name]: event.target.value });
     const linkService = new LinksUrls();
     const handleClose = () => setOpen(false);
-    function click(name, tagCategory,format) {
+    function click(name, tagCategory, format) {
         SetTag(tagCategory);
         SetView(2);
         SetLinkName(name);

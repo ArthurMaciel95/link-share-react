@@ -15,6 +15,8 @@ import { enUS } from "date-fns/locale";
 import CardSkeleton from "components/skeleton";
 import SkeletonCards from "components/skeleton";
 import ClipBoardArea from "components/clip-board-area";
+import Button from "@mui/material/Button";
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 
 const VisitorPage = () => {
     const validation = new Validation()
@@ -27,6 +29,11 @@ const VisitorPage = () => {
     const [links, setLinks] = useState([]);
     const [filterTag, setFilterTag] = useState("All");
     const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
+
+    function NavidateToLogin() {
+        return navigate('/', { replace: true })
+    }
+
 
     const handlerButton = () => setShowModal(true);
     const getUser = () => {
@@ -75,6 +82,15 @@ const VisitorPage = () => {
                 <div className="row">
                     <div className="col-md-12 d-flex justify-content-between align-items-center my-md-2">
                         <img src={logoReduce} alt="" />
+                        <Button
+                            variant="outlined"
+                            color="secondary"
+                            className="btn-back"
+                            onClick={NavidateToLogin}
+                            startIcon={<LoginOutlinedIcon />}
+                        >
+                            Login/Signup
+                        </Button>
                     </div>
                 </div>
                 <section className="">
