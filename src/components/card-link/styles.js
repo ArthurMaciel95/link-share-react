@@ -41,7 +41,6 @@ export const Card = styled.div`
         }
     }
     @media only screen and (max-width: 850px) {
-        
         min-width:100% !important;
 
         .card-settings{
@@ -53,15 +52,15 @@ export const Card = styled.div`
             }
         }
 
-        div a {                      
-      width: 150px;  
-      text-overflow:ellipsis;
-      overflow:hidden;
-      white-space:nowrap;
-    }
+        div a {
+            width: 150px;  
+            text-overflow:ellipsis;
+            overflow:hidden;
+            white-space:nowrap;
+        }
 
-    .body-card{
-        margin-left:5px !important;
-    }
+        .body-card{
+            margin-left:5px !important;
+        }
     }
 `

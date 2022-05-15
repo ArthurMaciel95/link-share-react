@@ -25,8 +25,7 @@ const CardLink = ({ name, image, link, createAt, id, visitor, Key }) => {
         toast.success("link successfully copied!");
     };
     const toggleDrawer = (open) => (e) => {
-        if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift"))
-            return;
+        if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) return;
         setOpen(open);
     };
 
@@ -86,7 +85,6 @@ const CardLink = ({ name, image, link, createAt, id, visitor, Key }) => {
                             className="btn-settings"
                             onClick={toggleDrawer(true)}
                         />
-
                         <Drawer
                             anchor={anchor}
                             open={open}

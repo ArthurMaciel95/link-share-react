@@ -1,8 +1,10 @@
 export const USER_LOGIN = "USER_LOGIN";
+export const USER_REGISTER = "USER_REGISTER";
 export const USER_LOGIN_FAIL = "USER_LOGIN_FAIL";
 export const USER_INFO = "USER_INFO";
 export const USER_LOGOUT = "USER_LOGOUT";
 export const VISITOR_INFO = "VISITOR_INFO";
+export const USER_UPDATE = "USER_UPDATE";
 export const LINK_CREATE = "LINK_CREATE";
 export const HANDLE_FIELDS = "HANDLE_FIELDS";
 export const HANDLE_MODAL = "HANDLE_MODAL";

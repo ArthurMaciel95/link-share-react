@@ -1,26 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import * as Profile from "./styles";
 import * as Form from "components/form";
 import * as Buttons from "components/buttons";
 import noAvatar from "assets/images/avatar.jpeg";
 import CloseIcon from "assets/svg/close.svg";
 import { toast } from "react-toastify";
-import { UserServices } from "services/api/user";
 import { encoded, decoded } from "utils/buffer";
-import { Validation } from "utils/validation";
 import { TextField } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
 import Button from '@mui/material/Button'
-
+import { useAppContext } from "context/AppContext";
 
 const ProfileInfo = ({ dataUser }) => {
-
-    const navigate = new useNavigate();
-    const userService = new UserServices();
-    const _ = new Validation();
-    const [loading, setLoading] = useState(false);
-
+    const { updateProfile, fields, loading, toggleFields } = useAppContext();
     const [photo, setPhoto] = useState({ base64: "", name: "", file: "" });
     const [formData, setFormData] = useState({
         name: "",
@@ -29,21 +21,12 @@ const ProfileInfo = ({ dataUser }) => {
         description: "",
         photo,
     });
-    const [disable, setDisable] = useState(false);
     const MAX_SIZE_IMAGE = 2000000;
-
     const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
     const ShowPreviewImage = async (e) => {
         let file = e.target.files[0];
-        if (!isFormatAllowed(file))
-            return toast.error("Formato de image não permitido");
-        if (!isSizeAllowed(file))
-            return toast.error(
-                `O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 1000000
-                }mb`
-            );
-
+        if (!isFormatAllowed(file)) return toast.error("Formato de image não permitido");
+        if (!isSizeAllowed(file)) return toast.error(`O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 1000000}mb`);
         const base64 = await imageToBase64(file);
         setPhoto({ raw: file, file: base64, name: file.name });
     };
@@ -62,40 +45,12 @@ const ProfileInfo = ({ dataUser }) => {
             fileReader.onerror = (error) => reject(error);
         });
     };
-
     const removePhoto = () => setPhoto({ file: "", name: "" });
-
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try {
-            setDisable(true);
-            if (_.isEmpty(formData))
-                return toast.error("Os campos não podem estar vazios");
-            if (!_.isEmail(formData.email))
-                return toast.error("Este email não é valido");
-            setLoading(true);
-
-            await userService.update({ ...formData });
-
-            const FormDatas = new FormData();
-            FormDatas.append('pic_profile', photo.raw);
-
-            if (!!photo.raw) {
-                await userService.updatePicProfile(FormDatas)
-            }
-
-            toast.success("Atualizado com sucesso!");
-            setDisable(false);
-            navigate("/home", { replace: true });
-        } catch (error) {
-            setLoading(false);
-            setDisable(false);
-
-            if (error.response !== undefined)
-                if (error.response.status === 406)
-                    return toast.warning("E-mail não possui registro!");
-            toast.error("Não foi possível atualizar no momento.");
-        }
+        const photoData = new FormData();
+        photoData.append("pic_profile", photo.raw);
+        await updateProfile(formData, photoData);
     };
 
     useEffect(() => {
@@ -107,7 +62,6 @@ const ProfileInfo = ({ dataUser }) => {
                 description: dataUser.body?.description,
                 pic_profile: dataUser.body?.pic_profile
             });
-
     }, [dataUser]);
     return (
         <Profile.Container>
@@ -117,7 +71,6 @@ const ProfileInfo = ({ dataUser }) => {
                     <Profile.ImageArea>
                         <img
                             src={!photo.file ? noAvatar : photo.file}
-
                             alt="avatar user"
                         />
                         <span onClick={() => removePhoto()}>
@@ -129,8 +82,8 @@ const ProfileInfo = ({ dataUser }) => {
                         id="file-input"
                         hidden
                         name="pic_profile"
+                        disabled={fields}
                         onChange={(e) => ShowPreviewImage(e)}
-                        disabled={disable}
                     />
                     <section>
                         <Button variant="outlined" color="primary">
@@ -153,8 +106,8 @@ const ProfileInfo = ({ dataUser }) => {
                                 name="name"
                                 className="round"
                                 onChange={formChange}
+                                disabled={fields}
                                 value={formData.name}
-                                disabled={disable}
                             />
                             <TextField
                                 label="Email"
@@ -163,8 +116,8 @@ const ProfileInfo = ({ dataUser }) => {
                                 name="email"
                                 className="round"
                                 onChange={formChange}
+                                disabled={fields}
                                 value={formData.email}
-                                disabled={disable}
                             />
                             <TextField
                                 label="Nickname"
@@ -173,9 +126,8 @@ const ProfileInfo = ({ dataUser }) => {
                                 name="nickname"
                                 className="round"
                                 onChange={formChange}
+                                disabled={fields}
                                 value={formData.nickname}
-                                disabled={disable}
-
                             />
                         </Form.Group>
                     </Profile.Column>
@@ -189,9 +141,9 @@ const ProfileInfo = ({ dataUser }) => {
                                 name="description"
                                 multiline={true}
                                 onChange={formChange}
+                                disabled={fields}
                                 value={formData.description || ""}
-                                disabled={disable}
-                                sx={{ height: '100%' }}
+                                sx={{ height: "100%" }}
                             />
                         </Form.Group>
                     </Profile.Column>
@@ -201,12 +153,12 @@ const ProfileInfo = ({ dataUser }) => {
                         loading={loading}
                         loadingPosition="center"
                         onClick={handleSubmit}
-                        disabled={disable}
                         variant="contained"
                         color="primary"
                         size="large"
                         disableElevation
                         type="submit"
+                        disabled={fields}
                     >
                         Save changes
                     </LoadingButton>

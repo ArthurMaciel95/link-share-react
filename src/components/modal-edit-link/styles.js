@@ -9,24 +9,18 @@ export const ModalNewLinkOverlay = styled.section`
     border-radius: 5px;
     position: fixed;
     z-index: 1000;
-
-  
-
-
 `
 
 export const ModalNewLink = styled.div`
+    background-color: white;
+    flex-direction: column;
+    display: flex;
+    gap:1rem;
+    min-width:500px ;
 
-        background-color: white;
-        flex-direction: column;
-        display: flex;
-        gap:1rem;
-        min-width:500px ;
-
-        @media screen and (max-width:500px){
-            gap:20px;
-            width:100% ;
-            min-width:100% ;
-        }
-
+    @media screen and (max-width:500px){
+        gap:20px;
+        width:100% ;
+        min-width:100% ;
+    }
 `

@@ -5,16 +5,11 @@ import { toast } from "react-toastify";
 import Button from "@mui/material/Button";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Tooltip from "@mui/material/Tooltip";
+
 const ClipBoardArea = ({ nickname }) => {
     const urlVisitor = `https://www.linkshare.com.br/v/${nickname}`;
     const [copied, setCopied] = useState(false)
-
-    const handlerClipBoard = () => {
-
-        toast.success("link successfully copied!");
-
-    };
-
+    const handlerClipBoard = () =>  toast.success("link successfully copied!");
     const onCopy = () => setCopied(true)
     return (
         <>
@@ -33,9 +28,6 @@ const ClipBoardArea = ({ nickname }) => {
                             <img src={ClipBoardIcon} alt="clipboard icon" />
                         </Button>
                     </CopyToClipboard>
-
-
-
                 </ClipBoardAreaStyle>
             </Tooltip>
         </>

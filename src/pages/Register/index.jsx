@@ -6,53 +6,20 @@ import { Validation } from "utils/validation";
 import { Container, Section } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { UserServices } from "services/api/user";
+import { UserServices } from "services/user";
 import { sha256 } from "utils/encrypt";
 import Loading from "components/loading";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useAppContext } from "context/AppContext";
+
 const Register = () => {
-    const _ = new Validation();
-    const navigate = useNavigate();
+    const { loading, fields, toggleLoading, register } = useAppContext();
     const [formData, setFormData] = useState({});
-    const [loading, setLoading] = useState(false);
-    const { name, nickname, email, password, confirm_password } = formData;
-    const userService = new UserServices();
-    const [disabled, setDisabled] = useState(false);
-
-    const formChange = (event) =>
-        setFormData({ ...formData, [event.target.name]: event.target.value });
-
-    async function handleRegister(event) {
-        event.preventDefault();
-        try {
-            setDisabled(false);
-            if (!_.isPassword(password))
-                return toast.error(
-                    "The password must be at least 8 characters long and have an uppercase and lowercase letter between A-Z and a number between 0-9.!"
-                );
-            if (password !== confirm_password)
-                return toast.error("Passwords don't match");
-            setLoading(true);
-            setDisabled(true);
-            if (nickname.indexOf("@") === 0) nickname.replace("@", "");
-            await userService.register({
-                name,
-                nickname,
-                email,
-                password: await sha256(password),
-            });
-            setDisabled(false);
-            setLoading(false);
-            toast.success("Successfully registered");
-            return navigate("/", { replace: true });
-        } catch (error) {
-            setLoading(false);
-            setDisabled(false);
-            if (error.response !== undefined)
-                return toast.error(error.response.data.message);
-            toast.error("registration failed!");
-        }
+    const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+    async function handleRegister(e) {
+        e.preventDefault();
+        register(formData);
     }
 
     return (
@@ -82,6 +49,7 @@ const Register = () => {
                                 type="text"
                                 name="name"
                                 className="round"
+                                disabled={fields}
                                 onChange={formChange}
                             />
                         </Form.Group>
@@ -92,6 +60,7 @@ const Register = () => {
                                 type="text"
                                 name="nickname"
                                 className="round"
+                                disabled={fields}
                                 onChange={formChange}
                             />
                         </Form.Group>
@@ -102,6 +71,7 @@ const Register = () => {
                                 type="email"
                                 name="email"
                                 className="round"
+                                disabled={fields}
                                 onChange={formChange}
                             />
                         </Form.Group>
@@ -112,6 +82,7 @@ const Register = () => {
                                 type="password"
                                 name="password"
                                 className="round"
+                                disabled={fields}
                                 onChange={formChange}
                             />
                         </Form.Group>
@@ -122,6 +93,7 @@ const Register = () => {
                                 type="password"
                                 name="confirm_password"
                                 className="round"
+                                disabled={fields}
                                 onChange={formChange}
                             />
                         </Form.Group>
@@ -129,7 +101,7 @@ const Register = () => {
                             onClick={handleRegister}
                             variant="contained"
                             color="primary"
-                            disabled={disabled}
+                            disabled={fields}
                             size="large"
                             fullWidth
                             disableElevation

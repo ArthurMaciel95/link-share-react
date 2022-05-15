@@ -92,4 +92,4 @@ export const Section = styled.section`
         width: 100vw;
         height: 50vh;
     }
-}`
+`

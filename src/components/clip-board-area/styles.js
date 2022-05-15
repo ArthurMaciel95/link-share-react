@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ClipBoardAreaStyle = styled.div`
     border-radius: 25px;
-
     max-width: 250px;
 
     .btn {
@@ -33,8 +32,5 @@ export const ClipBoardAreaStyle = styled.div`
     @media screen and (max-width: 500px) {
         width: 100%;
         max-width: 100%;
-
-        button {
-        }
     }
 `;

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const HeaderStyles = styled.header`
     background-color:var(--primary-color) ;
     height:30vh;
-
 `
 
 export const FormContainer = styled.section`
@@ -15,7 +14,6 @@ export const FormContainer = styled.section`
   
     form{
         padding:20px 40px;
-        
         top:-100px ;
         position: absolute ;
         max-width:500px ;

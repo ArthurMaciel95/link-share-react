@@ -20,7 +20,6 @@ export const HeaderHome = styled.header`
         .qrcode-image{
             width:25px ;
             height:25px ;
-            
         }
     }
         

@@ -9,7 +9,6 @@ const LinkArea = ({ name, tag, logo, handleClick }) => {
                 <p className='fw-lighter text-black-50 text-center fs-6 mt-2'>{name}</p>
             </div>
         </LinkStyles>
-
     )
 }
 

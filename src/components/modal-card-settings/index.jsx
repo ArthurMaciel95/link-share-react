@@ -5,19 +5,19 @@ import Modal from "components/modal";
 import CopyLinkIcon from "assets/svg/copy-link.svg";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-const ModalCardSettings = ({ id, link, visitor }) => {
-    const navigate = new useNavigate();
-    const [openModal, setOpenModal] = useState(false);
+import { useAppContext } from "context/AppContext";
 
+const ModalCardSettings = ({ id, link, visitor }) => {
+    const { removeLink } = useAppContext();
     return (
         <ModalCardSettingsStyle>
             {!visitor && (
-                <p onClick={(e) => handlerRemoveLink(e)}>
+                <p onClick={() => removeLink(id)}>
                     <img
                         src={TrashIcon}
                         alt="icon trash"
                         className="trash-icon"
-                        onClick={() => handlerRemoveLink}
+                        onClick={() => removeLink(id)}
                     />
                     Remove
                 </p>
