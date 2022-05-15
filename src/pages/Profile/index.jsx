@@ -90,7 +90,7 @@ const ProfilePage = () => {
                         <div className="row">
                             <DescriptionArea user={user} loading={loading} setLoading={setLoading} />
                             <div className="col-lg-7 offset-md-1 position-relative link-column">
-                                <PaineButton>
+                                <Painel>
                                     <Button
                                         onClick={(e) => handlerButton()}
                                         variant="contained"
@@ -113,7 +113,7 @@ const ProfilePage = () => {
                                     <ClipBoardArea
                                         nickname={user && user.body.nickname}
                                     />
-                                </PaineButton>
+                                </Painel>
                                 <ProfileInfo dataUser={user} />
                             </div>
                         </div>

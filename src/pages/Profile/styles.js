@@ -40,7 +40,7 @@ export const HeaderHome = styled.header`
     }
 `;
 
-export const PaineButton = styled.section`
+export const Painel = styled.section`
     justify-content: end;
     display: flex;
     position: absolute;

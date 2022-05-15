@@ -15,8 +15,8 @@ export const social = [
         tag: "link"
     },
     {
-        name: 'Linkedin',
-        logo: 'linkedin',
+        name: 'Linkdin',
+        logo: 'linkdin',
         tag: "link"
     },
     {
@@ -81,103 +81,84 @@ export const payment = [
         name: "Pix",
         logo: 'pix',
         tag: "payment",
-
-
     }, {
         name: "Neteller",
         logo: 'neteller',
         tag: "payment",
 
     },
-
-
     {
         name: "Skrill",
         logo: 'skrill',
         tag: "payment"
     },
-
-
     {
         name: "PayPal",
-        logo: 'payPal',
+        logo: 'paypal',
         tag: "payment",
     },
-
-
     {
         name: "99Pay",
-        logo: '99pay',
+        logo: 'nineninepay',
         tag: "payment"
     },
-
-
     {
         name: "AmeDigital",
-        logo: 'ameDigital',
+        logo: 'amedigital',
         tag: "payment"
     },
-
-
     {
-        name: "Vimeo",
-        logo: 'vimeo',
+        name: "Bitz",
+        logo: 'bitz',
+        tag: "payment",
+    },
+    {
+        name: "GooglePay",
+        logo: 'googlepay',
+        tag: "payment",
+    },
+    {
+        name: "MercadoPago",
+        logo: 'mercadopago',
+        tag: "payment",
+    },
+    {
+        name: "PayPal",
+        logo: 'paypal',
+        tag: "payment",
+
+    },
+    {
+        name: "PicPay",
+        logo: 'picpay',
         tag: "payment",
     },
 
 
     {
-        name: "Pinterest",
-        logo: 'pinterest',
+        name: "PagBank",
+        logo: 'pagbank',
         tag: "payment",
     },
 
 
     {
-        name: "TikTok",
-        logo: 'tiktok',
+        name: "ItiBank",
+        logo: 'itibank',
         tag: "payment",
     },
 
 
     {
-        name: "Youtube",
-        logo: 'youtube',
+        name: "BanQi",
+        logo: 'banqi',
         tag: "payment",
-
     },
-
-
     {
-        name: "SoundCloud",
-        logo: 'soundcloud',
+        name: "BuyMeACoffe",
+        logo: 'buymeacoffe',
         tag: "payment",
     },
-
-
-    {
-        name: "Twitch",
-        logo: 'twitch',
-        tag: "payment",
-    },
-
-
-    {
-        name: "DropBox",
-        logo: 'dropbox',
-        tag: "payment",
-    },
-
-
-    {
-        name: "OnlyFans",
-        logo: 'onlyfans',
-        tag: "payment",
-    },
-
-
-
-
 ]
 export const contact = [
     {

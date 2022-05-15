@@ -37,7 +37,7 @@ export default {
     discord,
     telegram,
     snapchat,
-    linkedin,
+    linkdin,
     youtube,
     instagram,
     pinterest,

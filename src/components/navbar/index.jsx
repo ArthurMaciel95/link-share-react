@@ -18,6 +18,9 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import DarkModeIcon from '@mui/icons-material/DarkMode'
+import ListItemText from '@mui/material/ListItemIcon'
+import LanguageIcon from '@mui/icons-material/Language'
 const Navbar = ({ user, setOpen }) => {
     const navigate = new useNavigate();
 
@@ -107,6 +110,20 @@ const Navbar = ({ user, setOpen }) => {
                                 <Settings fontSize="small" />
                             </ListItemIcon>
                             Settings
+                        </MenuItem>
+
+                        <MenuItem onClick={handleClose} disabled={true}>
+                            <ListItemIcon>
+                                <DarkModeIcon fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText>Change Theme</ListItemText>
+                        </MenuItem>
+
+                        <MenuItem onClick={handleClose} disabled={true}>
+                            <ListItemIcon>
+                                <LanguageIcon fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText>Language</ListItemText>
                         </MenuItem>
                         <MenuItem onClick={(e) => changeToLogin()}>
                             <ListItemIcon>

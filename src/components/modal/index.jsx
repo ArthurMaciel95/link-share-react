@@ -12,7 +12,7 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-
+import { social, payment, contact } from 'helpers/modal-links'
 const Modal = ({ open, setOpen }) => {
     const [value, setValue] = React.useState("1");
     const handleChange = (event, newValue) => setValue(newValue);
@@ -56,110 +56,13 @@ const Modal = ({ open, setOpen }) => {
     function socialLinks() {
         return (
             <ModalSection>
-                <LinkArea
-                    name="Custom link"
-                    logo={Logo.customlink}
+                {social.map(({ name, logo, tags }) => <LinkArea
+                    name={name}
+                    logo={Logo[logo]}
                     handleClick={click}
-                    tag="custom"
+                    tag={tags}
                 ></LinkArea>
-                <LinkArea
-                    name="Facebook"
-                    logo={Logo.facebook}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Instagram"
-                    logo={Logo.instagram}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Linkdin"
-                    logo={Logo.linkdin}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Twitter"
-                    logo={Logo.twitter}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Snapchat"
-                    logo={Logo.snapchat}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Vimeo"
-                    logo={Logo.vimeo}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Pinterest"
-                    logo={Logo.pinterest}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="TikTok"
-                    logo={Logo.tiktok}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Youtube"
-                    logo={Logo.youtube}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="SoundCloud"
-                    logo={Logo.soundcloud}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Twitch"
-                    logo={Logo.twitch}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="DropBox"
-                    logo={Logo.dropbox}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="OnlyFans"
-                    logo={Logo.onlyfans}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Discord"
-                    logo={Logo.discord}
-                    handleClick={click}
-                    tag="social"
-                    format="link"
-                ></LinkArea>
+                )}
             </ModalSection>
         );
     }
@@ -167,111 +70,13 @@ const Modal = ({ open, setOpen }) => {
     function PaymentLinks() {
         return (
             <ModalSection>
-                <LinkArea
-                    name="Pix"
-                    logo={Logo.pix}
+                {payment.map(({ name, logo, tags }) => <LinkArea
+                    name={name}
+                    logo={Logo[logo]}
                     handleClick={click}
-                    tag="payment"
-                    format="text"
+                    tag={tags}
                 ></LinkArea>
-                <LinkArea
-                    name="Neteller"
-                    logo={Logo.neteller}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Skrill"
-                    logo={Logo.skrill}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="PayPal"
-                    logo={Logo.paypal}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="99Pay"
-                    logo={Logo.nineninepay}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="AmeDigital"
-                    logo={Logo.amedigital}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="Bitz"
-                    logo={Logo.bitz}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="GooglePay"
-                    logo={Logo.googlepay}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="MercadoPago"
-                    logo={Logo.mercadopago}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="PayPal"
-                    logo={Logo.paypal}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="PicPay"
-                    logo={Logo.picpay}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="PagBank"
-                    logo={Logo.pagbank}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="ItiBank"
-                    logo={Logo.itibank}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="BanQi"
-                    logo={Logo.banqi}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
-                <LinkArea
-                    name="BuyMeACoffe"
-                    logo={Logo.buymeacoffe}
-                    handleClick={click}
-                    tag="payment"
-                    format="link"
-                ></LinkArea>
+                )}
             </ModalSection>
         );
     }
@@ -279,20 +84,12 @@ const Modal = ({ open, setOpen }) => {
     function ContactLinks() {
         return (
             <ModalSection>
-                <LinkArea
-                    name="WhatsApp"
-                    logo={Logo.whatsapp}
+                {contact.map(({ name, logo, tags }) => <LinkArea
+                    name={name}
+                    logo={Logo[logo]}
                     handleClick={click}
-                    tag="contact"
-                    format="number"
-                ></LinkArea>
-                <LinkArea
-                    name="Telegram"
-                    logo={Logo.telegram}
-                    handleClick={click}
-                    tag="contact"
-                    format="number"
-                ></LinkArea>
+                    tag={tags}
+                ></LinkArea>)}
             </ModalSection>
         );
     }

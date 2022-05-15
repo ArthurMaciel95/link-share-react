@@ -40,13 +40,23 @@ export const HeaderHome = styled.header`
         }
     }
 `;
-export const PaineButton = styled.section`
+export const Painel = styled.section`
    
     display: flex;
     position: absolute;
-
+    width:97% ;
+    flex-grow:1 ;
     align-items: center;
     top: -65px;
+
+    .painel-buttons{
+        display:flex ;
+        flex-grow:1 ;
+    }
+
+    .painel-settings{
+
+    }
     button {
         color: white !important;
         &:first-child {
@@ -77,6 +87,20 @@ export const PaineButton = styled.section`
         width: 94%;
         margin-top: -100px;
 
+        .painel-buttons{
+            display:flex ;
+            flex-direction:column ;
+            flex-grow:0 ;
+            width:100% ;
+        }
+        .painel-settings{
+            display:flex ;
+            align-items:flex-end ;
+        }
+
+        .no-max-width{
+            width:auto ;
+        }
         button {
             width: 100%;
             margin-bottom: 10px;

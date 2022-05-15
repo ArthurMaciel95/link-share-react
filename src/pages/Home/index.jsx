@@ -6,7 +6,7 @@ import plusIcon from "assets/svg/icon_plus.svg";
 import Logo from "utils/links-logos";
 import CardLink from "components/card-link";
 import Modal from "components/modal";
-import { Image, HeaderHome, PaineButton } from "./styles";
+import { Image, HeaderHome, PaineButton, Painel } from "./styles";
 import { UserServices } from "services/api/user";
 import DataNotFound from "components/data-not-found";
 import Loading from "components/loading";
@@ -174,84 +174,76 @@ const HomePage = () => {
                                 setLoading={setLoading}
                             />
                             <div className="col-lg-7 offset-md-1 position-relative link-column">
-                                <PaineButton>
+                                <Painel>
+                                    <div className="painel-buttons">
 
-                                    <Button
-                                        onClick={(e) => handlerButton()}
-                                        variant="contained"
-                                        color="primary"
-                                        size="large"
-                                        disableElevation
-                                        disabled={disabled}
-                                    >
-                                        <img src={LinkChainIcon} /> Add Link
-                                    </Button>
-                                    <Link to="/profile">
                                         <Button
+                                            onClick={(e) => handlerButton()}
                                             variant="contained"
                                             color="primary"
                                             size="large"
-                                            disabled={disabled}
                                             disableElevation
+                                            disabled={disabled}
                                         >
-                                            <img src={ProfileIcon} /> Profile
+                                            <img src={LinkChainIcon} /> Add Link
                                         </Button>
-                                    </Link>
-                                    <ClipBoardArea
-                                        nickname={user && user.body.nickname}
-                                        disabled={disabled}
-                                    />
-                                    <IconButton
-                                        aria-label="more"
-                                        id="long-button"
-                                        aria-controls={openMenuSettins ? 'long-menu' : undefined}
-                                        aria-expanded={openMenuSettins ? 'true' : undefined}
-                                        aria-haspopup="true"
-                                        onClick={handleClick}
-                                    >
-                                        <MoreHorizRounded sx={{ fill: '#909090' }} />
-                                    </IconButton>
-                                    <Menu
-                                        id="long-menu"
-                                        MenuListProps={{
-                                            'aria-labelledby': 'long-button',
-                                        }}
-                                        anchorEl={anchorEl}
-                                        open={openMenuSettins}
-                                        onClose={handleCloseMenuSettins}
-                                        PaperProps={{
-                                            style: {
-                                                maxHeight: ITEM_HEIGHT * 4.5,
-                                                width: '20ch',
-                                            },
-                                        }}
-                                    >
+                                        <Link to="/profile">
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                size="large"
+                                                disabled={disabled}
+                                                disableElevation
+                                            >
+                                                <img src={ProfileIcon} /> Profile
+                                            </Button>
+                                        </Link>
+                                        <ClipBoardArea
+                                            nickname={user && user.body.nickname}
+                                            disabled={disabled}
+                                        />
+                                    </div>
+                                    <div className="painel-settings">
+                                        <IconButton
+                                            aria-label="more"
+                                            id="long-button"
+                                            aria-controls={openMenuSettins ? 'long-menu' : undefined}
+                                            aria-expanded={openMenuSettins ? 'true' : undefined}
+                                            aria-haspopup="true"
+                                            onClick={handleClick}
+                                            className='no-max-width'
+                                        >
+                                            <MoreHorizRounded sx={{ fill: '#909090' }} fontSize="large" />
+                                        </IconButton>
+                                        <Menu
+                                            id="long-menu"
+                                            MenuListProps={{
+                                                'aria-labelledby': 'long-button',
+                                            }}
+                                            anchorEl={anchorEl}
+                                            open={openMenuSettins}
+                                            onClose={handleCloseMenuSettins}
+                                            PaperProps={{
+                                                style: {
+                                                    maxHeight: ITEM_HEIGHT * 4.5,
+                                                    width: '20ch',
+                                                },
+                                            }}
+                                        >
 
-                                        <MenuItem onClick={handlerDownloadCSV}>
-                                            <ListItemIcon>
-                                                <DownloadIcon fontSize="small" />
-                                            </ListItemIcon>
+                                            <MenuItem onClick={handlerDownloadCSV}>
+                                                <ListItemIcon>
+                                                    <DownloadIcon fontSize="small" />
+                                                </ListItemIcon>
 
-                                            <ListItemText>Export to Excel</ListItemText>
-                                        </MenuItem>
+                                                <ListItemText>Export to Excel</ListItemText>
+                                            </MenuItem>
 
-                                        <MenuItem onClick={handleCloseMenuSettins} disabled={true}>
-                                            <ListItemIcon>
-                                                <DarkModeIcon fontSize="small" />
-                                            </ListItemIcon>
-                                            <ListItemText>Change Theme</ListItemText>
-                                        </MenuItem>
 
-                                        <MenuItem onClick={handleCloseMenuSettins} disabled={true}>
-                                            <ListItemIcon>
-                                                <LanguageIcon fontSize="small" />
-                                            </ListItemIcon>
-                                            <ListItemText>Language</ListItemText>
-                                        </MenuItem>
+                                        </Menu>
+                                    </div>
 
-                                    </Menu>
-
-                                </PaineButton>
+                                </Painel>
                                 <TagsNavigation
                                     tags={tags}
                                     setFilter={setFilter}
