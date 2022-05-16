@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 export const ModalOverlay = styled.section`
-
     h3{
         text-align: center;
         margin-bottom: 25px;
         color: #717171;
     }
-
     background-color: rgba(0,0,0,0.3);
     display: flex;
     align-items: center;
@@ -34,21 +32,16 @@ export const ModalArea = styled.div`
     @media screen and ( max-width:500px){
         position:fixed ;
         min-width: 100% ;
-      
-     
         padding:25px ;
     }
 `
 
 export const ModalSection = styled.div`
-      display:grid;
-   
-   grid-template-columns: 1fr 1fr 1fr 1fr;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 
-   @media screen and (max-width:500px){
-        
+    @media screen and (max-width:500px){
         grid-template-rows: 1fr;
         grid-template-columns: 1fr 1fr 1fr ;
-   }
-
+    }
 `

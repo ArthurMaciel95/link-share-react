@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const ButtonBase = styled.button.attrs(() => ({ type: "button" }))`
-display:flex;
-justify-content:center;
-align-items:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     margin:0.3rem;
     width: 100%;
     max-width:180px;
@@ -14,7 +14,6 @@ align-items:center;
     font-weight: 600;
     font-size: 1rem;
     padding:20px;
- 
 `
 
 export const Save = styled(ButtonBase)`
@@ -38,7 +37,6 @@ export const Confirm = styled(ButtonBase)`
 `
 export const Primary = styled(ButtonBase)`
     background-color:  var(--primary-color);
-    
     border-radius:25px;
     max-width: 230px;
     color:white;
@@ -57,7 +55,6 @@ export const Primary = styled(ButtonBase)`
 `
 
 export const Outline = styled(ButtonBase)`
-   
     display:flex;
     justify-content:center;
     align-items:center;
@@ -70,10 +67,6 @@ export const Outline = styled(ButtonBase)`
     .icon-plus{
         margin-right: 5px;
     }
-    &:hover {
-        
-    }
-
 `
 
 export const OutlineHeader = styled(ButtonBase)`
@@ -90,8 +83,4 @@ export const OutlineHeader = styled(ButtonBase)`
     .icon-plus{
         margin-right: 5px;
     }
-    &:hover {
-        
-    }
-
 `

@@ -4,8 +4,9 @@ export const TagsNavigation = ({ tags, setFilter, filter }) => {
     return (
         <TagsContainer>
             {tags &&
-                tags.map((tag) => (
+                tags.map((tag, pos) => (
                     <Tag
+                        key={pos}
                         className={filter == tag ? "selected" : ""}
                         onClick={() => setFilter(tag)}
                     >

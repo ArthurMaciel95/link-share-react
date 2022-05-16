@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const CardSkeleton = styled.div`
- background-color:white;
+    background-color:white;
     padding:15px;
     border-radius:4px;
     margin-top:10px;
@@ -31,9 +31,6 @@ export const CardSkeleton = styled.div`
         height: 25px;
         width: 150px;
         display: flexbox;
-        
-
-
     }
     span:nth-child(2){
         margin-top: 10px;
@@ -42,5 +39,4 @@ export const CardSkeleton = styled.div`
         height: 20px;
         width: 50px;
     }
-
 `

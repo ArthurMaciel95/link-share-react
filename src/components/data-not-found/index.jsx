@@ -1,12 +1,12 @@
 import React from "react";
 import { NoData, Paragraph, HeaderText, ButtonAddLink } from "./styles";
 
-const DataNotFound = () => {
+const DataNotFound = ({isVisitor}) => {
     return (
         <NoData>
             <HeaderText>Nenhum link encontrado.</HeaderText>
             <Paragraph>
-                Provavelmente você não adicionou nenhum link para está seção.
+                {isVisitor ? "Profile owner has not added a link to this section": "You probably haven't added any links to this section."}
             </Paragraph>
         </NoData>
     );
