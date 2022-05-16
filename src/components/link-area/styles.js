@@ -15,5 +15,4 @@ const LinkStyles = styled.div`
     
 `
 
-
 export default LinkStyles

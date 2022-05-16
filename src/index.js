@@ -6,9 +6,9 @@ import { Slide, ToastContainer } from "react-toastify";
 import { GlobalStyle } from "global";
 import "bootstrap/dist/css/bootstrap.css";
 import "react-toastify/dist/ReactToastify.css";
-
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { hover } from "@testing-library/user-event/dist/hover";
+import { AppProvider } from "context/AppContext";
 
 const theme = createTheme({
     components: {
@@ -44,12 +44,13 @@ const theme = createTheme({
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter> <AppProvider>
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
                 <App />
                 <ToastContainer transition={Slide} theme="colored" limit={3} />
             </ThemeProvider>
+        </AppProvider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")

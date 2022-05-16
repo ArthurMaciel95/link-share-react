@@ -3,8 +3,7 @@ import React from 'react'
 import { CardSkeleton} from './styles'
 import SkeletonCardImage from 'assets/images/skeleton-card-image.png'
 const SkeletonCards = () => {
-  return (
-      <>
+  return (<>
     <CardSkeleton>
       <div className='block-skeleton'></div>
       <div className="body-card d-flex flex-column mx-4">
@@ -26,8 +25,6 @@ const SkeletonCards = () => {
             <span></span>
       </div>
       </CardSkeleton>
-   
-
     </>
   )
 }

@@ -9,5 +9,4 @@ export const LoadingComponent = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-
 `
