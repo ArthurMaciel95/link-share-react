@@ -86,7 +86,7 @@ const ProfileInfo = ({ dataUser }) => {
                         onChange={(e) => ShowPreviewImage(e)}
                     />
                     <section>
-                        <Button variant="outlined" color="primary">
+                        <Button variant="outlined" color="primary" disabled={fields}>
                             <label htmlFor="file-input">Change photo</label>
                         </Button>
                         <p>
