@@ -1,33 +1,45 @@
 import React, { useState } from "react";
-import Link from "@mui/material/Link";
 import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
-import Button from "@mui/material/Button";
 import PlusIcon from "assets/svg/icon_plus.svg";
 import Modal from "components/modal";
 import { useNavigate } from 'react-router-dom';
 import { NavbarStyle } from './styles'
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Typography from '@mui/material/Typography';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
-import DarkModeIcon from '@mui/icons-material/DarkMode'
-import ListItemText from '@mui/material/ListItemIcon'
-import LanguageIcon from '@mui/icons-material/Language'
 import { useAppContext } from "context/AppContext";
 
-const Navbar = ({ user, setOpen }) => {
+import {
+    Settings,
+    Logout,
+    DarkMode,
+    Language,
+
+} from "@mui/icons-material";
+import MenuIcon from '@mui/icons-material/Menu'
+import {
+    List,
+    ListItem,
+    Tooltip,
+    IconButton,
+    Box,
+    Menu,
+    Drawer,
+    MenuItem,
+    ListItemIcon,
+    Typography,
+    Backdrop,
+    CircularProgress,
+    ListItemText,
+    Link,
+    Button
+} from "@mui/material";
+
+const Navbar = ({ user, setOpenModal }) => {
     const { loading, toggleLoading } = useAppContext();
     const navigate = new useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const openAnchor = Boolean(anchorEl);
+    const [open, setOpen] = useState(false);
+    let anchor = "right";
     const handleClick = (e) => setAnchorEl(e.currentTarget);
     const handleClose = () => setAnchorEl(null);
     const changeToLogin = () => {
@@ -37,8 +49,57 @@ const Navbar = ({ user, setOpen }) => {
             navigate("/", { replace: true });
         }, 2000);
     };
+
+    function navigateToLogin() {
+        return navigate('/', { replace: true })
+    }
+
+    const toggleDrawer = (open) => (e) => {
+        if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) return;
+        setOpen(open);
+    };
+    const list = () => (
+        <Box
+            sx={{
+                width: anchor === "top" || anchor === "bottom" ? "auto" : 250,
+                padding: 2,
+            }}
+            role="presentation"
+            onClick={toggleDrawer(false)}
+            onKeyDown={toggleDrawer(false)}
+        >
+            <List>
+                {[
+                    {
+                        text: "Settings",
+                        icon: <Settings />,
+                        action: '',
+
+                    },
+                    {
+                        text: "LogOut",
+                        icon: <Logout />,
+                        action: navigateToLogin,
+                    },
+
+                ].map(({ text, icon, action }, index) => (
+                    <ListItem button key={text} onClick={action}>
+                        <ListItemIcon>{icon}</ListItemIcon>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+        </Box>
+    );
     return (
         <>
+            <Drawer
+                anchor={anchor}
+                open={open}
+                onClose={toggleDrawer(false)}
+            >
+                {list()}
+            </Drawer>
             <Backdrop
                 sx={{
                     color: "#fff",
@@ -52,6 +113,13 @@ const Navbar = ({ user, setOpen }) => {
             <NavbarStyle>
                 <div className="col-md-12 d-flex justify-content-between align-items-center py-2">
                     <img src={logoReduce} alt="" />
+                    <div className="hamburger">
+                        <IconButton
+                            onClick={toggleDrawer(true)}
+                        >
+                            <MenuIcon fontSize="large" sx={{ fill: '#fff' }} />
+                        </IconButton>
+                    </div>
                     <div className="d-flex align-items-center justify-content-center  profile-nav-area">
                         <Tooltip title="Account Settings">
                             <IconButton
@@ -122,7 +190,7 @@ const Navbar = ({ user, setOpen }) => {
                             </p>
                         </div>
                         <Button
-                            onClick={(e) => setOpen((state) => !state)}
+                            onClick={(e) => setOpenModal((state) => !state)}
                             variant="outlined"
                             color="secondary"
                         >
