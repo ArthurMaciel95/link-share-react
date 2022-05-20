@@ -113,18 +113,13 @@ const HomePage = () => {
 
     const handlerDownloadCSV = async () => {
         handleCloseMenuSettins()
-
-
-
         let a = document.createElement('a');
         a.href = file.body.url
         a.download = a.href.substr(a.href.lastIndexOf('/') + 1);
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        toast.success('file download with success!')
-
-
+        toast.success('file download with success!');
     }
     useEffect(getUser, [open]);
 
@@ -143,7 +138,7 @@ const HomePage = () => {
             <Modal open={showModal} setOpen={toggleModal} />
             <HeaderHome>
                 <section className="container">
-                    <Navbar user={user} setOpen={toggleModal} />
+                    <Navbar user={user} setOpen={openModal} />
                     <section>
                         <div className="row">
                             <div className="col-md-12 header-image-avatar mt-3 d-flex position-relative">

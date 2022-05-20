@@ -93,11 +93,6 @@ export const payment = [
         tag: "payment"
     },
     {
-        name: "PayPal",
-        logo: 'paypal',
-        tag: "payment",
-    },
-    {
         name: "99Pay",
         logo: 'nineninepay',
         tag: "payment"
