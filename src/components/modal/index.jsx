@@ -41,6 +41,7 @@ const Modal = ({ open, setOpen }) => {
         return (
             <ModalSection>
                 {social.map(({ name, logo, tag }) => <LinkArea
+                    key={name}
                     name={name}
                     logo={Logo[logo]}
                     handleClick={click}
@@ -55,6 +56,7 @@ const Modal = ({ open, setOpen }) => {
         return (
             <ModalSection>
                 {payment.map(({ name, logo, tag }) => <LinkArea
+                    key={name}
                     name={name}
                     logo={Logo[logo]}
                     handleClick={click}
@@ -69,6 +71,7 @@ const Modal = ({ open, setOpen }) => {
         return (
             <ModalSection>
                 {contact.map(({ name, logo, tag }) => <LinkArea
+                    key={name}
                     name={name}
                     logo={Logo[logo]}
                     handleClick={click}

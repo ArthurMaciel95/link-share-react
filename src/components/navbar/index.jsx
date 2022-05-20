@@ -33,8 +33,8 @@ import {
     Button
 } from "@mui/material";
 
-const Navbar = ({ user, setOpenModal }) => {
-    const { loading, toggleLoading, visitor } = useAppContext();
+const Navbar = ({ user }) => {
+    const { loading, toggleLoading, visitor, toggleModal } = useAppContext();
     const navigate = new useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const openAnchor = Boolean(anchorEl);
@@ -192,7 +192,7 @@ const Navbar = ({ user, setOpenModal }) => {
                             </p>
                         </div>
                         <Button
-                            onClick={(e) => setOpenModal((state) => !state)}
+                            onClick={() => toggleModal(true)}
                             variant="outlined"
                             color="secondary"
                         >
