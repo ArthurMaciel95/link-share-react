@@ -34,7 +34,7 @@ import {
 } from "@mui/material";
 
 const Navbar = ({ user, setOpenModal }) => {
-    const { loading, toggleLoading } = useAppContext();
+    const { loading, toggleLoading, visitor } = useAppContext();
     const navigate = new useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const openAnchor = Boolean(anchorEl);
@@ -73,7 +73,7 @@ const Navbar = ({ user, setOpenModal }) => {
                     {
                         text: "Settings",
                         icon: <Settings />,
-                        action: '',
+                        action: () => console.log('click'),
 
                     },
                     {
@@ -83,7 +83,7 @@ const Navbar = ({ user, setOpenModal }) => {
                     },
 
                 ].map(({ text, icon, action }, index) => (
-                    <ListItem button key={text} onClick={action}>
+                    <ListItem button key={text} onClick={action} disabled={text === 'Settings'}>
                         <ListItemIcon>{icon}</ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
@@ -93,13 +93,15 @@ const Navbar = ({ user, setOpenModal }) => {
     );
     return (
         <>
-            <Drawer
-                anchor={anchor}
-                open={open}
-                onClose={toggleDrawer(false)}
-            >
-                {list()}
-            </Drawer>
+            {!visitor && (
+                <Drawer
+                    anchor={anchor}
+                    open={open}
+                    onClose={toggleDrawer(false)}
+                >
+                    {list()}
+                </Drawer>
+            )}
             <Backdrop
                 sx={{
                     color: "#fff",

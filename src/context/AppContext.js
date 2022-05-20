@@ -155,17 +155,19 @@ export const AppProvider = ({ children }) => {
         }
     }
     const addLink = async (form) => {
+
         try {
+
             if (Validation.isEmpty(form)) return toast.warning("Os campos não podem estar vazios");
-            if (!Validation.isUrl(form.context)) return toast.warning("Este link não é valido");
+            /*     if (!Validation.isUrl(form.context)) return toast.warning("Este link não é valido"); */
             dispatch({ type: actions.HANDLE_LOADING, payload: true });
-            const response = await LinksServices.create(form);
+            await LinksServices.create(form);
             toast.success("Link adicionado com sucesso!");
             getUser(true);
         } catch (error) {
             dispatch({ type: actions.HANDLE_LOADING, payload: false });
             if (error.response !== undefined)
-                toast.error(error.response.data.message);
+                return toast.error(error.response.data.message);
         }
     }
     const removeLink = async (id) => {
@@ -186,8 +188,8 @@ export const AppProvider = ({ children }) => {
 
             dispatch({ type: actions.HANDLE_LOADING, payload: true });
             const response = await LinksServices.downloadCSV();
-            toast.success('File downloaded with success!')
-            dispatch({ type: actions.FILE_EXCEL_INFO, payload: { ...response } });
+
+            dispatch({ type: actions.FILE_EXCEL_INFO, payload: response });
         } catch (error) {
             dispatch({ type: actions.HANDLE_LOADING, payload: false });
             if (error.response !== undefined) {

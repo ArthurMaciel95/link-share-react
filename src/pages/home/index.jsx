@@ -56,8 +56,8 @@ const HomePage = () => {
         toggleLoading,
         showModal,
         toggleModal,
-        downloadExcelFile
-
+        downloadExcelFile,
+        file
     } = useAppContext();
     const [filterTag, setFilterTag] = useState("All");
     const [linksFiltered, setLinksFiltered] = useState([]);
@@ -80,6 +80,7 @@ const HomePage = () => {
     const profileImage = () => user && user.body.pic_profile ? user.body.pic_profile : Avatar;
     useEffect(getUser, []);
     useEffect(() => setLinksFiltered(links), [links]);
+    useEffect(() => downloadExcelFile(), [])
 
     const ShowAllLinkOfUser = () => {
         return linksFiltered.map((link) => (
@@ -113,10 +114,10 @@ const HomePage = () => {
     const handlerDownloadCSV = async () => {
         handleCloseMenuSettins()
 
-        let result = downloadExcelFile()
-        console.log(result)
+
+
         let a = document.createElement('a');
-        a.href = result.data.body.url
+        a.href = file.body.url
         a.download = a.href.substr(a.href.lastIndexOf('/') + 1);
         document.body.appendChild(a);
         a.click();

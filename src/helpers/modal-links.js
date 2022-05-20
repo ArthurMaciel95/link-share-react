@@ -7,62 +7,62 @@ export const social = [
     {
         name: 'Facebook',
         logo: 'facebook',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'Instagram',
         logo: 'instagram',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'Linkdin',
         logo: 'linkdin',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'Twitter',
         logo: 'twitter',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'Snapchat',
         logo: 'snapchat',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'Vimeo',
         logo: 'vimeo',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'Pinterest',
         logo: 'pinterest',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'TikTok',
         logo: 'tiktok',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'Youtube',
         logo: 'youtube',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'soundCloud',
         logo: 'soundcloud',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'Twitch',
         logo: 'twitch',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'DropBox',
         logo: 'dropbox',
-        tag: "link"
+        tag: "social"
     },
     {
         name: 'OnlyFans',
