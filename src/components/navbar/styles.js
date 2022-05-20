@@ -9,4 +9,12 @@ export const NavbarStyle = styled.nav`
             border:3px solid white ;
         }
     }
+    .hamburger{
+     display:none ;
+    }
+    @media screen and (max-width:500px){
+        .hamburger{
+            display:flex ;
+        }
+    }
 `

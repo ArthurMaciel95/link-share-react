@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useAppContext } from "context/AppContext";
 import { Validation } from "utils/validation";
 import { formatDistance, subDays } from "date-fns";
@@ -19,6 +19,7 @@ import Button from "@mui/material/Button";
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 
 const VisitorPage = () => {
+    const navigate = useNavigate()
     const { visitor, visitorLinks, getVisitor, showModal } = useAppContext();
     const { nickname } = useParams();
     const [linksFiltered, setLinksFiltered] = useState([]);
@@ -67,7 +68,7 @@ const VisitorPage = () => {
         <HeaderHome>
             <section className="container">
                 <div className="row">
-                    <div className="col-md-12 d-flex justify-content-between align-items-center my-md-2">
+                    <div className="col-md-12 d-flex justify-content-between align-items-center my-2">
                         <img src={logoReduce} alt="" />
                         <Button
                             variant="outlined"

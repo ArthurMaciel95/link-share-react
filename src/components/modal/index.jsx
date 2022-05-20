@@ -31,7 +31,8 @@ const Modal = ({ open, setOpen }) => {
     }
 
     function sendForm() {
-        addLink({ type: linkName, context: formData.context, tag: tag });
+        console.log(tag)
+        addLink({ type: linkName, context: formData.context, tag });
         SetView(1);
         toggleModal(false);
     }
@@ -39,11 +40,11 @@ const Modal = ({ open, setOpen }) => {
     function socialLinks() {
         return (
             <ModalSection>
-                {social.map(({ name, logo, tags }) => <LinkArea
+                {social.map(({ name, logo, tag }) => <LinkArea
                     name={name}
                     logo={Logo[logo]}
                     handleClick={click}
-                    tag={tags}
+                    tag={tag}
                 ></LinkArea>
                 )}
             </ModalSection>
@@ -53,11 +54,11 @@ const Modal = ({ open, setOpen }) => {
     function PaymentLinks() {
         return (
             <ModalSection>
-                {payment.map(({ name, logo, tags }) => <LinkArea
+                {payment.map(({ name, logo, tag }) => <LinkArea
                     name={name}
                     logo={Logo[logo]}
                     handleClick={click}
-                    tag={tags}
+                    tag={tag}
                 ></LinkArea>
                 )}
             </ModalSection>
@@ -67,11 +68,11 @@ const Modal = ({ open, setOpen }) => {
     function ContactLinks() {
         return (
             <ModalSection>
-                {contact.map(({ name, logo, tags }) => <LinkArea
+                {contact.map(({ name, logo, tag }) => <LinkArea
                     name={name}
                     logo={Logo[logo]}
                     handleClick={click}
-                    tag={tags}
+                    tag={tag}
                 ></LinkArea>)}
             </ModalSection>
         );
@@ -100,7 +101,7 @@ const Modal = ({ open, setOpen }) => {
                                         >
                                             <TabList
                                                 onChange={handleChange}
-                                                aria-label="lab API tabs example"
+                                                aria-label="Tab list"
                                             >
                                                 <Tab label="Social" value="1" />
                                                 <Tab
