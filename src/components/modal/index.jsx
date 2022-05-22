@@ -27,7 +27,6 @@ const Modal = ({ open, setOpen }) => {
         SetTag(tagCategory);
         SetView(2);
         SetLinkName(name);
-
     }
 
     function sendForm() {
@@ -136,7 +135,6 @@ const Modal = ({ open, setOpen }) => {
                             sendForm={sendForm}
                             name={linkName}
                             SetView={SetView}
-
                         />
                     )}
                 </>

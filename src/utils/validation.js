@@ -10,10 +10,8 @@ export class Validation {
     }
 
     static isPassword(password) {
-        if (!password || RegExp("^([^a-z]*|[^A-Z]*|[^0-9]*|.{0,7})$").test(password))
-            return false;
-        else
-            return true;
+        return !password || RegExp("^([^a-z]*|[^A-Z]*|[^0-9]*|.{0,7})$").test(password)
+
     }
     static addHttps(link) {
         return this.hasHttps(link) ? link : `https://${link}`
