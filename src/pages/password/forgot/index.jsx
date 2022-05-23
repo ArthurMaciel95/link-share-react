@@ -9,8 +9,9 @@ import { toast } from "react-toastify";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useAppContext } from "context/AppContext";
-
+import { useTranslation } from "react-i18next";
 const ForgetPassword = () => {
+    let { t, i18n } = useTranslation()
     const navigate = useNavigate();
     const { loading, toggleLoading, passwordForgot, disabled } = useAppContext();
     const [formData, setFormData] = useState({ email: "" });
@@ -42,13 +43,12 @@ const ForgetPassword = () => {
                         src={emailForgetIllustration}
                         alt="letter and notebook"
                     />
-                    <h3>Forget my password!</h3>
+                    <h3>{t('forget_password.title')}</h3>
                     <p>
-                        Enter your email below so we can send you a link to your
-                        email with instructions to change your password.
+                        {t('forget_password.subtitle')}
                     </p>
                     <TextField
-                        label="Email"
+                        label={t('forget_password.email')}
                         variant="outlined"
                         type="email"
                         name="email"
@@ -67,7 +67,7 @@ const ForgetPassword = () => {
                         fullWidth
                         onClick={handlerSubmit}
                     >
-                        SEND EMAIL
+                        {t('forget_password.send_email')}
                     </Button>
                     <Link
                         component="button"
@@ -75,7 +75,7 @@ const ForgetPassword = () => {
                         color="primary"
                         onClick={toLogin}
                     >
-                        Back to Login Page.
+                        {t('forget_password.back_to_login')}
                     </Link>
                 </form>
             </FormContainer>

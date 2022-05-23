@@ -6,11 +6,12 @@ import Modal from "components/modal";
 import { useNavigate } from 'react-router-dom';
 import { NavbarStyle } from './styles'
 import { useAppContext } from "context/AppContext";
-
+import { useColorMode } from "context/ColorModeContext";
 import {
     Settings,
     Logout,
     DarkMode,
+    LightMode,
     Language,
 
 } from "@mui/icons-material";
@@ -32,9 +33,11 @@ import {
     Link,
     Button
 } from "@mui/material";
-
+import { useTranslation } from "react-i18next";
 const Navbar = ({ user }) => {
+    let { t, i18n } = useTranslation()
     const { loading, toggleLoading, visitor, toggleModal } = useAppContext();
+    const { mode, toggleColorMode } = useColorMode()
     const navigate = new useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const openAnchor = Boolean(anchorEl);
@@ -54,6 +57,10 @@ const Navbar = ({ user }) => {
         return navigate('/', { replace: true })
     }
 
+    function changeTheme() {
+        return toggleColorMode()
+    }
+
     const toggleDrawer = (open) => (e) => {
         if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) return;
         setOpen(open);
@@ -71,19 +78,19 @@ const Navbar = ({ user }) => {
             <List>
                 {[
                     {
-                        text: "Settings",
+                        text: t('drawer.settings'),
                         icon: <Settings />,
                         action: () => console.log('click'),
 
                     },
                     {
-                        text: "LogOut",
+                        text: t('drawer.logout'),
                         icon: <Logout />,
                         action: navigateToLogin,
                     },
 
                 ].map(({ text, icon, action }, index) => (
-                    <ListItem button key={text} onClick={action} disabled={text === 'Settings'}>
+                    <ListItem button key={text} onClick={action} disabled={text === t('drawer.settings')}>
                         <ListItemIcon>{icon}</ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
@@ -123,7 +130,17 @@ const Navbar = ({ user }) => {
                         </IconButton>
                     </div>
                     <div className="d-flex align-items-center justify-content-center  profile-nav-area">
-                        <Tooltip title="Account Settings">
+                        <Tooltip title={t('home.tooltip.change_theme')}>
+                            <IconButton
+                                onClick={changeTheme}
+                                size="small"
+                                sx={{ ml: 2 }}
+
+                            >
+                                {mode === 'light' ? <DarkMode fontSize="medium" sx={{ fill: '#fff' }} /> : <LightMode fontSize="medium" sx={{ fill: '#fff' }} />}
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title={t('home.tooltip.account_settings')}>
                             <IconButton
                                 onClick={handleClick}
                                 size="small"
@@ -177,13 +194,13 @@ const Navbar = ({ user }) => {
                                 <ListItemIcon>
                                     <Settings fontSize="small" />
                                 </ListItemIcon>
-                                Settings
+                                {t('home.menu.settings')}
                             </MenuItem>
                             <MenuItem onClick={(e) => changeToLogin()}>
                                 <ListItemIcon>
                                     <Logout fontSize="small" />
                                 </ListItemIcon>
-                                Logout
+                                {t('home.menu.log_out')}
                             </MenuItem>
                         </Menu>
                         <div className="flex flex-column mx-2 align-items-start">

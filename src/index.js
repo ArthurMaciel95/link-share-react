@@ -11,49 +11,18 @@ import { hover } from "@testing-library/user-event/dist/hover";
 import { AppProvider } from "context/AppContext";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ColorModeContextProvider } from 'context/ColorModeContext'
-
-const theme = createTheme({
-    components: {
-        MuiButton: {
-            variants: [
-                {
-                    props: { variant: "contained", color: "primary" },
-                    style: {
-                        textTransform: "none",
-                        color: "#FFF",
-                        boxShadow: "none",
-                    },
-                },
-                {
-                    props: { variant: "outlined", color: "primary" },
-                    style: {
-                        textTransform: "none",
-                        color: "#fb6b6b",
-                    },
-                },
-            ],
-        },
-    },
-    palette: {
-        primary: {
-            main: "#fb6b6b",
-        },
-        secondary: {
-            main: "#FFF",
-        },
-    },
-});
-
+import i18n from './i18n';
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter> <AppProvider>
-            <ColorModeContextProvider>
-                <GlobalStyle />
-                <App />
-                <ToastContainer transition={Slide} theme="colored" limit={3} />
-            </ColorModeContextProvider>
-        </AppProvider>
+        <BrowserRouter>
+            <AppProvider>
+                <ColorModeContextProvider>
+                    <GlobalStyle />
+                    <App />
+                    <ToastContainer transition={Slide} theme="colored" limit={3} />
+                </ColorModeContextProvider>
+            </AppProvider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")

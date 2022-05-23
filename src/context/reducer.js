@@ -19,7 +19,7 @@ export const reducer = (state, action) => {
         case actions.HANDLE_MODAL:
             return { ...state, showModal: action.payload };
         case actions.HANDLE_LOADING:
-            return { ...state, loading: action.payload };
+            return { ...state, loading: action.payload, fields: action.payload };
         case actions.HANDLE_FIELDS:
             return { ...state, fields: action.payload };
         case actions.FILE_EXCEL_INFO:

@@ -45,9 +45,10 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LanguageIcon from '@mui/icons-material/Language';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useAppContext } from "context/AppContext";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
-
+    let { t, i18n } = useTranslation()
     const {
         getUser,
         user,
@@ -62,7 +63,7 @@ const HomePage = () => {
     const [filterTag, setFilterTag] = useState("All");
     const [linksFiltered, setLinksFiltered] = useState([]);
     const [anchorEl, setAnchorEl] = useState(null)
-    const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
+    const [tags, setTags] = useState([t('home.tabs.all'), t('home.tabs.social'), t('home.tabs.payment'), t('home.tabs.contact')]);
     const openMenuSettins = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -101,7 +102,7 @@ const HomePage = () => {
     const Crumb = [
         {
             icon: homeIcon,
-            page: "Home",
+            page: t('bread_crumb.home'),
         },
     ];
 
@@ -119,7 +120,7 @@ const HomePage = () => {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        toast.success('file download with success!');
+        toast.success(t('toast_message.file_download_success'));
     }
     useEffect(getUser, [open]);
 
@@ -163,7 +164,7 @@ const HomePage = () => {
                                             disableElevation
 
                                         >
-                                            <img src={LinkChainIcon} /> Add Link
+                                            <img src={LinkChainIcon} /> {t('home.buttons.add_link')}
                                         </Button>
                                         <Link to="/profile">
                                             <Button
@@ -173,7 +174,7 @@ const HomePage = () => {
 
                                                 disableElevation
                                             >
-                                                <img src={ProfileIcon} /> Profile
+                                                <img src={ProfileIcon} />{t('home.buttons.profile')}
                                             </Button>
                                         </Link>
                                         <ClipBoardArea
@@ -214,7 +215,7 @@ const HomePage = () => {
                                                     <DownloadIcon fontSize="small" />
                                                 </ListItemIcon>
 
-                                                <ListItemText>Export to Excel</ListItemText>
+                                                <ListItemText>{t('home.ellips_menu.export_to_excel')}</ListItemText>
                                             </MenuItem>
 
 
