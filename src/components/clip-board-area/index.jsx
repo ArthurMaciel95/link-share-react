@@ -6,7 +6,9 @@ import Button from "@mui/material/Button";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Tooltip from "@mui/material/Tooltip";
 import { useAppContext } from "context/AppContext";
+import { useTranslation } from "react-i18next";
 const ClipBoardArea = ({ nickname }) => {
+    let { t, i18n } = useTranslation()
     const { fields } = useAppContext()
     const urlVisitor = `https://www.linkshare.com.br/v/${nickname}`;
     const [copied, setCopied] = useState(false)
@@ -14,7 +16,7 @@ const ClipBoardArea = ({ nickname }) => {
     const onCopy = () => setCopied(true)
     return (
         <>
-            <Tooltip title="Send the Url to your followers" arrow>
+            <Tooltip title={t('home.tooltip.send_the_url_with_your_followers')} arrow>
                 <ClipBoardAreaStyle>
                     <CopyToClipboard onCopy={onCopy} text={urlVisitor}>
                         <Button
@@ -26,7 +28,7 @@ const ClipBoardArea = ({ nickname }) => {
 
                             disableElevation
                         >
-                            <p>Copy URL</p>
+                            <p>{t('home.buttons.copy_url')}</p>
                             <img src={ClipBoardIcon} alt="clipboard icon" />
                         </Button>
                     </CopyToClipboard>

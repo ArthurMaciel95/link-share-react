@@ -13,8 +13,10 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useAppContext } from "context/AppContext";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
+    let { t, i18n } = useTranslation()
     const navigate = useNavigate();
     const { loading, fields, toggleLoading, register } = useAppContext();
     const [formData, setFormData] = useState({});
@@ -34,12 +36,12 @@ const Register = () => {
             <Section className="links">
                 <div className="max-width">
                     <img src={shareLinkLogo} alt="logo share link" />
-                    <h3>Finally, All my links in one place!</h3>
+                    <h3>{t("register.subtitle")}</h3>
                 </div>
                 <div className="d-flex fs-6">
-                    <a href="#">Terms</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Helps & Contacts</a>
+                    <a href="#">{t("register.terms")}</a>
+                    <a href="#">{t("register.privacy")}</a>
+                    <a href="#">{t("register.helps&contact")}</a>
                 </div>
             </Section>
             <Section className="register">
@@ -55,13 +57,13 @@ const Register = () => {
                         className="btn-back"
                         onClick={NavigateToLogin}
                     >
-                        Back to Login
+                        {t("register.back_to_login")}
                     </Button>
 
                     <Form.GroupContainer>
                         <Form.Group>
                             <TextField
-                                label="Name"
+                                label={t('register.name')}
                                 variant="outlined"
                                 type="text"
                                 name="name"
@@ -72,7 +74,7 @@ const Register = () => {
                         </Form.Group>
                         <Form.Group>
                             <TextField
-                                label="Nickname"
+                                label={t('register.nickname')}
                                 variant="outlined"
                                 type="text"
                                 name="nickname"
@@ -83,7 +85,7 @@ const Register = () => {
                         </Form.Group>
                         <Form.Group>
                             <TextField
-                                label="Email"
+                                label={t('register.email')}
                                 variant="outlined"
                                 type="email"
                                 name="email"
@@ -94,7 +96,7 @@ const Register = () => {
                         </Form.Group>
                         <Form.Group>
                             <TextField
-                                label="Password"
+                                label={t('register.password')}
                                 variant="outlined"
                                 type="password"
                                 name="password"
@@ -105,7 +107,7 @@ const Register = () => {
                         </Form.Group>
                         <Form.Group>
                             <TextField
-                                label="Confirm Password"
+                                label={t('register.confirm_password')}
                                 variant="outlined"
                                 type="password"
                                 name="confirm_password"
@@ -123,10 +125,10 @@ const Register = () => {
                             fullWidth
                             disableElevation
                         >
-                            Register
+                            {t("register.register")}
                         </Button>
                         <Link to="/" className="my-md-2 fs-7 text-reset">
-                            I already have an account.
+                            {t("register.i_already_have_account")}
                         </Link>
                     </Form.GroupContainer>
                 </Form.Container>

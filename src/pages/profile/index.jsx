@@ -24,9 +24,10 @@ import ClipBoardArea from "components/clip-board-area";
 import DescriptionArea from "components/description-area";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-
+import { useTranslation } from "react-i18next";
 import { useAppContext } from "context/AppContext";
 const ProfilePage = () => {
+    let { t, i18n } = useTranslation()
     const { loading, user, getUser, toggleLoading, showModal, toggleModal } = useAppContext();
     const changeLoading = () => toggleLoading(!loading);
     const openModal = () => toggleModal(true);
@@ -40,7 +41,7 @@ const ProfilePage = () => {
         },
         {
             icon: profileBreadIcon,
-            page: "Profile",
+            page: t('bread_crumb.profile'),
         },
     ];
     return (
@@ -83,7 +84,7 @@ const ProfilePage = () => {
                                         size="large"
                                         disableElevation
                                     >
-                                        <img src={LinkChainIcon} /> Add Link
+                                        <img src={LinkChainIcon} />{t('profile.buttons.add_link')}
                                     </Button>
                                     <Link to="/home">
                                         <Button
@@ -92,7 +93,7 @@ const ProfilePage = () => {
                                             size="large"
                                             disableElevation
                                         >
-                                            Back to Home
+                                            {t('profile.buttons.back_to_home')}
                                         </Button>
                                     </Link>
                                     <ClipBoardArea

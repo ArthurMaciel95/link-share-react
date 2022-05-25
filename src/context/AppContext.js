@@ -44,6 +44,7 @@ export const AppProvider = ({ children }) => {
                 email: form.email,
                 password: await sha256(form.password),
             });
+            dispatch({ type: actions.HANDLE_LOADING, payload: true })
             toast.success("Successfully registered");
             return navigate("/", { replace: true });
         } catch (error) {

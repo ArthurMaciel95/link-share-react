@@ -17,14 +17,17 @@ import SkeletonCards from "components/skeleton";
 import ClipBoardArea from "components/clip-board-area";
 import Button from "@mui/material/Button";
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import { useTranslation } from "react-i18next";
 
 const VisitorPage = () => {
+
+    let { t, i18n } = useTranslation()
     const navigate = useNavigate()
     const { visitor, visitorLinks, getVisitor, showModal } = useAppContext();
     const { nickname } = useParams();
     const [linksFiltered, setLinksFiltered] = useState([]);
     const [filterTag, setFilterTag] = useState("All");
-    const [tags, setTags] = useState(["All", "Social", "Payment", "Contact"]);
+    const [tags, setTags] = useState([t('visitor.tabs.all'), t('visitor.tabs.social'), t('visitor.tabs.payment'), t('visitor.tabs.contact')]);
 
     function NavidateToLogin() {
         return navigate('/', { replace: true })

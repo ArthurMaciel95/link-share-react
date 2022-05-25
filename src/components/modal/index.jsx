@@ -12,8 +12,10 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { useAppContext } from "context/AppContext";
-import { social, payment, contact } from 'helpers/modal-links'
+import { social, payment, contact } from 'helpers/modal-links';
+import { useTranslation } from "react-i18next";
 const Modal = ({ open, setOpen }) => {
+    let { t, i18n } = useTranslation()
     const { addLink, toggleModal, showModal } = useAppContext();
     const [value, setValue] = React.useState("1");
     const handleChange = (event, newValue) => setValue(newValue);
@@ -27,7 +29,6 @@ const Modal = ({ open, setOpen }) => {
         SetTag(tagCategory);
         SetView(2);
         SetLinkName(name);
-
     }
 
     function sendForm() {
@@ -106,13 +107,13 @@ const Modal = ({ open, setOpen }) => {
                                                 onChange={handleChange}
                                                 aria-label="Tab list"
                                             >
-                                                <Tab label="Social" value="1" />
+                                                <Tab label={t('modal.social')} value="1" />
                                                 <Tab
-                                                    label="Payment"
+                                                    label={t('modal.payment')}
                                                     value="2"
                                                 />
                                                 <Tab
-                                                    label="Contact"
+                                                    label={t('modal.contact')}
                                                     value="3"
                                                 />
                                             </TabList>
@@ -136,7 +137,6 @@ const Modal = ({ open, setOpen }) => {
                             sendForm={sendForm}
                             name={linkName}
                             SetView={SetView}
-
                         />
                     )}
                 </>

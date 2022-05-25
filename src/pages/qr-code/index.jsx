@@ -5,10 +5,11 @@ import Backdrop from "@mui/material/Backdrop";
 import { useLocation, Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
-
+import { useTranslation } from "react-i18next";
 import { useAppContext } from "context/AppContext";
 
 const QrCodePage = () => {
+    let { t, i18n } = useTranslation()
     const { loading, toggleLoading, user, getUser } = useAppContext();
     const canvas = useRef();
     const changeLoading = () => toggleLoading(!loading);
@@ -47,12 +48,11 @@ const QrCodePage = () => {
                                 left: "20px",
                             }}
                         >
-                            Back
+                            {t('qrcode.back')}
                         </Button>
                     </Link>
                     <h3 className="text-center m-4">
-                        Bring the camera closer to your device to access this
-                        profile.
+                        {t('qrcode.subtitle')}
                     </h3>
                     <h3>LinkShare.com</h3>
                     <p>{user && user.body.email}</p>

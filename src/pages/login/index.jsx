@@ -10,10 +10,12 @@ import HiddenPasswordIcon from "assets/svg/hidden-password.svg";
 import StayLogged from "components/stay-logged";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { useTranslation } from "react-i18next";
 
 import { useAppContext } from "context/AppContext";
 
 const LoginPage = () => {
+    let { t, i18n } = useTranslation()
     const { login, logOut, fields, loading } = useAppContext();
     const [formData, setFormData] = useState({ email: "", password: "" });
     const { email, password } = formData;
@@ -63,12 +65,12 @@ const LoginPage = () => {
             <Section className="links">
                 <div className="max-width hero-area">
                     <img src={shareLinkLogo} alt="logo share link" />
-                    <h3>Finally, All my links in one place!</h3>
+                    <h3>{t('login.subtitle')}</h3>
                 </div>
                 <div className="d-flex fs-6 links-terms">
-                    <a href="#">Terms</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Helps & Contacts</a>
+                    <a href="#">{t('login.terms')}</a>
+                    <a href="#">{t('login.privacy')}</a>
+                    <a href="#">{t('login.helps&contact')}</a>
                 </div>
             </Section>
             <Section className="login">
@@ -76,13 +78,13 @@ const LoginPage = () => {
                     <img src={shareLinkLogo} alt="logo share link" />
                 </div>
                 <h4 className="login-mobile-hero text-center ">
-                    Your platform to share links!
+                    {t('your platform to share links!')}
                 </h4>
                 <Form.Container className="flex flex-column flex-center login-width">
                     <Form.GroupContainer>
                         <Form.Group>
                             <TextField
-                                label="Email"
+                                label={t('login.email')}
                                 variant="outlined"
                                 type="email"
                                 name="email"
@@ -94,7 +96,7 @@ const LoginPage = () => {
                         </Form.Group>
                         <Form.Group>
                             <TextField
-                                label="Password"
+                                label={t('login.password')}
                                 variant="outlined"
                                 className="round"
                                 disabled={fields}
@@ -122,7 +124,7 @@ const LoginPage = () => {
                             to="/forget-password"
                             className="my-md-2 fs-7 text-reset"
                         >
-                            Forget your password?
+                            {t('login.forget_your_password?')}
                         </Link>
                         <Button
                             onClick={handleLogin}
@@ -133,16 +135,16 @@ const LoginPage = () => {
                             disableElevation
                             fullWidth
                         >
-                            Log in
+                            {t('login.log_in')}
                         </Button>
                         <h2 className="text-center text-black-50 fs-3 py-4">
-                            Don't have account?
+                            {t("login.don't_have_account?")}
                         </h2>
                         <Link
                             to="/register"
                             className="text-center text-primary-color fw-bolder"
                         >
-                            Sign up Now!
+                            {t("login.sign_up_now!")}
                         </Link>
                     </Form.GroupContainer>
                 </Form.Container>

@@ -10,8 +10,9 @@ import { TextField } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
 import Button from '@mui/material/Button'
 import { useAppContext } from "context/AppContext";
-
+import { useTranslation } from "react-i18next";
 const ProfileInfo = ({ dataUser }) => {
+    let { t, i18n } = useTranslation()
     const { updateProfile, fields, loading, toggleFields } = useAppContext();
     const [photo, setPhoto] = useState({ base64: "", name: "", file: "" });
     const [formData, setFormData] = useState({
@@ -25,8 +26,8 @@ const ProfileInfo = ({ dataUser }) => {
     const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
     const ShowPreviewImage = async (e) => {
         let file = e.target.files[0];
-        if (!isFormatAllowed(file)) return toast.error("Formato de image não permitido");
-        if (!isSizeAllowed(file)) return toast.error(`O tamanho da imagem não pode passar de ${MAX_SIZE_IMAGE / 1000000}mb`);
+        if (!isFormatAllowed(file)) return toast.error(t('toast_message.errors.format_not_allowed'));
+        if (!isSizeAllowed(file)) return toast.error(t('toast_message.errors.format_not_allowed'));
         const base64 = await imageToBase64(file);
         setPhoto({ raw: file, file: base64, name: file.name });
     };
@@ -65,7 +66,7 @@ const ProfileInfo = ({ dataUser }) => {
     }, [dataUser]);
     return (
         <Profile.Container>
-            <h3>Account Information</h3>
+            <h3>{t('')}</h3>
             <Profile.Form>
                 <Profile.FileArea>
                     <Profile.ImageArea>
@@ -87,11 +88,11 @@ const ProfileInfo = ({ dataUser }) => {
                     />
                     <section>
                         <Button variant="outlined" color="primary" disabled={fields}>
-                            <label htmlFor="file-input">Change photo</label>
+                            <label htmlFor="file-input">{t('profile.change_photo')}</label>
                         </Button>
                         <p>
                             {!photo.name
-                                ? "file name not provided"
+                                ? t('profile.file_name_not_provided')
                                 : photo.name}
                         </p>
                     </section>
@@ -100,7 +101,7 @@ const ProfileInfo = ({ dataUser }) => {
                     <Profile.Column>
                         <Form.Group>
                             <TextField
-                                label="Name"
+                                label={t('profile.name')}
                                 variant="outlined"
                                 type="text"
                                 name="name"
@@ -110,7 +111,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 value={formData.name}
                             />
                             <TextField
-                                label="Email"
+                                label={t('profile.email')}
                                 variant="outlined"
                                 type="text"
                                 name="email"
@@ -120,7 +121,7 @@ const ProfileInfo = ({ dataUser }) => {
                                 value={formData.email}
                             />
                             <TextField
-                                label="Nickname"
+                                label={t('profile.nickname')}
                                 variant="outlined"
                                 type="text"
                                 name="nickname"
@@ -135,7 +136,7 @@ const ProfileInfo = ({ dataUser }) => {
                         <Form.Group>
                             <TextField
                                 id="filled-multiline-static"
-                                label="Description"
+                                label={t('profile.description')}
                                 rows={7}
                                 variant="outlined"
                                 name="description"
@@ -160,7 +161,7 @@ const ProfileInfo = ({ dataUser }) => {
                         type="submit"
                         disabled={fields}
                     >
-                        Save changes
+                        {t('profile.buttons.save_changes')}
                     </LoadingButton>
                     {/*  <Buttons.Outline disabled={disable}>Apagar conta</Buttons.Outline> */}
                 </Profile.ButtonArea>

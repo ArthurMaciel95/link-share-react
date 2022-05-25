@@ -9,48 +9,20 @@ import "react-toastify/dist/ReactToastify.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { AppProvider } from "context/AppContext";
-
-const theme = createTheme({
-    components: {
-        MuiButton: {
-            variants: [
-                {
-                    props: { variant: "contained", color: "primary" },
-                    style: {
-                        textTransform: "none",
-                        color: "#FFF",
-                        boxShadow: "none",
-                    },
-                },
-                {
-                    props: { variant: "outlined", color: "primary" },
-                    style: {
-                        textTransform: "none",
-                        color: "#fb6b6b",
-                    },
-                },
-            ],
-        },
-    },
-    palette: {
-        primary: {
-            main: "#fb6b6b",
-        },
-        secondary: {
-            main: "#FFF",
-        },
-    },
-});
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { ColorModeContextProvider } from 'context/ColorModeContext'
+import "./i18n"
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter> <AppProvider>
-            <ThemeProvider theme={theme}>
-                <GlobalStyle />
-                <App />
-                <ToastContainer transition={Slide} theme="colored" limit={3} />
-            </ThemeProvider>
-        </AppProvider>
+        <BrowserRouter>
+            <AppProvider>
+                <ColorModeContextProvider>
+                    <GlobalStyle />
+                    <App />
+                    <ToastContainer transition={Slide} theme="colored" limit={3} />
+                </ColorModeContextProvider>
+            </AppProvider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")

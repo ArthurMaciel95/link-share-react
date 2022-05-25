@@ -4,7 +4,7 @@ export const BreadCrumbStyle = styled.section`
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
     padding: 5px 8px;
     border-radius: 5px;
-    background-color: white;
+    background-color: var(--background-white);
     display: flex;
     align-items: center;
     height: fit-content;
