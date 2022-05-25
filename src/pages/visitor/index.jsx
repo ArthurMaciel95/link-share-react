@@ -27,7 +27,7 @@ const VisitorPage = () => {
     const { nickname } = useParams();
     const [linksFiltered, setLinksFiltered] = useState([]);
     const [filterTag, setFilterTag] = useState("All");
-    const [tags, setTags] = useState([t('visitor.tabs.all'), t('visitor.tabs.social'), t('visitor.tabs.payment'), t('visitor.tabs.contact')]);
+
 
     function NavidateToLogin() {
         return navigate('/', { replace: true })
@@ -116,7 +116,7 @@ const VisitorPage = () => {
                         <div className="col-lg-7 offset-md-1 position-relative link-column mt-lg-3">
                             <>
                                 <TagsNavigation
-                                    tags={tags}
+
                                     setFilter={setFilter}
                                     filter={filterTag}
                                 />
