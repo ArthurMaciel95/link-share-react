@@ -11,7 +11,7 @@ import { hover } from "@testing-library/user-event/dist/hover";
 import { AppProvider } from "context/AppContext";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ColorModeContextProvider } from 'context/ColorModeContext'
-import i18n from './i18n';
+import "./i18n"
 
 ReactDOM.render(
     <React.StrictMode>

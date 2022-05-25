@@ -13,9 +13,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useTranslation } from "react-i18next";
 
 import { useAppContext } from "context/AppContext";
 const CardLink = ({ name, image, link, createAt, id, visitor, Key }) => {
+    let { t } = useTranslation()
     const { removeLink } = useAppContext();
     const [open, setOpen] = useState(false);
     let anchor = "right";
@@ -42,12 +44,12 @@ const CardLink = ({ name, image, link, createAt, id, visitor, Key }) => {
             <List>
                 {[
                     {
-                        text: "Delete URL",
+                        text: t('drawer.delete_url'),
                         icon: <DeleteIcon />,
                         action: handlerRemoveLink,
                     },
                     {
-                        text: "Copy Link",
+                        text: t('drawer.copy_link'),
                         icon: <ContentCopyIcon />,
                         action: handlerClipBoard,
                     },

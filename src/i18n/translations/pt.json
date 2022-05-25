@@ -1,0 +1,125 @@
+{
+    "translation": {
+        "menu_change_language": {
+            "portuguese": "Português",
+            "english": "Inglês"
+        },
+        "toast_message": {
+            "success": {
+                "file_download_success": "Arquivo baixado com sucesso!"
+            },
+            "errors": {
+                "size_image": "O Arquivo não pode ser maior que 1mb.",
+                "format_not_allowed": "Formato de imagem não permitido."
+            }
+        },
+        "bread_crumb": {
+            "home": "Home",
+            "profile": "Perfil"
+        },
+        "login": {
+            "subtitle": "Finalmente. todos os links em um só lugar",
+            "terms": "termos",
+            "privacy": "Privacidade",
+            "helps&contact": "Ajuda & Contato",
+            "your platform to share links!": "Sua plataforma de compartilhamento de links.",
+            "email": "Email",
+            "password": "Senha",
+            "remember_me": "Lembrar de mim",
+            "forget_your_password?": "Esqueceu sua senha?",
+            "log_in": "Entrar",
+            "don't_have_account?": "Ainda não tem uma conta?",
+            "sign_up_now!": "Cadastre-se agora!"
+        },
+        "register": {
+            "terms": "termos",
+            "privacy": "Privacidade",
+            "helps&contact": "Ajuda & Contato",
+            "back_to_login": "Voltar Para Login",
+            "name": "Nome",
+            "nickname": "Apelido",
+            "email": "Email",
+            "password": "Senha",
+            "confirm_password": "Confirmar Senha",
+            "register": "Registrar",
+            "i_already_have_account": "Eu já tenho uma conta."
+        },
+        "forget_password": {
+            "title": "Esqueci minha senha!",
+            "subtitle": "Digite seu e-mail abaixo para que possamos enviar um link para seu e-mail com instruções para alterar sua senha.",
+            "email": "Email",
+            "send_email": "ENVIAR EMAIL",
+            "back_to_login": "Voltar para a página de login."
+        },
+        "home": {
+            "tooltip": {
+                "change_language": "Mudar Linguagem",
+                "change_theme": "Mudar Tema",
+                "account_settings": "Configurações da conta",
+                "send_the_url_with_your_followers": "Envie este link para seus seguidores"
+            },
+            "menu": {
+                "settings": "Configurações",
+                "log_out": "Sair"
+            },
+            "buttons": {
+                "add_link": "Adicionar Link",
+                "profile": "Perfil",
+                "copy_url": "Copiar link"
+            },
+            "ellips_menu": {
+                "export_to_excel": "Exportar para excel"
+            }
+        },
+        "tabs": {
+            "all": "Tudo",
+            "social": "Social",
+            "payment": "Pagamento",
+            "contact": "Contato"
+        },
+        "modal": {
+            "all": "Todos",
+            "social": "Social",
+            "payment": "Pagamentos",
+            "contact": "Contato"
+        },
+        "drawer": {
+            "delete_url": "Remover",
+            "copy_link": "Copiar Link",
+            "settings": "Configuração",
+            "logout": "Sair"
+        },
+        "profile": {
+            "account_information": "Informações da conta",
+            "change_photo": "Mudar foto",
+            "file_name_not_provided": "Nome de arquivo não informado",
+            "name": "Nome",
+            "email": "Email",
+            "nickname": "Apelido",
+            "description": "Descrição",
+            "buttons": {
+                "save_changes": "Salvar mudaças",
+                "add_link": "Adicionar Link",
+                "back_to_home": "Voltar para Home",
+                "copy_url": "Copiar Link"
+            }
+        },
+        "qrcode": {
+            "back": "Voltar",
+            "subtitle": "Aproxime a câmera perto para acessar o perfil."
+        },
+        "visitor": {
+            "tabs": {
+                "all": "Tudo",
+                "social": "Social",
+                "payment": "Pagamento",
+                "contact": "Contato"
+            }
+        },
+        "not_found_link": {
+            "link_not_found": "Link não encontrado.",
+            "no_add_link": "O Dono do perfil ainda não adicionou um link nesta seção",
+            "your_probably": "Você Provavelmente não adicional um link nesta seção"
+        }
+    }
+}

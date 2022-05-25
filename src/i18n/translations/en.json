@@ -1,0 +1,127 @@
+{
+    "translation": {
+        "menu_change_language": {
+            "portuguese": "Portuguese",
+            "english": "English"
+        },
+        "toast_message": {
+            "success": {
+                "file_download_success": "file download with success"
+            },
+            "errors": {
+                "size_image": "the size image not be than of 1mb",
+                "format_not_allowed": "Format image not allowed"
+            }
+        },
+        "bread_crumb": {
+            "home": "Home",
+            "profile": "Profile"
+        },
+        "login": {
+            "subtitle": "Finally, All my links in one place!",
+            "terms": "terms",
+            "privacy": "Privacy",
+            "helps&contact": "Helps & Contact",
+            "your platform to share links!": "Your platform to share links!",
+            "email": "Email",
+            "password": "password",
+            "remember_me": "remember me",
+            "forget_your_password?": "forget your password?",
+            "log_in": "log in",
+            "don't_have_account?": "Don't have account?",
+            "sign_up_now!": "Sign up Now!"
+        },
+        "register": {
+            "subtitle": "Finally, All my links in one place!",
+            "terms": "terms",
+            "privacy": "Privacy",
+            "helps&contact": "Helps & Contact",
+            "back_to_login": "Back to Login",
+            "name": "Name",
+            "nickname": "Nickname",
+            "email": "Email",
+            "password": "Password",
+            "confirm_password": "Confirm password",
+            "register": "Register",
+            "i_already_have_account": "I already have account."
+        },
+        "forget_password": {
+            "title": "Forget my password!",
+            "subtitle": "Enter your email below so we can send you a link to your email with instructions to change your password.",
+            "email": "Email",
+            "send_email": "SEND EMAIL",
+            "back_to_login": "Back to Login Page."
+        },
+        "home": {
+            "tooltip": {
+                "change_language": "Change Language",
+                "change_theme": "Change Theme",
+                "account_settings": "Account Settings",
+                "send_the_url_with_your_followers": "Send the url with your followers"
+            },
+            "menu": {
+                "settings": "Settigns",
+                "log_out": "Logout"
+            },
+            "buttons": {
+                "add_link": "Add link",
+                "profile": "Profile",
+                "copy_url": "Copy URL"
+            },
+
+            "ellips_menu": {
+                "export_to_excel": "Export to excel"
+            }
+        },
+        "tabs": {
+            "all": "All",
+            "social": "Social",
+            "payment": "Payment",
+            "contact": "Contact"
+        },
+        "modal": {
+            "all": "All",
+            "social": "Social",
+            "payment": "Payment",
+            "contact": "Contact"
+        },
+        "drawer": {
+            "delete_url": "Delete",
+            "copy_link": "Copy Link",
+            "settings": "settings",
+            "logout": "Logout"
+        },
+        "profile": {
+            "account_information": "Account Information",
+            "change_photo": "Change photo",
+            "file_name_not_provided": "File name not Provided",
+            "name": "Name",
+            "email": "Email",
+            "nickname": "Nickname",
+            "description": "Description",
+            "buttons": {
+                "save_changes": "Save Changes",
+                "add_link": "Add link",
+                "back_to_home": "Back to Home",
+                "copy_url": "Copy URL"
+            }
+        },
+        "qrcode": {
+            "back": "Back",
+            "subtitle": "Bring the camera closer to your device to access this profile."
+        },
+        "visitor": {
+            "tabs": {
+                "all": "All",
+                "social": "Social",
+                "payment": "Payment",
+                "contact": "Contact"
+            }
+        },
+        "not_found_link": {
+            "link_not_found": "Link not Found.",
+            "no_add_link": "Profile owner has not added a link to this section",
+            "your_probably": "You probably haven't added any links to this section."
+        }
+    }
+}

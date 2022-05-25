@@ -13,7 +13,7 @@ import {
     DarkMode,
     LightMode,
     Language,
-
+    Translate
 } from "@mui/icons-material";
 import MenuIcon from '@mui/icons-material/Menu'
 import {
@@ -33,6 +33,7 @@ import {
     Link,
     Button
 } from "@mui/material";
+
 import { useTranslation } from "react-i18next";
 const Navbar = ({ user }) => {
     let { t, i18n } = useTranslation()
@@ -40,11 +41,22 @@ const Navbar = ({ user }) => {
     const { mode, toggleColorMode } = useColorMode()
     const navigate = new useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorElMenu, setAnchorElMenu] = useState(null);
+    const [openMenu, setOpenMenu] = useState(false);
     const openAnchor = Boolean(anchorEl);
+    const openAnchorMenu = Boolean(anchorElMenu)
     const [open, setOpen] = useState(false);
     let anchor = "right";
+
+    const options = [{ name: t('menu_change_language.portuguese'), lng: 'pt' }, { name: t('menu_change_language.english'), lng: 'en' }];
+
+    const ITEM_HEIGHT = 48;
+
     const handleClick = (e) => setAnchorEl(e.currentTarget);
+    const handleClickMenu = (e) => setAnchorElMenu(e.currentTarget)
+
     const handleClose = () => setAnchorEl(null);
+    const handlerCloseMenu = () => setAnchorElMenu(null)
     const changeToLogin = () => {
         toggleLoading(true);
         return setTimeout(() => {
@@ -59,6 +71,11 @@ const Navbar = ({ user }) => {
 
     function changeTheme() {
         return toggleColorMode()
+    }
+
+    function changeLanguage(language) {
+        handlerCloseMenu()
+        return i18n.changeLanguage(language)
     }
 
     const toggleDrawer = (open) => (e) => {
@@ -130,7 +147,44 @@ const Navbar = ({ user }) => {
                         </IconButton>
                     </div>
                     <div className="d-flex align-items-center justify-content-center  profile-nav-area">
-                        <Tooltip title={t('home.tooltip.change_theme')}>
+                        <Tooltip title={t('home.tooltip.change_language')}>
+                            <IconButton
+                                aria-label="more"
+                                id="long-button"
+                                aria-controls={openMenu ? "long-menu" : undefined}
+                                aria-expanded={openMenu ? "true" : undefined}
+                                aria-haspopup="true"
+                                onClick={handleClickMenu}
+                            >
+                                <Translate fontSize="medium" sx={{ fill: '#fff' }} />
+                            </IconButton>
+                        </Tooltip>
+                        <Menu
+                            id="long-menu"
+                            MenuListProps={{
+                                "aria-labelledby": "long-button"
+                            }}
+                            anchorEl={anchorElMenu}
+                            open={openAnchorMenu}
+                            onClose={handlerCloseMenu}
+                            PaperProps={{
+                                style: {
+                                    maxHeight: ITEM_HEIGHT * 4.5,
+                                    width: "20ch"
+                                }
+                            }}
+                        >
+                            {options.map(({ name, lng }) => (
+                                <MenuItem
+                                    key={name}
+                                    value={lng}
+                                    onClick={() => changeLanguage(lng)}
+                                >
+                                    {name}
+                                </MenuItem>
+                            ))}
+                        </Menu>
+                        {/* <Tooltip title={t('home.tooltip.change_theme')}>
                             <IconButton
                                 onClick={changeTheme}
                                 size="small"
@@ -139,7 +193,7 @@ const Navbar = ({ user }) => {
                             >
                                 {mode === 'light' ? <DarkMode fontSize="medium" sx={{ fill: '#fff' }} /> : <LightMode fontSize="medium" sx={{ fill: '#fff' }} />}
                             </IconButton>
-                        </Tooltip>
+                        </Tooltip> */}
                         <Tooltip title={t('home.tooltip.account_settings')}>
                             <IconButton
                                 onClick={handleClick}

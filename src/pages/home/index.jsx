@@ -49,6 +49,7 @@ import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
     let { t, i18n } = useTranslation()
+
     const {
         getUser,
         user,
@@ -63,7 +64,6 @@ const HomePage = () => {
     const [filterTag, setFilterTag] = useState("All");
     const [linksFiltered, setLinksFiltered] = useState([]);
     const [anchorEl, setAnchorEl] = useState(null)
-    const [tags, setTags] = useState([t('home.tabs.all'), t('home.tabs.social'), t('home.tabs.payment'), t('home.tabs.contact')]);
     const openMenuSettins = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -224,7 +224,6 @@ const HomePage = () => {
 
                                 </Painel>
                                 <TagsNavigation
-                                    tags={tags}
                                     setFilter={setFilter}
                                     filter={filterTag}
                                 />

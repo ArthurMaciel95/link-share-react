@@ -138,7 +138,7 @@ const LoginPage = () => {
                             {t('login.log_in')}
                         </Button>
                         <h2 className="text-center text-black-50 fs-3 py-4">
-                            {t("don't have account?")}
+                            {t("login.don't_have_account?")}
                         </h2>
                         <Link
                             to="/register"
