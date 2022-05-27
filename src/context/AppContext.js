@@ -54,10 +54,11 @@ export const AppProvider = ({ children }) => {
         }
     }
     const login = async (form) => {
-        dispatch({ type: actions.USER_LOGIN });
+
         try {
             if (Validation.isEmpty(form)) return toast.warning("Os campos não podem estar vazios");
             if (!Validation.isEmail(form.email)) return toast.warning("Este email não é valido");
+            dispatch({ type: actions.USER_LOGIN });
             const response = await UserServices.login({
                 email: form.email,
                 password: await sha256(form.password)
