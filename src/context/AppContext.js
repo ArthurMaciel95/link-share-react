@@ -136,7 +136,9 @@ export const AppProvider = ({ children }) => {
             dispatch({ type: actions.HANDLE_LOADING, payload: true });
             const response = await UserServices.refresh();
             dispatch({ type: actions.USER_INFO, payload: { ...response } });
+            toggleFields(false)
         } catch (error) {
+            toggleFields(false)
             logOut();
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
@@ -156,7 +158,6 @@ export const AppProvider = ({ children }) => {
         }
     }
     const addLink = async (form) => {
-
         try {
 
             if (Validation.isEmpty(form)) return toast.warning("Os campos não podem estar vazios");
