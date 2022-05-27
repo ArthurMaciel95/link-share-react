@@ -32,8 +32,8 @@ const Modal = ({ open, setOpen }) => {
     }
 
     function sendForm() {
-        console.log(tag)
-        addLink({ type: linkName, context: formData.context, tag });
+
+        addLink({ type: linkName, context: formData.context, tag: tag });
         SetView(1);
         toggleModal(false);
     }
