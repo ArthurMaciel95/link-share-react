@@ -28,7 +28,7 @@ import { useTranslation } from "react-i18next";
 import { useAppContext } from "context/AppContext";
 const ProfilePage = () => {
     let { t, i18n } = useTranslation()
-    const { loading, user, getUser, toggleLoading, showModal, toggleModal } = useAppContext();
+    const { loading, user, getUser, toggleLoading, showModal, toggleModal, fields } = useAppContext();
     const changeLoading = () => toggleLoading(!loading);
     const openModal = () => toggleModal(true);
     useEffect(getUser, []);
@@ -83,6 +83,7 @@ const ProfilePage = () => {
                                         color="primary"
                                         size="large"
                                         disableElevation
+                                        disabled={fields}
                                     >
                                         <img src={LinkChainIcon} />{t('profile.buttons.add_link')}
                                     </Button>
@@ -92,6 +93,7 @@ const ProfilePage = () => {
                                             color="primary"
                                             size="large"
                                             disableElevation
+                                            disabled={fields}
                                         >
                                             {t('profile.buttons.back_to_home')}
                                         </Button>
