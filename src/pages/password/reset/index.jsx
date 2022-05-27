@@ -9,12 +9,14 @@ import Button from "@mui/material/Button";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import IllustrationResetPassword from "assets/svg/password-reset.svg";
+import { useTranslation } from "react-i18next";
 
 const ResetPassword = () => {
+    let { t } = useTranslation()
     const searchParams = new URLSearchParams(search);
     const { loading, toggleLoading, fields, passwordReset } = useAppContext();
     const { search } = useLocation();
-    const [formData, setFormData] = useState({ password: "", repeatPassword: ""});
+    const [formData, setFormData] = useState({ password: "", repeatPassword: "" });
     const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
     const changeLoading = () => toggleLoading(false);
     const handlerSubmit = async (event) => {
@@ -58,13 +60,12 @@ const ResetPassword = () => {
                         src={IllustrationResetPassword}
                         alt="letter and notebook"
                     />
-                    <h3>Create new Password</h3>
+                    <h3>{t('reset_password.title')}</h3>
                     <p>
-                        Your new Password must be different from previous used
-                        passwords.
+                        {t('reset_password.subtitle')}
                     </p>
                     <TextField
-                        label="Password"
+                        label={t('reset_password.password')}
                         variant="outlined"
                         type="password"
                         name="password"
@@ -75,7 +76,7 @@ const ResetPassword = () => {
                         value={formData.password}
                     />
                     <TextField
-                        label="Repeat Password"
+                        label={t('reset_password.repeat_password')}
                         variant="outlined"
                         type="Password"
                         name="repeatPassword"
@@ -94,7 +95,7 @@ const ResetPassword = () => {
                         disableElevation
                         fullWidth
                     >
-                        RESET PASSWORD
+                        {t('reset_password.button')}
                     </Button>
                 </form>
             </FormContainer>

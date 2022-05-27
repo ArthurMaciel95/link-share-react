@@ -18,7 +18,7 @@
             "profile": "Perfil"
         },
         "login": {
-            "subtitle": "Finalmente. todos os links em um só lugar",
+            "subtitle": "Finalmente, todos os links em um só lugar",
             "terms": "termos",
             "privacy": "Privacidade",
             "helps&contact": "Ajuda & Contato",
@@ -32,6 +32,7 @@
             "sign_up_now!": "Cadastre-se agora!"
         },
         "register": {
+            "subtitle": "Finalmente, todos os links em um só lugar",
             "terms": "termos",
             "privacy": "Privacidade",
             "helps&contact": "Ajuda & Contato",
@@ -50,6 +51,13 @@
             "email": "Email",
             "send_email": "ENVIAR EMAIL",
             "back_to_login": "Voltar para a página de login."
+        },
+        "reset_password": {
+            "title": "Criar um nova senha.",
+            "subtitle": "Sua senha precisa ser diferente das senhas anteriores.",
+            "password": "Senha",
+            "repeat_password": "Repita a senha",
+            "button": "ALTERAR SENHA"
         },
         "home": {
             "tooltip": {

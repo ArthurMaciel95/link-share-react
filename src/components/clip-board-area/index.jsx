@@ -16,7 +16,7 @@ const ClipBoardArea = ({ nickname }) => {
     const onCopy = () => setCopied(true)
     return (
         <>
-            <Tooltip title={t('home.tooltip.send_the_url_with_your_followers')} arrow>
+            <Tooltip title={t('home.tooltip.send_the_url_with_your_followers')} disableHoverListener={fields} arrow>
                 <ClipBoardAreaStyle>
                     <CopyToClipboard onCopy={onCopy} text={urlVisitor}>
                         <Button
@@ -25,7 +25,7 @@ const ClipBoardArea = ({ nickname }) => {
                             className="btn"
                             color="primary"
                             size="large"
-
+                            disabled={fields}
                             disableElevation
                         >
                             <p>{t('home.buttons.copy_url')}</p>
