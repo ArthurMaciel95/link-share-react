@@ -30,10 +30,9 @@ import {
     Backdrop,
     CircularProgress,
     ListItemText,
-    Link,
     Button
 } from "@mui/material";
-
+import { Link } from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 const Navbar = ({ user }) => {
     let { t, i18n } = useTranslation()
@@ -138,7 +137,7 @@ const Navbar = ({ user }) => {
             </Backdrop>
             <NavbarStyle>
                 <div className="col-md-12 d-flex justify-content-between align-items-center py-2">
-                    <img src={logoReduce} alt="" />
+                    <Link to="/"> <img src={logoReduce} alt="" /></Link>
                     <div className="hamburger">
                         <IconButton
                             onClick={toggleDrawer(true)}

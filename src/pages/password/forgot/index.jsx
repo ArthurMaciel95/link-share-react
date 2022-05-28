@@ -15,7 +15,7 @@ const ForgetPassword = () => {
     const navigate = useNavigate();
     const { loading, toggleLoading, passwordForgot, disabled } = useAppContext();
     const [formData, setFormData] = useState({ email: "" });
-    const changeLoading = () => toggleLoading(!loading);
+    const changeLoading = () => toggleLoading(false);
     const toLogin = () => navigate("/", { replace: true });
     const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
     const handlerSubmit = (event) => {

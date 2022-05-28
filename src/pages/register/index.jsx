@@ -25,14 +25,14 @@ const Register = () => {
         e.preventDefault();
         register(formData);
     }
-
+    const handlerClose = () => setLoading(false);
     function NavigateToLogin() {
         return navigate('/', { replace: true })
     }
 
     return (
         <Container>
-            {loading && <Loading />}
+            <Loading loading={loading} handlerClose={handlerClose} />
             <Section className="links">
                 <div className="max-width">
                     <img src={shareLinkLogo} alt="logo share link" />

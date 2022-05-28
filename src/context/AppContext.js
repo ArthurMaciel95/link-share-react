@@ -27,8 +27,8 @@ export const AppProvider = ({ children }) => {
     const navigate = useNavigate();
 
     const register = async (form) => {
-        dispatch({ type: actions.USER_REGISTER });
         try {
+            dispatch({ type: actions.USER_REGISTER });
             if (!Validation.isPassword(form.password)) {
                 toast.error("The password must be at least 8 characters long and have an uppercase and lowercase letter between A-Z and a number between 0-9.!");
                 return dispatch({ type: actions.HANDLE_FIELDS, payload: false });
@@ -48,7 +48,7 @@ export const AppProvider = ({ children }) => {
             toast.success("Successfully registered");
             return navigate("/", { replace: true });
         } catch (error) {
-            navigate("/error", { replace: true })
+            dispatch({ type: actions.HANDLE_LOADING, payload: false })
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
         }
@@ -93,34 +93,40 @@ export const AppProvider = ({ children }) => {
         }
     }
     const passwordForgot = async (form) => {
-        dispatch({ type: actions.HANDLE_FIELDS, payload: true });
         try {
             if (Validation.isEmpty(form)) return toast.warning("Os campos não podem estar vazios");
             if (!Validation.isEmail(form.email)) return toast.warning("Este email não é valido");
-            await UserServices.passwordForgot(form.email, undefined, null);
+            dispatch({ type: actions.HANDLE_FIELDS, payload: true });
+            dispatch({ type: actions.HANDLE_LOADING, payload: true });
+            await UserServices.passwordForgot(form.email, 1, null);
             toast.success("Email send with success!");
             dispatch({ type: actions.HANDLE_FIELDS, payload: false });
             dispatch({ type: actions.HANDLE_LOADING, payload: false });
             navigate("/", { replace: true });
         } catch (error) {
             dispatch({ type: actions.HANDLE_FIELDS, payload: false });
+            dispatch({ type: actions.HANDLE_LOADING, payload: false });
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
         }
     }
     const passwordReset = async (form) => {
-        dispatch({ type: actions.HANDLE_LOADING, payload: true });
         try {
             if (Validation.isEmpty(form)) return toast.warning("Os campos não podem estar vazios");
             if (form.password !== form.repeatPassword) return toast.warn('the password field and repeat password must be the same');
             if (!Validation.isPassword(form.password) || !Validation.isPassword(form.repeatPassword))
                 return toast.warn("The password must be at least 8 characters long and have an uppercase and lowercase letter between A-Z and a number between 0-9.!");
+
+            dispatch({ type: actions.HANDLE_LOADING, payload: true });
             dispatch({ type: actions.HANDLE_FIELDS, payload: true });
+            console.log(form)
             await UserServices.passwordForgot(null, 2, {
-                passwor: await sha256(form.password),
+                password: await sha256(form.password),
                 jwt: form.jwt,
                 token: form.token
             });
+            dispatch({ type: actions.HANDLE_LOADING, payload: false });
+            dispatch({ type: actions.HANDLE_FIELDS, payload: false });
             toast.success('password change with success!')
             navigate('/', { replace: true })
         } catch (error) {

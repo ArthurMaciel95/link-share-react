@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { HeaderStyles, FormContainer } from "./styles";
 import { toast } from "react-toastify";
 import { useAppContext } from "context/AppContext";
@@ -13,9 +13,10 @@ import { useTranslation } from "react-i18next";
 
 const ResetPassword = () => {
     let { t } = useTranslation()
+    const navigate = useNavigate()
+    const { search } = useLocation();
     const searchParams = new URLSearchParams(search);
     const { loading, toggleLoading, fields, passwordReset } = useAppContext();
-    const { search } = useLocation();
     const [formData, setFormData] = useState({ password: "", repeatPassword: "" });
     const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
     const changeLoading = () => toggleLoading(false);
@@ -25,7 +26,7 @@ const ResetPassword = () => {
             password: formData.password,
             repeatPassword: formData.repeatPassword,
             jwt: searchParams.get("jwt"),
-            token: searchParams.get("token"),
+            token: searchParams.get("tk"),
         });
     };
 
