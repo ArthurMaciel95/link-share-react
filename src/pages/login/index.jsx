@@ -16,7 +16,7 @@ import { useAppContext } from "context/AppContext";
 
 const LoginPage = () => {
     let { t, i18n } = useTranslation()
-    const { login, logOut, fields, loading } = useAppContext();
+    const { login, logOut, fields, loading, handle } = useAppContext();
     const [formData, setFormData] = useState({ email: "", password: "" });
     const { email, password } = formData;
     const [ShowPassword, setShowPassword] = useState(false);

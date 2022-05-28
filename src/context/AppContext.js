@@ -27,8 +27,8 @@ export const AppProvider = ({ children }) => {
     const navigate = useNavigate();
 
     const register = async (form) => {
-        dispatch({ type: actions.USER_REGISTER });
         try {
+            dispatch({ type: actions.USER_REGISTER });
             if (!Validation.isPassword(form.password)) {
                 toast.error("The password must be at least 8 characters long and have an uppercase and lowercase letter between A-Z and a number between 0-9.!");
                 return dispatch({ type: actions.HANDLE_FIELDS, payload: false });
@@ -48,7 +48,7 @@ export const AppProvider = ({ children }) => {
             toast.success("Successfully registered");
             return navigate("/", { replace: true });
         } catch (error) {
-            navigate("/error", { replace: true })
+            dispatch({ type: actions.HANDLE_LOADING, payload: false })
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
         }
