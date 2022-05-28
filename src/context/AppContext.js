@@ -68,9 +68,9 @@ export const AppProvider = ({ children }) => {
                 setNewToken(response.data.body.token);
                 navigate("/home");
             }
-            toogleFields(false);
+            toggleFields(false);
         } catch (error) {
-            toogleFields(false);
+            toggleFields(false);
             dispatch({ type: actions.USER_LOGIN_FAIL });
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
@@ -197,11 +197,16 @@ export const AppProvider = ({ children }) => {
         try {
 
             toggleLoading(true);
+            toggleFields(true)
             const response = await LinksServices.downloadCSV();
 
             dispatch({ type: actions.FILE_EXCEL_INFO, payload: response });
+
+            toggleLoading(false);
+            toggleFields(false)
         } catch (error) {
             toggleLoading(false);
+            toggleFields(false)
             if (error.response !== undefined) {
                 toast.error(error.response.data.message);
             }
@@ -217,15 +222,16 @@ export const AppProvider = ({ children }) => {
                 await UserServices.updatePicProfile(photoForm);
             toast.success("Perfil atualizado com sucesso!");
             getUser(true);
-            toogleFields(false);
+            toggleFields(false);
             navigate("/home", { replace: true });
         } catch (error) {
-            toogleFields(false);
+            toggleFields(false);
             toggleLoading(false);
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
         }
     }
+
     const toggleModal = (status) => dispatch({ type: actions.HANDLE_MODAL, payload: status });
     const toggleLoading = (status) => dispatch({ type: actions.HANDLE_LOADING, payload: status });
     const toggleFields = (status) => dispatch({ type: actions.HANDLE_FIELDS, payload: status });

@@ -49,7 +49,7 @@ import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
     let { t, i18n } = useTranslation()
-    const {getUser, user, links, loading, toggleLoading, showModal, toggleModal,  downloadExcelFile, file } = useContext(AppContext);
+    const { getUser, user, links, loading, toggleLoading, showModal, toggleModal, downloadExcelFile, file } = useContext(AppContext);
     const [filterTag, setFilterTag] = useState("All");
     const [linksFiltered, setLinksFiltered] = useState([]);
     const [anchorEl, setAnchorEl] = useState(null)
@@ -109,7 +109,7 @@ const HomePage = () => {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        toast.success(t('toast_message.file_download_success'));
+        toast.success(t('toast_message.success.file_download_success'));
     }
 
     return (
