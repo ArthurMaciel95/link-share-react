@@ -10,8 +10,8 @@ import { LinksServices } from "services/link";
 import * as actions from "./actions";
 import { type } from "@testing-library/user-event/dist/type";
 
-const AppContext = createContext();
-const globalState = {
+
+const initialState = {
     showModal: false,
     fields: false,
     loading: false,
@@ -22,8 +22,9 @@ const globalState = {
     visitorLinks: [],
 }
 
+export const AppContext = createContext(initialState);
 export const AppProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, globalState);
+    const [state, dispatch] = useReducer(reducer, initialState);
     const navigate = useNavigate();
 
     const register = async (form) => {
@@ -67,7 +68,9 @@ export const AppProvider = ({ children }) => {
                 setNewToken(response.data.body.token);
                 navigate("/home");
             }
+            toogleFields(false);
         } catch (error) {
+            toogleFields(false);
             dispatch({ type: actions.USER_LOGIN_FAIL });
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
@@ -139,13 +142,11 @@ export const AppProvider = ({ children }) => {
     }
     const getUser = async (force = false) => {
         try {
-            if (globalState.user != null && !force) return;
+            if (state.user != null && !force) return;
             dispatch({ type: actions.HANDLE_LOADING, payload: true });
             const response = await UserServices.refresh();
             dispatch({ type: actions.USER_INFO, payload: { ...response } });
-            toggleFields(false)
         } catch (error) {
-            toggleFields(false)
             logOut();
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
@@ -153,7 +154,7 @@ export const AppProvider = ({ children }) => {
     }
     const getVisitor = async (nickname, force = false) => {
         try {
-            if (globalState.visitor != null && !force) return;
+            if (state.visitor != null && !force) return;
             dispatch({ type: actions.HANDLE_LOADING, payload: true });
             const response = await UserServices.visitor(nickname);
             dispatch({ type: actions.VISITOR_INFO, payload: { ...response } });
@@ -168,25 +169,25 @@ export const AppProvider = ({ children }) => {
         try {
 
             if (Validation.isEmpty(form)) return toast.warning("Os campos não podem estar vazios");
-            /*     if (!Validation.isUrl(form.context)) return toast.warning("Este link não é valido"); */
-            dispatch({ type: actions.HANDLE_LOADING, payload: true });
+            /*if (!Validation.isUrl(form.context)) return toast.warning("Este link não é valido"); */
+            toggleLoading(true);
             await LinksServices.create(form);
             toast.success("Link adicionado com sucesso!");
             getUser(true);
         } catch (error) {
-            dispatch({ type: actions.HANDLE_LOADING, payload: false });
+            toggleLoading(false);
             if (error.response !== undefined)
                 return toast.error(error.response.data.message);
         }
     }
     const removeLink = async (id) => {
-        dispatch({ type: actions.HANDLE_LOADING, payload: true });
+        toggleLoading(true);
         try {
             const response = await LinksServices.delete(id);
+            dispatch({ type: actions.LINK_DELETE, payload: id  });
             toast.success("Link removido com sucesso!");
-            getUser(true);
         } catch (error) {
-            dispatch({ type: actions.HANDLE_LOADING, payload: false });
+            toggleLoading(false);
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
         }
@@ -195,12 +196,12 @@ export const AppProvider = ({ children }) => {
     const downloadExcelFile = async () => {
         try {
 
-            dispatch({ type: actions.HANDLE_LOADING, payload: true });
+            toggleLoading(true);
             const response = await LinksServices.downloadCSV();
 
             dispatch({ type: actions.FILE_EXCEL_INFO, payload: response });
         } catch (error) {
-            dispatch({ type: actions.HANDLE_LOADING, payload: false });
+            toggleLoading(false);
             if (error.response !== undefined) {
                 toast.error(error.response.data.message);
             }
@@ -216,11 +217,11 @@ export const AppProvider = ({ children }) => {
                 await UserServices.updatePicProfile(photoForm);
             toast.success("Perfil atualizado com sucesso!");
             getUser(true);
-            dispatch({ type: actions.HANDLE_FIELDS, payload: false });
+            toogleFields(false);
             navigate("/home", { replace: true });
         } catch (error) {
-            dispatch({ type: actions.HANDLE_FIELDS, payload: false });
-            dispatch({ type: actions.HANDLE_LOADING, payload: false });
+            toogleFields(false);
+            toggleLoading(false);
             if (error.response !== undefined)
                 toast.error(error.response.data.message);
         }
@@ -249,8 +250,4 @@ export const AppProvider = ({ children }) => {
             downloadExcelFile
         }}>{children}
     </AppContext.Provider>;
-}
-
-export const useAppContext = () => {
-    return useContext(AppContext);
 }

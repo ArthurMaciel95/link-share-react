@@ -1,15 +1,15 @@
-import react, { useState } from "react";
+import react, { useContext, useState } from "react";
 import { ClipBoardAreaStyle } from "./styles";
 import ClipBoardIcon from "assets/svg/clip-board.svg";
 import { toast } from "react-toastify";
 import Button from "@mui/material/Button";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Tooltip from "@mui/material/Tooltip";
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 import { useTranslation } from "react-i18next";
 const ClipBoardArea = ({ nickname }) => {
     let { t, i18n } = useTranslation()
-    const { fields } = useAppContext()
+    const { fields } = useContext(AppContext)
     const urlVisitor = `https://www.linkshare.com.br/v/${nickname}`;
     const [copied, setCopied] = useState(false)
     const handlerClipBoard = () => toast.success("link successfully copied!");

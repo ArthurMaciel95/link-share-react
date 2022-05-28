@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
 import PlusIcon from "assets/svg/icon_plus.svg";
 import Modal from "components/modal";
 import { useNavigate } from 'react-router-dom';
 import { NavbarStyle } from './styles'
-import { useAppContext } from "context/AppContext";
-import { useColorMode } from "context/ColorModeContext";
+import { AppContext, ColorModeContext } from "context";
 import {
     Settings,
     Logout,
@@ -36,8 +35,8 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 const Navbar = ({ user }) => {
     let { t, i18n } = useTranslation()
-    const { loading, toggleLoading, visitor, toggleModal } = useAppContext();
-    const { mode, toggleColorMode } = useColorMode()
+    const { loading, toggleLoading, visitor, toggleModal } = useContext(AppContext);
+    const { mode, toggleColorMode } = useContext(ColorModeContext)
     const navigate = new useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const [anchorElMenu, setAnchorElMenu] = useState(null);

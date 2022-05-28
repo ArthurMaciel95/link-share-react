@@ -3,22 +3,16 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import { grey, orange, yellow, lightBlue } from '@mui/material/colors';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-export const colorModeContext = createContext({
+export const ColorModeContext = createContext({
     toggleColorMode: () => { },
     mode: 'light',
 });
 
 export const ColorModeContextProvider = ({ children }) => {
-
-
-    /**
-     * verifica se no sistema operacional está usando um tema escuro
-     * 
-     */
+    //- verifica se no sistema operacional está usando um tema escuro
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
     const initialTheme = prefersDarkMode ? 'dark' : 'light'
-
     const [mode, setMode] = useState(initialTheme);
     const colorMode = useMemo(() => ({
         toggleColorMode: () => {
@@ -86,12 +80,8 @@ export const ColorModeContextProvider = ({ children }) => {
     )
 
     return (
-        <colorModeContext.Provider value={colorMode}>
+        <ColorModeContext.Provider value={ColorModeContext}>
             <ThemeProvider theme={theme}>{children}</ThemeProvider>
-        </colorModeContext.Provider>
+        </ColorModeContext.Provider>
     )
 }
-
-export const useColorMode = () => useContext(colorModeContext)
-
-

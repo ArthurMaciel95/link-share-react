@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { HeaderStyles, FormContainer } from "./styles";
 import { toast } from "react-toastify";
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
@@ -16,7 +16,7 @@ const ResetPassword = () => {
     const navigate = useNavigate()
     const { search } = useLocation();
     const searchParams = new URLSearchParams(search);
-    const { loading, toggleLoading, fields, passwordReset } = useAppContext();
+    const { loading, toggleLoading, fields, passwordReset } = useContext(AppContext);
     const [formData, setFormData] = useState({ password: "", repeatPassword: "" });
     const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
     const changeLoading = () => toggleLoading(false);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "assets/images/avatar.jpeg";
 import * as Buttons from "components/buttons";
@@ -44,30 +44,18 @@ import Divider from "@mui/material/Divider";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LanguageIcon from '@mui/icons-material/Language';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
     let { t, i18n } = useTranslation()
-
-    const {
-        getUser,
-        user,
-        links,
-        loading,
-        toggleLoading,
-        showModal,
-        toggleModal,
-        downloadExcelFile,
-        file
-    } = useAppContext();
+    const {getUser, user, links, loading, toggleLoading, showModal, toggleModal,  downloadExcelFile, file } = useContext(AppContext);
     const [filterTag, setFilterTag] = useState("All");
     const [linksFiltered, setLinksFiltered] = useState([]);
     const [anchorEl, setAnchorEl] = useState(null)
     const openMenuSettins = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-
     };
     const handleCloseMenuSettins = () => {
         setAnchorEl(null);
@@ -82,6 +70,7 @@ const HomePage = () => {
     useEffect(getUser, []);
     useEffect(() => setLinksFiltered(links), [links]);
     useEffect(() => downloadExcelFile(), [])
+    useEffect(getUser, [open]);
 
     const ShowAllLinkOfUser = () => {
         return linksFiltered.map((link) => (
@@ -122,7 +111,6 @@ const HomePage = () => {
         document.body.removeChild(a);
         toast.success(t('toast_message.file_download_success'));
     }
-    useEffect(getUser, [open]);
 
     return (
         <>
@@ -186,42 +174,57 @@ const HomePage = () => {
                                         <IconButton
                                             aria-label="more"
                                             id="long-button"
-                                            aria-controls={openMenuSettins ? 'long-menu' : undefined}
-                                            aria-expanded={openMenuSettins ? 'true' : undefined}
+                                            aria-controls={
+                                                openMenuSettins
+                                                    ? "long-menu"
+                                                    : undefined
+                                            }
+                                            aria-expanded={
+                                                openMenuSettins
+                                                    ? "true"
+                                                    : undefined
+                                            }
                                             aria-haspopup="true"
                                             onClick={handleClick}
-                                            className='no-max-width'
+                                            className="no-max-width"
                                         >
-                                            <MoreHorizRounded sx={{ fill: '#909090' }} fontSize="large" />
+                                            <MoreHorizRounded
+                                                sx={{ fill: "#909090" }}
+                                                fontSize="large"
+                                            />
                                         </IconButton>
                                         <Menu
                                             id="long-menu"
                                             MenuListProps={{
-                                                'aria-labelledby': 'long-button',
+                                                "aria-labelledby":
+                                                    "long-button",
                                             }}
                                             anchorEl={anchorEl}
                                             open={openMenuSettins}
                                             onClose={handleCloseMenuSettins}
                                             PaperProps={{
                                                 style: {
-                                                    maxHeight: ITEM_HEIGHT * 4.5,
-                                                    width: '20ch',
+                                                    maxHeight:
+                                                        ITEM_HEIGHT * 4.5,
+                                                    width: "20ch",
                                                 },
                                             }}
                                         >
-
-                                            <MenuItem onClick={handlerDownloadCSV}>
+                                            <MenuItem
+                                                onClick={handlerDownloadCSV}
+                                            >
                                                 <ListItemIcon>
                                                     <DownloadIcon fontSize="small" />
                                                 </ListItemIcon>
 
-                                                <ListItemText>{t('home.ellips_menu.export_to_excel')}</ListItemText>
+                                                <ListItemText>
+                                                    {t(
+                                                        "home.ellips_menu.export_to_excel"
+                                                    )}
+                                                </ListItemText>
                                             </MenuItem>
-
-
                                         </Menu>
                                     </div>
-
                                 </Painel>
                                 <TagsNavigation
                                     setFilter={setFilter}

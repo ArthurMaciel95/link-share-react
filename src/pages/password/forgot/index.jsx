@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { HeaderStyles, FormContainer } from "./styles";
 import emailForgetIllustration from "assets/svg/email-forget.svg";
@@ -8,12 +8,12 @@ import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 import { useTranslation } from "react-i18next";
 const ForgetPassword = () => {
     let { t, i18n } = useTranslation()
     const navigate = useNavigate();
-    const { loading, toggleLoading, passwordForgot, disabled } = useAppContext();
+    const { loading, toggleLoading, passwordForgot, disabled } = useContext(AppContext);
     const [formData, setFormData] = useState({ email: "" });
     const changeLoading = () => toggleLoading(false);
     const toLogin = () => navigate("/", { replace: true });

@@ -1,4 +1,4 @@
-import React, { Children, useState } from "react";
+import React, { Children, useContext, useState } from "react";
 import Logo from "utils/links-logos";
 import ArrowLeftIcon from "assets/images/icon_arrow_left.png";
 import LinkArea from "components/link-area";
@@ -11,12 +11,12 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 import { social, payment, contact } from 'helpers/modal-links';
 import { useTranslation } from "react-i18next";
 const Modal = ({ open, setOpen }) => {
     let { t, i18n } = useTranslation()
-    const { addLink, toggleModal, showModal } = useAppContext();
+    const { addLink, toggleModal, showModal } = useContext(AppContext);
     const [value, setValue] = React.useState("1");
     const handleChange = (event, newValue) => setValue(newValue);
     const [view, SetView] = useState(1);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
@@ -25,10 +25,11 @@ import DescriptionArea from "components/description-area";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useTranslation } from "react-i18next";
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
+
 const ProfilePage = () => {
     let { t, i18n } = useTranslation()
-    const { loading, user, getUser, toggleLoading, showModal, toggleModal, fields } = useAppContext();
+    const { loading, user, getUser, toggleLoading, showModal, toggleModal, fields } = useContext(AppContext);
     const changeLoading = () => toggleLoading(!loading);
     const openModal = () => toggleModal(true);
     useEffect(getUser, []);
