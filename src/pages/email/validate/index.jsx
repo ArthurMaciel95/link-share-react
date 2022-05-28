@@ -1,10 +1,10 @@
-import react, { useEffect } from "react";
+import react, { useEffect,useContext } from "react";
 import Loading from "components/loading";
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 import { useParams } from "react-router-dom";
 
 const EmailConfirm = () => {
-    const { emailConfirm } = useAppContext();
+    const { emailConfirm } = useContext(AppContext);
     const { email, uuid } = useParams();
     useEffect(() => {
         emailConfirm({ email, uuid });

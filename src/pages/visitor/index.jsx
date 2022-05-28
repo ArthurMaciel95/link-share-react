@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 import { Validation } from "utils/validation";
 import { formatDistance, subDays } from "date-fns";
 import { enUS } from "date-fns/locale";
@@ -23,7 +23,7 @@ const VisitorPage = () => {
 
     let { t, i18n } = useTranslation()
     const navigate = useNavigate()
-    const { visitor, visitorLinks, getVisitor, showModal } = useAppContext();
+    const { visitor, visitorLinks, getVisitor, showModal } = useContext(AppContext);
     const { nickname } = useParams();
     const [linksFiltered, setLinksFiltered] = useState([]);
     const [filterTag, setFilterTag] = useState("All");

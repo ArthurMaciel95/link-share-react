@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { QrContainer, QrCard } from "./styles";
 import QRCode from "qrcode";
 import Backdrop from "@mui/material/Backdrop";
@@ -6,11 +6,11 @@ import { useLocation, Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import { useTranslation } from "react-i18next";
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 
 const QrCodePage = () => {
     let { t, i18n } = useTranslation()
-    const { loading, toggleLoading, user, getUser } = useAppContext();
+    const { loading, toggleLoading, user, getUser } = useContext(AppContext);
     const canvas = useRef();
     const changeLoading = () => toggleLoading(!loading);
     useEffect(getUser, []);

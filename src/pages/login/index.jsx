@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import shareLinkLogo from "assets/svg/logo-share-link.svg";
 import { Link } from "react-router-dom";
 import * as Form from "components/form";
@@ -11,12 +11,12 @@ import StayLogged from "components/stay-logged";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useTranslation } from "react-i18next";
+import { AppContext } from "context";
 
-import { useAppContext } from "context/AppContext";
 
 const LoginPage = () => {
     let { t, i18n } = useTranslation()
-    const { login, logOut, fields, loading, handle } = useAppContext();
+    const { login, logOut, fields, loading, handle } = useContext(AppContext);
     const [formData, setFormData] = useState({ email: "", password: "" });
     const { email, password } = formData;
     const [ShowPassword, setShowPassword] = useState(false);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import shareLinkLogo from "assets/svg/logo-share-link.svg";
 import * as Buttons from "components/buttons";
 import * as Form from "components/form";
@@ -12,13 +12,13 @@ import Loading from "components/loading";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 import { useTranslation } from "react-i18next";
 
 const Register = () => {
     let { t, i18n } = useTranslation()
     const navigate = useNavigate();
-    const { loading, fields, toggleLoading, register } = useAppContext();
+    const { loading, fields, toggleLoading, register } = useContext(AppContext);
     const [formData, setFormData] = useState({});
     const formChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
     async function handleRegister(e) {

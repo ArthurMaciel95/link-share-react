@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card } from "./styles.js";
 import threeDots from "../../assets/svg/three-dots.svg";
 import ModalCardSettings from "components/modal-card-settings";
@@ -15,10 +15,10 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useTranslation } from "react-i18next";
 
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 const CardLink = ({ name, image, link, createAt, id, visitor, Key }) => {
     let { t } = useTranslation()
-    const { removeLink } = useAppContext();
+    const { removeLink } = useContext(AppContext);
     const [open, setOpen] = useState(false);
     let anchor = "right";
     const handlerRemoveLink = () => removeLink(id);

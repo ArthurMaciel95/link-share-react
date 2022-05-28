@@ -8,9 +8,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { hover } from "@testing-library/user-event/dist/hover";
-import { AppProvider } from "context/AppContext";
+import { AppProvider,ColorModeContextProvider } from "context";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { ColorModeContextProvider } from 'context/ColorModeContext'
 import "./i18n"
 
 ReactDOM.render(

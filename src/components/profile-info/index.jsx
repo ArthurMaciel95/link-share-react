@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as Profile from "./styles";
 import * as Form from "components/form";
 import * as Buttons from "components/buttons";
@@ -9,11 +9,11 @@ import { encoded, decoded } from "utils/buffer";
 import { TextField } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
 import Button from '@mui/material/Button'
-import { useAppContext } from "context/AppContext";
+import { AppContext } from "context";
 import { useTranslation } from "react-i18next";
 const ProfileInfo = ({ dataUser }) => {
     let { t, i18n } = useTranslation()
-    const { updateProfile, fields, loading, toggleFields } = useAppContext();
+    const { updateProfile, fields, loading } = useContext(AppContext);
     const [photo, setPhoto] = useState({ base64: "", name: "", file: "" });
     const [formData, setFormData] = useState({
         name: "",
