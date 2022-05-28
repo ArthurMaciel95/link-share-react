@@ -184,7 +184,7 @@ export const AppProvider = ({ children }) => {
         toggleLoading(true);
         try {
             const response = await LinksServices.delete(id);
-            dispatch({ type: actions.LINK_DELETE, payload: id  });
+            dispatch({ type: actions.LINK_DELETE, payload: id });
             toast.success("Link removido com sucesso!");
         } catch (error) {
             toggleLoading(false);
