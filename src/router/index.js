@@ -6,7 +6,7 @@ import PageNotFound from 'pages/404';
 import Register from 'pages/register';
 import ProfilePage from 'pages/profile'
 import PrivateRoute from 'Auth';
-import EmailValidate from 'pages/email/validate';
+import EmailValidate from 'pages/redirect/validate';
 import VisitorPage from 'pages/visitor'
 import ForgetPassword from 'pages/password/forgot';
 import ResetPassword from 'pages/password/reset'

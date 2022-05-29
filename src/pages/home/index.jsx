@@ -5,7 +5,7 @@ import * as Buttons from "components/buttons";
 import plusIcon from "assets/svg/icon_plus.svg";
 import Logo from "utils/links-logos";
 import CardLink from "components/card-link";
-import Modal from "components/modal";
+import Modal from "components/modal-group/modal-links";
 import { Image, HeaderHome, PaineButton, Painel } from "./styles";
 import DataNotFound from "components/data-not-found";
 import Loading from "components/loading";

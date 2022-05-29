@@ -9,7 +9,7 @@ import ProfileIcon from "assets/svg/profile.svg";
 import LinkChainIcon from "assets/svg/link-chain.svg";
 import CloseIcon from "assets/svg/close.svg";
 import CardLink from "components/card-link";
-import Modal from "components/modal";
+import Modal from "components/modal-group/modal-links";
 import { Image, HeaderHome, Painel } from "./styles";
 import DataNotFound from "components/data-not-found";
 import ProfileInfo from "components/profile-info";
