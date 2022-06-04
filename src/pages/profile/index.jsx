@@ -32,7 +32,7 @@ const ProfilePage = () => {
     const { loading, user, getUser, toggleLoading, showModal, toggleModal, fields } = useContext(AppContext);
     const changeLoading = () => toggleLoading(!loading);
     const openModal = () => toggleModal(true);
-    useEffect(getUser, []);
+    useEffect(() => getUser, []);
     if (!user) return null;
 
     const Crumb = [

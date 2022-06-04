@@ -13,7 +13,7 @@ const QrCodePage = () => {
     const { loading, toggleLoading, user, getUser } = useContext(AppContext);
     const canvas = useRef();
     const changeLoading = () => toggleLoading(!loading);
-    useEffect(getUser, []);
+    useEffect(() => getUser, []);
 
     const fakeLoad = () => {
         if (!user) return;
@@ -21,7 +21,7 @@ const QrCodePage = () => {
         QRCode.toCanvas(canvas.current, `https://www.linkshare.com.br/v/${user.body.nickname}`);
         setTimeout(() => toggleLoading(false), 2000);
     };
-    useEffect(fakeLoad, [user]);
+    useEffect(() => fakeLoad, [user]);
     return (
         <>
             <Backdrop
