@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useState, useEffect, useMemo, useCallback, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "assets/images/avatar.jpeg";
 import * as Buttons from "components/buttons";
 import plusIcon from "assets/svg/icon_plus.svg";
 import Logo from "utils/links-logos";
 import CardLink from "components/card-link";
-import Modal from "components/modal";
+import Modal from "components/modal-group/modal-links";
 import { Image, HeaderHome, PaineButton, Painel } from "./styles";
 import DataNotFound from "components/data-not-found";
 import Loading from "components/loading";
@@ -67,10 +67,10 @@ const HomePage = () => {
     const openModal = () => toggleModal(true);
     const userHaveAnLink = () => linksFiltered.length > 0;
     const profileImage = () => user && user.body.pic_profile ? user.body.pic_profile : Avatar;
-    useEffect(getUser, []);
+    useEffect(() => getUser, []);
     useEffect(() => setLinksFiltered(links), [links]);
-    useEffect(() => downloadExcelFile(), [])
-    useEffect(getUser, [open]);
+    useEffect(() => downloadExcelFile, [])
+
 
     const ShowAllLinkOfUser = () => {
         return linksFiltered.map((link) => (

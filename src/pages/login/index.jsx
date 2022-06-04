@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import Loading from "components/loading";
 import ShowPasswordIcon from "assets/svg/show-password.svg";
 import HiddenPasswordIcon from "assets/svg/hidden-password.svg";
-import StayLogged from "components/stay-logged";
+import StayLogged from "components/remember-me";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useTranslation } from "react-i18next";

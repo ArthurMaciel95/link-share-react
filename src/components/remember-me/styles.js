@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StayLoggedStyle = styled.span`
+export const RememberMe = styled.span`
     display: flex;
     align-items: center;
     justify-content: center;
