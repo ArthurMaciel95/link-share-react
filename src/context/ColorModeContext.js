@@ -10,9 +10,10 @@ export const ColorModeContext = createContext({
 
 export const ColorModeContextProvider = ({ children }) => {
     //- verifica se no sistema operacional está usando um tema escuro
-    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-
-    const initialTheme = prefersDarkMode ? 'dark' : 'light'
+    /*     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+    
+        const initialTheme = prefersDarkMode ? 'dark' : 'light' */
+    const initialTheme = 'light'
     const [mode, setMode] = useState(initialTheme);
     const colorMode = useMemo(() => ({
         toggleColorMode: () => {
