@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { ModalCardSettingsStyle } from "components/modal-group/modal-card-settings/styles";
+import { ModalCardSettingsStyle } from "components/modal-card-settings/styles";
 import TrashIcon from "assets/svg/lixeira.svg";
-import Modal from "components/modal-group/modal-links";
+import Modal from "components/modal";
 import CopyLinkIcon from "assets/svg/copy-link.svg";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";

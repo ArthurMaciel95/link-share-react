@@ -3,7 +3,7 @@ import Logo from "utils/links-logos";
 import ArrowLeftIcon from "assets/images/icon_arrow_left.png";
 import LinkArea from "components/link-area";
 import { ModalOverlay, ModalArea, ModalSection } from "./styles";
-import ModalNewLInk from "components/modal-group/modal-edit-link";
+import ModalNewLInk from "components/modal-edit-link";
 import { toast } from "react-toastify";
 import ModalMaterial from "@mui/material/Modal";
 import Box from "@mui/material/Box";
