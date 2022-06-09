@@ -70,7 +70,7 @@ const HomePage = () => {
     useEffect(() => getUser, []);
     useEffect(() => setLinksFiltered(links), [links]);
     useEffect(() => downloadExcelFile, [])
-
+    useEffect(() => getUser, [open]);
 
     const ShowAllLinkOfUser = () => {
         return linksFiltered.map((link) => (
