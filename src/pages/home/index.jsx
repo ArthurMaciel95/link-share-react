@@ -14,7 +14,6 @@ import ProfileIcon from "assets/svg/profile.svg";
 import LinkChainIcon from "assets/svg/link-chain.svg";
 import LinkArea from "components/link-area";
 import { formatDistance, subDays } from "date-fns";
-import { ptBR } from "date-fns/locale";
 import CardSkeleton from "components/skeleton";
 import SkeletonCards from "components/skeleton";
 import Navbar from "components/navbar";
@@ -24,6 +23,7 @@ import homeIcon from "assets/svg/home.svg";
 import profileBreadIcon from "assets/svg/profile-bread.svg";
 import ClipBoardArea from "components/clip-board-area";
 import enUS from "date-fns/esm/locale/en-US/index.js";
+import ptBR from "date-fns/esm/locale/pt-BR/index.js";
 import Button from "@mui/material/Button";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -46,6 +46,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { AppContext } from "context";
 import { useTranslation } from "react-i18next";
+import {lng} from 'helpers/tranlation-card'
 
 const HomePage = () => {
     let { t, i18n } = useTranslation()
@@ -62,7 +63,7 @@ const HomePage = () => {
     };
 
     const ITEM_HEIGHT = 48;
-
+    console.log(lng)
     const changeLoading = () => toggleLoading(!loading);
     const openModal = () => toggleModal(true);
     const userHaveAnLink = () => linksFiltered.length > 0;
@@ -70,8 +71,7 @@ const HomePage = () => {
     useEffect(() => getUser, []);
     useEffect(() => setLinksFiltered(links), [links]);
     useEffect(() => downloadExcelFile, [])
-    useEffect(() => getUser, [open]);
-
+    console.log(i18n.language)
     const ShowAllLinkOfUser = () => {
         return linksFiltered.map((link) => (
             <CardLink
@@ -82,7 +82,7 @@ const HomePage = () => {
                 link={Validation.addHttps(link.context.toLowerCase())}
                 createAt={formatDistance(new Date(link.createdAt), new Date(), {
                     addSuffix: true,
-                    locale: enUS,
+                    locale: lng[i18n.language],
                 })}
             />
         ));
