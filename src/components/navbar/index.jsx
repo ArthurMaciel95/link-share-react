@@ -46,7 +46,7 @@ const Navbar = ({ user }) => {
     const [open, setOpen] = useState(false);
     let anchor = "right";
 
-    const options = [{ name: t('menu_change_language.portuguese'), lng: 'pt' }, { name: t('menu_change_language.english'), lng: 'en' }];
+    const options = [{ name: t('menu_change_language.portuguese'), lng: 'ptBR' }, { name: t('menu_change_language.english'), lng: 'enUS' }];
 
     const ITEM_HEIGHT = 48;
 

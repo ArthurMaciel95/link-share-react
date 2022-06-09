@@ -122,7 +122,6 @@ export const AppProvider = ({ children }) => {
 
             dispatch({ type: actions.HANDLE_LOADING, payload: true });
             dispatch({ type: actions.HANDLE_FIELDS, payload: true });
-            console.log(form)
             await UserServices.passwordForgot(null, 2, {
                 password: await sha256(form.password),
                 jwt: form.jwt,
