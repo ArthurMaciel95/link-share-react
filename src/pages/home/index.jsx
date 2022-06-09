@@ -63,7 +63,6 @@ const HomePage = () => {
     };
 
     const ITEM_HEIGHT = 48;
-    console.log(lng)
     const changeLoading = () => toggleLoading(!loading);
     const openModal = () => toggleModal(true);
     const userHaveAnLink = () => linksFiltered.length > 0;
@@ -71,7 +70,6 @@ const HomePage = () => {
     useEffect(() => getUser, []);
     useEffect(() => setLinksFiltered(links), [links]);
     useEffect(() => downloadExcelFile, [])
-    console.log(i18n.language)
     const ShowAllLinkOfUser = () => {
         return linksFiltered.map((link) => (
             <CardLink
