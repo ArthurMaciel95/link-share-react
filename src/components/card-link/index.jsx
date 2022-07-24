@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Card } from "./styles.js";
 import threeDots from "../../assets/svg/three-dots.svg";
-import ModalCardSettings from "components/modal-group/modal-card-settings";
+import ModalCardSettings from "components/modal-card-settings";
 import { toast } from "react-toastify";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";

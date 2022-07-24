@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import logoReduce from "assets/svg/logo-reduce.svg";
 import Avatar from "assets/images/avatar.jpeg";
 import PlusIcon from "assets/svg/icon_plus.svg";
-import Modal from "components/modal-group/modal-links";
+import Modal from "components/modal";
 import { useNavigate } from 'react-router-dom';
 import { NavbarStyle } from './styles'
 import { AppContext, ColorModeContext } from "context";
